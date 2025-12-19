@@ -4,11 +4,11 @@ import FloatingQuoteButton from '@/components/FloatingQuoteButton'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-    title: 'Projects - MK Roofing',
-    description: 'View our completed industrial roofing and shed projects',
+    title: 'Products - MK Roofing',
+    description: 'Explore our range of industrial roofing products and solutions',
 }
 
-export default function Projects() {
+export default function Products() {
     return (
         <>
             <Logo />
@@ -17,9 +17,9 @@ export default function Projects() {
             
             <main style={{ paddingTop: '150px', minHeight: '80vh' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-                    <h1 style={{ fontSize: '3rem', marginBottom: '24px' }}>Our Projects</h1>
+                    <h1 style={{ fontSize: '3rem', marginBottom: '24px' }}>Our Products</h1>
                     <p style={{ fontSize: '1.125rem', lineHeight: '1.8' }}>
-                        Explore our portfolio of successful industrial roofing projects.
+                        Discover our comprehensive range of industrial roofing and shed solutions.
                     </p>
                 </div>
             </main>
