@@ -1,0 +1,251 @@
+/* ============================================
+   LOGO COMPONENT - DESIGN SYSTEM
+   Base: 1920px × 1080px
+   MOBILE OPTIMIZED FOR BETTER VISIBILITY
+   ============================================ */
+
+   .logo {
+    position: fixed;
+    z-index: 1001;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.logo:hover {
+    transform: scale(1.02);
+}
+
+.logoImage {
+    object-fit: contain;
+    display: block;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS - DESKTOP
+   Formula: (Screen Width ÷ 1920) × Base Value
+   ============================================ */
+
+/* Base - 1920px+ (1:1 ratio) */
+@media (min-width: 1920px) {
+    .logo {
+        top: 65px;
+        left: 73px;
+    }
+    
+    .logoImage {
+        width: 240px;
+        height: 86px;
+    }
+}
+
+/* XL - 1440px (0.75 ratio) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .logo {
+        top: 49px;
+        left: 55px;
+    }
+    
+    .logoImage {
+        width: 180px;
+        height: 64px;
+    }
+}
+
+/* LG - 1366px (0.711 ratio) */
+@media (min-width: 1366px) and (max-width: 1439px) {
+    .logo {
+        top: 46px;
+        left: 52px;
+    }
+    
+    .logoImage {
+        width: 171px;
+        height: 61px;
+    }
+}
+
+/* MD - 1280px (0.667 ratio) */
+@media (min-width: 1280px) and (max-width: 1365px) {
+    .logo {
+        top: 43px;
+        left: 49px;
+    }
+    
+    .logoImage {
+        width: 160px;
+        height: 57px;
+    }
+}
+
+/* SM - 1024px (0.533 ratio) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .logo {
+        top: 34px;
+        left: 39px;
+    }
+    
+    .logoImage {
+        width: 128px;
+        height: 46px;
+    }
+}
+
+/* ============================================
+   MOBILE OPTIMIZED - BETTER VISIBILITY
+   Larger sizes for better readability
+   ============================================ */
+
+/* XS - 768px - Tablet Portrait (OPTIMIZED) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .logo {
+        top: 26px;              /* Aligned with hamburger menu */
+        left: 29px;
+    }
+    
+    .logoImage {
+        width: 140px;           /* LARGER - more visible on tablet */
+        height: 50px;
+    }
+}
+
+/* XXS - 480px - Large Mobile (OPTIMIZED) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .logo {
+        top: 17px;
+        left: 19px;
+    }
+    
+    .logoImage {
+        width: 130px;           /* LARGER - good size for large phones */
+        height: 46px;
+    }
+}
+
+/* XXXS - 375px - Standard Mobile (OPTIMIZED) */
+@media (min-width: 375px) and (max-width: 479px) {
+    .logo {
+        top: 13px;              /* Aligned with hamburger */
+        left: 15px;
+    }
+    
+    .logoImage {
+        width: 120px;           /* LARGER - perfect for iPhone standard */
+        height: 43px;
+    }
+}
+
+/* MIN - 320px - Small Mobile (OPTIMIZED) */
+@media (min-width: 320px) and (max-width: 374px) {
+    .logo {
+        top: 11px;
+        left: 13px;
+    }
+    
+    .logoImage {
+        width: 110px;           /* LARGER - still readable on small screens */
+        height: 39px;
+    }
+}
+
+/* Very Small Devices (below 320px) */
+@media (max-width: 319px) {
+    .logo {
+        top: 10px;
+        left: 12px;
+    }
+    
+    .logoImage {
+        width: 100px;           /* Minimum readable size */
+        height: 36px;
+    }
+}
+
+/* ============================================
+   LANDSCAPE ORIENTATION - MOBILE
+   ============================================ */
+
+/* Landscape - Tablet */
+@media (orientation: landscape) and (min-width: 768px) and (max-width: 1199px) and (max-height: 600px) {
+    .logo {
+        top: 10px;              /* Less space at top in landscape */
+        left: 20px;
+    }
+    
+    .logoImage {
+        width: 110px;           /* Slightly smaller for landscape */
+        height: 39px;
+    }
+}
+
+/* Landscape - Mobile */
+@media (orientation: landscape) and (max-width: 767px) and (max-height: 500px) {
+    .logo {
+        top: 8px;
+        left: 15px;
+    }
+    
+    .logoImage {
+        width: 100px;
+        height: 36px;
+    }
+}
+
+/* Very Short Landscape (like iPhone in landscape) */
+@media (orientation: landscape) and (max-height: 400px) {
+    .logo {
+        top: 6px;
+        left: 12px;
+    }
+    
+    .logoImage {
+        width: 90px;
+        height: 32px;
+    }
+}
+
+/* ============================================
+   SPECIAL CASES
+   ============================================ */
+
+/* High DPI Screens - Retina Display Optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logoImage {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .logo {
+        transition: none;
+    }
+    
+    .logo:hover {
+        transform: none;
+    }
+}
+
+/* Dark Mode Support (if needed in future) */
+@media (prefers-color-scheme: dark) {
+    .logoImage {
+        /* Can add filter or swap logo if needed */
+    }
+}
+
+/* Print Optimization */
+@media print {
+    .logo {
+        position: static;
+        top: auto;
+        left: auto;
+        display: block;
+        margin: 20px 0;
+    }
+    
+    .logoImage {
+        width: 200px;
+        height: auto;
+    }
+}

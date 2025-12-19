@@ -1,0 +1,336 @@
+/* ============================================
+   GET QUOTE BUTTON COMPONENT - DESIGN SYSTEM
+   Base: 1920px × 1080px
+   ============================================ */
+
+   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+   .quoteButton {
+       position: fixed;
+       z-index: 1001;
+       
+       background: #2683C6;
+       color: white;
+       border-radius: 64px;
+       text-decoration: none;
+       font-family: 'Inter', sans-serif;
+       font-weight: 600;
+       
+       box-shadow: 0 4px 15px rgba(38, 131, 198, 0.3);
+       transition: all 0.3s ease;
+       
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       gap: 8px;
+       white-space: nowrap;
+       border: none;
+       cursor: pointer;
+   }
+   
+   .quoteButton:hover {
+       background: #1a6ba3;
+       transform: translateY(-2px);
+       box-shadow: 0 6px 20px rgba(38, 131, 198, 0.4);
+   }
+   
+   .quoteButton:active {
+       transform: translateY(0);
+   }
+   
+   /* Scroll Behavior - Move to Bottom */
+   .quoteButtonBottom {
+       top: auto;
+       animation: slideToBottom 0.4s ease-out;
+   }
+   
+   .quoteButtonBottom:hover {
+       transform: translateY(-3px);
+   }
+   
+   .quoteIcon {
+       fill: currentColor;
+   }
+   
+   @keyframes slideToBottom {
+       from {
+           opacity: 0.8;
+       }
+       to {
+           opacity: 1;
+       }
+   }
+   
+   /* ============================================
+      RESPONSIVE BREAKPOINTS
+      Formula: (Screen Width ÷ 1920) × Base Value
+      ============================================ */
+   
+   /* Base - 1920px+ (1:1 ratio) */
+   @media (min-width: 1920px) {
+       .quoteButton {
+           width: 206px;
+           height: 75px;
+           top: 70px;
+           right: 73px;
+           font-size: 16px;
+           border-radius: 64px;
+       }
+       
+       .quoteButtonBottom {
+           bottom: 30px;
+       }
+       
+       .quoteIcon {
+           width: 16px;
+           height: 16px;
+       }
+   }
+   
+   /* XL - 1440px (0.75 ratio) */
+   @media (min-width: 1440px) and (max-width: 1919px) {
+       .quoteButton {
+           width: 154px;           /* 206 × 0.75 */
+           height: 56px;           /* 75 × 0.75 */
+           top: 52px;              /* 70 × 0.75 */
+           right: 55px;            /* 73 × 0.75 */
+           font-size: 12px;        /* 16 × 0.75 */
+           border-radius: 48px;    /* 64 × 0.75 */
+       }
+       
+       .quoteButtonBottom {
+           bottom: 22px;           /* 30 × 0.75 */
+       }
+       
+       .quoteIcon {
+           width: 12px;            /* 16 × 0.75 */
+           height: 12px;
+       }
+   }
+   
+   /* LG - 1366px (0.711 ratio) */
+   @media (min-width: 1366px) and (max-width: 1439px) {
+       .quoteButton {
+           width: 146px;           /* 206 × 0.711 */
+           height: 53px;           /* 75 × 0.711 */
+           top: 49px;              /* 70 × 0.711 */
+           right: 52px;            /* 73 × 0.711 */
+           font-size: 11px;        /* 16 × 0.711 */
+           border-radius: 46px;    /* 64 × 0.711 */
+       }
+       
+       .quoteButtonBottom {
+           bottom: 21px;           /* 30 × 0.711 */
+       }
+       
+       .quoteIcon {
+           width: 11px;            /* 16 × 0.711 */
+           height: 11px;
+       }
+   }
+   
+   /* MD - 1280px (0.667 ratio) */
+   @media (min-width: 1280px) and (max-width: 1365px) {
+       .quoteButton {
+           width: 137px;           /* 206 × 0.667 */
+           height: 50px;           /* 75 × 0.667 */
+           top: 47px;              /* 70 × 0.667 */
+           right: 49px;            /* 73 × 0.667 */
+           font-size: 11px;        /* 16 × 0.667 */
+           border-radius: 43px;    /* 64 × 0.667 */
+       }
+       
+       .quoteButtonBottom {
+           bottom: 20px;           /* 30 × 0.667 */
+       }
+       
+       .quoteIcon {
+           width: 11px;            /* 16 × 0.667 */
+           height: 11px;
+       }
+   }
+   
+   /* SM - 1024px (0.533 ratio) */
+   @media (min-width: 1024px) and (max-width: 1279px) {
+       .quoteButton {
+           width: 110px;           /* 206 × 0.533 */
+           height: 40px;           /* 75 × 0.533 */
+           top: 37px;              /* 70 × 0.533 */
+           right: 39px;            /* 73 × 0.533 */
+           font-size: 9px;         /* 16 × 0.533 */
+           border-radius: 34px;    /* 64 × 0.533 */
+       }
+       
+       .quoteButtonBottom {
+           bottom: 16px;           /* 30 × 0.533 */
+       }
+       
+       .quoteIcon {
+           width: 9px;             /* 16 × 0.533 */
+           height: 9px;
+       }
+   }
+   
+   /* XS - 768px (0.4 ratio) */
+   /* ============================================
+   MOBILE OPTIMIZED - LARGER TOUCH TARGETS
+   ============================================ */
+
+/* XS - 768px - Make it more prominent */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .quoteButton {
+        width: 120px;           /* Larger for better visibility */
+        height: 50px;           /* Bigger touch target */
+        top: 26px;              /* Aligned with logo */
+        right: 29px;
+        font-size: 12px;        /* Readable text */
+        border-radius: 25px;
+        padding: 0 15px;
+        gap: 6px;
+    }
+    
+    .quoteButtonBottom {
+        bottom: 20px;
+    }
+    
+    .quoteIcon {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* XXS - 480px - Optimized for mobile */
+@media (min-width: 480px) and (max-width: 767px) {
+    .quoteButton {
+        width: 110px;           /* Good size for mobile */
+        height: 44px;           /* Standard mobile touch target (44px minimum) */
+        top: 17px;
+        right: 19px;
+        font-size: 11px;
+        border-radius: 22px;
+        padding: 0 12px;
+        gap: 5px;
+    }
+    
+    .quoteButtonBottom {
+        bottom: 15px;
+    }
+    
+    .quoteIcon {
+        width: 11px;
+        height: 11px;
+    }
+}
+
+/* XXXS - 375px - iPhone standard */
+@media (min-width: 375px) and (max-width: 479px) {
+    .quoteButton {
+        width: 100px;
+        height: 44px;           /* iOS recommended touch target */
+        top: 13px;
+        right: 15px;
+        font-size: 10px;
+        border-radius: 22px;
+        padding: 0 10px;
+        gap: 4px;
+    }
+    
+    .quoteButtonBottom {
+        bottom: 12px;
+    }
+    
+    .quoteIcon {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* MIN - 320px - Small phones */
+@media (max-width: 374px) {
+    .quoteButton {
+        width: 90px;
+        height: 40px;           /* Still good touch target */
+        top: 11px;
+        right: 13px;
+        font-size: 9px;
+        border-radius: 20px;
+        padding: 0 8px;
+        gap: 3px;
+    }
+    
+    .quoteButtonBottom {
+        bottom: 10px;
+    }
+    
+    .quoteIcon {
+        width: 9px;
+        height: 9px;
+    }
+}
+   
+   /* Landscape Mobile Optimization */
+   @media (orientation: landscape) and (max-height: 600px) and (max-width: 1023px) {
+       .quoteButton {
+           width: 80px;
+           height: 30px;
+           top: 10px;
+           right: 20px;
+           font-size: 10px;
+           border-radius: 15px;
+       }
+       
+       .quoteButtonBottom {
+           bottom: 10px;
+       }
+       
+       .quoteIcon {
+           width: 10px;
+           height: 10px;
+       }
+   }
+   
+   /* Accessibility - Reduced Motion */
+   @media (prefers-reduced-motion: reduce) {
+       .quoteButton {
+           transition: none;
+           animation: none;
+       }
+       
+       .quoteButton:hover {
+           transform: none;
+       }
+   }
+ 
+/* ============================================
+   HIDE ON MOBILE - Show only on desktop
+   ============================================ */
+
+.quoteButton {
+    display: none;  /* Hidden by default on mobile */
+}
+
+/* Show only on desktop (1024px and above) */
+@media (min-width: 1024px) {
+    .quoteButton {
+        display: flex;  /* Show on desktop */
+        position: fixed;
+        z-index: 1001;
+        
+        background: #2683C6;
+        color: white;
+        border-radius: 64px;
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        
+        box-shadow: 0 4px 15px rgba(38, 131, 198, 0.3);
+        transition: all 0.3s ease;
+        
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        white-space: nowrap;
+        border: none;
+        cursor: pointer;
+    }
+}
