@@ -1,0 +1,667 @@
+/* ============================================
+   WHY CHOOSE US SECTION
+   Base Design: 1920px
+   Card: 300×300px (8 cards, 4×2 grid)
+   Icon: 68×68px (36px from top, 22px from left)
+   Title: Bold 24px, Blue (#2683C6)
+   Description: Medium 16px, 50% opacity
+   All content: 22px from left border
+   ============================================ */
+
+   .whyChooseUsSection {
+    width: 100%;
+    position: relative;
+    background: #ffffff;
+    padding: 100px 0;
+  }
+  
+  .container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 153px;
+    position: relative;
+  }
+  
+  /* ============================================
+     HEADER
+     ============================================ */
+  
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 150px;
+  }
+  
+  .title {
+    color: #2683C6;
+    text-align: center;
+    font-family: "Grift-Bold", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0 0 11px 0;
+    line-height: 1.2;
+  }
+  
+  .subtitle {
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    font-family: "Grift-Medium", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.5;
+    max-width: 1331px;
+  }
+  
+  /* ============================================
+     FEATURES GRID - 4 columns × 2 rows
+     ============================================ */
+  
+  .featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    grid-template-rows: repeat(2, 300px);
+    gap: 35px; /* Gap between cards */
+    justify-content: center;
+  }
+  
+  /* ============================================
+     FEATURE CARD - 300×300px
+     ============================================ */
+  
+  .featureCard {
+    width: 300px;
+    height: 300px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .featureCard:hover {
+    border-color: #2683C6;
+    box-shadow: 0px 8px 20px rgba(38, 131, 198, 0.15);
+    transform: translateY(-5px);
+  }
+  
+  /* ============================================
+     ICON - 68×68px
+     Position: 36px from top, 22px from left
+     ============================================ */
+  
+  .iconWrapper {
+    width: 68px;
+    height: 68px;
+    position: absolute;
+    top: 36px;
+    left: 22px;
+  }
+  
+  .icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  
+  .featureCard:hover .icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  /* ============================================
+     TITLE - Bold 24px, Blue
+     Position: Below icon, 22px from left
+     ============================================ */
+  
+  .featureTitle {
+    color: #2683C6;
+    font-family: "Grift-Bold", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    position: absolute;
+    top: 120px; /* 36px (icon top) + 68px (icon height) + 16px gap = 120px */
+    left: 22px;
+    right: 22px;
+  }
+  
+  /* ============================================
+     DESCRIPTION - Medium 16px, 50% opacity
+     Position: Below title, 22px from left
+     ============================================ */
+  
+  .featureDescription {
+    color: rgba(0, 0, 0, 0.5);
+    font-family: "Grift-Medium", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+    position: absolute;
+    top: 189px; /* Title bottom + 16px gap */
+    left: 22px;
+    right: 22px;
+  }
+  
+  /* ============================================
+     SCROLL ANIMATIONS
+     ============================================ */
+  
+  .whyChooseUsSection .animateUp {
+    opacity: 0;
+    transform: translateY(40px);
+    will-change: transform, opacity;
+  }
+  
+  @keyframes slideInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .whyChooseUsSection.animate .animateUp {
+    animation: slideInUp 0.8s ease-out forwards;
+  }
+  
+  .whyChooseUsSection.animate .title {
+    animation-delay: 0.1s;
+  }
+  
+  .whyChooseUsSection.animate .subtitle {
+    animation-delay: 0.2s;
+  }
+  
+  /* ============================================
+     🔒 LOCK FOR SCREENS > 1440px
+     ============================================ */
+  
+  @media (min-width: 1441px) {
+    .whyChooseUsSection {
+      padding: 75px 0 !important;
+    }
+  
+    .container {
+      padding: 0 115px !important;
+    }
+  
+    .header {
+      margin-bottom: 113px !important;
+    }
+  
+    .title {
+      font-size: 36px !important;
+      margin-bottom: 8px !important;
+    }
+  
+    .subtitle {
+      font-size: 19px !important;
+      max-width: 998px !important;
+    }
+  
+    .featuresGrid {
+      grid-template-columns: repeat(4, 225px) !important;
+      grid-template-rows: repeat(2, 225px) !important;
+      gap: 26px !important;
+    }
+  
+    .featureCard {
+      width: 225px !important;
+      height: 225px !important;
+      border-radius: 15px !important;
+    }
+  
+    .iconWrapper {
+      width: 51px !important;
+      height: 51px !important;
+      top: 27px !important;
+      left: 17px !important;
+    }
+  
+    .featureTitle {
+      font-size: 18px !important;
+      top: 90px !important;
+      left: 17px !important;
+      right: 17px !important;
+    }
+  
+    .featureDescription {
+      font-size: 12px !important;
+      top: 142px !important;
+      left: 17px !important;
+      right: 17px !important;
+    }
+  }
+  
+  /* ============================================
+     RESPONSIVE BREAKPOINTS
+     ============================================ */
+  
+  /* 1440px - 0.75 scale */
+  @media (max-width: 1440px) {
+    .whyChooseUsSection {
+      padding: 75px 0;
+    }
+  
+    .container {
+      padding: 0 115px;
+    }
+  
+    .header {
+      margin-bottom: 113px;
+    }
+  
+    .title {
+      font-size: 36px;
+      margin-bottom: 8px;
+    }
+  
+    .subtitle {
+      font-size: 19px;
+      max-width: 998px;
+    }
+  
+    .featuresGrid {
+      grid-template-columns: repeat(4, 225px);
+      grid-template-rows: repeat(2, 225px);
+      gap: 26px;
+    }
+  
+    .featureCard {
+      width: 225px;
+      height: 225px;
+      border-radius: 15px;
+    }
+  
+    .iconWrapper {
+      width: 51px;
+      height: 51px;
+      top: 27px;
+      left: 17px;
+    }
+  
+    .featureTitle {
+      font-size: 18px;
+      top: 90px;
+      left: 17px;
+      right: 17px;
+    }
+  
+    .featureDescription {
+      font-size: 12px;
+      top: 142px;
+      left: 17px;
+      right: 17px;
+    }
+  }
+  
+  /* 1366px - 0.71 scale */
+  @media (max-width: 1366px) {
+    .whyChooseUsSection {
+      padding: 71px 0;
+    }
+  
+    .container {
+      padding: 0 109px;
+    }
+  
+    .header {
+      margin-bottom: 107px;
+    }
+  
+    .title {
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+  
+    .subtitle {
+      font-size: 18px;
+      max-width: 945px;
+    }
+  
+    .featuresGrid {
+      grid-template-columns: repeat(4, 213px);
+      grid-template-rows: repeat(2, 213px);
+      gap: 25px;
+    }
+  
+    .featureCard {
+      width: 213px;
+      height: 213px;
+      border-radius: 14px;
+    }
+  
+    .iconWrapper {
+      width: 48px;
+      height: 48px;
+      top: 26px;
+      left: 16px;
+    }
+  
+    .featureTitle {
+      font-size: 17px;
+      top: 85px;
+      left: 16px;
+      right: 16px;
+    }
+  
+    .featureDescription {
+      font-size: 11px;
+      top: 134px;
+      left: 16px;
+      right: 16px;
+    }
+  }
+  
+  /* 1280px - 0.67 scale */
+  @media (max-width: 1280px) {
+    .whyChooseUsSection {
+      padding: 67px 0;
+    }
+  
+    .container {
+      padding: 0 102px;
+    }
+  
+    .header {
+      margin-bottom: 101px;
+    }
+  
+    .title {
+      font-size: 32px;
+    }
+  
+    .subtitle {
+      font-size: 17px;
+      max-width: 892px;
+    }
+  
+    .featuresGrid {
+      grid-template-columns: repeat(4, 201px);
+      grid-template-rows: repeat(2, 201px);
+      gap: 23px;
+    }
+  
+    .featureCard {
+      width: 201px;
+      height: 201px;
+      border-radius: 13px;
+    }
+  
+    .iconWrapper {
+      width: 46px;
+      height: 46px;
+      top: 24px;
+      left: 15px;
+    }
+  
+    .featureTitle {
+      font-size: 16px;
+      top: 80px;
+      left: 15px;
+      right: 15px;
+    }
+  
+    .featureDescription {
+      font-size: 11px;
+      top: 127px;
+      left: 15px;
+      right: 15px;
+    }
+  }
+  
+  /* 1024px - 0.53 scale */
+  @media (max-width: 1024px) {
+    .whyChooseUsSection {
+      padding: 53px 0;
+    }
+  
+    .container {
+      padding: 0 81px;
+    }
+  
+    .header {
+      margin-bottom: 80px;
+    }
+  
+    .title {
+      font-size: 25px;
+    }
+  
+    .subtitle {
+      font-size: 13px;
+      max-width: 706px;
+    }
+  
+    .featuresGrid {
+      grid-template-columns: repeat(4, 159px);
+      grid-template-rows: repeat(2, 159px);
+      gap: 19px;
+    }
+  
+    .featureCard {
+      width: 159px;
+      height: 159px;
+      border-radius: 11px;
+    }
+  
+    .iconWrapper {
+      width: 36px;
+      height: 36px;
+      top: 19px;
+      left: 12px;
+    }
+  
+    .featureTitle {
+      font-size: 13px;
+      top: 64px;
+      left: 12px;
+      right: 12px;
+    }
+  
+    .featureDescription {
+      font-size: 8px;
+      top: 100px;
+      left: 12px;
+      right: 12px;
+    }
+  }
+  
+  /* 768px - Tablet (2×4 grid) */
+  @media (max-width: 768px) {
+    .whyChooseUsSection {
+      padding: 50px 0;
+    }
+  
+    .container {
+      padding: 0 20px;
+    }
+  
+    .header {
+      margin-bottom: 50px;
+    }
+  
+    .title {
+      font-size: 28px;
+    }
+  
+    .subtitle {
+      font-size: 16px;
+      max-width: 100%;
+    }
+  
+    .featuresGrid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+      gap: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  
+    .featureCard {
+      width: 100%;
+      height: 250px;
+      border-radius: 16px;
+    }
+  
+    .iconWrapper {
+      width: 60px;
+      height: 60px;
+      top: 30px;
+      left: 20px;
+    }
+  
+    .featureTitle {
+      font-size: 20px;
+      top: 110px;
+      left: 20px;
+      right: 20px;
+    }
+  
+    .featureDescription {
+      font-size: 14px;
+      top: 160px;
+      left: 20px;
+      right: 20px;
+    }
+  }
+  
+  /* 480px - Mobile (1 column) */
+  @media (max-width: 480px) {
+    .whyChooseUsSection {
+      padding: 40px 0;
+    }
+  
+    .container {
+      padding: 0 15px;
+    }
+  
+    .header {
+      margin-bottom: 40px;
+    }
+  
+    .title {
+      font-size: 24px;
+    }
+  
+    .subtitle {
+      font-size: 14px;
+    }
+  
+    .featuresGrid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+  
+    .featureCard {
+      height: 220px;
+    }
+  
+    .iconWrapper {
+      width: 55px;
+      height: 55px;
+      top: 25px;
+      left: 18px;
+    }
+  
+    .featureTitle {
+      font-size: 18px;
+      top: 100px;
+      left: 18px;
+      right: 18px;
+    }
+  
+    .featureDescription {
+      font-size: 13px;
+      top: 145px;
+      left: 18px;
+      right: 18px;
+    }
+  }
+  
+  /* 375px - Small Mobile */
+  @media (max-width: 375px) {
+    .title {
+      font-size: 22px;
+    }
+  
+    .subtitle {
+      font-size: 13px;
+    }
+  
+    .featureCard {
+      height: 200px;
+    }
+  
+    .iconWrapper {
+      width: 50px;
+      height: 50px;
+    }
+  
+    .featureTitle {
+      font-size: 16px;
+      top: 95px;
+    }
+  
+    .featureDescription {
+      font-size: 12px;
+      top: 135px;
+    }
+  }
+  
+  /* 320px - Smallest Mobile */
+  @media (max-width: 320px) {
+    .whyChooseUsSection {
+      padding: 30px 0;
+    }
+  
+    .title {
+      font-size: 20px;
+    }
+  
+    .subtitle {
+      font-size: 12px;
+    }
+  
+    .featureCard {
+      height: 190px;
+    }
+  
+    .iconWrapper {
+      width: 45px;
+      height: 45px;
+      top: 20px;
+    }
+  
+    .featureTitle {
+      font-size: 15px;
+      top: 85px;
+    }
+  
+    .featureDescription {
+      font-size: 11px;
+      top: 125px;
+    }
+  }
+  
+  /* ============================================
+     ACCESSIBILITY
+     ============================================ */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .whyChooseUsSection .animateUp {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  
+    .featureCard,
+    .icon {
+      transition: none !important;
+    }
+  }

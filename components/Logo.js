@@ -9,8 +9,8 @@ export default function Logo() {
         <div className={styles.logo}>
             <Link href="/">
                 <Image 
-                    src="/images/asset-23-4-x-10.png"
-                    alt="MK Roofing Logo"
+                    src="/images/logo.png"
+                    alt="Patel Enterprise"
                     width={240}
                     height={86}
                     priority

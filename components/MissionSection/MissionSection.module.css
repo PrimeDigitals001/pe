@@ -1,0 +1,676 @@
+/* ============================================
+   MISSION SECTION - LOCKED AT 1920px MAX
+   Base Design: 1920px width
+   Heading container: 775×300px
+   Description container: 835×62px
+   ============================================ */
+/* ============================================
+   LOCK FOR SCREENS > 1440px
+   Keep same as 1440px values (0.75 scale)
+   ============================================ */
+/* ============================================
+   ANIMATIONS - Add at the TOP of your CSS
+   ============================================ */
+
+   @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* ============================================
+     Apply animations to elements
+     ============================================ */
+  
+  /* Top Images - Slide in from sides */
+  .topImages .imageBox:first-child {
+    animation: fadeInLeft 0.8s ease-out 0.2s backwards;
+  }
+  
+  .topImages .imageBox:last-child {
+    animation: fadeInRight 0.8s ease-out 0.2s backwards;
+  }
+  
+  /* Bottom Images - Slide in from sides */
+  .bottomImages .imageBox:first-child {
+    animation: fadeInLeft 0.8s ease-out 0.6s backwards;
+  }
+  
+  .bottomImages .imageBox:last-child {
+    animation: fadeInRight 0.8s ease-out 0.6s backwards;
+  }
+  
+  /* Center Content - Fade in from bottom */
+  .headingContainer {
+    animation: fadeInUp 0.8s ease-out 0.3s backwards;
+  }
+  
+  .descriptionContainer {
+    animation: fadeInUp 0.8s ease-out 0.5s backwards;
+  }
+  
+  .quoteButton {
+    animation: fadeInUp 0.8s ease-out 0.7s backwards;
+  }
+   @media (min-width: 1441px) {
+    .missionSection {
+      padding-top: 98px !important;
+      padding-bottom: 60px !important;
+    }
+  
+    .missionContainer {
+      padding: 0 115px !important;
+      max-width: 1920px !important;
+    }
+  
+    .topImages {
+      margin-bottom: 197px !important;
+    }
+  
+    .topImages .imageBox,
+    .bottomImages .imageBox {
+      width: 220px !important;
+      height: 173px !important;
+    }
+  
+    .centerContent {
+      top: 98px !important;
+    }
+  
+    .headingContainer {
+      width: 581px !important;
+      height: 225px !important;
+      margin-bottom: 27px !important;
+    }
+  
+    .missionHeading {
+      font-size: 36px !important;
+    }
+  
+    .descriptionContainer {
+      width: 626px !important;
+      height: 47px !important;
+      margin-bottom: 32px !important;
+    }
+  
+    .description {
+      font-size: 19px !important;
+    }
+  
+    .quoteButton {
+      width: 117px !important;
+      height: 43px !important;
+      font-size: 14px !important;
+    }
+  }
+   .missionSection {
+    width: 100%;
+    position: relative;
+    background: #ffffff;
+    padding-top: 130px;
+    padding-bottom: 80px;
+  }
+  
+  .missionContainer {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 153px;
+    position: relative;
+  }
+  
+  /* ============================================
+     TOP IMAGES ROW
+     ============================================ */
+  
+  .topImages {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 263px;
+  }
+  
+  .topImages .imageBox {
+    width: 293px;
+    height: 230px;
+    flex-shrink: 0;
+  }
+  
+  /* ============================================
+     BOTTOM IMAGES ROW
+     ============================================ */
+  
+  .bottomImages {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .bottomImages .imageBox {
+    width: 293px;
+    height: 230px;
+    flex-shrink: 0;
+  }
+  
+  /* ============================================
+     IMAGE BOXES
+     ============================================ */
+  
+  .imageBox {
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  
+  .imageBox:hover .image {
+    transform: scale(1.05);
+  }
+  
+  /* ============================================
+     CENTER CONTENT AREA (Between Images)
+     ============================================ */
+  
+  .centerContent {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 10;
+  }
+  
+  /* ============================================
+     HEADING CONTAINER - 775×300px (LOCKED)
+     ============================================ */
+  
+  .headingContainer {
+    width: 775px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 36px;
+    flex-shrink: 0;
+  }
+  
+  .missionHeading {
+    color: #000000;
+    text-align: center;
+    font-family: "Grift-Bold", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    width: 100%;
+  }
+  
+  /* ============================================
+     DESCRIPTION CONTAINER - 835×62px (LOCKED)
+     ============================================ */
+  
+  .descriptionContainer {
+    width: 835px;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 43px;
+    flex-shrink: 0;
+  }
+  
+  .description {
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    font-family: "Grift-Medium", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+    width: 100%;
+  }
+  
+  /* ============================================
+     GET QUOTE BUTTON - 156×57px (LOCKED)
+     ============================================ */
+  
+  .quoteButton {
+    width: 156px;
+    height: 57px;
+    border-radius: 64px;
+    border: 1.5px solid rgba(0, 0, 0, 0.24);
+    background: transparent;
+    color: rgba(0, 0, 0, 0.79);
+    font-family: "Inter-SemiBold", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  
+  .quoteButton:hover {
+    background: rgba(38, 131, 198, 1);
+    color: white;
+    border-color: rgba(38, 131, 198, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(38, 131, 198, 0.3);
+  }
+  
+  .quoteButton:active {
+    transform: translateY(0);
+  }
+  
+  /* ============================================
+     RESPONSIVE BREAKPOINTS
+     ============================================ */
+  
+  /* 1440px - 0.75 scale */
+  @media (max-width: 1440px) {
+    .missionSection {
+      padding-top: 98px;
+      padding-bottom: 60px;
+    }
+  
+    .missionContainer {
+      padding: 0 115px;
+    }
+  
+    .topImages {
+      margin-bottom: 197px;
+    }
+  
+    .topImages .imageBox,
+    .bottomImages .imageBox {
+      width: 220px;
+      height: 173px;
+    }
+  
+    .centerContent {
+      top: 98px;
+    }
+  
+    .headingContainer {
+      width: 581px;
+      height: 225px;
+      margin-bottom: 27px;
+    }
+  
+    .missionHeading {
+      font-size: 36px;
+    }
+  
+    .descriptionContainer {
+      width: 626px;
+      height: 47px;
+      margin-bottom: 32px;
+    }
+  
+    .description {
+      font-size: 19px;
+    }
+  
+    .quoteButton {
+      width: 117px;
+      height: 43px;
+      font-size: 14px;
+    }
+  }
+  
+  /* 1366px - 0.71 scale */
+  @media (max-width: 1366px) {
+    .missionSection {
+      padding-top: 92px;
+      padding-bottom: 57px;
+    }
+  
+    .missionContainer {
+      padding: 0 109px;
+    }
+  
+    .topImages {
+      margin-bottom: 187px;
+    }
+  
+    .topImages .imageBox,
+    .bottomImages .imageBox {
+      width: 208px;
+      height: 163px;
+    }
+  
+    .centerContent {
+      top: 92px;
+    }
+  
+    .headingContainer {
+      width: 550px;
+      height: 213px;
+      margin-bottom: 26px;
+    }
+  
+    .missionHeading {
+      font-size: 34px;
+    }
+  
+    .descriptionContainer {
+      width: 593px;
+      height: 44px;
+      margin-bottom: 31px;
+    }
+  
+    .description {
+      font-size: 18px;
+    }
+  
+    .quoteButton {
+      width: 111px;
+      height: 40px;
+      font-size: 13px;
+    }
+  }
+  
+  /* 1280px - 0.67 scale */
+  @media (max-width: 1280px) {
+    .missionSection {
+      padding-top: 87px;
+      padding-bottom: 54px;
+    }
+  
+    .missionContainer {
+      padding: 0 102px;
+    }
+  
+    .topImages {
+      margin-bottom: 176px;
+    }
+  
+    .topImages .imageBox,
+    .bottomImages .imageBox {
+      width: 196px;
+      height: 154px;
+    }
+  
+    .centerContent {
+      top: 87px;
+    }
+  
+    .headingContainer {
+      width: 519px;
+      height: 201px;
+      margin-bottom: 24px;
+    }
+  
+    .missionHeading {
+      font-size: 32px;
+    }
+  
+    .descriptionContainer {
+      width: 559px;
+      height: 42px;
+      margin-bottom: 29px;
+    }
+  
+    .description {
+      font-size: 17px;
+    }
+  
+    .quoteButton {
+      width: 104px;
+      height: 38px;
+      font-size: 12px;
+    }
+  }
+  
+  /* 1024px - 0.53 scale */
+  @media (max-width: 1024px) {
+    .missionSection {
+      padding-top: 69px;
+      padding-bottom: 42px;
+    }
+  
+    .missionContainer {
+      padding: 0 81px;
+    }
+  
+    .topImages {
+      margin-bottom: 139px;
+    }
+  
+    .topImages .imageBox,
+    .bottomImages .imageBox {
+      width: 155px;
+      height: 122px;
+    }
+  
+    .centerContent {
+      top: 69px;
+    }
+  
+    .headingContainer {
+      width: 411px;
+      height: 159px;
+      margin-bottom: 19px;
+    }
+  
+    .missionHeading {
+      font-size: 25px;
+    }
+  
+    .descriptionContainer {
+      width: 443px;
+      height: 33px;
+      margin-bottom: 23px;
+    }
+  
+    .description {
+      font-size: 13px;
+    }
+  
+    .quoteButton {
+      width: 83px;
+      height: 30px;
+      font-size: 10px;
+    }
+  }
+  
+  /* 768px - Tablet (Stack Layout) */
+  @media (max-width: 768px) {
+    .missionSection {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+  
+    .missionContainer {
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+  
+    .topImages,
+    .bottomImages {
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 0;
+    }
+  
+    .topImages .imageBox,
+    .bottomImages .imageBox {
+      width: 48%;
+      max-width: 250px;
+      height: 180px;
+    }
+  
+    .centerContent {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+      width: 100%;
+    }
+  
+    .headingContainer {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+  
+    .missionHeading {
+      font-size: 24px;
+      line-height: 1.4;
+    }
+  
+    .missionHeading br {
+      display: none;
+    }
+  
+    .descriptionContainer {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+  
+    .description {
+      font-size: 16px;
+    }
+  
+    .description br {
+      display: none;
+    }
+  
+    .quoteButton {
+      width: 140px;
+      height: 45px;
+      font-size: 14px;
+    }
+  }
+  
+  /* 480px - Mobile */
+  @media (max-width: 480px) {
+    .missionSection {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  
+      .missionContainer {
+      gap: 20px;
+    }
+  
+    .topImages,
+    .bottomImages {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .topImages .imageBox,
+    .bottomImages .imageBox {
+      width: 100%;
+      max-width: 100%;
+      height: 160px;
+    }
+  
+    .missionHeading {
+      font-size: 20px;
+    }
+  
+    .description {
+      font-size: 14px;
+    }
+  
+    .quoteButton {
+      width: 120px;
+      height: 40px;
+      font-size: 12px;
+    }
+  }
+  
+  /* 375px - Small Mobile */
+  @media (max-width: 375px) {
+    .missionHeading {
+      font-size: 18px;
+    }
+  
+    .description {
+      font-size: 13px;
+    }
+  
+    .topImages .imageBox,
+    .bottomImages .imageBox {
+      height: 140px;
+    }
+  }
+  
+  /* 320px - Smallest Mobile */
+  @media (max-width: 320px) {
+    .missionSection {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  
+    .missionHeading {
+      font-size: 16px;
+    }
+  
+    .description {
+      font-size: 12px;
+    }
+  
+    .quoteButton {
+      width: 100px;
+      height: 35px;
+      font-size: 11px;
+    }
+  
+    .topImages .imageBox,
+    .bottomImages .imageBox {
+      height: 120px;
+    }
+  }

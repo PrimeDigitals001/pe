@@ -1,0 +1,375 @@
+/* ============================================
+   SCROLLING BANNER SECTION
+   Base Design: 1920px
+   Font: Grift SemiBold 40px
+   Middle line: Blue filled (#2683C6)
+   Top/Bottom: 1px black stroke only
+   3 lines with infinite scroll
+   ============================================ */
+
+   .scrollingBanner {
+    width: 100%;
+    position: relative;
+    background: #ffffff;
+    padding: 80px 0;
+    overflow: hidden;
+  }
+  
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px; /* Small gap between lines */
+  }
+  
+  /* ============================================
+     MARQUEE WRAPPER
+     ============================================ */
+  
+  .marqueeWrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* ============================================
+     MARQUEE CONTENT
+     ============================================ */
+  
+  .marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  .marqueeContent {
+    display: inline-flex;
+    gap: 96px; /* Gap between repeated text */
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  
+  /* ============================================
+     SCROLL ANIMATIONS
+     ============================================ */
+  
+  /* Scroll Left (Top & Bottom lines) */
+  .scrollLeft .marqueeContent {
+    animation: scrollLeft 40s linear infinite;
+  }
+  
+  @keyframes scrollLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Scroll Right (Middle line) */
+  .scrollRight .marqueeContent {
+    animation: scrollRight 40s linear infinite;
+  }
+  
+  @keyframes scrollRight {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Pause on hover (optional) */
+  .marquee:hover .marqueeContent {
+    animation-play-state: paused;
+  }
+  
+  /* ============================================
+     TEXT STYLES
+     ============================================ */
+  
+  /* Blue Filled Text (Middle Line) */
+  .filledText {
+    color: #2683C6;
+    text-align: left;
+    font-family: "Grift-SemiBold", sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1;
+    display: inline-block;
+  }
+  
+  /* Stroke Only Text (Top & Bottom Lines) */
+  .strokeText {
+    color: transparent;
+    text-align: left;
+    font-family: "Grift-SemiBold", sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1;
+    -webkit-text-stroke: 1px #000000;
+    text-stroke: 1px #000000;
+    display: inline-block;
+  }
+  
+  /* ============================================
+     🔒 LOCK FOR SCREENS > 1440px
+     ============================================ */
+  
+  @media (min-width: 1441px) {
+    .scrollingBanner {
+      padding: 60px 0 !important;
+    }
+  
+    .container {
+      gap: 11px !important; /* 14px × 0.75 */
+    }
+  
+    .marqueeContent {
+      gap: 72px !important; /* 96px × 0.75 */
+    }
+  
+    .filledText,
+    .strokeText {
+      font-size: 30px !important; /* 40px × 0.75 */
+    }
+  }
+  
+  /* ============================================
+     RESPONSIVE BREAKPOINTS
+     ============================================ */
+  
+ /* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* 1440px - 0.75 scale */
+@media (max-width: 1440px) {
+    .scrollingBanner {
+      padding: 60px 0;
+    }
+  
+    .container {
+      gap: 11px;
+    }
+  
+    .marqueeContent {
+      gap: 72px;
+    }
+  
+    .filledText,
+    .strokeText {
+      font-size: 30px;
+    }
+  }
+  
+  /* 1366px - 0.71 scale */
+  @media (max-width: 1366px) {
+    .scrollingBanner {
+      padding: 57px 0;
+    }
+  
+    .container {
+      gap: 10px;
+    }
+  
+    .marqueeContent {
+      gap: 68px;
+    }
+  
+    .filledText,
+    .strokeText {
+      font-size: 28px;
+    }
+  }
+  
+  /* 1280px - 0.67 scale */
+  @media (max-width: 1280px) {
+    .scrollingBanner {
+      padding: 54px 0;
+    }
+  
+    .container {
+      gap: 9px;
+    }
+  
+    .marqueeContent {
+      gap: 64px;
+    }
+  
+    .filledText,
+    .strokeText {
+      font-size: 27px;
+    }
+  }
+  
+  /* 1024px - 0.53 scale */
+  @media (max-width: 1024px) {
+    .scrollingBanner {
+      padding: 42px 0;
+    }
+  
+    .container {
+      gap: 7px;
+    }
+  
+    .marqueeContent {
+      gap: 51px;
+    }
+  
+    .filledText,
+    .strokeText {
+      font-size: 21px;
+    }
+  }
+  
+  /* 768px - Tablet */
+  @media (max-width: 768px) {
+    .scrollingBanner {
+      padding: 30px 0; /* Reduced padding */
+    }
+  
+    .container {
+      gap: 10px;
+    }
+  
+    .marqueeContent {
+      gap: 40px;
+    }
+  
+    .filledText {
+      font-size: 24px; /* Larger blue text */
+    }
+  
+    .strokeText {
+      font-size: 24px; /* Larger stroke text */
+      -webkit-text-stroke: 0.8px #000000; /* Thinner stroke */
+      text-stroke: 0.8px #000000;
+    }
+  
+    /* Faster scroll on mobile */
+    .scrollLeft .marqueeContent {
+      animation-duration: 30s;
+    }
+  
+    .scrollRight .marqueeContent {
+      animation-duration: 30s;
+    }
+  }
+  
+  /* 480px - Mobile */
+  @media (max-width: 480px) {
+    .scrollingBanner {
+      padding: 20px 0; /* Much less padding */
+    }
+  
+    .container {
+      gap: 8px;
+    }
+  
+    .marqueeContent {
+      gap: 30px;
+    }
+  
+    .filledText {
+      font-size: 20px; /* Bigger for readability */
+      font-weight: 700; /* Bolder */
+    }
+  
+    .strokeText {
+      font-size: 20px; /* Bigger for readability */
+      -webkit-text-stroke: 0.6px #000000; /* Thinner stroke */
+      text-stroke: 0.6px #000000;
+      font-weight: 700; /* Bolder base */
+    }
+  
+    .scrollLeft .marqueeContent {
+      animation-duration: 25s;
+    }
+  
+    .scrollRight .marqueeContent {
+      animation-duration: 25s;
+    }
+  }
+  
+  /* 375px - Small Mobile */
+  @media (max-width: 375px) {
+    .scrollingBanner {
+      padding: 18px 0; /* Less padding */
+    }
+  
+    .container {
+      gap: 7px;
+    }
+  
+    .marqueeContent {
+      gap: 25px;
+    }
+  
+    .filledText {
+      font-size: 18px; /* Larger text */
+      font-weight: 700;
+    }
+  
+    .strokeText {
+      font-size: 18px; /* Larger text */
+      -webkit-text-stroke: 0.5px #000000; /* Very thin stroke */
+      text-stroke: 0.5px #000000;
+      font-weight: 700;
+    }
+  }
+  
+  /* 320px - Smallest Mobile */
+  @media (max-width: 320px) {
+    .scrollingBanner {
+      padding: 15px 0; /* Minimal padding */
+    }
+  
+    .container {
+      gap: 6px;
+    }
+  
+    .marqueeContent {
+      gap: 20px;
+    }
+  
+    .filledText {
+      font-size: 16px; /* Readable size */
+      font-weight: 700;
+    }
+  
+    .strokeText {
+      font-size: 16px; /* Readable size */
+      -webkit-text-stroke: 0.5px #000000; /* Thin stroke */
+      text-stroke: 0.5px #000000;
+      font-weight: 700;
+    }
+  
+    .scrollLeft .marqueeContent {
+      animation-duration: 20s;
+    }
+  
+    .scrollRight .marqueeContent {
+      animation-duration: 20s;
+    }
+  }
+  
+  /* ============================================
+     ACCESSIBILITY
+     ============================================ */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .scrollLeft .marqueeContent,
+    .scrollRight .marqueeContent {
+      animation: none !important;
+    }
+  
+    .marquee:hover .marqueeContent {
+      animation-play-state: running !important;
+    }
+  }

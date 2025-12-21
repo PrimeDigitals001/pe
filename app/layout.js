@@ -1,7 +1,7 @@
 import './globals.css'
 
 export const metadata = {
-    title: 'MK Roofing - Complete Industrial Roofing & Shed Solutions',
+    title: 'Patel Enterprise.',
     description: 'We provide durable, safe, and innovative roofing systems for factories, warehouses, and commercial structures.',
 }
 
