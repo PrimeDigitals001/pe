@@ -1,0 +1,396 @@
+/* ============================================
+   OUR JOURNEY SECTION
+   Base Design: 1920px
+   Layout: Left text (739px) + Right image (782×425px)
+   Title: 48px Bold, Blue (#2683C6)
+   Description: 25px Medium, 50% opacity, 739×341px container
+   ============================================ */
+
+   .ourJourneySection {
+    width: 100%;
+    position: relative;
+    background: #ffffff;
+    padding: 100px 0;
+  }
+  
+  .container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 153px;
+    display: flex;
+    gap: 86px; /* Gap between text and image */
+    align-items: flex-start;
+  }
+  
+  /* ============================================
+     LEFT COLUMN - Text Content
+     ============================================ */
+  
+  .contentColumn {
+    width: 739px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Title - Bold 48px, Blue */
+  .title {
+    color: #2683C6;
+    font-family: "Grift-Bold", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0 0 84px 0; /* 84px gap to description */
+    line-height: 1.2;
+    text-align: left;
+  }
+  
+  /* Description - Medium 25px, 50% opacity, 739×341px */
+  .description {
+    color: rgba(0, 0, 0, 0.5);
+    font-family: "Grift-Medium", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.6;
+    text-align: left;
+    width: 739px;
+    min-height: 341px; /* Ensures minimum height */
+  }
+  
+  /* ============================================
+     RIGHT COLUMN - Image
+     ============================================ */
+  
+  .imageColumn {
+    width: 782px;
+    height: 425px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  
+  .imageColumn:hover .image {
+    transform: scale(1.05);
+  }
+  
+  /* ============================================
+     SCROLL ANIMATIONS
+     ============================================ */
+  
+  .ourJourneySection .animateUp {
+    opacity: 0;
+    transform: translateY(40px);
+    will-change: transform, opacity;
+  }
+  
+  @keyframes slideInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .ourJourneySection.animate .animateUp {
+    animation: slideInUp 0.8s ease-out forwards;
+  }
+  
+  .ourJourneySection.animate .title {
+    animation-delay: 0.1s;
+  }
+  
+  .ourJourneySection.animate .description {
+    animation-delay: 0.2s;
+  }
+  
+  .ourJourneySection.animate .imageColumn {
+    animation-delay: 0.3s;
+  }
+  
+  /* ============================================
+     🔒 LOCK FOR SCREENS > 1440px
+     ============================================ */
+  
+  @media (min-width: 1441px) {
+    .ourJourneySection {
+      padding: 75px 0 !important;
+    }
+  
+    .container {
+      padding: 0 115px !important;
+      gap: 65px !important; /* 86px × 0.75 */
+    }
+  
+    .contentColumn {
+      width: 554px !important; /* 739px × 0.75 */
+    }
+  
+    .title {
+      font-size: 36px !important; /* 48px × 0.75 */
+      margin-bottom: 63px !important; /* 84px × 0.75 */
+    }
+  
+    .description {
+      font-size: 19px !important; /* 25px × 0.75 */
+      width: 554px !important; /* 739px × 0.75 */
+      min-height: 256px !important; /* 341px × 0.75 */
+    }
+  
+    .imageColumn {
+      width: 587px !important; /* 782px × 0.75 */
+      height: 319px !important; /* 425px × 0.75 */
+      border-radius: 15px !important;
+    }
+  }
+  
+  /* ============================================
+     RESPONSIVE BREAKPOINTS
+     ============================================ */
+  
+  /* 1440px - 0.75 scale */
+  @media (max-width: 1440px) {
+    .ourJourneySection {
+      padding: 75px 0;
+    }
+  
+    .container {
+      padding: 0 115px;
+      gap: 65px;
+    }
+  
+    .contentColumn {
+      width: 554px;
+    }
+  
+    .title {
+      font-size: 36px;
+      margin-bottom: 63px;
+    }
+  
+    .description {
+      font-size: 19px;
+      width: 554px;
+      min-height: 256px;
+    }
+  
+    .imageColumn {
+      width: 587px;
+      height: 319px;
+      border-radius: 15px;
+    }
+  }
+  
+  /* 1366px - 0.71 scale */
+  @media (max-width: 1366px) {
+    .ourJourneySection {
+      padding: 71px 0;
+    }
+  
+    .container {
+      padding: 0 109px;
+      gap: 61px;
+    }
+  
+    .contentColumn {
+      width: 525px;
+    }
+  
+    .title {
+      font-size: 34px;
+      margin-bottom: 60px;
+    }
+  
+    .description {
+      font-size: 18px;
+      width: 525px;
+      min-height: 242px;
+    }
+  
+    .imageColumn {
+      width: 555px;
+      height: 302px;
+      border-radius: 14px;
+    }
+  }
+  
+  /* 1280px - 0.67 scale */
+  @media (max-width: 1280px) {
+    .ourJourneySection {
+      padding: 67px 0;
+    }
+  
+    .container {
+      padding: 0 102px;
+      gap: 58px;
+    }
+  
+    .contentColumn {
+      width: 495px;
+    }
+  
+    .title {
+      font-size: 32px;
+      margin-bottom: 56px;
+    }
+  
+    .description {
+      font-size: 17px;
+      width: 495px;
+      min-height: 228px;
+    }
+  
+    .imageColumn {
+      width: 524px;
+      height: 285px;
+      border-radius: 13px;
+    }
+  }
+  
+  /* 1024px - 0.53 scale */
+  @media (max-width: 1024px) {
+    .ourJourneySection {
+      padding: 53px 0;
+    }
+  
+    .container {
+      padding: 0 81px;
+      gap: 46px;
+    }
+  
+    .contentColumn {
+      width: 392px;
+    }
+  
+    .title {
+      font-size: 25px;
+      margin-bottom: 45px;
+    }
+  
+    .description {
+      font-size: 13px;
+      width: 392px;
+      min-height: 181px;
+    }
+  
+    .imageColumn {
+      width: 414px;
+      height: 225px;
+      border-radius: 11px;
+    }
+  }
+  
+  /* 768px - Tablet (Stack vertically) */
+  @media (max-width: 768px) {
+    .ourJourneySection {
+      padding: 50px 0;
+    }
+  
+    .container {
+      padding: 0 20px;
+      flex-direction: column;
+      gap: 40px;
+    }
+  
+    .contentColumn {
+      width: 100%;
+    }
+  
+    .title {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+  
+    .description {
+      font-size: 16px;
+      width: 100%;
+      min-height: auto; /* Let it flow naturally */
+    }
+  
+    .imageColumn {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      aspect-ratio: 782 / 425; /* Maintain aspect ratio */
+      border-radius: 16px;
+    }
+  }
+  
+  /* 480px - Mobile */
+  @media (max-width: 480px) {
+    .ourJourneySection {
+      padding: 40px 0;
+    }
+  
+    .container {
+      padding: 0 15px;
+      gap: 30px;
+    }
+  
+    .title {
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+  
+    .description {
+      font-size: 14px;
+    }
+  
+    .imageColumn {
+      border-radius: 12px;
+    }
+  }
+  
+  /* 375px - Small Mobile */
+  @media (max-width: 375px) {
+    .title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    .description {
+      font-size: 13px;
+    }
+  }
+  
+  /* 320px - Smallest Mobile */
+  @media (max-width: 320px) {
+    .ourJourneySection {
+      padding: 30px 0;
+    }
+  
+    .container {
+      padding: 0 12px;
+    }
+  
+    .title {
+      font-size: 22px;
+    }
+  
+    .description {
+      font-size: 12px;
+    }
+  }
+  
+  /* ============================================
+     ACCESSIBILITY
+     ============================================ */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .ourJourneySection .animateUp {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  
+    .image {
+      transition: none !important;
+    }
+  }
