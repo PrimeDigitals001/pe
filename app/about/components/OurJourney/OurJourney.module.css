@@ -1,22 +1,25 @@
 /* ============================================
    OUR JOURNEY SECTION
    Base Design: 1920px
-   Layout: Left text (739px) + Right image (782×425px)
-   Title: 48px Bold, Blue (#2683C6)
-   Description: 25px Medium, 50% opacity, 739×341px container
+   Spacing from hero: 50px
+   Title: 48px Bold Blue
+   Gap between title and description: 24px
+   Description block: 739×341px
+   Image: 782×425px
+   Left alignment: 214px from left edge
    ============================================ */
 
    .ourJourneySection {
     width: 100%;
     position: relative;
     background: #ffffff;
-    padding: 100px 0;
+    padding:60px 0 100px 0; /* 50px from hero image */
   }
   
   .container {
     max-width: 1920px;
     margin: 0 auto;
-    padding: 0 153px;
+    padding: 50 0 0 214px; /* 214px left margin */
     display: flex;
     gap: 86px; /* Gap between text and image */
     align-items: flex-start;
@@ -27,10 +30,10 @@
      ============================================ */
   
   .contentColumn {
-    width: 739px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
   }
   
   /* Title - Bold 48px, Blue */
@@ -39,26 +42,29 @@
     font-family: "Grift-Bold", sans-serif;
     font-size: 48px;
     font-weight: 700;
-    margin: 0 0 84px 0; /* 84px gap to description */
+    margin: 0 0 0px 0; /* 24px gap to description */
     line-height: 1.2;
     text-align: left;
   }
   
-  /* Description - Medium 25px, 50% opacity, 739×341px */
-  .description {
-    color: rgba(0, 0, 0, 0.5);
-    font-family: "Grift-Medium", sans-serif;
-    font-size: 25px;
-    font-weight: 500;
-    margin: 0;
-    line-height: 1.6;
-    text-align: left;
-    width: 739px;
-    min-height: 341px; /* Ensures minimum height */
-  }
+  /* Description Block - 739×341px */
+  /* Description Block - 739×341px, line-height: 31px */
+/* Description Block - 739×341px, line-height: 31px */
+.description {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 0;
+  line-height:  31px; /* FIXED: Exact line-height */
+  text-align: left;
+  width: 770px;
+  height: 350px;
+  overflow: hidden;
+}
   
   /* ============================================
-     RIGHT COLUMN - Image
+     RIGHT COLUMN - Image (782×425px)
      ============================================ */
   
   .imageColumn {
@@ -121,27 +127,23 @@
   
   @media (min-width: 1441px) {
     .ourJourneySection {
-      padding: 75px 0 !important;
+      padding: 38px 0 75px 0 !important; /* 50px × 0.75 */
     }
   
     .container {
-      padding: 0 115px !important;
+      padding: 0 0 0 161px !important; /* 214px × 0.75 */
       gap: 65px !important; /* 86px × 0.75 */
-    }
-  
-    .contentColumn {
-      width: 554px !important; /* 739px × 0.75 */
     }
   
     .title {
       font-size: 36px !important; /* 48px × 0.75 */
-      margin-bottom: 63px !important; /* 84px × 0.75 */
+      margin-bottom: 18px !important; /* 24px × 0.75 */
     }
   
     .description {
       font-size: 19px !important; /* 25px × 0.75 */
       width: 554px !important; /* 739px × 0.75 */
-      min-height: 256px !important; /* 341px × 0.75 */
+      height: 256px !important; /* 341px × 0.75 */
     }
   
     .imageColumn {
@@ -158,27 +160,23 @@
   /* 1440px - 0.75 scale */
   @media (max-width: 1440px) {
     .ourJourneySection {
-      padding: 75px 0;
+      padding: 38px 0 75px 0; /* 50px × 0.75 */
     }
   
     .container {
-      padding: 0 115px;
+      padding: 0 0 0 161px; /* 214px × 0.75 */
       gap: 65px;
-    }
-  
-    .contentColumn {
-      width: 554px;
     }
   
     .title {
       font-size: 36px;
-      margin-bottom: 63px;
+      margin-bottom: 18px; /* 24px × 0.75 */
     }
   
     .description {
       font-size: 19px;
-      width: 554px;
-      min-height: 256px;
+      width: 560px; /* 739px × 0.75 */
+      height: 256px; /* 341px × 0.75 */
     }
   
     .imageColumn {
@@ -191,27 +189,23 @@
   /* 1366px - 0.71 scale */
   @media (max-width: 1366px) {
     .ourJourneySection {
-      padding: 71px 0;
+      padding: 36px 0 71px 0; /* 50px × 0.71 */
     }
   
     .container {
-      padding: 0 109px;
+      padding: 0 0 0 152px; /* 214px × 0.71 */
       gap: 61px;
-    }
-  
-    .contentColumn {
-      width: 525px;
     }
   
     .title {
       font-size: 34px;
-      margin-bottom: 60px;
+      margin-bottom: 17px; /* 24px × 0.71 */
     }
   
     .description {
       font-size: 18px;
-      width: 525px;
-      min-height: 242px;
+      width: 525px; /* 739px × 0.71 */
+      height: 242px; /* 341px × 0.71 */
     }
   
     .imageColumn {
@@ -224,27 +218,23 @@
   /* 1280px - 0.67 scale */
   @media (max-width: 1280px) {
     .ourJourneySection {
-      padding: 67px 0;
+      padding: 34px 0 67px 0; /* 50px × 0.67 */
     }
   
     .container {
-      padding: 0 102px;
+      padding: 0 0 0 143px; /* 214px × 0.67 */
       gap: 58px;
-    }
-  
-    .contentColumn {
-      width: 495px;
     }
   
     .title {
       font-size: 32px;
-      margin-bottom: 56px;
+      margin-bottom: 16px; /* 24px × 0.67 */
     }
   
     .description {
       font-size: 17px;
-      width: 495px;
-      min-height: 228px;
+      width: 495px; /* 739px × 0.67 */
+      height: 228px; /* 341px × 0.67 */
     }
   
     .imageColumn {
@@ -257,27 +247,23 @@
   /* 1024px - 0.53 scale */
   @media (max-width: 1024px) {
     .ourJourneySection {
-      padding: 53px 0;
+      padding: 27px 0 53px 0; /* 50px × 0.53 */
     }
   
     .container {
-      padding: 0 81px;
+      padding: 0 0 0 113px; /* 214px × 0.53 */
       gap: 46px;
-    }
-  
-    .contentColumn {
-      width: 392px;
     }
   
     .title {
       font-size: 25px;
-      margin-bottom: 45px;
+      margin-bottom: 13px; /* 24px × 0.53 */
     }
   
     .description {
       font-size: 13px;
-      width: 392px;
-      min-height: 181px;
+      width: 392px; /* 739px × 0.53 */
+      height: 181px; /* 341px × 0.53 */
     }
   
     .imageColumn {
@@ -290,7 +276,7 @@
   /* 768px - Tablet (Stack vertically) */
   @media (max-width: 768px) {
     .ourJourneySection {
-      padding: 50px 0;
+      padding: 40px 0;
     }
   
     .container {
@@ -305,20 +291,20 @@
   
     .title {
       font-size: 32px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
   
     .description {
       font-size: 16px;
       width: 100%;
-      min-height: auto; /* Let it flow naturally */
+      height: auto; /* Let it flow naturally */
     }
   
     .imageColumn {
       width: 100%;
       max-width: 600px;
       height: auto;
-      aspect-ratio: 782 / 425; /* Maintain aspect ratio */
+      aspect-ratio: 782 / 425;
       border-radius: 16px;
     }
   }
@@ -326,7 +312,7 @@
   /* 480px - Mobile */
   @media (max-width: 480px) {
     .ourJourneySection {
-      padding: 40px 0;
+      padding: 30px 0;
     }
   
     .container {
@@ -336,7 +322,7 @@
   
     .title {
       font-size: 28px;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
   
     .description {
@@ -352,7 +338,6 @@
   @media (max-width: 375px) {
     .title {
       font-size: 24px;
-      margin-bottom: 20px;
     }
   
     .description {
@@ -363,7 +348,7 @@
   /* 320px - Smallest Mobile */
   @media (max-width: 320px) {
     .ourJourneySection {
-      padding: 30px 0;
+      padding: 25px 0;
     }
   
     .container {

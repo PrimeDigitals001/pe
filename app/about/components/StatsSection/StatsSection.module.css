@@ -1,0 +1,445 @@
+/* ============================================
+   STATS SECTION
+   Base Design: 1920px
+   Full-width Blue Bar with 4 Stats
+   ============================================ */
+
+   .statsSection {
+    width: 100%;
+    height: 256px;
+    position: relative;
+    margin-top: 60px; /* Gap from previous section */
+    overflow: hidden;
+  }
+  
+  /* ============================================
+     BLUE BACKGROUND - Full Width
+     ============================================ */
+  
+  .blueBackground {
+    background: #2683C6;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  
+  /* ============================================
+     CONTAINER - Centered 1445px
+     ============================================ */
+  
+  .container {
+    max-width: 1920px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 153px;
+  }
+  
+  /* ============================================
+     STATS GRID - 4 columns
+     ============================================ */
+  
+  .statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 80px;
+    width: 100%;
+    max-width: 1445px;
+    align-items: center;
+  }
+  
+  /* ============================================
+     STAT ITEM - Individual Stat
+     ============================================ */
+  
+  .statItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* ============================================
+     STAT LABEL - 20px SemiBold, 75% opacity
+     Position: 77px from top (41px above number)
+     ============================================ */
+  
+  .statLabel {
+    color: rgba(255, 255, 255, 0.75);
+    font-family: "Grift-SemiBold", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 14px; /* Gap between label and number */
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  
+  /* ============================================
+     STAT NUMBER - 48px Bold, 90% opacity
+     Position: 118px from top (41px below label)
+     ============================================ */
+  
+  .statNumber {
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "Grift-Bold", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+  }
+  
+  .suffix {
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "Grift-Bold", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin-left: 2px;
+  }
+  
+  /* ============================================
+     SCROLL ANIMATIONS
+     ============================================ */
+  
+  .statsSection .animateUp {
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: transform, opacity;
+  }
+  
+  @keyframes slideInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .statsSection.animate .animateUp {
+    animation: slideInUp 0.8s ease-out forwards;
+  }
+  
+  /* ============================================
+     🔒 RESPONSIVE BREAKPOINTS
+     Scaling Formula: (viewport / 1920) × base-value
+     ============================================ */
+  
+  /* 1440px - Large Laptop (0.75 scale) */
+  @media (max-width: 1440px) {
+    .statsSection {
+      height: 192px; /* 256×0.75 */
+      margin-top: 45px; /* 60×0.75 */
+    }
+  
+    .container {
+      padding: 0 115px;
+    }
+  
+    .statsGrid {
+      gap: 60px; /* 80×0.75 */
+      max-width: 1084px; /* 1445×0.75 */
+    }
+  
+    .statLabel {
+      font-size: 15px; /* 20×0.75 */
+      margin-bottom: 11px; /* 14×0.75 */
+    }
+  
+    .statNumber,
+    .suffix {
+      font-size: 36px; /* 48×0.75 */
+    }
+  }
+  
+  /* 1366px - Standard Laptop (0.71 scale) */
+  @media (max-width: 1366px) {
+    .statsSection {
+      height: 182px;
+      margin-top: 43px;
+    }
+  
+    .container {
+      padding: 0 109px;
+    }
+  
+    .statsGrid {
+      gap: 57px;
+      max-width: 1026px;
+    }
+  
+    .statLabel {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+  
+    .statNumber,
+    .suffix {
+      font-size: 34px;
+    }
+  }
+  
+  /* 1280px - Small Laptop (0.67 scale) */
+  @media (max-width: 1280px) {
+    .statsSection {
+      height: 172px;
+      margin-top: 40px;
+    }
+  
+    .container {
+      padding: 0 102px;
+    }
+  
+    .statsGrid {
+      gap: 54px;
+      max-width: 968px;
+    }
+  
+    .statLabel {
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+  
+    .statNumber,
+    .suffix {
+      font-size: 32px;
+    }
+  }
+  
+  /* 1024px - Large Tablet (0.53 scale) */
+  @media (max-width: 1024px) {
+    .statsSection {
+      height: 136px;
+      margin-top: 32px;
+    }
+  
+    .container {
+      padding: 0 40px;
+    }
+  
+    .statsGrid {
+      gap: 42px;
+      max-width: 766px;
+    }
+  
+    .statLabel {
+      font-size: 11px;
+      margin-bottom: 7px;
+    }
+  
+    .statNumber,
+    .suffix {
+      font-size: 25px;
+    }
+  }
+  
+  /* ============================================
+     📱 TABLET OPTIMIZATION (768px)
+     2×2 Grid Layout
+     ============================================ */
+  
+  @media (max-width: 768px) {
+    .statsSection {
+      height: auto;
+      min-height: 280px;
+      padding: 40px 0;
+      margin-top: 40px;
+    }
+  
+    .container {
+      padding: 0 20px;
+    }
+  
+    /* 2×2 GRID for Tablet */
+    .statsGrid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 30px; /* row-gap column-gap */
+      max-width: 600px;
+    }
+  
+    .statLabel {
+      font-size: 16px;
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+  
+    .statNumber,
+    .suffix {
+      font-size: 40px;
+    }
+  }
+  
+  /* ============================================
+     📱 MOBILE OPTIMIZATION (< 600px)
+     Single Column Layout
+     ============================================ */
+  
+  @media (max-width: 600px) {
+    .statsSection {
+      min-height: 400px;
+      padding: 45px 0;
+      margin-top: 35px;
+    }
+  
+    .container {
+      padding: 0 16px;
+    }
+  
+    /* SINGLE COLUMN LAYOUT */
+    .statsGrid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      max-width: 100%;
+    }
+  
+    .statItem {
+      padding: 0 20px;
+    }
+  
+    .statLabel {
+      font-size: 15px;
+      margin-bottom: 10px;
+      letter-spacing: 0.8px;
+    }
+  
+    .statNumber,
+    .suffix {
+      font-size: 42px;
+    }
+  }
+  
+  /* 480px - Standard Mobile */
+  @media (max-width: 480px) {
+    .statsSection {
+      min-height: 380px;
+      padding: 40px 0;
+    }
+  
+    .statsGrid {
+      gap: 32px;
+    }
+  
+    .statLabel {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+  
+    .statNumber,
+    .suffix {
+      font-size: 38px;
+    }
+  }
+  
+  /* 375px - Small Mobile */
+  @media (max-width: 375px) {
+    .statsSection {
+      min-height: 360px;
+      padding: 35px 0;
+      margin-top: 30px;
+    }
+  
+    .container {
+      padding: 0 12px;
+    }
+  
+    .statsGrid {
+      gap: 28px;
+    }
+  
+    .statLabel {
+      font-size: 13px;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+  
+    .statNumber,
+    .suffix {
+      font-size: 36px;
+    }
+  }
+  
+  /* 320px - Smallest Mobile */
+  @media (max-width: 320px) {
+    .statsSection {
+      min-height: 340px;
+      padding: 30px 0;
+    }
+  
+    .statsGrid {
+      gap: 24px;
+    }
+  
+    .statLabel {
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+  
+    .statNumber,
+    .suffix {
+      font-size: 32px;
+    }
+  }
+  
+  /* ============================================
+     ACCESSIBILITY & PERFORMANCE
+     ============================================ */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .statsSection .animateUp {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  
+    /* Disable counter animation */
+    .statNumber {
+      transition: none !important;
+    }
+  }
+  
+  /* High contrast mode */
+  @media (prefers-contrast: high) {
+    .blueBackground {
+      background: #1a5f99; /* Darker blue for better contrast */
+    }
+  
+    .statLabel {
+      color: rgba(255, 255, 255, 0.85);
+    }
+  
+    .statNumber,
+    .suffix {
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+  
+  /* Print styles */
+  @media print {
+    .statsSection {
+      height: auto;
+      padding: 20px 0;
+      margin-top: 20px;
+      page-break-inside: avoid;
+    }
+  
+    .blueBackground {
+      background: #2683C6 !important;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+  
+    .statsGrid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+  }

@@ -1,0 +1,658 @@
+/* ============================================
+   OUR VALUES SECTION
+   Base Design: 1920px
+   Mobile-First Optimized
+   ============================================ */
+
+   .ourValuesSection {
+    width: 100%;
+    position: relative;
+    background: #ffffff;
+    padding: 70px 0 100px 0;
+    overflow: hidden;
+  }
+  
+  .container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 153px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* ============================================
+     TITLE - 48px Bold Blue, Center
+     ============================================ */
+  
+  .title {
+    color: #2683C6;
+    text-align: center;
+    font-family: "Grift-Bold", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0 0 111px 0;
+    line-height: 1.2;
+  }
+  
+  /* ============================================
+     VALUES GRID - 4 cards × 1 row (Desktop)
+     ============================================ */
+  
+  .valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    gap: 35px;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  /* ============================================
+     VALUE CARD - 300×300px
+     ============================================ */
+  
+  .valueCard {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    transition: transform 0.3s ease;
+    margin: 0 auto; /* Center in grid cell */
+  }
+  
+  .valueCard:hover {
+    transform: translateY(-8px);
+  }
+  
+  /* Card Background */
+  .cardBackground {
+    background: #ffffff;
+    border-radius: 20px;
+    opacity: 0.2;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 4px 6.1px 2px rgba(0, 0, 0, 0.45);
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+  
+  .valueCard:hover .cardBackground {
+    opacity: 1;
+    box-shadow: 0px 8px 20px rgba(38, 131, 198, 0.15);
+  }
+  
+  /* ============================================
+     ICON - 68×68px
+     ============================================ */
+  
+  .iconWrapper {
+    width: 68px;
+    height: 68px;
+    position: absolute;
+    top: 36px;
+    left: 22px;
+    z-index: 10;
+  }
+  
+  .icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  
+  .valueCard:hover .icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  /* ============================================
+     CARD TITLE
+     ============================================ */
+  
+  .cardTitle {
+    color: #2683C6;
+    font-family: "Grift-Bold", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    position: absolute;
+    top: 120px;
+    left: 22px;
+    right: 22px;
+    z-index: 10;
+    text-align: left;
+  }
+  
+  /* ============================================
+     CARD DESCRIPTION
+     ============================================ */
+  
+  .cardDescription {
+    color: rgba(0, 0, 0, 0.5);
+    font-family: "Grift-Medium", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+    position: absolute;
+    top: 189px;
+    left: 22px;
+    right: 22px;
+    z-index: 10;
+    text-align: left;
+  }
+  
+  /* ============================================
+     SCROLL ANIMATIONS
+     ============================================ */
+  
+  .ourValuesSection .animateUp {
+    opacity: 0;
+    transform: translateY(40px);
+    will-change: transform, opacity;
+  }
+  
+  @keyframes slideInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .ourValuesSection.animate .animateUp {
+    animation: slideInUp 0.8s ease-out forwards;
+  }
+  
+  .ourValuesSection.animate .title {
+    animation-delay: 0.1s;
+  }
+  
+  /* ============================================
+     🔒 RESPONSIVE BREAKPOINTS
+     Scaling Formula: (viewport / 1920) × base-value
+     ============================================ */
+  
+  /* 1440px - Large Laptop (0.75 scale) */
+  @media (max-width: 1440px) {
+    .ourValuesSection {
+      padding: 53px 0 75px 0; /* 70×0.75, 100×0.75 */
+    }
+  
+    .container {
+      padding: 0 115px; /* 153×0.75 */
+    }
+  
+    .title {
+      font-size: 36px; /* 48×0.75 */
+      margin-bottom: 83px; /* 111×0.75 */
+    }
+  
+    .valuesGrid {
+      grid-template-columns: repeat(4, 225px); /* 300×0.75 */
+      gap: 26px; /* 35×0.75 */
+    }
+  
+    .valueCard {
+      width: 225px;
+      height: 225px;
+    }
+  
+    .cardBackground {
+      border-radius: 15px; /* 20×0.75 */
+    }
+  
+    .iconWrapper {
+      width: 51px; /* 68×0.75 */
+      height: 51px;
+      top: 27px; /* 36×0.75 */
+      left: 17px; /* 22×0.75 */
+    }
+  
+    .cardTitle {
+      font-size: 18px; /* 24×0.75 */
+      top: 90px; /* 120×0.75 */
+      left: 17px;
+      right: 17px;
+    }
+  
+    .cardDescription {
+      font-size: 12px; /* 16×0.75 */
+      top: 142px; /* 189×0.75 */
+      left: 17px;
+      right: 17px;
+    }
+  }
+  
+  /* 1366px - Standard Laptop (0.71 scale) */
+  @media (max-width: 1366px) {
+    .ourValuesSection {
+      padding: 50px 0 71px 0;
+    }
+  
+    .container {
+      padding: 0 109px;
+    }
+  
+    .title {
+      font-size: 34px;
+      margin-bottom: 79px;
+    }
+  
+    .valuesGrid {
+      grid-template-columns: repeat(4, 213px);
+      gap: 25px;
+    }
+  
+    .valueCard {
+      width: 213px;
+      height: 213px;
+    }
+  
+    .cardBackground {
+      border-radius: 14px;
+    }
+  
+    .iconWrapper {
+      width: 48px;
+      height: 48px;
+      top: 26px;
+      left: 16px;
+    }
+  
+    .cardTitle {
+      font-size: 17px;
+      top: 85px;
+      left: 16px;
+      right: 16px;
+    }
+  
+    .cardDescription {
+      font-size: 11px;
+      top: 134px;
+      left: 16px;
+      right: 16px;
+    }
+  }
+  
+  /* 1280px - Small Laptop (0.67 scale) */
+  @media (max-width: 1280px) {
+    .ourValuesSection {
+      padding: 47px 0 67px 0;
+    }
+  
+    .container {
+      padding: 0 102px;
+    }
+  
+    .title {
+      font-size: 32px;
+      margin-bottom: 74px;
+    }
+  
+    .valuesGrid {
+      grid-template-columns: repeat(4, 201px);
+      gap: 23px;
+    }
+  
+    .valueCard {
+      width: 201px;
+      height: 201px;
+    }
+  
+    .cardBackground {
+      border-radius: 13px;
+    }
+  
+    .iconWrapper {
+      width: 46px;
+      height: 46px;
+      top: 24px;
+      left: 15px;
+    }
+  
+    .cardTitle {
+      font-size: 16px;
+      top: 80px;
+      left: 15px;
+      right: 15px;
+    }
+  
+    .cardDescription {
+      font-size: 11px;
+      top: 127px;
+      left: 15px;
+      right: 15px;
+    }
+  }
+  
+  /* 1024px - Large Tablet (0.53 scale) */
+  @media (max-width: 1024px) {
+    .ourValuesSection {
+      padding: 37px 0 53px 0;
+    }
+  
+    .container {
+      padding: 0 40px; /* Reduced for tablet */
+    }
+  
+    .title {
+      font-size: 28px;
+      margin-bottom: 50px;
+    }
+  
+    /* 2×2 GRID for Tablet */
+    .valuesGrid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 700px;
+    }
+  
+    .valueCard {
+      width: 100%; /* Full width of grid cell */
+      max-width: 340px; /* Limit max size */
+      height: 280px; /* Taller for better proportion */
+    }
+  
+    .cardBackground {
+      border-radius: 16px;
+      opacity: 1; /* Always visible on tablet */
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  
+    .iconWrapper {
+      width: 60px;
+      height: 60px;
+      top: 30px;
+      left: 24px;
+    }
+  
+    .cardTitle {
+      font-size: 20px;
+      top: 110px;
+      left: 24px;
+      right: 24px;
+    }
+  
+    .cardDescription {
+      font-size: 14px;
+      line-height: 1.6;
+      top: 165px;
+      left: 24px;
+      right: 24px;
+    }
+  
+    /* Disable hover effects on tablet */
+    .valueCard:hover {
+      transform: none;
+    }
+  
+    .valueCard:hover .icon {
+      transform: none;
+    }
+  }
+  
+  /* ============================================
+     📱 MOBILE OPTIMIZATION (< 768px)
+     Single Column, Card-style Layout
+     ============================================ */
+  
+  @media (max-width: 768px) {
+    .ourValuesSection {
+      padding: 50px 0 60px 0;
+    }
+  
+    .container {
+      padding: 0 20px;
+    }
+  
+    .title {
+      font-size: 32px;
+      margin-bottom: 40px;
+      padding: 0 10px;
+    }
+  
+    /* SINGLE COLUMN LAYOUT */
+    .valuesGrid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 100%;
+    }
+  
+    .valueCard {
+      width: 100%;
+      max-width: 500px; /* Prevent too wide on large phones */
+      height: auto; /* Auto height for content */
+      min-height: 240px;
+      padding: 28px 24px 32px 24px; /* Internal padding */
+    }
+  
+    .cardBackground {
+      border-radius: 20px;
+      opacity: 1;
+      box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.08);
+    }
+  
+    /* Icon - Top Left */
+    .iconWrapper {
+      width: 56px;
+      height: 56px;
+      top: 28px;
+      left: 24px;
+      position: absolute;
+    }
+  
+    /* Title - Below Icon */
+    .cardTitle {
+      font-size: 20px;
+      line-height: 1.3;
+      top: 100px; /* Icon + spacing */
+      left: 24px;
+      right: 24px;
+      position: absolute;
+    }
+  
+    /* Description - Below Title */
+    .cardDescription {
+      font-size: 15px;
+      line-height: 1.6;
+      top: 155px; /* Title + spacing */
+      left: 24px;
+      right: 24px;
+      position: absolute;
+      color: rgba(0, 0, 0, 0.6); /* Slightly darker for readability */
+    }
+  
+    /* Remove hover effects */
+    .valueCard:hover {
+      transform: none;
+    }
+  
+    .valueCard:hover .icon {
+      transform: none;
+    }
+  
+    .valueCard:hover .cardBackground {
+      box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.08);
+    }
+  }
+  
+  /* 480px - Standard Mobile */
+  @media (max-width: 480px) {
+    .ourValuesSection {
+      padding: 40px 0 50px 0;
+    }
+  
+    .container {
+      padding: 0 16px;
+    }
+  
+    .title {
+      font-size: 28px;
+      margin-bottom: 32px;
+    }
+  
+    .valuesGrid {
+      gap: 20px;
+    }
+  
+    .valueCard {
+      min-height: 220px;
+      padding: 24px 20px 28px 20px;
+    }
+  
+    .cardBackground {
+      border-radius: 18px;
+    }
+  
+    .iconWrapper {
+      width: 52px;
+      height: 52px;
+      top: 24px;
+      left: 20px;
+    }
+  
+    .cardTitle {
+      font-size: 18px;
+      top: 90px;
+      left: 20px;
+      right: 20px;
+    }
+  
+    .cardDescription {
+      font-size: 14px;
+      line-height: 1.55;
+      top: 140px;
+      left: 20px;
+      right: 20px;
+    }
+  }
+  
+  /* 375px - iPhone SE, Small Mobile */
+  @media (max-width: 375px) {
+    .title {
+      font-size: 26px;
+      margin-bottom: 28px;
+    }
+  
+    .valueCard {
+      min-height: 210px;
+      padding: 22px 18px 26px 18px;
+    }
+  
+    .iconWrapper {
+      width: 48px;
+      height: 48px;
+      top: 22px;
+      left: 18px;
+    }
+  
+    .cardTitle {
+      font-size: 17px;
+      top: 84px;
+      left: 18px;
+      right: 18px;
+    }
+  
+    .cardDescription {
+      font-size: 13px;
+      top: 132px;
+      left: 18px;
+      right: 18px;
+    }
+  }
+  
+  /* 320px - Smallest Devices */
+  @media (max-width: 320px) {
+    .ourValuesSection {
+      padding: 35px 0 45px 0;
+    }
+  
+    .container {
+      padding: 0 12px;
+    }
+  
+    .title {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+  
+    .valuesGrid {
+      gap: 16px;
+    }
+  
+    .valueCard {
+      min-height: 200px;
+      padding: 20px 16px 24px 16px;
+    }
+  
+    .cardBackground {
+      border-radius: 16px;
+    }
+  
+    .iconWrapper {
+      width: 44px;
+      height: 44px;
+      top: 20px;
+      left: 16px;
+    }
+  
+    .cardTitle {
+      font-size: 16px;
+      top: 78px;
+      left: 16px;
+      right: 16px;
+    }
+  
+    .cardDescription {
+      font-size: 12px;
+      line-height: 1.5;
+      top: 122px;
+      left: 16px;
+      right: 16px;
+    }
+  }
+  
+  /* ============================================
+     ACCESSIBILITY & PERFORMANCE
+     ============================================ */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .ourValuesSection .animateUp {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  
+    .valueCard,
+    .icon,
+    .cardBackground {
+      transition: none !important;
+    }
+  }
+  
+  /* Touch device optimization */
+  @media (hover: none) and (pointer: coarse) {
+    .valueCard:hover {
+      transform: none;
+    }
+  
+    .valueCard:hover .icon {
+      transform: none;
+    }
+  
+    .valueCard:hover .cardBackground {
+      opacity: 1;
+    }
+  }
+  
+  /* High resolution displays */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .icon {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
