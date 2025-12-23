@@ -1,79 +1,65 @@
 /* ============================================
    OUR JOURNEY SECTION
-   Base Design: 1920px
-   Spacing from hero: 50px
-   Title: 48px Bold Blue
-   Gap between title and description: 24px
-   Description block: 739×341px
-   Image: 782×425px
-   Left alignment: 214px from left edge
+   FULLY RESPONSIVE - ALL SCREEN SIZES
+   Base: 1920px, Locked at 1440px for larger
    ============================================ */
 
    .ourJourneySection {
     width: 100%;
-    position: relative;
     background: #ffffff;
-    padding:60px 0 100px 0; /* 50px from hero image */
+    padding: 160px 20px 50px 20px;
+    position: relative;
   }
   
   .container {
-    max-width: 1920px;
-    margin: 60 auto;
-    padding: 50 0 0 214px; /* 214px left margin */
+    max-width: 1614px; /* 739 + 86 + 782 + some breathing room */
+    margin: 0 auto;
     display: flex;
-    gap: 86px; /* Gap between text and image */
+    gap: 86px;
     align-items: flex-start;
   }
   
   /* ============================================
-     LEFT COLUMN - Text Content
+     TEXT CONTENT COLUMN
      ============================================ */
   
   .contentColumn {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex: 0 0 auto;
+    width: 739px;
+    max-width: 100%;
   }
   
-  /* Title - Bold 48px, Blue */
   .title {
     color: #2683C6;
     font-family: "Grift-Bold", sans-serif;
     font-size: 48px;
     font-weight: 700;
-    margin: 0 0 0px 0; /* 24px gap to description */
     line-height: 1.2;
+    margin: 0 0 24px 0;
     text-align: left;
   }
   
-  /* Description Block - 739×341px */
-  /* Description Block - 739×341px, line-height: 31px */
-/* Description Block - 739×341px, line-height: 31px */
-.description {
-  color: rgba(0, 0, 0, 0.5);
-  font-family: "Grift-Medium", sans-serif;
-  font-size: 25px;
-  font-weight: 500;
-  margin: 0;
-  line-height:  31px; /* FIXED: Exact line-height */
-  text-align: left;
-  width: 770px;
-  height: 350px;
-  overflow: hidden;
-}
+  .description {
+    color: rgba(0, 0, 0, 0.5);
+    font-family: "Grift-Medium", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 31px;
+    margin: 0;
+    text-align: left;
+  }
   
   /* ============================================
-     RIGHT COLUMN - Image (782×425px)
+     IMAGE COLUMN
      ============================================ */
   
   .imageColumn {
+    flex: 0 0 auto;
     width: 782px;
     height: 425px;
-    flex-shrink: 0;
     border-radius: 20px;
     overflow: hidden;
-    position: relative;
+    max-width: 100%;
   }
   
   .image {
@@ -81,21 +67,15 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
-  }
-  
-  .imageColumn:hover .image {
-    transform: scale(1.05);
   }
   
   /* ============================================
-     SCROLL ANIMATIONS
+     ANIMATIONS
      ============================================ */
   
-  .ourJourneySection .animateUp {
+  .animateUp {
     opacity: 0;
     transform: translateY(40px);
-    will-change: transform, opacity;
   }
   
   @keyframes slideInUp {
@@ -105,78 +85,85 @@
     }
   }
   
-  .ourJourneySection.animate .animateUp {
+  .animate .animateUp {
     animation: slideInUp 0.8s ease-out forwards;
   }
   
-  .ourJourneySection.animate .title {
+  .animate .title {
     animation-delay: 0.1s;
   }
   
-  .ourJourneySection.animate .description {
+  .animate .description {
     animation-delay: 0.2s;
   }
   
-  .ourJourneySection.animate .imageColumn {
+  .animate .imageColumn {
     animation-delay: 0.3s;
   }
   
   /* ============================================
-     🔒 LOCK FOR SCREENS > 1440px
+     🔒 LOCK FOR LARGE SCREENS (>1440px)
+     Everything stays at 1440px size
      ============================================ */
   
   @media (min-width: 1441px) {
     .ourJourneySection {
-      padding: 38px 0 75px 0 !important; /* 50px × 0.75 */
+      padding: 45px 20px 75px 20px;
     }
   
     .container {
-      padding: 0 0 0 161px !important; /* 214px × 0.75 */
-      gap: 65px !important; /* 86px × 0.75 */
+      max-width: 1211px; /* (739+86+782)×0.75 */
+      gap: 65px;
+    }
+  
+    .contentColumn {
+      width: 554px; /* 739×0.75 */
     }
   
     .title {
-      font-size: 36px !important; /* 48px × 0.75 */
-      margin-bottom: 18px !important; /* 24px × 0.75 */
+      font-size: 36px; /* 48×0.75 */
+      margin-bottom: 18px;
     }
   
     .description {
-      font-size: 19px !important; /* 25px × 0.75 */
-      width: 554px !important; /* 739px × 0.75 */
-      height: 256px !important; /* 341px × 0.75 */
+      font-size: 19px; /* 25×0.75 */
+      line-height: 23px;
     }
   
     .imageColumn {
-      width: 587px !important; /* 782px × 0.75 */
-      height: 319px !important; /* 425px × 0.75 */
-      border-radius: 15px !important;
+      width: 587px; /* 782×0.75 */
+      height: 319px; /* 425×0.75 */
+      border-radius: 15px;
     }
   }
   
   /* ============================================
-     RESPONSIVE BREAKPOINTS
+     DESKTOP BREAKPOINTS
      ============================================ */
   
-  /* 1440px - 0.75 scale */
+  /* 1440px */
   @media (max-width: 1440px) {
     .ourJourneySection {
-      padding: 38px 0 75px 0; /* 50px × 0.75 */
+      padding: 45px 20px 75px 20px;
     }
   
     .container {
-      padding: 0 0 0 161px; /* 214px × 0.75 */
+      max-width: 1211px;
       gap: 65px;
+    }
+  
+    .contentColumn {
+      width: 554px;
     }
   
     .title {
       font-size: 36px;
-      margin-bottom: 18px; /* 24px × 0.75 */
+      margin-bottom: 18px;
     }
   
     .description {
       font-size: 19px;
-      width: 560px; /* 739px × 0.75 */
-      height: 256px; /* 341px × 0.75 */
+      line-height: 23px;
     }
   
     .imageColumn {
@@ -186,26 +173,29 @@
     }
   }
   
-  /* 1366px - 0.71 scale */
+  /* 1366px */
   @media (max-width: 1366px) {
     .ourJourneySection {
-      padding: 36px 0 71px 0; /* 50px × 0.71 */
+      padding: 43px 20px 71px 20px;
     }
   
     .container {
-      padding: 0 0 0 152px; /* 214px × 0.71 */
+      max-width: 1148px;
       gap: 61px;
+    }
+  
+    .contentColumn {
+      width: 525px;
     }
   
     .title {
       font-size: 34px;
-      margin-bottom: 17px; /* 24px × 0.71 */
+      margin-bottom: 17px;
     }
   
     .description {
       font-size: 18px;
-      width: 525px; /* 739px × 0.71 */
-      height: 242px; /* 341px × 0.71 */
+      line-height: 22px;
     }
   
     .imageColumn {
@@ -215,26 +205,29 @@
     }
   }
   
-  /* 1280px - 0.67 scale */
+  /* 1280px */
   @media (max-width: 1280px) {
     .ourJourneySection {
-      padding: 34px 0 67px 0; /* 50px × 0.67 */
+      padding: 40px 20px 67px 20px;
     }
   
     .container {
-      padding: 0 0 0 143px; /* 214px × 0.67 */
+      max-width: 1083px;
       gap: 58px;
+    }
+  
+    .contentColumn {
+      width: 495px;
     }
   
     .title {
       font-size: 32px;
-      margin-bottom: 16px; /* 24px × 0.67 */
+      margin-bottom: 16px;
     }
   
     .description {
       font-size: 17px;
-      width: 495px; /* 739px × 0.67 */
-      height: 228px; /* 341px × 0.67 */
+      line-height: 21px;
     }
   
     .imageColumn {
@@ -244,138 +237,293 @@
     }
   }
   
-  /* 1024px - 0.53 scale */
+  /* 1024px */
   @media (max-width: 1024px) {
     .ourJourneySection {
-      padding: 27px 0 53px 0; /* 50px × 0.53 */
+      padding: 35px 20px 55px 20px;
     }
   
     .container {
-      padding: 0 0 0 113px; /* 214px × 0.53 */
-      gap: 46px;
-    }
-  
-    .title {
-      font-size: 25px;
-      margin-bottom: 13px; /* 24px × 0.53 */
-    }
-  
-    .description {
-      font-size: 13px;
-      width: 392px; /* 739px × 0.53 */
-      height: 181px; /* 341px × 0.53 */
-    }
-  
-    .imageColumn {
-      width: 414px;
-      height: 225px;
-      border-radius: 11px;
-    }
-  }
-  
-  /* 768px - Tablet (Stack vertically) */
-  @media (max-width: 768px) {
-    .ourJourneySection {
-      padding: 40px 0;
-    }
-  
-    .container {
-      padding: 0 20px;
-      flex-direction: column;
+      max-width: 900px;
       gap: 40px;
     }
   
     .contentColumn {
-      width: 100%;
-    }
-  
-    .title {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-  
-    .description {
-      font-size: 16px;
-      width: 100%;
-      height: auto; /* Let it flow naturally */
-    }
-  
-    .imageColumn {
-      width: 100%;
-      max-width: 600px;
-      height: auto;
-      aspect-ratio: 782 / 425;
-      border-radius: 16px;
-    }
-  }
-  
-  /* 480px - Mobile */
-  @media (max-width: 480px) {
-    .ourJourneySection {
-      padding: 30px 0;
-    }
-  
-    .container {
-      padding: 0 15px;
-      gap: 30px;
+      width: 430px;
     }
   
     .title {
       font-size: 28px;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
     }
   
     .description {
-      font-size: 14px;
+      font-size: 15px;
+      line-height: 20px;
     }
   
     .imageColumn {
+      width: 430px;
+      height: 234px;
       border-radius: 12px;
     }
   }
   
-  /* 375px - Small Mobile */
-  @media (max-width: 375px) {
-    .title {
-      font-size: 24px;
-    }
-  
-    .description {
-      font-size: 13px;
-    }
+ /* ============================================
+   📱 TABLET (STACK LAYOUT)
+   Text: LEFT ALIGNED
+   ============================================ */
+
+@media (max-width: 900px) {
+  .ourJourneySection {
+    padding: 50px 20px 60px 20px;
   }
-  
-  /* 320px - Smallest Mobile */
-  @media (max-width: 320px) {
-    .ourJourneySection {
-      padding: 25px 0;
-    }
-  
-    .container {
-      padding: 0 12px;
-    }
-  
-    .title {
-      font-size: 22px;
-    }
-  
-    .description {
-      font-size: 12px;
-    }
+
+  .container {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
   }
+
+  .contentColumn {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .imageColumn {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    aspect-ratio: 782 / 425;
+    border-radius: 16px;
+  }
+}
+
+/* ============================================
+   📱 MOBILE LANDSCAPE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .ourJourneySection {
+    padding: 45px 20px 55px 20px;
+  }
+
+  .container {
+    gap: 35px;
+  }
+
+  .contentColumn {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 30px;
+    margin-bottom: 18px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .description {
+    font-size: 15px;
+    line-height: 22px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .imageColumn {
+    max-width: 100%;
+    border-radius: 14px;
+  }
+}
+
+/* ============================================
+   📱 MOBILE PORTRAIT
+   ============================================ */
+
+@media (max-width: 600px) {
+  .ourJourneySection {
+    padding: 40px 16px 50px 16px;
+  }
+
+  .container {
+    gap: 30px;
+  }
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 16px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .description {
+    font-size: 15px;
+    line-height: 22px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .imageColumn {
+    border-radius: 12px;
+  }
+}
+
+/* ============================================
+   📱 SMALL MOBILE
+   ============================================ */
+
+@media (max-width: 480px) {
+  .ourJourneySection {
+    padding: 35px 16px 45px 16px;
+  }
+
+  .container {
+    gap: 28px;
+  }
+
+  .title {
+    font-size: 26px;
+    margin-bottom: 14px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .imageColumn {
+    border-radius: 12px;
+  }
+}
+
+/* ============================================
+   📱 EXTRA SMALL MOBILE
+   ============================================ */
+
+@media (max-width: 375px) {
+  .ourJourneySection {
+    padding: 30px 12px 40px 12px;
+  }
+
+  .container {
+    gap: 24px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 12px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 20px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .imageColumn {
+    border-radius: 10px;
+  }
+}
+
+/* ============================================
+   📱 TINY MOBILE
+   ============================================ */
+
+@media (max-width: 320px) {
+  .ourJourneySection {
+    padding: 25px 10px 35px 10px;
+  }
+
+  .container {
+    gap: 20px;
+  }
+
+  .title {
+    font-size: 22px;
+    margin-bottom: 10px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .description {
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .imageColumn {
+    border-radius: 8px;
+  }
+}
+
+/* ============================================
+   🎯 SPECIFIC DEVICE OPTIMIZATIONS
+   ============================================ */
+
+/* iPad Pro (1024×1366) */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+  }
+
+  .contentColumn {
+    width: 100%;
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .title {
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .description {
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .imageColumn {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* iPad (768×1024) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contentColumn {
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .title {
+    text-align: left; /* LEFT ALIGNED */
+  }
+
+  .description {
+    text-align: left; /* LEFT ALIGNED */
+  }
+}
   
   /* ============================================
-     ACCESSIBILITY
+     HIGH RESOLUTION DISPLAYS
      ============================================ */
   
-  @media (prefers-reduced-motion: reduce) {
-    .ourJourneySection .animateUp {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-  
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .image {
-      transition: none !important;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
     }
   }
