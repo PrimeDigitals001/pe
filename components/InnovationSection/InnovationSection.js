@@ -55,7 +55,7 @@ const InnovationSection = () => {
             loop
             muted
             playsInline
-            poster="/images/video-poster.jpg" // Optional: Add a poster image
+            poster="/images/video-poster.png" // Optional: Add a poster image
           >
             <source src="/videos/innovation-showcase.mp4" type="video/mp4" />
             <source src="/videos/innovation-showcase.webm" type="video/webm" />

@@ -5,7 +5,7 @@
    ============================================ */
 
    .logo {
-    position: fixed;
+    position: absolute;
     z-index: 1001;
     transition: transform 0.3s ease;
     display: flex;
