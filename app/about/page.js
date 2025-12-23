@@ -3,6 +3,8 @@ import Header from '@/components/Header';
 import AboutHero from './components/AboutHero';
 import OurJourney from './components/OurJourney';
 import Footer from '@/components/Footer';
+import Logo from '@/components/Logo';
+import FloatingQuoteButton from '@/components/FloatingQuoteButton';
 import OurValues from './components/OurValue';
 import LeadershipTeam from './components/LeadershipTeam';
 import StatsSection from './components/StatsSection';
@@ -16,6 +18,8 @@ export default function AboutPage() {
   return (
     <>
       <Header />
+      <Logo />
+      <FloatingQuoteButton />
       <main>
         <AboutHero />
         <OurJourney />

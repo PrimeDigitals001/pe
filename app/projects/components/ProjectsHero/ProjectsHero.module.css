@@ -1,0 +1,282 @@
+/* ============================================
+   Projects HERO SECTION
+   Base Design: 1920px × 786px
+   Image: Full width background
+   Title: "Projects" - 64px Bold, 556px from top
+   Subtitle: 24px Bold, 647px from top (91px gap)
+   ============================================ */
+
+   .projectsHero {
+    width: 100%;
+    height: 786px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* ============================================
+     HERO IMAGE - 1920×786px
+     ============================================ */
+  
+  .heroImage {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Dark overlay for better text readability */
+  .heroImage::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+    z-index: 2;
+  }
+  
+  /* ============================================
+   HERO CONTENT
+   ============================================ */
+
+.heroContent {
+  position: absolute;
+  top: 556px; /* Title position from top */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ============================================
+   TITLE - "Projects"
+   Bold 64px, White, 556px from top
+   ============================================ */
+
+.title {
+  color: #ffffff;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  margin: 0 0 27px 0; /* FIXED: Actual visual gap */
+  line-height: 1.1;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+/* ============================================
+   SUBTITLE - Single line
+   Bold 24px, White
+   ============================================ */
+
+.subtitle {
+  color: #ffffff;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+}
+  
+  /* ============================================
+   🔒 LOCK FOR SCREENS > 1440px
+   ============================================ */
+
+@media (min-width: 1441px) {
+    .projectsHero {
+    height: 590px !important;
+  }
+
+  .heroContent {
+    top: 417px !important;
+  }
+
+  .title {
+    font-size: 48px !important;
+    margin-bottom: 20px !important; /* 27px × 0.75 */
+  }
+
+  .subtitle {
+    font-size: 18px !important;
+  }
+}
+
+/* 1440px - 0.75 scale */
+@media (max-width: 1440px) {
+    .projectsHero {
+    height: 590px;
+  }
+
+  .heroContent {
+    top: 417px;
+  }
+
+  .title {
+    font-size: 48px;
+    margin-bottom: 20px; /* 27px × 0.75 */
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+}
+
+/* 1366px - 0.71 scale */
+@media (max-width: 1366px) {
+    .projectsHero {
+    height: 558px;
+  }
+
+  .heroContent {
+    top: 395px;
+  }
+
+  .title {
+    font-size: 45px;
+    margin-bottom: 19px; /* 27px × 0.71 */
+  }
+
+  .subtitle {
+    font-size: 17px;
+  }
+}
+
+/* 1280px - 0.67 scale */
+@media (max-width: 1280px) {
+    .projectsHero {
+    height: 527px;
+  }
+
+  .heroContent {
+    top: 373px;
+  }
+
+  .title {
+    font-size: 43px;
+    margin-bottom: 18px; /* 27px × 0.67 */
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+}
+
+/* 1024px - 0.53 scale */
+@media (max-width: 1024px) {
+    .projectsHero {
+    height: 417px;
+  }
+
+  .heroContent {
+    top: 295px;
+  }
+
+  .title {
+    font-size: 34px;
+    margin-bottom: 14px; /* 27px × 0.53 */
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+}
+
+/* 768px - Tablet */
+@media (max-width: 768px) {
+    .projectsHero {
+    height: 500px;
+  }
+
+  .heroContent {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 20px;
+  }
+
+  .title {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    white-space: normal;
+    max-width: 90%;
+  }
+}
+
+/* 480px - Mobile */
+@media (max-width: 480px) {
+    .projectsHero {
+    height: 400px;
+  }
+
+  .title {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+}
+
+/* 375px - Small Mobile */
+@media (max-width: 375px) {
+    .projectsHero {
+    height: 350px;
+  }
+
+  .title {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+}
+
+/* 320px - Smallest Mobile */
+@media (max-width: 320px) {
+  .projectsHero {
+    height: 300px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+  }
+}
+  /* ============================================
+     ACCESSIBILITY
+     ============================================ */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .image {
+      transition: none !important;
+    }
+  }

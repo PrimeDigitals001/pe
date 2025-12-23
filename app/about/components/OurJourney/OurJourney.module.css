@@ -18,7 +18,7 @@
   
   .container {
     max-width: 1920px;
-    margin: 0 auto;
+    margin: 60 auto;
     padding: 50 0 0 214px; /* 214px left margin */
     display: flex;
     gap: 86px; /* Gap between text and image */
