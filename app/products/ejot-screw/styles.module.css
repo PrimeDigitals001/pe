@@ -1,0 +1,381 @@
+/* ============================================
+   EJOT SCREW SYSTEMS PAGE
+   PERFECT SCALING AT ANY ZOOM LEVEL
+   ============================================ */
+
+   .ejotPage {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+    padding-top: clamp(100px, 10vh, 150px);
+    position: relative;
+  }
+  
+  /* ============================================
+     EJOT LOGO SECTION
+     Scales with viewport
+     ============================================ */
+  
+  .ejotLogoSection {
+    width: 100%;
+    padding-top: clamp(120px, 11.4vw, 219px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .ejotLogo {
+    width: clamp(100px, 9vw, 173px);
+    height: auto;
+    aspect-ratio: 173 / 52;
+    object-fit: contain;
+  }
+  
+  /* ============================================
+     PAGE TITLE
+     Fluid typography
+     ============================================ */
+  
+  .pageTitle {
+    color: #D1203E;
+    font-family: "Grift-Light", sans-serif;
+    font-size: clamp(28px, 2.86vw, 55px);
+    font-weight: 300;
+    margin: clamp(40px, 4.95vw, 95px) 0 0 clamp(30px, 6.25vw, 120px);
+    padding: 0;
+    line-height: 1.2;
+  }
+  
+  /* ============================================
+     DESCRIPTION SECTION
+     Fluid spacing and text
+     ============================================ */
+  
+  .descriptionSection {
+    margin: clamp(20px, 1.98vw, 38px) 0 0 clamp(30px, 6.25vw, 120px);
+    max-width: min(1263px, 90vw);
+    padding-right: clamp(20px, 5vw, 100px);
+  }
+  
+  .description {
+    color: #000000;
+    font-family: "Grift-SemiBold", sans-serif;
+    font-size: clamp(14px, 1.04vw, 20px);
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  .furtherInfoLink {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  .furtherInfoLink:hover {
+    text-decoration: underline;
+    color: #D1203E;
+  }
+  
+  /* ============================================
+     PRODUCTS HEADER
+     ============================================ */
+  
+  .productsHeader {
+    margin: clamp(40px, 4.95vw, 95px) 0 0 clamp(30px, 6.3vw, 121px);
+    display: flex;
+    align-items: baseline;
+    gap: clamp(10px, 0.78vw, 15px);
+  }
+  
+  .productsTitle {
+    color: #000000;
+    font-family: "Grift-Medium", sans-serif;
+    font-size: clamp(24px, 2.08vw, 40px);
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .productsCount {
+    color: #000000;
+    font-family: "Grift-Regular", sans-serif;
+    font-size: clamp(14px, 1.04vw, 20px);
+    font-weight: 400;
+  }
+  
+  /* ============================================
+     DIVIDER LINE
+     Fluid width
+     ============================================ */
+  
+  .dividerLine {
+    width: min(1639px, calc(100% - clamp(60px, 12.5vw, 240px)));
+    height: 1.5px;
+    background: #000000;
+    margin: clamp(10px, 0.73vw, 14px) 0 0 clamp(30px, 6.3vw, 121px);
+  }
+  
+  /* ============================================
+     PRODUCTS GRID
+     Perfect scaling grid
+     ============================================ */
+  
+  .productsGrid {
+    margin: clamp(50px, 5.1vw, 98px) auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), clamp(300px, 24.4vw, 469px)));
+    column-gap: clamp(30px, 3.44vw, 66px);
+    row-gap: clamp(25px, 1.98vw, 38px);
+    max-width: min(1800px, 95vw);
+    padding: 0 clamp(20px, 5vw, 190px);
+    justify-content: center;
+  }
+  
+  /* For exactly 3 columns on desktop */
+  @media (min-width: 1400px) {
+    .productsGrid {
+      grid-template-columns: repeat(3, clamp(350px, 24.4vw, 469px));
+    }
+  }
+  
+  /* ============================================
+     PRODUCT CARD
+     Scales proportionally
+     ============================================ */
+  
+  .productCard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  /* Product Image */
+  .productImageWrapper {
+    width: 100%;
+    aspect-ratio: 469 / 364;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 0;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    margin-bottom: clamp(12px, 1.04vw, 20px);
+  }
+  
+  .productImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .productCard:hover .productImage {
+    transform: scale(1.03);
+  }
+  
+  /* Product Name */
+  .productName {
+    color: #D1203E;
+    font-family: "Grift-SemiBold", sans-serif;
+    font-size: clamp(18px, 1.35vw, 26px);
+    font-weight: 600;
+    margin: 0 0 clamp(8px, 0.625vw, 12px) 0;
+    padding: 0;
+    line-height: 1.2;
+  }
+  
+  /* Product Feature */
+  .productFeature {
+    color: #000000;
+    font-family: "Grift-Bold", sans-serif;
+    font-size: clamp(14px, 1.04vw, 20px);
+    font-weight: 700;
+    margin: 0 0 clamp(8px, 0.625vw, 12px) 0;
+    padding: 0;
+  }
+  
+  /* Product Description */
+  .productDescription {
+    color: #000000;
+    font-family: "Grift-Medium", sans-serif;
+    font-size: clamp(16px, 1.25vw, 24px);
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0 0 clamp(15px, 1.25vw, 24px) 0;
+    padding: 0;
+    flex-grow: 1;
+    min-height: clamp(40px, 4vw, 80px);
+  }
+  
+  /* View Product Link */
+  .viewProductLink {
+    color: rgba(0, 0, 0, 0.8);
+    font-family: "Grift-Regular", sans-serif;
+    font-size: clamp(16px, 1.25vw, 24px);
+    font-weight: 400;
+    text-decoration: underline;
+    margin-bottom: clamp(20px, 1.82vw, 35px);
+    display: inline-block;
+    width: fit-content;
+    transition: color 0.3s ease;
+  }
+  
+  .viewProductLink:hover {
+    color: #D1203E;
+  }
+  
+  /* Card Bottom Border */
+  .cardBottomBorder {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.35);
+    margin-top: auto;
+  }
+  
+  /* ============================================
+     BOTTOM CONTENT SECTION
+     Fluid spacing
+     ============================================ */
+  
+  .bottomContent {
+    margin: clamp(40px, 3.9vw, 75px) auto 0;
+    max-width: min(1540px, 90vw);
+    padding: 0 clamp(20px, 5vw, 190px) clamp(50px, 5.2vw, 100px);
+  }
+  
+  .bottomTitle {
+    color: #D1203E;
+    font-family: "Grift-Medium", sans-serif;
+    font-size: clamp(28px, 2.5vw, 48px);
+    font-weight: 500;
+    margin: 0 0 clamp(25px, 2.6vw, 50px) 0;
+    line-height: 1.2;
+  }
+  
+  .bottomSubtitle {
+    color: #D1203E;
+    font-family: "Grift-SemiBold", sans-serif;
+    font-size: clamp(16px, 1.25vw, 24px);
+    font-weight: 600;
+    margin: 0 0 clamp(12px, 1.04vw, 20px) 0;
+    line-height: 1.4;
+  }
+  
+  .bottomDescription {
+    color: #000000;
+    font-family: "Grift-Medium", sans-serif;
+    font-size: clamp(16px, 1.25vw, 24px);
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0 0 clamp(40px, 3.9vw, 75px) 0;
+  }
+  
+  /* ============================================
+     TABLET BREAKPOINTS
+     ============================================ */
+  
+  @media (max-width: 1024px) {
+    .productsGrid {
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 400px));
+      padding: 0 clamp(20px, 5vw, 60px);
+    }
+  
+    .productDescription {
+      min-height: clamp(50px, 6vw, 100px);
+    }
+  }
+  
+  /* ============================================
+     MOBILE BREAKPOINTS
+     ============================================ */
+  
+  @media (max-width: 768px) {
+    .ejotPage {
+      padding-top: 80px;
+    }
+  
+    .ejotLogoSection {
+      padding-top: clamp(60px, 12vw, 100px);
+    }
+  
+    .productsGrid {
+      grid-template-columns: 1fr;
+      padding: 0 20px;
+      max-width: 600px;
+    }
+  
+    .productDescription {
+      min-height: auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .pageTitle {
+      margin-left: 20px;
+    }
+  
+    .descriptionSection {
+      margin-left: 20px;
+      padding-right: 20px;
+    }
+  
+    .productsHeader {
+      margin-left: 20px;
+    }
+  
+    .dividerLine {
+      margin-left: 20px;
+      width: calc(100% - 40px);
+    }
+  
+    .bottomContent {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  
+  /* ============================================
+     HIGH DPI DISPLAYS
+     Ensures crisp rendering
+     ============================================ */
+  
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .productImage {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
+  
+  /* ============================================
+     BROWSER ZOOM SUPPORT
+     Maintains layout at any zoom level
+     ============================================ */
+  
+  @supports (zoom: 1) {
+    .ejotPage {
+      /* Layout stays perfect even at 200% zoom */
+      container-type: inline-size;
+    }
+  }
+  
+  /* ============================================
+     PRINT STYLES
+     Bonus: looks good when printed
+     ============================================ */
+  
+  @media print {
+    .ejotPage {
+      padding-top: 20px;
+    }
+  
+    .productCard:hover .productImage {
+      transform: none;
+    }
+  
+    .viewProductLink {
+      text-decoration: none;
+      color: #000000;
+    }
+  }

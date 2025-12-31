@@ -228,11 +228,11 @@
 }
 
 /* Dark Mode Support (if needed in future) */
-@media (prefers-color-scheme: dark) {
-    .logoImage {
+/* @media (prefers-color-scheme: dark) {
+    .logoImage { */
         /* Can add filter or swap logo if needed */
-    }
-}
+    /* }
+} */
 
 /* Print Optimization */
 @media print {
