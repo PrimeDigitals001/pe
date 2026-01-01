@@ -1,11 +1,12 @@
 /* ============================================
-   HERO SECTION - DESIGN SYSTEM
-   Base: 1920px × 1080px
+   HERO SECTION - PERFECT ZOOM SCALING
+   Works flawlessly at ANY zoom level
    ============================================ */
 
    .hero {
     position: relative;
     width: 100%;
+    height: clamp(550px, 59.79vw, 1148px);
     overflow: hidden;
     background: transparent;
 }
@@ -33,18 +34,23 @@
 
 /* Content Container */
 .heroContent {
-    position: relative;
+    position: absolute;
     z-index: 2;
     color: white;
+    top: clamp(160px, 32.55vw, 625px);
+    left: clamp(20px, 6.51vw, 125px);
+    right: clamp(20px, 6.51vw, 125px);
+    max-width: clamp(300px, 62.5vw, 1200px);
 }
 
 /* Main Heading - LEFT ALIGNED */
 .heroTitle {
     font-family: 'Grift', Georgia, serif;
     font-weight: 700;
+    font-size: clamp(28px, 3.33vw, 64px);
     line-height: 1.2;
-    margin-bottom: 24px;
-    text-align: left;  /* FORCE LEFT ALIGN */
+    margin-bottom: clamp(14px, 1.25vw, 24px);
+    text-align: left;
     color: white;
 }
 
@@ -52,10 +58,12 @@
 .heroDescription {
     font-family: 'Grift', Georgia, serif;
     font-weight: 400;
+    font-size: clamp(13px, 1.25vw, 24px);
     line-height: 1.6;
-    margin-bottom: 40px;
-    text-align: left;  /* FORCE LEFT ALIGN */
+    margin-bottom: clamp(22px, 2.08vw, 40px);
+    text-align: left;
     color: white;
+    max-width: clamp(300px, 46.88vw, 900px);
 }
 
 /* CTA Button */
@@ -65,7 +73,10 @@
     text-decoration: none;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    border-radius: 37.5px;
+    font-size: clamp(12px, 0.83vw, 16px);
+    border-radius: clamp(26px, 1.95vw, 37.5px);
+    width: clamp(160px, 10.73vw, 206px);
+    height: clamp(52px, 3.91vw, 75px);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -82,348 +93,124 @@
 
 /* ============================================
    RESPONSIVE BREAKPOINTS
+   Fine-tuning for specific devices
    ============================================ */
 
-/* Base - 1920px+ */
-@media (min-width: 1920px) {
+/* Tablet Adjustments */
+@media (max-width: 1024px) {
     .hero {
-        height: 1148px;
+        height: clamp(600px, 70vh, 800px);
     }
-    
+
     .heroContent {
-        position: absolute;
-        top: 625px;
-        left: 125px;
-        max-width: 1200px;
+        top: clamp(180px, 25vh, 300px);
     }
-    
+
     .heroTitle {
-        font-size: 64px;
+        font-size: clamp(32px, 5vw, 48px);
     }
-    
+
     .heroDescription {
-        font-size: 24px;
-        max-width: 900px;
-    }
-    
-    .ctaButton {
-        width: 206px;
-        height: 75px;
-        font-size: 16px;
+        font-size: clamp(14px, 2vw, 18px);
     }
 }
 
-/* XL - 1440px */
-@media (min-width: 1440px) and (max-width: 1919px) {
+/* Mobile Optimization */
+@media (max-width: 768px) {
     .hero {
-        height: 861px;
+        height: clamp(550px, 80vh, 700px);
     }
-    
-    .heroContent {
-        position: absolute;
-        top: 469px;
-        left: 94px;
-        max-width: 900px;
-    }
-    
-    .heroTitle {
-        font-size: 48px;
-    }
-    
-    .heroDescription {
-        font-size: 18px;
-        max-width: 700px;
-    }
-    
-    .ctaButton {
-        width: 154px;
-        height: 56px;
-        font-size: 12px;
-    }
-}
 
-/* LG - 1366px */
-@media (min-width: 1366px) and (max-width: 1439px) {
-    .hero {
-        height: 816px;
-    }
-    
     .heroContent {
-        position: absolute;
-        top: 444px;
-        left: 89px;
-        max-width: 850px;
-    }
-    
-    .heroTitle {
-        font-size: 45px;
-    }
-    
-    .heroDescription {
-        font-size: 17px;
-        max-width: 650px;
-    }
-    
-    .ctaButton {
-        width: 146px;
-        height: 53px;
-        font-size: 11px;
-    }
-}
-
-/* MD - 1280px */
-@media (min-width: 1280px) and (max-width: 1365px) {
-    .hero {
-        height: 766px;
-    }
-    
-    .heroContent {
-        position: absolute;
-        top: 417px;
-        left: 83px;
-        max-width: 800px;
-    }
-    
-    .heroTitle {
-        font-size: 43px;
-    }
-    
-    .heroDescription {
-        font-size: 16px;
-        max-width: 600px;
-    }
-    
-    .ctaButton {
-        width: 137px;
-        height: 50px;
-        font-size: 11px;
-    }
-}
-
-/* SM - 1024px */
-@media (min-width: 1024px) and (max-width: 1279px) {
-    .hero {
-        height: 612px;
-    }
-    
-    .heroContent {
-        position: absolute;
-        top: 333px;
-        left: 67px;
-        max-width: 700px;
-    }
-    
-    .heroTitle {
-        font-size: 34px;
-    }
-    
-    .heroDescription {
-        font-size: 13px;
-        max-width: 500px;
-    }
-    
-    .ctaButton {
-        width: 110px;
-        height: 40px;
-        font-size: 9px;
-    }
-}
-
-/* ============================================
-   MOBILE OPTIMIZED - BETTER LAYOUT
-   ============================================ */
-
-/* Tablet - 768px */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .hero {
-        min-height: 700px;       /* Taller for more breathing room */
-        height: auto;
-    }
-    
-    .heroBackground {
-        height: 700px;
-    }
-    
-    .heroContent {
-        position: absolute;
-        top: 250px;              /* More space from top */
-        left: 40px;
-        right: 40px;
-        text-align: left;
-    }
-    
-    .heroTitle {
-        font-size: 42px;         /* Bigger for tablet */
-        line-height: 1.3;
-        margin-bottom: 20px;
-        text-align: left;
-    }
-    
-    .heroDescription {
-        font-size: 17px;         /* More readable */
-        line-height: 1.7;
-        margin-bottom: 30px;
-        text-align: left;
-        max-width: 100%;
-    }
-    
-    .ctaButton {
-        width: 200px;            /* Larger touch target */
-        height: 65px;
-        font-size: 15px;
-    }
-}
-
-/* Large Mobile - 480px */
-@media (min-width: 480px) and (max-width: 767px) {
-    .hero {
-        min-height: 650px;       /* Enough height */
-        height: auto;
-    }
-    
-    .heroBackground {
-        height: 650px;
-    }
-    
-    .heroContent {
-        position: absolute;
-        top: 200px;              /* Better positioning */
-        left: 30px;
-        right: 30px;
-        text-align: left;
-    }
-    
-    .heroTitle {
-        font-size: 36px;         /* Readable size */
-        line-height: 1.3;
-        margin-bottom: 18px;
-        text-align: left;
-    }
-    
-    .heroDescription {
-        font-size: 15px;         /* Comfortable reading */
-        line-height: 1.6;
-        margin-bottom: 28px;
-        text-align: left;
-    }
-    
-    .ctaButton {
-        width: 180px;
-        height: 60px;
-        font-size: 14px;
-    }
-}
-
-/* Standard Mobile - 375px (iPhone) */
-@media (min-width: 375px) and (max-width: 479px) {
-    .hero {
-        min-height: 600px;       /* Good height for content */
-        height: auto;
-    }
-    
-    .heroBackground {
-        height: 600px;
-    }
-    
-    .heroContent {
-        position: absolute;
-        top: 180px;
-        left: 25px;
-        right: 25px;
-        text-align: left;
-    }
-    
-    .heroTitle {
-        font-size: 32px;         /* Clear and bold */
-        line-height: 1.3;
-        margin-bottom: 16px;
-        text-align: left;
-    }
-    
-    .heroDescription {
-        font-size: 14px;         /* Readable on mobile */
-        line-height: 1.6;
-        margin-bottom: 25px;
-        text-align: left;
-    }
-    
-    .ctaButton {
-        width: 170px;
-        height: 55px;
-        font-size: 13px;
-    }
-}
-
-/* Small Mobile - 320px */
-@media (max-width: 374px) {
-    .hero {
-        min-height: 550px;
-        height: auto;
-    }
-    
-    .heroBackground {
-        height: 550px;
-    }
-    
-    .heroContent {
-        position: absolute;
-        top: 160px;
+        top: clamp(160px, 22vh, 250px);
         left: 20px;
         right: 20px;
-        text-align: left;
     }
-    
+
     .heroTitle {
-        font-size: 28px;
+        font-size: clamp(28px, 7vw, 42px);
         line-height: 1.3;
-        margin-bottom: 14px;
-        text-align: left;
     }
-    
+
     .heroDescription {
-        font-size: 13px;
-        line-height: 1.5;
-        margin-bottom: 22px;
-        text-align: left;
+        font-size: clamp(13px, 3.5vw, 16px);
+        line-height: 1.7;
     }
-    
+
     .ctaButton {
-        width: 160px;
-        height: 52px;
-        font-size: 12px;
+        width: clamp(150px, 45vw, 200px);
+        height: clamp(50px, 15vw, 65px);
+        font-size: clamp(12px, 3.5vw, 15px);
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .hero {
+        min-height: 550px;
+    }
+
+    .heroContent {
+        top: 160px;
+    }
+
+    .heroTitle {
+        font-size: clamp(26px, 8vw, 36px);
+    }
+
+    .heroDescription {
+        font-size: clamp(12px, 4vw, 15px);
     }
 }
 
 /* Landscape Mobile */
 @media (orientation: landscape) and (max-height: 600px) and (max-width: 1023px) {
     .hero {
-        min-height: 100vh;
-        height: auto;
-    }
-    
-    .heroBackground {
         height: 100vh;
     }
-    
+
     .heroContent {
-        top: 20vh;
+        top: 15vh;
         left: 40px;
         right: 40px;
     }
-    
+
     .heroTitle {
-        font-size: 30px;
+        font-size: clamp(24px, 4vh, 32px);
         margin-bottom: 12px;
     }
-    
+
     .heroDescription {
-        font-size: 14px;
+        font-size: clamp(12px, 2.5vh, 16px);
         margin-bottom: 18px;
     }
-    
+
     .ctaButton {
         width: 150px;
         height: 48px;
         font-size: 12px;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .ctaButton {
+        transition: none;
+    }
+
+    .ctaButton:hover {
+        transform: none;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .heroTitle,
+    .heroDescription {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 }

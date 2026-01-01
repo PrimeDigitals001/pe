@@ -12,36 +12,42 @@ const ProjectCard = ({ project }) => {
       href={`/projects/${slug}`}
       className={styles.projectCard}
     >
-      {/* White Background Card */}
-      <div className={styles.rectangle17}></div>
-
-      {/* Image - FIXED: Regular img tag, no Next Image */}
-      <img 
-        className={styles.rectangle171}
-        src={image}
-        alt={title}
-      />
-
-      {/* Title */}
-      <div className={styles.title}>{title}</div>
-
-      {/* Description */}
-      <div className={styles.description}>
-        {description}
+      {/* Image */}
+      <div className={styles.imageWrapper}>
+        <img 
+          className={styles.projectImage}
+          src={image}
+          alt={title}
+          loading="lazy"
+        />
       </div>
 
-      {/* Client */}
-      <div className={styles.clientXyzTeam}>
-        <span className={styles.clientXyzTeamSpan}>Client: </span>
-        <span className={styles.clientXyzTeamSpan2}>{client}</span>
-      </div>
-
-      {/* Status Badge (only if ongoing) */}
-      {status === 'ongoing' && (
-        <div className={styles.frame18}>
-          <div className={styles.onGoing}>On going</div>
+      {/* Content Area */}
+      <div className={styles.content}>
+        
+        {/* Title + Status Badge Row */}
+        <div className={styles.titleRow}>
+          <h3 className={styles.title}>{title}</h3>
+          
+          {status === 'ongoing' && (
+            <div className={styles.statusBadge}>
+              <span className={styles.statusText}>On going</span>
+            </div>
+          )}
         </div>
-      )}
+
+        {/* Description */}
+        <p className={styles.description}>
+          {description}
+        </p>
+
+        {/* Client */}
+        <div className={styles.client}>
+          <span className={styles.clientLabel}>Client: </span>
+          <span className={styles.clientName}>{client}</span>
+        </div>
+
+      </div>
     </Link>
   );
 };

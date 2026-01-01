@@ -48,27 +48,28 @@ export default function EjotProductDetailPage() {
 
       <main className={styles.productPage}>
         
-        {/* EJOT Logo - Moved up */}
+        {/* EJOT Logo */}
         <div className={styles.ejotLogoSection}>
           <img 
             src="/images/products/logo_ejot.png"
             alt="EJOT"
             className={styles.ejotLogo}
+            loading="lazy"
           />
         </div>
 
         {/* Breadcrumb Navigation */}
-        <div className={styles.breadcrumb}>
+        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
           <Link href="/products" className={styles.breadcrumbLink}>
             Products
           </Link>
-          <span className={styles.breadcrumbArrow}>›</span>
+          <span className={styles.breadcrumbArrow} aria-hidden="true">›</span>
           <Link href="/products/ejot-screw" className={styles.breadcrumbLink}>
             Ejot
           </Link>
-          <span className={styles.breadcrumbArrow}>›</span>
+          <span className={styles.breadcrumbArrow} aria-hidden="true">›</span>
           <span className={styles.breadcrumbCurrent}>{product.name}</span>
-        </div>
+        </nav>
 
         {/* Product Detail Section */}
         <div className={styles.productDetailSection}>
@@ -77,8 +78,9 @@ export default function EjotProductDetailPage() {
           <div className={styles.productImageContainer}>
             <img 
               src={product.image}
-              alt={product.name}
+              alt={`${product.name} - ${product.category}`}
               className={styles.productMainImage}
+              loading="lazy"
             />
           </div>
 
@@ -99,20 +101,20 @@ export default function EjotProductDetailPage() {
             </p>
 
             {/* Divider Line */}
-            <div className={styles.dividerLine}></div>
+            <div className={styles.dividerLine} role="separator"></div>
 
             {/* Properties Section */}
             {product.properties && product.properties.length > 0 && (
               <>
                 <div className={styles.infoSection}>
-                  <h3 className={styles.sectionTitle}>Properties</h3>
+                  <h2 className={styles.sectionTitle}>Properties</h2>
                   <div className={styles.simpleList}>
                     {product.properties.map((property, index) => (
                       <p key={index} className={styles.listItem}>{property}</p>
                     ))}
                   </div>
                 </div>
-                <div className={styles.dividerLine}></div>
+                <div className={styles.dividerLine} role="separator"></div>
               </>
             )}
 
@@ -120,21 +122,21 @@ export default function EjotProductDetailPage() {
             {product.technicalSpecifications && product.technicalSpecifications.length > 0 && (
               <>
                 <div className={styles.infoSection}>
-                  <h3 className={styles.sectionTitle}>Technical specifications</h3>
+                  <h2 className={styles.sectionTitle}>Technical specifications</h2>
                   <ul className={styles.bulletList}>
                     {product.technicalSpecifications.map((spec, index) => (
                       <li key={index} className={styles.bulletItem}>{spec}</li>
                     ))}
                   </ul>
                 </div>
-                <div className={styles.dividerLine}></div>
+                <div className={styles.dividerLine} role="separator"></div>
               </>
             )}
 
             {/* Brochure Downloads */}
             {product.brochures && product.brochures.length > 0 && (
               <div className={styles.infoSection}>
-                <h3 className={styles.sectionTitle}>Brochure</h3>
+                <h2 className={styles.sectionTitle}>Brochure</h2>
                 <div className={styles.downloadList}>
                   {product.brochures.map((brochure, index) => (
                     <a
@@ -144,14 +146,15 @@ export default function EjotProductDetailPage() {
                       rel="noopener noreferrer"
                       className={styles.downloadLink}
                       download
+                      aria-label={`Download ${brochure.text} (${brochure.size})`}
                     >
-                      <svg className={styles.downloadIcon} viewBox="0 0 24 24" fill="none">
+                      <svg className={styles.downloadIcon} viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M12 3V16M12 16L7 11M12 16L17 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         <path d="M3 17V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                       </svg>
                       <span className={styles.downloadText}>
                         <span className={styles.downloadName}>{brochure.text}</span>
-                        {brochure.size && <span className={styles.downloadSize}> {brochure.size}</span>}
+                        {brochure.size && <span className={styles.downloadSize}> ({brochure.size})</span>}
                       </span>
                     </a>
                   ))}
@@ -160,43 +163,42 @@ export default function EjotProductDetailPage() {
             )}
 
             {/* Enquire Now Button */}
-            <button className={styles.enquireButton}>
+            <button className={styles.enquireButton} aria-label="Enquire about this product">
               Enquire now
             </button>
           </div>
         </div>
 
         {/* Further Products Section */}
-        <div className={styles.furtherProductsSection}>
+        <section className={styles.furtherProductsSection}>
           <h2 className={styles.furtherProductsTitle}>Further Products</h2>
-          <div className={styles.furtherProductsDivider}></div>
+          <div className={styles.furtherProductsDivider} role="separator"></div>
 
           {/* Related Products Grid */}
           <div className={styles.relatedProductsGrid}>
             {relatedProducts.map((relatedProduct) => (
-              <Link
-                key={relatedProduct.id}
-                href={`/products/ejot-screw/${relatedProduct.slug}`}
-                className={styles.relatedProductCard}
-              >
-                <div className={styles.relatedProductImage}>
-                  <img 
-                    src={relatedProduct.image}
-                    alt={relatedProduct.name}
-                  />
-                </div>
-                <h3 className={styles.relatedProductName}>{relatedProduct.name}</h3>
-                <p className={styles.relatedProductCategory}>self-tapping screw</p>
-                <p className={styles.relatedProductDesc}>{relatedProduct.useCase}</p>
-                <span className={styles.viewProductLink}>View product</span>
-                <div className={styles.relatedProductBorder}></div>
-              </Link>
+              <article key={relatedProduct.id} className={styles.relatedProductCard}>
+                <Link href={`/products/ejot-screw/${relatedProduct.slug}`} className={styles.relatedProductLink}>
+                  <div className={styles.relatedProductImage}>
+                    <img 
+                      src={relatedProduct.image}
+                      alt={`${relatedProduct.name} - ${relatedProduct.category}`}
+                      loading="lazy"
+                    />
+                  </div>
+                  <h3 className={styles.relatedProductName}>{relatedProduct.name}</h3>
+                  <p className={styles.relatedProductCategory}>self-tapping screw</p>
+                  <p className={styles.relatedProductDesc}>{relatedProduct.cardDescription}</p>
+                  <span className={styles.viewProductLink}>View product</span>
+                  <div className={styles.relatedProductBorder}></div>
+                </Link>
+              </article>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Bottom Content Section */}
-        <div className={styles.bottomContent}>
+        <section className={styles.bottomContent}>
           <h2 className={styles.bottomTitle}>Self-tapping Screws</h2>
 
           <h3 className={styles.bottomSubtitle}>
@@ -214,7 +216,7 @@ export default function EjotProductDetailPage() {
           <p className={styles.bottomDescription}>
             You are looking for a fastening solution for indoor swimming pools or chemical plants? The JA/JZ1 self-tapping screws are the reliable experts when it comes to building projects in highly corrosive environments. The JA1/JZ1 feature the material class stainless steel HCR ® 1.4529 and thus have the highest corrosion-protection class.
           </p>
-        </div>
+        </section>
 
       </main>
 

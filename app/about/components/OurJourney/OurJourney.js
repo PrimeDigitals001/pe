@@ -52,7 +52,7 @@ const OurJourney = () => {
         <div className={`${styles.imageColumn} ${styles.animateUp}`}>
           <img 
             src="/images/rectangle_158.png" 
-            alt="Our Journey - MK Roofing"
+            alt="Our Journey - Patel Enterprise"
             className={styles.image}
           />
         </div>

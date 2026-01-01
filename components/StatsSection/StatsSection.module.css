@@ -1,34 +1,33 @@
 /* ============================================
-   STATS SECTION
-   Base Design: 1920px
-   Icons: 77×77px
-   Label: Grift SemiBold 20px (34px below icon)
-   Value: Grift Bold 48px (16px below label)
-   Lines: 1676px width, 1px border
+   STATS SECTION - ZOOM-PROOF
+   Structure locked, only fonts/spacing scale
+   4 columns on desktop, 2×2 grid on mobile
    ============================================ */
 
    .statsSection {
     width: 100%;
     position: relative;
-    background: #ffffff;
+    background: var(--color-white);
     padding: 0;
-    margin: 100px 0;
+    margin: clamp(25px, 5.21vw, 100px) 0;
+    overflow: hidden;
   }
   
   .container {
-    max-width: 1920px;
+    max-width: var(--container-full);
     margin: 0 auto;
-    padding: 0 122px; /* (1920 - 1676) / 2 = 122px */
+    padding: 0 clamp(12px, 6.35vw, 122px);
     position: relative;
   }
   
   /* ============================================
-     BORDER LINES
+     BORDER LINES - Scale with container
      ============================================ */
   
   .topLine,
   .bottomLine {
-    width: 1676px;
+    width: 100%;
+    max-width: clamp(280px, 87.29vw, 1676px);
     height: 1px;
     background: rgba(0, 0, 0, 0.25);
     margin: 0 auto;
@@ -43,15 +42,15 @@
   }
   
   /* ============================================
-     STATS GRID - 4 columns in 1 row
+     STATS GRID - Always 4 columns on desktop
      ============================================ */
   
   .statsGrid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
-    padding: 62px 0 73px 0; /* Space between lines and content */
-    max-width: 1676px;
+    padding: clamp(25px, 3.23vw, 62px) 0 clamp(30px, 3.8vw, 73px) 0;
+    max-width: clamp(280px, 87.29vw, 1676px);
     margin: 0 auto;
   }
   
@@ -65,27 +64,33 @@
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    padding: 0 20px;
+    padding: 0 clamp(10px, 1.04vw, 20px);
+    transition: transform var(--transition-base);
+  }
+  
+  .statItem:hover {
+    transform: translateY(-4px);
   }
   
   /* ============================================
-     ICON - 77×77px
+     ICON - Fluid scaling
      ============================================ */
   
   .iconWrapper {
-    width: 77px;
-    height: 77px;
-    margin-bottom: 34px; /* Gap to label */
+    width: clamp(45px, 4.01vw, 77px);
+    height: clamp(45px, 4.01vw, 77px);
+    margin-bottom: clamp(12px, 1.77vw, 34px);
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
   }
   
   .icon {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-base);
   }
   
   .statItem:hover .icon {
@@ -93,31 +98,33 @@
   }
   
   /* ============================================
-     LABEL - Grift SemiBold 20px
+     LABEL - Fluid scaling, single line on desktop
      ============================================ */
   
   .label {
     color: rgba(0, 0, 0, 0.75);
     text-align: center;
-    font-family: "Grift-SemiBold", sans-serif;
-    font-size: 20px;
+    font-family: var(--font-heading);
+    font-size: clamp(11px, 1.04vw, 20px);
     font-weight: 600;
-    margin-bottom: 16px; /* Gap to value */
-    line-height: 1.2;
+    margin-bottom: clamp(8px, 0.83vw, 16px);
+    line-height: var(--leading-tight);
     letter-spacing: 0.5px;
+    white-space: nowrap; /* ✅ Single line on desktop */
   }
   
   /* ============================================
-     VALUE - Grift Bold 48px
+     VALUE - Fluid scaling
      ============================================ */
   
   .value {
     color: rgba(0, 0, 0, 0.9);
     text-align: center;
-    font-family: "Grift-Bold", sans-serif;
-    font-size: 48px;
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 2.5vw, 48px);
     font-weight: 700;
     line-height: 1;
+    white-space: nowrap; /* ✅ Always single line */
   }
   
   /* ============================================
@@ -141,248 +148,23 @@
     animation: slideInUp 0.8s ease-out forwards;
   }
   
-  /* ============================================
-     🔒 LOCK FOR SCREENS > 1440px
-     ============================================ */
-  
-  @media (min-width: 1441px) {
-    .statsSection {
-      margin: 75px 0 !important;
-    }
-  
-    .container {
-      padding: 0 92px !important; /* 122px × 0.75 */
-    }
-  
-    .topLine,
-    .bottomLine {
-      width: 1257px !important; /* 1676px × 0.75 */
-    }
-  
-    .statsGrid {
-      padding: 47px 0 55px 0 !important; /* 62px×0.75, 73px×0.75 */
-      max-width: 1257px !important;
-    }
-  
-    .iconWrapper {
-      width: 58px !important; /* 77px × 0.75 */
-      height: 58px !important;
-      margin-bottom: 26px !important; /* 34px × 0.75 */
-    }
-  
-    .label {
-      font-size: 15px !important; /* 20px × 0.75 */
-      margin-bottom: 12px !important; /* 16px × 0.75 */
-    }
-  
-    .value {
-      font-size: 36px !important; /* 48px × 0.75 */
-    }
-  }
+  /* Stagger animations */
+  .statsSection.animate .statItem:nth-child(1) { animation-delay: 0.1s; }
+  .statsSection.animate .statItem:nth-child(2) { animation-delay: 0.2s; }
+  .statsSection.animate .statItem:nth-child(3) { animation-delay: 0.3s; }
+  .statsSection.animate .statItem:nth-child(4) { animation-delay: 0.4s; }
   
   /* ============================================
-     RESPONSIVE BREAKPOINTS
+     RESPONSIVE - TABLET (2×2 grid)
      ============================================ */
   
-  /* 1440px - 0.75 scale */
-  @media (max-width: 1440px) {
-    .statsSection {
-      margin: 75px 0;
-    }
-  
-    .container {
-      padding: 0 92px;
-    }
-  
-    .topLine,
-    .bottomLine {
-      width: 1257px;
-    }
-  
-    .statsGrid {
-      padding: 47px 0 55px 0;
-      max-width: 1257px;
-    }
-  
-    .iconWrapper {
-      width: 58px;
-      height: 58px;
-      margin-bottom: 26px;
-    }
-  
-    .label {
-      font-size: 15px;
-      margin-bottom: 12px;
-    }
-  
-    .value {
-      font-size: 36px;
-    }
-  }
-  
-  /* 1366px - 0.71 scale */
-  @media (max-width: 1366px) {
-    .statsSection {
-      margin: 71px 0;
-    }
-  
-    .container {
-      padding: 0 87px;
-    }
-  
-    .topLine,
-    .bottomLine {
-      width: 1190px;
-    }
-  
-    .statsGrid {
-      padding: 44px 0 52px 0;
-      max-width: 1190px;
-    }
-  
-    .iconWrapper {
-      width: 55px;
-      height: 55px;
-      margin-bottom: 24px;
-    }
-  
-    .label {
-      font-size: 14px;
-      margin-bottom: 11px;
-    }
-  
-    .value {
-      font-size: 34px;
-    }
-  }
-  
-  /* 1280px - 0.67 scale */
-  @media (max-width: 1280px) {
-    .statsSection {
-      margin: 67px 0;
-    }
-  
-    .container {
-      padding: 0 82px;
-    }
-  
-    .topLine,
-    .bottomLine {
-      width: 1123px;
-    }
-  
-    .statsGrid {
-      padding: 42px 0 49px 0;
-      max-width: 1123px;
-    }
-  
-    .iconWrapper {
-      width: 52px;
-      height: 52px;
-      margin-bottom: 23px;
-    }
-  
-    .label {
-      font-size: 13px;
-      margin-bottom: 11px;
-    }
-  
-    .value {
-      font-size: 32px;
-    }
-  }
-  
-  /* 1024px - 0.53 scale */
-  @media (max-width: 1024px) {
-    .statsSection {
-      margin: 53px 0;
-    }
-  
-    .container {
-      padding: 0 65px;
-    }
-  
-    .topLine,
-    .bottomLine {
-      width: 888px;
-    }
-  
-    .statsGrid {
-      padding: 33px 0 39px 0;
-      max-width: 888px;
-    }
-  
-    .iconWrapper {
-      width: 41px;
-      height: 41px;
-      margin-bottom: 18px;
-    }
-  
-    .label {
-      font-size: 11px;
-      margin-bottom: 8px;
-    }
-  
-    .value {
-      font-size: 25px;
-    }
-  }
-  
-  /* 768px - Tablet (2×2 grid) */
   @media (max-width: 768px) {
     .statsSection {
-      margin: 50px 0;
+      margin: clamp(30px, 6vw, 50px) 0;
     }
   
     .container {
-      padding: 0 20px;
-    }
-  
-    .topLine,
-    .bottomLine {
-      width: 100%;
-      max-width: 700px;
-    }
-  
-    .statsGrid {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: 40px 20px;
-      padding: 40px 0;
-      max-width: 700px;
-    }
-  
-    .iconWrapper {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 20px;
-    }
-  
-    .label {
-      font-size: 16px;
-      margin-bottom: 12px;
-    }
-  
-    .value {
-      font-size: 36px;
-    }
-  }
-  
-  /* 480px - Mobile (1 column) */
- /* ============================================
-   RESPONSIVE BREAKPOINTS
-   ============================================ */
-
-/* ... keep all the previous breakpoints until 768px ... */
-
-/* 768px - Tablet (2×2 grid) */
-@media (max-width: 768px) {
-    .statsSection {
-      margin: 50px 0;
-    }
-  
-    .container {
-      padding: 0 20px;
+      padding: 0 var(--space-lg);
     }
   
     .topLine,
@@ -392,17 +174,17 @@
     }
   
     .statsGrid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 1fr); /* ✅ 2×2 grid */
       grid-template-rows: repeat(2, auto);
-      gap: 50px 30px; /* Increased vertical gap for better separation */
-      padding: 50px 20px;
+      gap: clamp(35px, 7vw, 50px) clamp(20px, 4vw, 30px);
+      padding: clamp(35px, 6vw, 50px) var(--space-lg);
       max-width: 600px;
     }
   
     .statItem {
-      padding: 20px;
-      border-radius: 12px;
-      transition: background-color 0.3s ease, transform 0.3s ease;
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      transition: all var(--transition-base);
     }
   
     .statItem:hover {
@@ -411,33 +193,37 @@
     }
   
     .iconWrapper {
-      width: 65px;
-      height: 65px;
-      margin-bottom: 20px;
+      width: clamp(55px, 10vw, 70px);
+      height: clamp(55px, 10vw, 70px);
+      margin-bottom: clamp(16px, 3vw, 22px);
     }
   
     .label {
-      font-size: 15px;
-      margin-bottom: 12px;
-      min-height: 40px; /* Ensures consistent spacing even if text wraps */
+      font-size: clamp(14px, 2.8vw, 18px); /* ✅ Bigger on tablet */
+      margin-bottom: clamp(10px, 2vw, 14px);
+      white-space: normal; /* ✅ Can wrap on tablet */
+      min-height: clamp(32px, 6vw, 44px);
       display: flex;
       align-items: center;
       justify-content: center;
     }
   
     .value {
-      font-size: 40px;
+      font-size: clamp(32px, 6vw, 44px); /* ✅ Bigger on tablet */
     }
   }
   
-  /* 600px - Small Tablet (2×2 grid optimized) */
+  /* ============================================
+     RESPONSIVE - SMALL TABLET
+     ============================================ */
+  
   @media (max-width: 600px) {
     .statsSection {
-      margin: 40px 0;
+      margin: clamp(25px, 5vw, 40px) 0;
     }
   
     .container {
-      padding: 0 15px;
+      padding: 0 var(--space-md);
     }
   
     .topLine,
@@ -446,129 +232,139 @@
     }
   
     .statsGrid {
-      gap: 40px 20px;
-      padding: 40px 10px;
+      gap: clamp(30px, 6vw, 40px) clamp(15px, 3vw, 25px);
+      padding: clamp(30px, 5vw, 40px) var(--space-md);
     }
   
     .statItem {
-      padding: 15px;
+      padding: var(--space-md);
     }
   
     .iconWrapper {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 18px;
+      width: clamp(50px, 11vw, 65px);
+      height: clamp(50px, 11vw, 65px);
+      margin-bottom: clamp(14px, 3vw, 20px);
     }
   
     .label {
-      font-size: 14px;
-      margin-bottom: 10px;
-      min-height: 36px;
+      font-size: clamp(13px, 3vw, 16px);
+      margin-bottom: clamp(8px, 2vw, 12px);
+      min-height: clamp(28px, 6vw, 38px);
     }
   
     .value {
-      font-size: 36px;
+      font-size: clamp(28px, 6.5vw, 38px);
     }
   }
   
-  /* 480px - Mobile (2×2 grid) */
+  /* ============================================
+     RESPONSIVE - MOBILE (2×2 grid maintained)
+     ============================================ */
+  
   @media (max-width: 480px) {
     .statsSection {
-      margin: 35px 0;
+      margin: clamp(20px, 5vw, 35px) 0;
     }
   
     .container {
-      padding: 0 12px;
+      padding: 0 var(--space-sm);
     }
   
     .statsGrid {
-      gap: 35px 15px;
-      padding: 35px 5px;
+      gap: clamp(28px, 6vw, 35px) clamp(12px, 3vw, 18px);
+      padding: clamp(25px, 5vw, 35px) var(--space-sm);
     }
   
     .statItem {
-      padding: 12px;
+      padding: clamp(10px, 2.5vw, 15px);
     }
   
     .iconWrapper {
-      width: 55px;
-      height: 55px;
-      margin-bottom: 16px;
+      width: clamp(48px, 12vw, 60px);
+      height: clamp(48px, 12vw, 60px);
+      margin-bottom: clamp(12px, 3vw, 18px);
     }
   
     .label {
-      font-size: 13px;
-      margin-bottom: 10px;
-      min-height: 32px;
+      font-size: clamp(12px, 3.2vw, 15px); /* ✅ Bigger */
+      margin-bottom: clamp(8px, 2vw, 10px);
+      min-height: clamp(26px, 6vw, 34px);
     }
   
     .value {
-      font-size: 32px;
+      font-size: clamp(26px, 7vw, 34px); /* ✅ Bigger */
     }
   }
   
-  /* 375px - Standard Mobile (2×2 grid) */
+  /* ============================================
+     RESPONSIVE - STANDARD MOBILE
+     ============================================ */
+  
   @media (max-width: 375px) {
     .statsSection {
-      margin: 30px 0;
+      margin: clamp(18px, 5vw, 30px) 0;
     }
   
     .statsGrid {
-      gap: 30px 12px;
-      padding: 30px 5px;
+      gap: clamp(25px, 6.5vw, 32px) clamp(10px, 3vw, 15px);
+      padding: clamp(22px, 5vw, 30px) var(--space-xs);
     }
   
     .statItem {
-      padding: 10px;
+      padding: clamp(8px, 2.5vw, 12px);
     }
   
     .iconWrapper {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 14px;
+      width: clamp(45px, 12.5vw, 55px);
+      height: clamp(45px, 12.5vw, 55px);
+      margin-bottom: clamp(10px, 3vw, 16px);
     }
   
     .label {
-      font-size: 12px;
-      margin-bottom: 8px;
-      min-height: 30px;
+      font-size: clamp(11px, 3.3vw, 14px);
+      margin-bottom: clamp(7px, 2vw, 9px);
+      min-height: clamp(24px, 6.5vw, 32px);
+      letter-spacing: 0.3px;
     }
   
     .value {
-      font-size: 28px;
+      font-size: clamp(24px, 7.5vw, 30px);
     }
   }
   
-  /* 320px - Smallest Mobile (2×2 grid) */
+  /* ============================================
+     RESPONSIVE - SMALLEST MOBILE
+     ============================================ */
+  
   @media (max-width: 320px) {
     .statsSection {
-      margin: 25px 0;
+      margin: clamp(15px, 5vw, 25px) 0;
     }
   
     .statsGrid {
-      gap: 25px 10px;
-      padding: 25px 3px;
+      gap: clamp(22px, 7vw, 28px) clamp(8px, 3vw, 12px);
+      padding: clamp(20px, 5vw, 25px) var(--space-2xs);
     }
   
     .statItem {
-      padding: 8px;
+      padding: clamp(6px, 2.5vw, 10px);
     }
   
     .iconWrapper {
-      width: 45px;
-      height: 45px;
-      margin-bottom: 12px;
+      width: clamp(42px, 13vw, 50px);
+      height: clamp(42px, 13vw, 50px);
+      margin-bottom: clamp(10px, 3vw, 14px);
     }
   
     .label {
-      font-size: 11px;
-      margin-bottom: 8px;
-      min-height: 28px;
-      letter-spacing: 0;
+      font-size: clamp(10px, 3.5vw, 13px);
+      margin-bottom: clamp(6px, 2vw, 8px);
+      min-height: clamp(22px, 7vw, 30px);
+      letter-spacing: 0.2px;
     }
   
     .value {
-      font-size: 24px;
+      font-size: clamp(22px, 8vw, 28px);
     }
   }
   
@@ -583,13 +379,64 @@
       transform: none !important;
     }
   
-    .icon {
-      transition: none !important;
-    }
-  
+    .icon,
     .statItem {
       transition: none !important;
     }
+  
+    .statItem:hover {
+      transform: none;
+    }
+  
+    .statItem:hover .icon {
+      transform: none;
+    }
   }
   
+  /* Focus states for accessibility */
+  .statItem:focus-within {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: var(--radius-lg);
+  }
   
+  /* ============================================
+     HIGH DPI DISPLAYS
+     ============================================ */
+  
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .icon {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
+  
+  /* ============================================
+     PRINT STYLES
+     ============================================ */
+  
+  @media print {
+    .statsSection {
+      margin: 15px 0;
+      break-inside: avoid;
+    }
+  
+    .topLine,
+    .bottomLine {
+      background: #000;
+    }
+  
+    .statsGrid {
+      padding: 20px 0;
+      break-inside: avoid;
+    }
+  
+    .statItem {
+      break-inside: avoid;
+    }
+  
+    .statItem:hover {
+      transform: none;
+      background: none;
+    }
+  }

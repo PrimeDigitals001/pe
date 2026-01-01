@@ -1,23 +1,20 @@
 /* ============================================
-   INNOVATION IN MOTION SECTION
-   Base Design: 1920px
-   Title: Grift Bold 48px #2683C6
-   Subtitle: Grift Medium 25px 50% opacity
-   Gap: 11px between title and subtitle
-   Video: 1017×572px with 40px border-radius
+   INNOVATION IN MOTION SECTION - ZOOM-PROOF
+   Text stays on single line, only size/spacing scales
    ============================================ */
 
    .innovationSection {
     width: 100%;
     position: relative;
-    background: #ffffff;
-    padding: 100px 0;
+    background: var(--color-white);
+    padding: clamp(30px, 5.21vw, 100px) 0;
+    overflow: hidden;
   }
   
   .container {
-    max-width: 1920px;
+    max-width: var(--container-full);
     margin: 0 auto;
-    padding: 0 153px;
+    padding: 0 clamp(15px, 7.97vw, 153px);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -26,48 +23,58 @@
   
   /* ============================================
      TITLE - "Innovation in Motion"
-     Grift Bold, 48px, #2683C6
+     Single line, fluid scaling
      ============================================ */
   
   .title {
-    color: #2683C6;
+    color: var(--color-primary);
     text-align: center;
-    font-family: "Grift-Bold", sans-serif;
-    font-size: 48px;
+    font-family: var(--font-heading);
+    font-size: clamp(20px, 2.5vw, 48px);
     font-weight: 700;
-    margin: 0 0 11px 0; /* 11px gap to subtitle */
-    line-height: 1.2;
+    margin: 0 0 clamp(6px, 0.57vw, 11px) 0;
+    line-height: var(--leading-tight);
+    white-space: nowrap; /* ✅ KEEPS SINGLE LINE */
   }
   
   /* ============================================
-     SUBTITLE - Description (Single line)
-     Grift Medium, 25px, 50% opacity
+     SUBTITLE - Description
+     Single line, fluid scaling
      ============================================ */
   
   .subtitle {
     color: rgba(0, 0, 0, 0.5);
     text-align: center;
-    font-family: "Grift-Medium", sans-serif;
-    font-size: 25px;
+    font-family: var(--font-heading);
+    font-size: clamp(12px, 1.3vw, 25px);
     font-weight: 500;
-    margin: 0 0 117px 0; /* 117px gap to video (188px total from title - 71px title space = 117px) */
-    line-height: 1.5;
-    max-width: 900px;
-    white-space: nowrap; /* Keep as single line on large screens */
+    margin: 0 0 clamp(30px, 6.09vw, 117px) 0;
+    line-height: var(--leading-normal);
+    white-space: nowrap; /* ✅ KEEPS SINGLE LINE */
+    overflow: visible; /* Allow text to extend beyond container if needed */
+    padding: 0 var(--space-sm);
   }
   
   /* ============================================
-     VIDEO CONTAINER - 1017×572px
+     VIDEO CONTAINER - FLUID
+     Maintains exact aspect ratio
      ============================================ */
   
   .videoContainer {
-    width: 1017px;
-    height: 572px;
-    border-radius: 40px;
+    width: clamp(300px, 52.97vw, 1017px);
+    height: clamp(169px, 29.79vw, 572px); /* Maintains 1017:572 ratio */
+    border-radius: clamp(16px, 2.08vw, 40px);
     overflow: hidden;
     position: relative;
-    box-shadow: 0px 0px 1.4px 0px rgba(0, 0, 0, 0.34);
-    background: #000000;
+    box-shadow: var(--shadow-md);
+    background: var(--color-black);
+    transition: all var(--transition-base);
+    flex-shrink: 0; /* Prevents shrinking */
+  }
+  
+  .videoContainer:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
   }
   
   .video {
@@ -89,9 +96,11 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all var(--transition-base);
     z-index: 10;
     opacity: 0.9;
+    width: clamp(48px, 3.33vw, 64px);
+    height: clamp(48px, 3.33vw, 64px);
   }
   
   .playButton:hover {
@@ -103,18 +112,21 @@
     transform: translate(-50%, -50%) scale(0.95);
   }
   
+  .playButton svg {
+    width: 100%;
+    height: 100%;
+  }
+  
   /* ============================================
      SCROLL ANIMATIONS
      ============================================ */
   
-  /* Initial hidden state */
   .innovationSection .animateUp {
     opacity: 0;
     transform: translateY(40px);
     will-change: transform, opacity;
   }
   
-  /* Keyframes */
   @keyframes slideInUp {
     to {
       opacity: 1;
@@ -122,12 +134,10 @@
     }
   }
   
-  /* When section becomes visible */
   .innovationSection.animate .animateUp {
     animation: slideInUp 0.8s ease-out forwards;
   }
   
-  /* Stagger animations */
   .innovationSection.animate .title {
     animation-delay: 0.1s;
   }
@@ -141,232 +151,108 @@
   }
   
   /* ============================================
-     🔒 LOCK FOR SCREENS > 1440px
+     RESPONSIVE - TABLET (Allow wrapping)
+     Only on smaller screens where single line is impractical
      ============================================ */
   
-  @media (min-width: 1441px) {
+  @media (max-width: 768px) {
     .innovationSection {
-      padding: 75px 0 !important;
+      padding: var(--space-3xl) 0;
     }
   
     .container {
-      padding: 0 115px !important;
+      padding: 0 var(--space-lg);
     }
   
     .title {
-      font-size: 36px !important;
-      margin-bottom: 8px !important; /* 11px × 0.75 ≈ 8px */
+      font-size: clamp(22px, 5vw, 32px);
+      margin-bottom: var(--space-xs);
+      white-space: normal; /* ✅ Allow wrapping on tablet */
+      max-width: 90%;
     }
   
     .subtitle {
-      font-size: 19px !important;
-      margin-bottom: 88px !important; /* 117px × 0.75 */
-      max-width: 675px !important;
+      font-size: clamp(14px, 3vw, 18px);
+      margin-bottom: var(--space-2xl);
+      white-space: normal; /* ✅ Allow wrapping on tablet */
+      max-width: 90%;
+      padding: 0;
     }
   
     .videoContainer {
-      width: 763px !important;
-      height: 429px !important;
-      border-radius: 30px !important;
+      width: min(90%, 600px);
+      height: auto;
+      aspect-ratio: 1017 / 572; /* Maintains ratio */
+      border-radius: var(--radius-lg);
     }
   }
   
   /* ============================================
-     RESPONSIVE BREAKPOINTS
+     RESPONSIVE - MOBILE
      ============================================ */
   
-  /* 1440px - 0.75 scale */
-  @media (max-width: 1440px) {
+  @media (max-width: 480px) {
     .innovationSection {
-      padding: 75px 0;
+      padding: var(--space-2xl) 0;
     }
   
     .container {
-      padding: 0 115px;
+      padding: 0 var(--space-md);
     }
   
     .title {
-      font-size: 36px;
-      margin-bottom: 8px; /* 11px × 0.75 */
-    }
-  
-    .subtitle {
-      font-size: 19px;
-      margin-bottom: 88px; /* 117px × 0.75 */
-      max-width: 675px;
-    }
-  
-    .videoContainer {
-      width: 763px;
-      height: 429px;
-      border-radius: 30px;
-    }
-  }
-  
-  /* 1366px - 0.71 scale */
-  @media (max-width: 1366px) {
-    .innovationSection {
-      padding: 71px 0;
-    }
-  
-    .container {
-      padding: 0 109px;
-    }
-  
-    .title {
-      font-size: 34px;
-      margin-bottom: 8px; /* 11px × 0.71 */
-    }
-  
-    .subtitle {
-      font-size: 18px;
-      margin-bottom: 83px; /* 117px × 0.71 */
-      max-width: 639px;
-    }
-  
-    .videoContainer {
-      width: 722px;
-      height: 406px;
-      border-radius: 28px;
-    }
-  }
-  
-  /* 1280px - 0.67 scale */
-  @media (max-width: 1280px) {
-    .innovationSection {
-      padding: 67px 0;
-    }
-  
-    .container {
-      padding: 0 102px;
-    }
-  
-    .title {
-      font-size: 32px;
-      margin-bottom: 7px; /* 11px × 0.67 */
-    }
-  
-    .subtitle {
-      font-size: 17px;
-      margin-bottom: 78px; /* 117px × 0.67 */
-      max-width: 603px;
-    }
-  
-    .videoContainer {
-      width: 681px;
-      height: 383px;
-      border-radius: 27px;
-    }
-  }
-  
-  /* 1024px - 0.53 scale */
-  @media (max-width: 1024px) {
-    .innovationSection {
-      padding: 53px 0;
-    }
-  
-    .container {
-      padding: 0 81px;
-    }
-  
-    .title {
-      font-size: 25px;
-      margin-bottom: 6px; /* 11px × 0.53 */
-    }
-  
-    .subtitle {
-      font-size: 13px;
-      margin-bottom: 62px; /* 117px × 0.53 */
-      max-width: 477px;
-      white-space: normal; /* Allow wrapping on smaller screens */
-    }
-  
-    .videoContainer {
-      width: 539px;
-      height: 303px;
-      border-radius: 21px;
-    }
-  }
-  
-  /* 768px - Tablet */
-  @media (max-width: 768px) {
-    .innovationSection {
-      padding: 50px 0;
-    }
-  
-    .container {
-      padding: 0 20px;
-    }
-  
-    .title {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-  
-    .subtitle {
-      font-size: 16px;
-      margin-bottom: 40px;
+      font-size: clamp(20px, 5.5vw, 28px);
+      margin-bottom: var(--space-2xs);
       max-width: 100%;
-      white-space: normal;
+    }
+  
+    .subtitle {
+      font-size: clamp(13px, 3.5vw, 16px);
+      margin-bottom: var(--space-xl);
+      max-width: 100%;
     }
   
     .videoContainer {
       width: 100%;
-      max-width: 600px;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      border-radius: 20px;
+      border-radius: var(--radius-md);
+    }
+  
+    .playButton {
+      width: 48px;
+      height: 48px;
     }
   }
   
-  /* 480px - Mobile */
-  @media (max-width: 480px) {
-    .innovationSection {
-      padding: 40px 0;
-    }
+  /* ============================================
+     SMALL MOBILE
+     ============================================ */
   
-    .container {
-      padding: 0 15px;
-    }
-  
-    .title {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-  
-    .subtitle {
-      font-size: 14px;
-      margin-bottom: 30px;
-    }
-  
-    .videoContainer {
-      border-radius: 16px;
-    }
-  }
-  
-  /* 375px - Small Mobile */
   @media (max-width: 375px) {
     .title {
-      font-size: 22px;
+      font-size: clamp(18px, 6vw, 24px);
     }
   
     .subtitle {
-      font-size: 13px;
+      font-size: clamp(12px, 3.5vw, 14px);
     }
   }
   
-  /* 320px - Smallest Mobile */
+  /* ============================================
+     SMALLEST MOBILE
+     ============================================ */
+  
   @media (max-width: 320px) {
     .innovationSection {
-      padding: 30px 0;
+      padding: var(--space-xl) 0;
     }
   
     .title {
-      font-size: 20px;
+      font-size: clamp(16px, 6.5vw, 22px);
     }
   
     .subtitle {
-      font-size: 12px;
+      font-size: clamp(11px, 3.5vw, 13px);
+      margin-bottom: var(--space-lg);
     }
   }
   
@@ -380,10 +266,59 @@
       opacity: 1 !important;
       transform: none !important;
     }
+  
+    .videoContainer:hover {
+      transform: none;
+    }
+  
+    .playButton:hover {
+      transform: translate(-50%, -50%);
+    }
   }
   
-  /* Focus states */
   .playButton:focus-visible {
-    outline: 3px solid #2683C6;
+    outline: 3px solid var(--color-primary);
     outline-offset: 4px;
+    border-radius: 50%;
+  }
+  
+  .videoContainer:focus-within {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+  
+  /* ============================================
+     HIGH DPI DISPLAYS
+     ============================================ */
+  
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .video {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
+  
+  /* ============================================
+     PRINT STYLES
+     ============================================ */
+  
+  @media print {
+    .innovationSection {
+      padding: 20px 0;
+      break-inside: avoid;
+    }
+  
+    .videoContainer {
+      box-shadow: none;
+      border: 1px solid #ddd;
+    }
+  
+    .playButton {
+      display: none;
+    }
+  
+    .title,
+    .subtitle {
+      white-space: normal;
+    }
   }

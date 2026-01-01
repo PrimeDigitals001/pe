@@ -108,7 +108,7 @@ const StatsSection = () => {
       <div className={styles.container}>
         
         {/* Top Border Line */}
-        <div className={styles.topLine}></div>
+        {/* <div className={styles.topLine}></div> */}
 
         {/* Stats Grid */}
         <div className={styles.statsGrid}>
@@ -141,7 +141,7 @@ const StatsSection = () => {
         </div>
 
         {/* Bottom Border Line */}
-        <div className={styles.bottomLine}></div>
+        {/* <div className={styles.bottomLine}></div> */}
 
       </div>
     </section>

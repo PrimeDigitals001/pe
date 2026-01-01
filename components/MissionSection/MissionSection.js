@@ -62,7 +62,7 @@ const MissionSection = () => {
           >
             <img 
               src="/images/rectangle-169.png" 
-              alt="MK Roofing Project 1" 
+              alt="Patel Enterprise Project 1" 
               className={styles.image}
             />
           </motion.div>
@@ -72,7 +72,7 @@ const MissionSection = () => {
           >
             <img 
               src="/images/rectangle-170.png" 
-              alt="MK Roofing Project 2" 
+              alt="Patel Enterprise Project 2" 
               className={styles.image}
             />
           </motion.div>
@@ -126,7 +126,7 @@ const MissionSection = () => {
           >
             <img 
               src="/images/rectangle-171.png" 
-              alt="MK Roofing Project 3" 
+              alt="Patel Enterprise Project 3" 
               className={styles.image}
             />
           </motion.div>
@@ -136,7 +136,7 @@ const MissionSection = () => {
           >
             <img 
               src="/images/rectangle-172.png" 
-              alt="MK Roofing Project 4" 
+              alt="Patel Enterprise Project 4" 
               className={styles.image}
             />
           </motion.div>

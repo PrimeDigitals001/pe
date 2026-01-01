@@ -56,7 +56,7 @@ const Footer = () => {
             <div className={styles.logoWrapper}>
               <Image 
                 src="/images/logo.png" 
-                alt="MK Roofing Logo"
+                alt="Patel Enterprise Logo"
                 width={240}
                 height={86}
                 className={styles.logo}

@@ -31,6 +31,7 @@ export default function EjotScrewPage() {
             src={ejotScrewData.companyInfo.logo} 
             alt={ejotScrewData.companyInfo.name}
             className={styles.ejotLogo}
+            loading="lazy"
           />
         </div>
 
@@ -46,6 +47,7 @@ export default function EjotScrewPage() {
               target="_blank" 
               rel="noopener noreferrer"
               className={styles.furtherInfoLink}
+              aria-label="Further information about EJOT self-tapping screws"
             >
               » Further information
             </a>
@@ -55,53 +57,57 @@ export default function EjotScrewPage() {
         {/* Products Header */}
         <div className={styles.productsHeader}>
           <h2 className={styles.productsTitle}>Products</h2>
-          <span className={styles.productsCount}>{ejotScrewData.products.length}</span>
+          <span className={styles.productsCount} aria-label={`${ejotScrewData.products.length} products available`}>
+            ({ejotScrewData.products.length})
+          </span>
         </div>
 
         {/* Divider Line */}
-        <div className={styles.dividerLine}></div>
+        <div className={styles.dividerLine} role="separator"></div>
 
         {/* Products Grid */}
         <div className={styles.productsGrid}>
           {filteredProducts.map((product) => (
-            <div key={product.id} className={styles.productCard}>
+            <article key={product.id} className={styles.productCard}>
               
               {/* Product Image */}
               <div className={styles.productImageWrapper}>
                 <img 
                   src={product.image} 
-                  alt={product.name}
+                  alt={`${product.name} - ${product.category}`}
                   className={styles.productImage}
+                  loading="lazy"
                 />
               </div>
 
               {/* Product Name */}
               <h3 className={styles.productName}>{product.name}</h3>
 
-              {/* Feature (self-tapping screw) */}
+              {/* Feature */}
               <p className={styles.productFeature}>self-tapping screw</p>
 
               {/* Product Description */}
               <p className={styles.productDescription}>
-  {product.cardDescription}  {/* ← Changed from product.useCase */}
-</p>
+                {product.cardDescription}
+              </p>
 
               {/* View Product Link */}
               <Link 
                 href={`/products/ejot-screw/${product.slug}`}
                 className={styles.viewProductLink}
+                aria-label={`View details for ${product.name}`}
               >
                 View product
               </Link>
 
               {/* Bottom Border */}
               <div className={styles.cardBottomBorder}></div>
-            </div>
+            </article>
           ))}
         </div>
 
         {/* Bottom Content Section */}
-        <div className={styles.bottomContent}>
+        <section className={styles.bottomContent}>
           
           {/* Section 1 */}
           <h2 className={styles.bottomTitle}>Self-tapping Screws</h2>
@@ -122,7 +128,7 @@ export default function EjotScrewPage() {
           <p className={styles.bottomDescription}>
             You are looking for a fastening solution for indoor swimming pools or chemical plants? The JA/JZ1 self-tapping screws are the reliable experts when it comes to building projects in highly corrosive environments. The JA1/JZ1 feature the material class stainless steel HCR ® 1.4529 and thus have the highest corrosion-protection class.
           </p>
-        </div>
+        </section>
 
       </main>
 

@@ -4,8 +4,8 @@ import FloatingQuoteButton from '@/components/FloatingQuoteButton'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-    title: 'Contact Us - MK Roofing',
-    description: 'Get in touch with MK Roofing for your industrial roofing needs',
+    title: 'Contact Us - Patel Enterprise',
+    description: 'Get in touch with Patel Enterprise for your industrial roofing needs',
 }
 
 export default function Contact() {
@@ -31,8 +31,7 @@ export default function Contact() {
                             <strong>Phone:</strong> +91 73599 51901
                         </p>
                         <p>
-                            <strong>Email:</strong> info@mkroofing.com
-                        </p>
+                            <strong>Email:</strong> meetpatel@paterenterprise.com                     </p>
                     </div>
                 </div>
             </main>

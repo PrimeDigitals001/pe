@@ -5,7 +5,7 @@ import ProjectsGallery from './components/ProjectsGallery';
 import Footer from '@/components/Footer';
 
 export const metadata = {
-  title: 'Our Projects - MK Roofing',
+  title: 'Our Projects - Patel Enterprise',
   description: 'Explore our portfolio of successful construction projects and achievements.',
 };
 

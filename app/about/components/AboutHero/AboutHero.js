@@ -10,7 +10,7 @@ const AboutHero = () => {
       <div className={styles.heroImage}>
         <img 
           src="/images/hero_img.png" 
-          alt="MK Roofing Team"
+          alt="Patel Enterprise Team"
           className={styles.image}
         />
       </div>

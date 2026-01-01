@@ -1,74 +1,72 @@
 /* ============================================
-   PROJECTS GALLERY SECTION
-   Buttons LEFT ALIGNED with cards
+   PROJECTS GALLERY SECTION - ZOOM-PROOF
+   Base Design: 1920px × 1080px
+   Grid: 3 cards × 501px + gaps 34px = 1569px
+   
+   ✅ Desktop: 3 columns, LEFT-ALIGNED
+   ✅ Filter buttons LEFT-ALIGNED with grid
+   ✅ Tablet: 2 columns, centered
+   ✅ Mobile: 1 column, centered
+   ============================================ */
+
+/* ============================================
+   SECTION WRAPPER
    ============================================ */
 
    .projectsGallerySection {
     width: 100%;
     position: relative;
-    background: #ffffff;
-    padding: 60px 0 100px 0;
+    background: var(--color-white);
+    padding: clamp(40px, 3.13vw, 60px) 0 clamp(60px, 5.21vw, 100px) 0;
   }
   
   .container {
-    max-width: 1920px;
+    max-width: clamp(900px, 87.34vw, 1677px);
     margin: 0 auto;
-    padding: 0 153px;
+    padding: 0 clamp(20px, 2.81vw, 54px);
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* FIXED: Left align instead of center */
+    align-items: flex-start; /* ✅ LEFT-ALIGN everything on desktop */
   }
   
   /* ============================================
-     FILTER BUTTONS - LEFT ALIGNED
-     Start from same position as cards grid
+     FILTER BUTTONS - LEFT ALIGNED WITH GRID
      ============================================ */
   
   .filterButtonsWrapper {
     display: flex;
-    gap: 21px;
-    margin-bottom: 60px;
-    justify-content: flex-start; /* FIXED: Left align */
+    gap: clamp(12px, 1.09vw, 21px);
+    margin-bottom: clamp(35px, 3.13vw, 60px);
+    justify-content: flex-start; /* ✅ LEFT-ALIGNED */
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
-    max-width: 1569px; /* 3 cards × 501px + 2 gaps × 34px */
   }
   
   .filterButton {
-    background: #ffffff;
+    background: var(--color-white);
     border: none;
     border-radius: 50px;
-    padding: 0;
-    height: 55px;
-    font-family: "Grift-Medium", sans-serif;
-    font-size: 24px;
+    padding: 0 clamp(16px, 1.5vw, 28px);
+    height: clamp(38px, 2.86vw, 55px);
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 1.25vw, 24px);
     font-weight: 500;
-    color: #000000;
+    color: var(--color-black);
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.17);
-    display: flex;
+    box-shadow: 0px 0px clamp(4px, 0.31vw, 6px) 0px rgba(0, 0, 0, 0.17);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  /* Exact button widths */
-  .filterButton[data-filter="all"] {
-    width: 119px;
-  }
-  
-  .filterButton[data-filter="industrial"] {
-    width: 140px;
-  }
-  
-  .filterButton[data-filter="commercial"] {
-    width: 191px;
+    white-space: nowrap;
+    min-width: fit-content;
   }
   
   /* Active State */
   .filterButton.active {
-    background: #2683C6;
-    color: #ffffff;
+    background: var(--color-primary);
+    color: var(--color-white);
     box-shadow: 0px 4px 12px rgba(38, 131, 198, 0.3);
   }
   
@@ -81,314 +79,226 @@
     box-shadow: 0px 6px 16px rgba(38, 131, 198, 0.4);
   }
   
+  .filterButton:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+  
   /* ============================================
      PROJECTS GRID - LEFT ALIGNED
+     Desktop: 3 cols, Tablet: 2 cols, Mobile: 1 col
      ============================================ */
   
   .projectsGrid {
     display: grid;
-    grid-template-columns: repeat(3, 501px);
-    gap: 34px;
-    justify-content: flex-start; /* FIXED: Left align */
+    grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 26.1vw, 501px), 1fr));
+    gap: clamp(20px, 1.77vw, 34px);
+    justify-content: flex-start; /* ✅ LEFT-ALIGNED */
     width: 100%;
+    max-width: clamp(900px, 81.72vw, 1569px);
+  }
+  
+  /* Force exactly 3 columns on desktop */
+  @media (min-width: 1200px) {
+    .projectsGrid {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: clamp(1100px, 81.72vw, 1569px);
+    }
+  }
+  
+  /* Force exactly 2 columns on tablet */
+  @media (min-width: 769px) and (max-width: 1199px) {
+    .projectsGrid {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: clamp(600px, 70vw, 900px);
+    }
+    
+    /* Center on tablet */
+    .container {
+      align-items: center;
+    }
+    
+    .filterButtonsWrapper {
+      justify-content: center;
+    }
+  }
+  
+  /* Force 1 column on mobile */
+  @media (max-width: 768px) {
+    .projectsGrid {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+    }
+    
+    /* Center on mobile */
+    .container {
+      align-items: center;
+    }
+    
+    .filterButtonsWrapper {
+      justify-content: center;
+    }
   }
   
   /* No Projects Message */
   .noProjects {
     grid-column: 1 / -1;
     text-align: center;
-    padding: 60px 20px;
+    padding: clamp(40px, 3.13vw, 60px) clamp(16px, 1.04vw, 20px);
     color: rgba(0, 0, 0, 0.5);
-    font-family: "Grift-Medium", sans-serif;
-    font-size: 20px;
+    font-family: var(--font-heading);
+    font-size: clamp(16px, 1.04vw, 20px);
   }
   
   /* ============================================
-     🔒 LOCK FOR SCREENS > 1440px
+     ANIMATIONS
      ============================================ */
   
-  @media (min-width: 1441px) {
-    .projectsGallerySection {
-      padding: 45px 0 75px 0 !important;
-    }
+  .projectsGallerySection .animateUp {
+    opacity: 0;
+    transform: translateY(40px);
+    will-change: transform, opacity;
+  }
   
-    .container {
-      padding: 0 115px !important;
-    }
-  
-    .filterButtonsWrapper {
-      gap: 16px !important;
-      margin-bottom: 45px !important;
-      max-width: 1178px !important; /* 3×376 + 2×26 */
-    }
-  
-    .filterButton {
-      height: 41px !important;
-      font-size: 18px !important;
-    }
-  
-    .filterButton[data-filter="all"] {
-      width: 89px !important;
-    }
-  
-    .filterButton[data-filter="industrial"] {
-      width: 105px !important;
-    }
-  
-    .filterButton[data-filter="commercial"] {
-      width: 143px !important;
-    }
-  
-    .projectsGrid {
-      grid-template-columns: repeat(3, 376px) !important;
-      gap: 26px !important;
+  @keyframes slideInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   
+  .animate .animateUp {
+    animation: slideInUp 0.8s ease-out forwards;
+  }
+  
   /* ============================================
-     🔒 RESPONSIVE BREAKPOINTS
+     TABLET SPECIFIC - 2 Columns
      ============================================ */
   
-  /* 1440px - 0.75 scale */
-  @media (max-width: 1440px) {
+  @media (max-width: 1199px) and (min-width: 769px) {
     .projectsGallerySection {
-      padding: 45px 0 75px 0;
+      padding: clamp(40px, 5vw, 60px) 0 clamp(60px, 7vw, 80px) 0;
     }
   
     .container {
-      padding: 0 115px;
+      padding: 0 clamp(24px, 4vw, 48px);
     }
   
     .filterButtonsWrapper {
-      gap: 16px;
-      margin-bottom: 45px;
-      max-width: 1178px;
+      margin-bottom: clamp(30px, 4vw, 50px);
+      gap: clamp(12px, 1.5vw, 18px);
     }
   
     .filterButton {
-      height: 41px;
-      font-size: 18px;
-    }
-  
-    .filterButton[data-filter="all"] {
-      width: 89px;
-    }
-  
-    .filterButton[data-filter="industrial"] {
-      width: 105px;
-    }
-  
-    .filterButton[data-filter="commercial"] {
-      width: 143px;
+      height: clamp(40px, 5vw, 48px);
+      font-size: clamp(15px, 2vw, 20px);
+      padding: 0 clamp(18px, 2.5vw, 24px);
     }
   
     .projectsGrid {
-      grid-template-columns: repeat(3, 376px);
-      gap: 26px;
-    }
-  }
-  
-  /* 1366px - 0.71 scale */
-  @media (max-width: 1366px) {
-    .container {
-      padding: 0 109px;
-    }
-  
-    .filterButtonsWrapper {
-      max-width: 1116px;
-    }
-  
-    .filterButton {
-      height: 39px;
-      font-size: 17px;
-    }
-  
-    .filterButton[data-filter="all"] {
-      width: 84px;
-    }
-  
-    .filterButton[data-filter="industrial"] {
-      width: 99px;
-    }
-  
-    .filterButton[data-filter="commercial"] {
-      width: 136px;
-    }
-  
-    .projectsGrid {
-      grid-template-columns: repeat(3, 356px);
-      gap: 24px;
-    }
-  }
-  
-  /* 1280px - 0.67 scale */
-  @media (max-width: 1280px) {
-    .container {
-      padding: 0 102px;
-    }
-  
-    .filterButtonsWrapper {
-      max-width: 1054px;
-    }
-  
-    .filterButton {
-      height: 37px;
-      font-size: 16px;
-    }
-  
-    .filterButton[data-filter="all"] {
-      width: 80px;
-    }
-  
-    .filterButton[data-filter="industrial"] {
-      width: 94px;
-    }
-  
-    .filterButton[data-filter="commercial"] {
-      width: 128px;
-    }
-  
-    .projectsGrid {
-      grid-template-columns: repeat(3, 336px);
-      gap: 23px;
-    }
-  }
-  
-  /* 1024px - 0.53 scale - 2 columns */
-  @media (max-width: 1024px) {
-    .projectsGallerySection {
-      padding: 40px 0 60px 0;
-    }
-  
-    .container {
-      padding: 0 40px;
-      align-items: center; /* Center on tablet */
-    }
-  
-    .filterButtonsWrapper {
-      gap: 12px;
-      margin-bottom: 30px;
-      justify-content: center; /* Center buttons on tablet */
-    }
-  
-    .filterButton {
-      height: 29px;
-      font-size: 13px;
-    }
-  
-    .filterButton[data-filter="all"] {
-      width: 63px;
-    }
-  
-    .filterButton[data-filter="industrial"] {
-      width: 74px;
-    }
-  
-    .filterButton[data-filter="commercial"] {
-      width: 101px;
-    }
-  
-    .projectsGrid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 600px;
-      justify-content: center;
+      gap: clamp(24px, 3vw, 32px);
     }
   }
   
   /* ============================================
-     📱 TABLET & MOBILE
+     MOBILE SPECIFIC - 1 Column
      ============================================ */
   
   @media (max-width: 768px) {
     .projectsGallerySection {
-      padding: 40px 0 60px 0;
+      padding: clamp(35px, 8vw, 50px) 0 clamp(50px, 10vw, 70px) 0;
     }
   
     .container {
-      padding: 0 20px;
-      align-items: center;
+      padding: 0 clamp(16px, 4vw, 24px);
     }
   
     .filterButtonsWrapper {
-      gap: 10px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
+      margin-bottom: clamp(28px, 7vw, 40px);
+      gap: clamp(10px, 2.5vw, 14px);
     }
   
     .filterButton {
-      height: 42px;
-      font-size: 16px;
-    }
-  
-    .filterButton[data-filter="all"] {
-      width: 80px;
-    }
-  
-    .filterButton[data-filter="industrial"] {
-      width: 100px;
-    }
-  
-    .filterButton[data-filter="commercial"] {
-      width: 130px;
+      height: clamp(40px, 10vw, 48px);
+      font-size: clamp(14px, 3.5vw, 18px);
+      padding: 0 clamp(16px, 4vw, 24px);
     }
   
     .projectsGrid {
-      grid-template-columns: 1fr;
-      gap: 28px;
-      justify-content: center;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .filterButton {
-      height: 38px;
-      font-size: 14px;
+      gap: clamp(24px, 6vw, 32px);
     }
   
-    .filterButton[data-filter="all"] {
-      width: 70px;
-    }
-  
-    .filterButton[data-filter="industrial"] {
-      width: 90px;
-    }
-  
-    .filterButton[data-filter="commercial"] {
-      width: 115px;
-    }
-  
-    .projectsGrid {
-      gap: 24px;
-    }
-  }
-  
-  @media (max-width: 375px) {
-    .filterButton {
-      height: 36px;
-      font-size: 13px;
-    }
-  
-    .filterButton[data-filter="all"] {
-      width: 65px;
-    }
-  
-    .filterButton[data-filter="industrial"] {
-      width: 85px;
-    }
-  
-    .filterButton[data-filter="commercial"] {
-      width: 110px;
+    .noProjects {
+      padding: clamp(30px, 8vw, 50px) clamp(16px, 4vw, 20px);
+      font-size: clamp(15px, 4vw, 18px);
     }
   }
   
   /* ============================================
-     ACCESSIBILITY
+     SMALL MOBILE - Extra Refinement
+     ============================================ */
+  
+  @media (max-width: 480px) {
+    .projectsGallerySection {
+      padding: clamp(30px, 7vw, 40px) 0 clamp(45px, 9vw, 60px) 0;
+    }
+  
+    .container {
+      padding: 0 clamp(12px, 3vw, 16px);
+    }
+  
+    .filterButtonsWrapper {
+      gap: clamp(8px, 2vw, 12px);
+      margin-bottom: clamp(24px, 6vw, 32px);
+    }
+  
+    .filterButton {
+      height: clamp(36px, 9vw, 44px);
+      font-size: clamp(13px, 3.2vw, 16px);
+      padding: 0 clamp(14px, 3.5vw, 20px);
+    }
+  
+    .projectsGrid {
+      gap: clamp(20px, 5vw, 28px);
+    }
+  }
+  
+  /* ============================================
+     ACCESSIBILITY - Reduced Motion
      ============================================ */
   
   @media (prefers-reduced-motion: reduce) {
     .filterButton {
       transition: none !important;
+    }
+  
+    .filterButton:hover {
+      transform: none !important;
+    }
+  
+    .projectsGallerySection .animateUp {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+  
+  /* ============================================
+     FOCUS STATES - Keyboard Navigation
+     ============================================ */
+  
+  .filterButton:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+  }
+  
+  /* ============================================
+     HIGH RESOLUTION DISPLAYS
+     ============================================ */
+  
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .filterButton {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
   }
