@@ -9,7 +9,7 @@ export const productsData = [
   },
   {
     id: 2,
-    name: 'Company 2',
+    name: 'Ejot',
     slug: 'ejot-screw',
     logo: '/images/products/logo_ejot.png',
     description: 'Global leader in access systems',
@@ -33,9 +33,9 @@ export const productsData = [
   },
   {
     id: 5,
-    name: 'Company 5',
-    slug: 'company-5',
-    logo: '/images/products/logo_5.png',
+    name: 'Birlanu',
+    slug: 'birlanu',
+    logo: '/images/products/logo_birlanu.png',
     description: 'Certified height safety equipment',
     website: 'https://company5.com',
   },

@@ -1,0 +1,827 @@
+/* ============================================
+   BIRLANU PRODUCT DETAIL PAGE - COMPACT VERSION
+   Base Design: 1920px × 1080px
+   
+   ✅ Perfect spacing and alignment
+   ✅ Zoom-proof at all levels
+   ✅ Responsive on all devices
+   ============================================ */
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+
+   .productPage {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--color-white);
+    padding-top: clamp(80px, 10vh, 150px);
+    position: relative;
+  }
+  
+  /* ============================================
+     LOGO SECTION - COMPACT SPACING
+     ============================================ */
+  
+  .logoSection {
+    width: 100%;
+    padding-top: clamp(40px, 6.25vw, 120px);
+    margin-bottom: clamp(20px, 1.56vw, 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .companyLogo {
+    width: clamp(80px, 9.01vw, 173px);
+    height: auto;
+    aspect-ratio: 173 / 52;
+    object-fit: contain;
+    display: block;
+  }
+  
+  /* ============================================
+     BREADCRUMB NAVIGATION
+     ============================================ */
+  
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: clamp(6px, 0.52vw, 10px);
+    margin: 0 0 clamp(20px, 1.56vw, 30px) clamp(20px, 6.3vw, 121px);
+    flex-wrap: wrap;
+  }
+  
+  .breadcrumbLink {
+    color: #A6A6A6;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .breadcrumbLink:hover {
+    color: #805E4B;
+  }
+  
+  .breadcrumbLink:focus-visible {
+    outline: 2px solid #805E4B;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  
+  .breadcrumbArrow {
+    color: #A6A6A6;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 600;
+  }
+  
+  .breadcrumbCurrent {
+    color: #805E4B;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 600;
+  }
+  
+  /* ============================================
+     PRODUCT DETAIL SECTION
+     Grid: Image (left) + Info (right)
+     ============================================ */
+  
+  .productDetailSection {
+    display: grid;
+    grid-template-columns: clamp(350px, 32.3vw, 621px) 1fr;
+    gap: clamp(25px, 3.13vw, 60px);
+    margin: 0 0 0 clamp(20px, 6.3vw, 121px);
+    padding-right: clamp(20px, 7.86vw, 151px);
+    max-width: 1920px;
+  }
+  
+  /* Product Image Container */
+  .productImageContainer {
+    width: 100%;
+    max-width: clamp(350px, 32.3vw, 621px);
+    aspect-ratio: 621 / 618;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    background: var(--color-white);
+  }
+  
+  .productMainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  
+  .productMainImage:hover {
+    transform: scale(1.03);
+  }
+  
+  /* ============================================
+     PRODUCT INFORMATION
+     ============================================ */
+  
+  .productInfo {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 0.63vw, 12px);
+    max-width: clamp(600px, 50.31vw, 966px);
+  }
+  
+  .productTitle {
+    color: #805E4B;
+    font-family: var(--font-heading);
+    font-size: clamp(20px, 1.875vw, 36px);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+  }
+  
+  .productCategory {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+  }
+  
+  .productShortDesc {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  /* Divider Line */
+  .dividerLine {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.14);
+    margin: clamp(6px, 0.63vw, 12px) 0;
+  }
+  
+  /* ============================================
+     INFO SECTIONS
+     ============================================ */
+  
+  .infoSection {
+    margin: clamp(4px, 0.52vw, 10px) 0;
+  }
+  
+  .sectionTitle {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(15px, 1.04vw, 20px);
+    font-weight: 500;
+    margin: 0 0 clamp(6px, 0.63vw, 12px) 0;
+    line-height: 1.3;
+  }
+  
+  .longDescription {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  /* ============================================
+     SIZES / SKUs TABLE
+     ============================================ */
+  
+  .sizesTable {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 1.04vw, 20px);
+  }
+  
+  .sizeRow {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(4px, 0.42vw, 8px) clamp(12px, 1.25vw, 24px);
+    padding: clamp(10px, 0.83vw, 16px);
+    background: rgba(128, 94, 75, 0.05);
+    border-radius: clamp(6px, 0.52vw, 10px);
+    align-items: center;
+  }
+  
+  .sizeLabel {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: var(--font-heading);
+    font-size: clamp(12px, 0.83vw, 16px);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  .sizeValue {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(12px, 0.83vw, 16px);
+    font-weight: 500;
+    word-wrap: break-word;
+  }
+  
+  /* ============================================
+     SIMPLE LIST (Applications - NO bullets)
+     ============================================ */
+  
+  .simpleList {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.42vw, 8px);
+  }
+  
+  .listItem {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  /* ============================================
+     BULLET LIST (Standards - WITH bullets)
+     ============================================ */
+  
+  .bulletList {
+    margin: 0;
+    padding-left: clamp(18px, 1.25vw, 24px);
+    list-style-type: disc;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.42vw, 8px);
+  }
+  
+  .bulletItem {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  /* ============================================
+     DOWNLOAD LIST
+     ============================================ */
+  
+  .downloadList {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.42vw, 8px);
+  }
+  
+  .downloadLink {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 0.83vw, 16px);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    padding: clamp(3px, 0.31vw, 6px) 0;
+  }
+  
+  .downloadLink:hover {
+    opacity: 0.7;
+  }
+  
+  .downloadLink:focus-visible {
+    outline: 2px solid #805E4B;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  
+  .downloadIcon {
+    width: clamp(18px, 0.99vw, 19px);
+    height: clamp(18px, 0.99vw, 19px);
+    color: rgba(0, 0, 0, 0.6);
+    flex-shrink: 0;
+  }
+  
+  .downloadText {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  
+  .downloadName {
+    text-decoration: underline;
+  }
+  
+  .downloadSize {
+    text-decoration: none;
+    opacity: 0.8;
+  }
+  
+  /* ============================================
+     ENQUIRE BUTTON
+     ============================================ */
+  
+  .enquireButton {
+    background: #805E4B;
+    border-radius: 64px;
+    border: none;
+    width: clamp(150px, 9.48vw, 182px);
+    height: clamp(46px, 2.81vw, 54px);
+    color: rgba(255, 255, 255, 0.95);
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 0.83vw, 16px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: clamp(15px, 1.56vw, 30px);
+    align-self: flex-start;
+    box-shadow: 0 2px 8px rgba(128, 94, 75, 0.2);
+  }
+  
+  .enquireButton:hover {
+    background: #6b4d3d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(128, 94, 75, 0.3);
+  }
+  
+  .enquireButton:focus-visible {
+    outline: 3px solid #805E4B;
+    outline-offset: 3px;
+  }
+  
+  .enquireButton:active {
+    transform: translateY(0);
+  }
+  
+  /* ============================================
+     FEATURES & BENEFITS SECTION
+     ============================================ */
+  
+  .featuresSection {
+    margin: clamp(50px, 4.69vw, 90px) auto 0;
+    max-width: clamp(1000px, 82.81vw, 1590px);
+    padding: 0 clamp(20px, 1.3vw, 25px);
+  }
+  
+  .featuresSectionTitle {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 2.5vw, 48px);
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 clamp(35px, 3.65vw, 70px) 0;
+    line-height: 1.3;
+  }
+  
+  /* Features Grid - 4 items in a row */
+  .featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(30px, 3.13vw, 60px);
+    margin-bottom: clamp(40px, 4.17vw, 80px);
+    justify-items: center;
+  }
+  
+  .featureItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 300px;
+  }
+  
+  .featureIcon {
+    width: clamp(70px, 5.73vw, 110px);
+    height: clamp(70px, 5.73vw, 110px);
+    object-fit: contain;
+    margin-bottom: clamp(16px, 1.88vw, 36px);
+  }
+  
+  .featureText {
+    color: #805E4B;
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 1.25vw, 24px);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+  /* Section Divider */
+  .sectionDivider {
+    width: 100%;
+    max-width: clamp(1000px, 82.81vw, 1590px);
+    height: 1px;
+    background: rgba(0, 0, 0, 0.7);
+    margin: clamp(40px, 4.17vw, 80px) auto;
+  }
+  
+  /* Benefits Grid - 3 items in a row */
+  .benefitsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(30px, 3.65vw, 70px);
+    margin-bottom: clamp(50px, 5.21vw, 100px);
+    max-width: clamp(900px, 74.69vw, 1434px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .benefitItem {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2.08vw, 40px);
+  }
+  
+  .benefitIcon {
+    width: clamp(55px, 4.48vw, 86px);
+    height: clamp(55px, 4.43vw, 85px);
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+  
+  .benefitText {
+    color: #805E4B;
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 1.25vw, 24px);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+    flex: 1;
+  }
+  
+  /* ============================================
+     FURTHER PRODUCTS SECTION
+     ============================================ */
+  
+  .furtherProductsSection {
+    margin: clamp(50px, 4.69vw, 90px) 0 0 clamp(20px, 6.3vw, 121px);
+    padding-right: clamp(20px, 7.86vw, 151px);
+  }
+  
+  .furtherProductsTitle {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(22px, 2.08vw, 40px);
+    font-weight: 500;
+    margin: 0 0 clamp(8px, 0.63vw, 12px) 0;
+    line-height: 1.3;
+  }
+  
+  .furtherProductsDivider {
+    width: 100%;
+    max-width: clamp(1000px, 85.36vw, 1639px);
+    height: 1.5px;
+    background: var(--color-black);
+    margin: 0 0 clamp(30px, 2.34vw, 45px) 0;
+  }
+  
+  /* ============================================
+     RELATED PRODUCTS GRID - 3 Columns
+     ============================================ */
+  
+  .relatedProductsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(24px, 2.92vw, 56px);
+    max-width: clamp(1000px, 85.36vw, 1639px);
+  }
+  
+  .relatedProductCard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .relatedProductLink {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    height: 100%;
+  }
+  
+  .relatedProductLink:hover {
+    transform: translateY(-4px);
+  }
+  
+  .relatedProductLink:focus-visible {
+    outline: 3px solid #805E4B;
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+  
+  .relatedProductImage {
+    width: 100%;
+    aspect-ratio: 469 / 364;
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    margin-bottom: clamp(10px, 0.83vw, 16px);
+  }
+  
+  .relatedProductImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .relatedProductLink:hover .relatedProductImage img {
+    transform: scale(1.05);
+  }
+  
+  .relatedProductName {
+    color: #805E4B;
+    font-family: var(--font-heading);
+    font-size: clamp(16px, 1.35vw, 26px);
+    font-weight: 600;
+    margin: 0 0 clamp(6px, 0.52vw, 10px) 0;
+    line-height: 1.3;
+  }
+  
+  .relatedProductCategory {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 1.04vw, 20px);
+    font-weight: 700;
+    margin: 0 0 clamp(6px, 0.52vw, 10px) 0;
+    line-height: 1.2;
+  }
+  
+  .relatedProductDesc {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 1.25vw, 24px);
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0 0 clamp(10px, 1.04vw, 20px) 0;
+    flex-grow: 1;
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .viewProductLink {
+    color: rgba(0, 0, 0, 0.8);
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 1.25vw, 24px);
+    font-weight: 400;
+    text-decoration: underline;
+    margin-bottom: clamp(14px, 1.56vw, 30px);
+    display: inline-block;
+  }
+  
+  .relatedProductLink:hover .viewProductLink {
+    color: #805E4B;
+  }
+  
+  .relatedProductBorder {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.35);
+    margin-top: auto;
+  }
+  
+  /* ============================================
+     BOTTOM CONTENT SECTION
+     ============================================ */
+  
+  .bottomContent {
+    margin: clamp(40px, 4.17vw, 80px) auto 0;
+    max-width: clamp(800px, 80.21vw, 1540px);
+    padding: 0 clamp(20px, 9.9vw, 190px) clamp(40px, 4.17vw, 80px);
+  }
+  
+  .bottomTitle {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(16px, 1.25vw, 24px);
+    font-weight: 600;
+    margin: 0 0 clamp(16px, 2.08vw, 40px) 0;
+    line-height: 1.4;
+  }
+  
+  .bottomDescription {
+    color: rgba(0, 0, 0, 0.67);
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 1.25vw, 24px);
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  /* ============================================
+     ERROR PAGE
+     ============================================ */
+  
+  .errorPage {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 100px 20px;
+  }
+  
+  .errorPage h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 40px);
+    color: #805E4B;
+    font-weight: 700;
+  }
+  
+  .errorPage a {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(16px, 2vw, 20px);
+    color: #2683C6;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+  
+  .errorPage a:hover {
+    color: #1a6ba3;
+  }
+  
+  /* ============================================
+     TABLET - 2 Columns / Stacked
+     ============================================ */
+  
+  @media (max-width: 1200px) {
+    .productDetailSection {
+      grid-template-columns: 1fr;
+      gap: clamp(25px, 4vw, 40px);
+      margin-left: clamp(20px, 5vw, 60px);
+      padding-right: clamp(20px, 5vw, 60px);
+    }
+  
+    .productImageContainer {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  
+    .productInfo {
+      max-width: 100%;
+    }
+  
+    .featuresGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .benefitsGrid {
+      grid-template-columns: 1fr;
+      max-width: 600px;
+    }
+  
+    .relatedProductsGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .furtherProductsSection {
+      margin-left: clamp(20px, 5vw, 60px);
+      padding-right: clamp(20px, 5vw, 60px);
+    }
+  }
+  
+  /* ============================================
+     MOBILE - 1 Column
+     ============================================ */
+  
+  @media (max-width: 768px) {
+    .productPage {
+      padding-top: clamp(60px, 15vw, 90px);
+    }
+  
+    .logoSection {
+      padding-top: clamp(25px, 6vw, 40px);
+      margin-bottom: clamp(18px, 5vw, 30px);
+    }
+  
+    .breadcrumb {
+      margin-left: clamp(16px, 5vw, 24px);
+      margin-right: clamp(16px, 5vw, 24px);
+      margin-bottom: clamp(18px, 5vw, 30px);
+    }
+  
+    .productDetailSection {
+      margin-left: clamp(16px, 5vw, 24px);
+      padding-right: clamp(16px, 5vw, 24px);
+    }
+  
+    .featuresSection {
+      padding: 0 clamp(16px, 5vw, 24px);
+    }
+  
+    .featuresGrid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .benefitsGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .benefitItem {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .furtherProductsSection {
+      margin-left: clamp(16px, 5vw, 24px);
+      padding-right: clamp(16px, 5vw, 24px);
+      margin-top: clamp(40px, 8vw, 60px);
+    }
+  
+    .relatedProductsGrid {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+    }
+  
+    .relatedProductCard {
+      max-width: clamp(300px, 100%, 500px);
+      margin: 0 auto;
+    }
+  
+    .relatedProductDesc {
+      -webkit-line-clamp: unset;
+      overflow: visible;
+    }
+  
+    .bottomContent {
+      padding-left: clamp(16px, 5vw, 24px);
+      padding-right: clamp(16px, 5vw, 24px);
+    }
+  }
+  
+  /* ============================================
+     SMALL MOBILE - Extra Refinement
+     ============================================ */
+  
+  @media (max-width: 480px) {
+    .breadcrumb {
+      font-size: clamp(12px, 3.5vw, 14px);
+    }
+  
+    .productTitle {
+      font-size: clamp(18px, 5vw, 24px);
+    }
+  
+    .enquireButton {
+      width: 100%;
+      max-width: clamp(180px, 80vw, 250px);
+    }
+  }
+  
+  /* ============================================
+     ACCESSIBILITY - Reduced Motion
+     ============================================ */
+  
+  @media (prefers-reduced-motion: reduce) {
+    .productMainImage,
+    .relatedProductImage img {
+      transition: none !important;
+    }
+  
+    .productMainImage:hover,
+    .relatedProductLink:hover .relatedProductImage img {
+      transform: none !important;
+    }
+  
+    .relatedProductLink,
+    .enquireButton,
+    .downloadLink {
+      transition: none !important;
+    }
+  
+    .relatedProductLink:hover,
+    .enquireButton:hover {
+      transform: none !important;
+    }
+  }
+  
+  /* ============================================
+     HIGH DPI DISPLAYS
+     ============================================ */
+  
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .productMainImage,
+    .relatedProductImage img,
+    .companyLogo,
+    .featureIcon,
+    .benefitIcon {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+    }
+  }
