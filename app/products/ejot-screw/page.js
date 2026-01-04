@@ -69,39 +69,36 @@ export default function EjotScrewPage() {
         <div className={styles.productsGrid}>
           {filteredProducts.map((product) => (
             <article key={product.id} className={styles.productCard}>
-              
-              {/* Product Image */}
-              <div className={styles.productImageWrapper}>
-                <img 
-                  src={product.image} 
-                  alt={`${product.name} - ${product.category}`}
-                  className={styles.productImage}
-                  loading="lazy"
-                />
-              </div>
+              <Link href={`/products/ejot-screw/${product.slug}`} className={styles.productCardLink}>
+                {/* Product Image */}
+                <div className={styles.productImageWrapper}>
+                  <img 
+                    src={product.image} 
+                    alt={`${product.name} - ${product.category}`}
+                    className={styles.productImage}
+                    loading="lazy"
+                  />
+                </div>
 
-              {/* Product Name */}
-              <h3 className={styles.productName}>{product.name}</h3>
+                {/* Product Name */}
+                <h3 className={styles.productName}>{product.name}</h3>
 
-              {/* Feature */}
-              <p className={styles.productFeature}>self-tapping screw</p>
+                {/* Feature */}
+                <p className={styles.productFeature}>self-tapping screw</p>
 
-              {/* Product Description */}
-              <p className={styles.productDescription}>
-                {product.cardDescription}
-              </p>
+                {/* Product Description */}
+                <p className={styles.productDescription}>
+                  {product.cardDescription}
+                </p>
 
-              {/* View Product Link */}
-              <Link 
-                href={`/products/ejot-screw/${product.slug}`}
-                className={styles.viewProductLink}
-                aria-label={`View details for ${product.name}`}
-              >
-                View product
+                {/* View Product CTA */}
+                <span className={styles.viewProductLink}>
+                  View product
+                </span>
+
+                {/* Bottom Border */}
+                <div className={styles.cardBottomBorder}></div>
               </Link>
-
-              {/* Bottom Border */}
-              <div className={styles.cardBottomBorder}></div>
             </article>
           ))}
         </div>

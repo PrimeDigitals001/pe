@@ -58,29 +58,27 @@ export default function BirlanuPage() {
         <div className={styles.productsGrid}>
           {filteredProducts.map((product) => (
             <article key={product.id} className={styles.productCard}>
-              
-              <div className={styles.productImageWrapper}>
-                <img 
-                  src={product.image} 
-                  alt={`${product.name} - ${product.category}`}
-                  className={styles.productImage}
-                  loading="lazy"
-                />
-              </div>
+              <Link href={`/products/birlanu/${product.slug}`} className={styles.productCardLink}>
+                
+                <div className={styles.productImageWrapper}>
+                  <img 
+                    src={product.image} 
+                    alt={`${product.name} - ${product.category}`}
+                    className={styles.productImage}
+                    loading="lazy"
+                  />
+                </div>
 
-              <h3 className={styles.productName}>{product.name}</h3>
-              <p className={styles.productCategory}>{product.category}</p>
-              <p className={styles.productDescription}>{product.cardDescription}</p>
+                <h3 className={styles.productName}>{product.name}</h3>
+                <p className={styles.productCategory}>{product.category}</p>
+                <p className={styles.productDescription}>{product.cardDescription}</p>
 
-              <Link 
-                href={`/products/birlanu/${product.slug}`}
-                className={styles.viewProductLink}
-                aria-label={`View details for ${product.name}`}
-              >
-                View product
+                <span className={styles.viewProductLink}>
+                  View product
+                </span>
+
+                <div className={styles.cardBottomBorder}></div>
               </Link>
-
-              <div className={styles.cardBottomBorder}></div>
             </article>
           ))}
         </div>

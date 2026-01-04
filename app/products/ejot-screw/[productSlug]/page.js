@@ -138,26 +138,30 @@ export default function EjotProductDetailPage() {
               <div className={styles.infoSection}>
                 <h2 className={styles.sectionTitle}>Brochure</h2>
                 <div className={styles.downloadList}>
-                  {product.brochures.map((brochure, index) => (
-                    <a
-                      key={index}
-                      href={brochure.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.downloadLink}
-                      download
-                      aria-label={`Download ${brochure.text} (${brochure.size})`}
-                    >
-                      <svg className={styles.downloadIcon} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <path d="M12 3V16M12 16L7 11M12 16L17 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M3 17V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                      </svg>
-                      <span className={styles.downloadText}>
-                        <span className={styles.downloadName}>{brochure.text}</span>
-                        {brochure.size && <span className={styles.downloadSize}> ({brochure.size})</span>}
-                      </span>
-                    </a>
-                  ))}
+                  {product.brochures.map((brochure, index) => {
+                    const isExternal = brochure.link.startsWith('http');
+                    
+                    return (
+                      <a
+                        key={index}
+                        href={brochure.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.downloadLink}
+                        {...(!isExternal ? { download: true } : {})}
+                        aria-label={`${isExternal ? 'Open' : 'Download'} ${brochure.text}${brochure.size ? ` (${brochure.size})` : ''}`}
+                      >
+                        <svg className={styles.downloadIcon} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M12 3V16M12 16L7 11M12 16L17 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          <path d="M3 17V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                        </svg>
+                        <span className={styles.downloadText}>
+                          <span className={styles.downloadName}>{brochure.text}</span>
+                          {brochure.size && <span className={styles.downloadSize}> ({brochure.size})</span>}
+                        </span>
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             )}
