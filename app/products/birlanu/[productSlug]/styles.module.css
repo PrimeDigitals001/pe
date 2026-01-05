@@ -62,11 +62,11 @@
 }
 
 .breadcrumbLink:hover {
-  color: #805E4B;
+  color: #F3859E;
 }
 
 .breadcrumbLink:focus-visible {
-  outline: 2px solid #805E4B;
+  outline: 2px solid #F3859E;
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -79,7 +79,7 @@
 }
 
 .breadcrumbCurrent {
-  color: #805E4B;
+  color: #F3859E;
   font-family: "Inter", sans-serif;
   font-size: clamp(13px, 0.94vw, 18px);
   font-weight: 600;
@@ -123,7 +123,8 @@
 }
 
 .thumbnailWrapper {
-  width: calc((100% - clamp(20px, 1.66vw, 32px)) / 3);
+  flex: 1;
+  min-width: 0;
   aspect-ratio: 1;
   border: 1px solid rgba(0, 0, 0, 0.12);
   cursor: pointer;
@@ -132,11 +133,11 @@
 }
 
 .thumbnailWrapper:hover {
-  border-color: #805E4B;
+  border-color: #F3859E;
 }
 
 .activeThumbnail {
-  border: 2px solid #805E4B;
+  border: 2px solid #F3859E;
 }
 
 .thumbnailWrapper img {
@@ -169,7 +170,7 @@
 }
 
 .productTitle {
-  color: #805E4B;
+  color: #F3859E;
   font-family: var(--font-heading);
   font-size: clamp(20px, 1.875vw, 36px);
   font-weight: 600;
@@ -244,7 +245,7 @@
   grid-template-columns: auto 1fr;
   gap: clamp(4px, 0.42vw, 8px) clamp(12px, 1.25vw, 24px);
   padding: clamp(10px, 0.83vw, 16px);
-  background: rgba(128, 94, 75, 0.05);
+  background: rgba(243, 133, 158, 0.05);
   border-radius: clamp(6px, 0.52vw, 10px);
   align-items: center;
 }
@@ -330,7 +331,7 @@
 }
 
 .downloadLink:focus-visible {
-  outline: 2px solid #805E4B;
+  outline: 2px solid #F3859E;
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -364,7 +365,7 @@
      ============================================ */
 
 .enquireButton {
-  background: #805E4B;
+  background: #F3859E;
   border-radius: 64px;
   border: none;
   width: clamp(150px, 9.48vw, 182px);
@@ -377,17 +378,17 @@
   transition: all 0.3s ease;
   margin-top: clamp(15px, 1.56vw, 30px);
   align-self: flex-start;
-  box-shadow: 0 2px 8px rgba(128, 94, 75, 0.2);
+  box-shadow: 0 2px 8px rgba(243, 133, 158, 0.2);
 }
 
 .enquireButton:hover {
   background: #6b4d3d;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(128, 94, 75, 0.3);
+  box-shadow: 0 4px 12px rgba(243, 133, 158, 0.3);
 }
 
 .enquireButton:focus-visible {
-  outline: 3px solid #805E4B;
+  outline: 3px solid #F3859E;
   outline-offset: 3px;
 }
 
@@ -446,6 +447,26 @@
   font-weight: 600;
   margin: 0;
   line-height: 1.4;
+}
+
+/* ... (skip other classes if not changing) ... */
+
+.benefitText {
+  color: #805E4B;
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.25vw, 24px);
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+}
+
+/* ... */
+
+.bottomContent {
+  margin: clamp(40px, 4.17vw, 80px) 0 0 clamp(20px, 6.3vw, 121px);
+  max-width: clamp(800px, 80.21vw, 1540px);
+  padding-right: clamp(20px, 7.86vw, 151px);
 }
 
 /* Section Divider */
@@ -547,7 +568,7 @@
 }
 
 .relatedProductLink:focus-visible {
-  outline: 3px solid #805E4B;
+  outline: 3px solid #F3859E;
   outline-offset: 4px;
   border-radius: 4px;
 }
@@ -575,7 +596,7 @@
 }
 
 .relatedProductName {
-  color: #805E4B;
+  color: #F3859E;
   font-family: var(--font-heading);
   font-size: clamp(16px, 1.35vw, 26px);
   font-weight: 600;
@@ -603,6 +624,7 @@
 
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -618,7 +640,7 @@
 }
 
 .relatedProductLink:hover .viewProductLink {
-  color: #805E4B;
+  color: #F3859E;
 }
 
 .relatedProductBorder {
@@ -633,9 +655,10 @@
      ============================================ */
 
 .bottomContent {
-  margin: clamp(40px, 4.17vw, 80px) auto 0;
-  max-width: clamp(800px, 80.21vw, 1540px);
-  padding: 0 clamp(20px, 9.9vw, 190px) clamp(40px, 4.17vw, 80px);
+  margin: clamp(40px, 4.17vw, 80px) 0 clamp(60px, 5vw, 100px) clamp(20px, 6.3vw, 121px);
+  width: auto;
+  max-width: none;
+  padding-right: clamp(20px, 7.86vw, 151px);
 }
 
 .bottomTitle {
@@ -673,7 +696,7 @@
 .errorPage h1 {
   font-family: var(--font-heading);
   font-size: clamp(28px, 4vw, 40px);
-  color: #805E4B;
+  color: #F3859E;
   font-weight: 700;
 }
 
@@ -792,6 +815,7 @@
 
   .relatedProductDesc {
     -webkit-line-clamp: unset;
+    line-clamp: unset;
     overflow: visible;
   }
 

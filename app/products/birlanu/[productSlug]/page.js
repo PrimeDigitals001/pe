@@ -97,12 +97,7 @@ export default function BirlanuProductDetailPage() {
             {product.galleryImages && product.galleryImages.length > 0 && (
               <div className={styles.galleryThumbnails}>
                 {/* Include main image as first thumbnail if desired, or just extra images */}
-                <div 
-                  className={`${styles.thumbnailWrapper} ${selectedImage === product.image ? styles.activeThumbnail : ''}`}
-                  onClick={() => setSelectedImage(product.image)}
-                >
-                   <img src={product.image} alt="Main view" />
-                </div>
+
                 {product.galleryImages.slice(0, 3).map((img, index) => (
                   <div 
                     key={index} 
@@ -125,11 +120,11 @@ export default function BirlanuProductDetailPage() {
             </h1>
 
             {/* Product Category */}
-            <p className={styles.productCategory}>{product.category}</p>
+            <p className={styles.productCategory}>{product.pageCategory || product.category}</p>
 
             {/* Short Description */}
             <p className={styles.productShortDesc}>
-              {product.cardDescription}
+              {product.longDescription}
             </p>
 
             {/* Divider Line */}
@@ -142,12 +137,7 @@ export default function BirlanuProductDetailPage() {
                   <h2 className={styles.sectionTitle}>Sizes / SKUs Available</h2>
                   <div className={styles.simpleList}>
                     {product.sizes.map((size, index) => (
-                      <div key={index} className={styles.listItem} style={{ marginBottom: '1.5rem' }}>
-                        <p><strong>SKU:</strong> {size.sku}</p>
-                        <p><strong>Dimensions:</strong> {size.dimensions}</p>
-                        {size.coverage && <p><strong>Coverage:</strong> {size.coverage}</p>}
-                        {size.weight && <p><strong>Weight:</strong> {size.weight}</p>}
-                      </div>
+                      <p key={index} className={styles.listItem}>{size}</p>
                     ))}
                   </div>
                 </div>
@@ -290,7 +280,7 @@ export default function BirlanuProductDetailPage() {
         {/* Bottom Content Section */}
         <section className={styles.bottomContent}>
           <h2 className={styles.bottomTitle}>
-            Wide application range: For components made of steel, timber, aluminium
+            {product.bottomSectionTitle || 'Wide application range'}
           </h2>
 
           <p className={styles.bottomDescription}>

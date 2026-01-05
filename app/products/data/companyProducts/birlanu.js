@@ -6,13 +6,13 @@
 export const birlanuData = {
     companyInfo: {
       id: 5, // ✅ CHANGED to 5
-      name: 'Birlanu',
+      name: 'Fortune Fiber Cement Roofs',
       slug: 'birlanu',
       logo: '/images/products/logo_birlanu.png',
       tagline: 'Building Excellence Since 1976',
-      description: 'Birlanu is a leading manufacturer of high-quality building materials, specializing in fiber cement roofing, wall panels, and AAC blocks.',
+      description: 'Fortune Fiber Cement Roofs offer a smart and durable roofing solution built with advanced reinforcing hybrid fibers. These eco-friendly roofing sheets are engineered for fire resistance, corrosion resistance, and long-term performance. With high impact strength, excellent noise insulation, and an easy-to-handle, easy-to-fix design, Fortune Fiber Cement Roofs ensure a reliable, low-maintenance roofing experience for a wide range of applications.',
       heroImage: '/images/companies/birlanu-hero.jpg',
-      primaryColor: '#805E4B',
+      primaryColor: '#F3859E',
       website: 'https://birlanu.com',
     },
   
@@ -33,49 +33,39 @@ export const birlanuData = {
         name: 'Fortune Fiber Cement Roofs',
         slug: 'fortune-fiber-cement-roofs',
         category: 'Fiber Cement Roofs',
+        pageCategory: 'Roofing',
         
         image: '/images/products/birlanu/FFCR_p1.png',
+        galleryImages: [
+          '/images/products/birlanu/FFCR_p2.png',
+          '/images/products/birlanu/FFCR_p3.png',
+          '/images/products/birlanu/FFCR_p4.png',
+        ],
         
-        cardDescription: 'Smart and durable roofing solution with advanced reinforcing hybrid fibers',
+        bottomSectionTitle: 'Why Choose Fortune Fiber Cement Roofs?',
+        
+        cardDescription: 'Eco-friendly, high-performance cement roofs with hybrid fiber reinforcement',
         
         longDescription: 'Fortune Fiber Cement Roofs offer a smart and durable roofing solution built with advanced reinforcing hybrid fibers. These eco-friendly roofing sheets are engineered for fire resistance, corrosion resistance, and long-term performance. With high impact strength, excellent noise insulation, and an easy-to-handle, easy-to-fix design, Fortune Fiber Cement Roofs ensure a reliable, low-maintenance roofing experience for a wide range of applications.',
         
         sizes: [
-          {
-            sku: 'FCR-2440-5',
-            dimensions: '2440mm × 1050mm × 5mm',
-            coverage: '2.31 sq.m',
-            weight: '18.5 kg',
-          },
-          {
-            sku: 'FCR-2440-6',
-            dimensions: '2440mm × 1050mm × 6mm',
-            coverage: '2.31 sq.m',
-            weight: '21.8 kg',
-          },
-          {
-            sku: 'FCR-3050-5',
-            dimensions: '3050mm × 1050mm × 5mm',
-            coverage: '2.89 sq.m',
-            weight: '23.2 kg',
-          },
+          'Length: 1 m to 3.6 m',
+          'Colors: Dark Grey, Red, Blue, Green, White'
         ],
         
         standards: [
-          'Conforms to IS 14871:2000',
-          'Fire resistance: Class 1 as per BS 476',
-          'Water absorption: < 25% as per IS 14871',
-          'Modulus of rupture: > 15 N/mm²',
-          'Density: 1.4 - 1.5 g/cm³',
+          'IS 459:1992 , IS 14871:2000',
+          'Pitch: 146 mm',
+          'Corrugation depth: 48 mm',
+          'Weight per metre: ~12.3–12.7 kg',
+          'Effective coverage: 91% (3m roof), 87% (1.5m roof)',
         ],
         
         applications: [
-          'Industrial roofing',
-          'Commercial buildings',
-          'Residential roofing',
-          'Agricultural structures',
-          'Warehouses and storage facilities',
-          'Educational institutions',
+         'Residential',
+         'Commercial',
+         'Industrial roofs',
+         'Infrastructural',
         ],
         
         features: [
@@ -107,31 +97,22 @@ export const birlanuData = {
             title: 'Superior strength with eco-conscious approach',
           },
           {
-            icon: '/images/icons/corrosion.png',
+            icon: '/images/icons/strength.png',
             title: 'Fights highly corrosive environments',
           },
           {
-            icon: '/images/icons/impact.png',
+            icon: '/images/icons/strength.png',
             title: 'Withstands high impacts and tough conditions',
           },
         ],
         
         brochures: [
           {
-            text: 'Fortune Fiber Cement Roof - Product Brochure.pdf',
-            size: '2.5 MB',
-            link: '/downloads/birlanu/fortune-fiber-cement-roof-brochure.pdf',
+            text: 'Fortune Fiber Cement Roof ',
+            size: '91 KB',
+            link: 'https://birlanu.aflip.in/052cf7283e.html#page/1',
           },
-          {
-            text: 'Technical Specifications.pdf',
-            size: '850 KB',
-            link: '/downloads/birlanu/fortune-fiber-cement-roof-specs.pdf',
-          },
-          {
-            text: 'Installation Guide.pdf',
-            size: '1.2 MB',
-            link: '/downloads/birlanu/fortune-fiber-cement-roof-installation.pdf',
-          },
+          
         ],
         
         inStock: true,
@@ -148,99 +129,82 @@ export const birlanuData = {
         name: 'Aerocon Wall Panels',
         slug: 'aerocon-wall-panels',
         category: 'Wall Panels',
+        pageCategory: 'Pre-fabricated sandwich panels for high-speed, eco-friendly wall construction',
         
         image: '/images/products/birlanu/AWP_p1.png',
+        galleryImages: [
+          '/images/products/birlanu/AWP_p2.png',
+          '/images/products/birlanu/AWP_p3.png',
+          '/images/products/birlanu/AWP_p4.png',
+        ],
         
-        cardDescription: 'Lightweight, durable wall panels for rapid construction',
+        bottomSectionTitle: 'Advantages of Aerocon Wall Panels',
         
-        longDescription: 'Aerocon Wall Panels are revolutionary lightweight precast panels that offer superior strength, thermal insulation, and fire resistance. These eco-friendly panels are engineered for rapid construction, reducing project timelines significantly while maintaining exceptional structural integrity and durability.',
+        cardDescription: 'Eco-friendly, high-performance cement roofs with hybrid fiber reinforcement',
+        
+        longDescription: 'BirlaNu Aerocon Wall Panels are advanced lightweight sandwich panels made from fibre-reinforced cement sheets and an aerated cementitious core. Designed for rapid, dry construction, they deliver excellent strength, fire resistance, and thermal insulation. Suitable for partitions, cladding, mezzanine floors, and industrial structures, they provide a durable and efficient alternative to conventional walls.',
         
         sizes: [
-          {
-            sku: 'AWP-3000-75',
-            dimensions: '3000mm × 600mm × 75mm',
-            coverage: '1.8 sq.m',
-            weight: '45 kg',
-          },
-          {
-            sku: 'AWP-3000-100',
-            dimensions: '3000mm × 600mm × 100mm',
-            coverage: '1.8 sq.m',
-            weight: '58 kg',
-          },
-          {
-            sku: 'AWP-3000-125',
-            dimensions: '3000mm × 600mm × 125mm',
-            coverage: '1.8 sq.m',
-            weight: '72 kg',
-          },
+          'Lengths: 2400 mm, 2700 mm, 3000mm',
+          'Width: 600 mm',
+          'Thicknesses: 50 mm, 75 mm,100mm'
         ],
         
         standards: [
-          'Conforms to IS 2185 Part 3',
-          'Fire resistance: 4 hours as per IS 3809',
-          'Thermal conductivity: 0.16 W/mK',
-          'Compressive strength: > 4 N/mm²',
-          'Dry density: 550-650 kg/m³',
+          'IS:14862',
         ],
         
         applications: [
-          'External walls',
-          'Internal partition walls',
-          'Boundary walls',
-          'Commercial buildings',
-          'Residential construction',
-          'Industrial buildings',
+          'Internal partitions',
+          'Demountable walls',
+          'Pre frabricated structure',
+          'Mezzanine floors',
+          'Cladding',
         ],
         
         features: [
           {
-            icon: '/images/icons/lightweight.png',
-            title: 'Lightweight Construction',
+            icon: '/images/icons/enhanced_safety.png',
+            title: 'Enhanced safety',
             description: 'Reduces structural load',
           },
           {
-            icon: '/images/icons/thermal.png',
-            title: 'Excellent Thermal Insulation',
+            icon: '/images/icons/moisture_protection.png',
+            title: 'Moisture protection',
             description: 'Energy-efficient building solution',
           },
           {
-            icon: '/images/icons/fire.png',
-            title: 'Fire Resistant',
+            icon: '/images/icons/time_efficiency.png',
+            title: 'Time efficiency',
             description: '4-hour fire rating',
           },
           {
-            icon: '/images/icons/sound.png',
-            title: 'Sound Insulation',
+            icon: '/images/icons/labour_efficiency.png',
+            title: 'Labour efficiency',
             description: 'Reduces noise transmission',
           },
         ],
         
         benefits: [
           {
-            icon: '/images/icons/speed.png',
-            title: 'Rapid construction with reduced labor costs',
+            icon: '/images/icons/strength.png',
+            title: 'Reduces construction time and cost',
           },
           {
-            icon: '/images/icons/eco.png',
-            title: 'Eco-friendly and sustainable building material',
+            icon: '/images/icons/strength.png',
+            title: 'No curing or plastering needed',
           },
           {
-            icon: '/images/icons/durability.png',
-            title: 'Long-lasting durability with minimal maintenance',
+            icon: '/images/icons/strength.png',
+            title: 'Dry construction- ideal for all seasons',
           },
         ],
         
         brochures: [
-          {
-            text: 'Aerocon Wall Panels - Product Catalog.pdf',
-            size: '3.2 MB',
-            link: '/downloads/birlanu/aerocon-wall-panels-catalog.pdf',
-          },
-          {
-            text: 'Installation Manual.pdf',
-            size: '1.8 MB',
-            link: '/downloads/birlanu/aerocon-wall-panels-installation.pdf',
+         {
+            text: 'Fortune Fiber Cement Roof ',
+            size: '91 KB',
+            link: 'https://birlanu.aflip.in/052cf7283e.html#page/1',
           },
         ],
         
@@ -258,112 +222,80 @@ export const birlanuData = {
         name: 'Aerocon AAC Blocks',
         slug: 'aerocon-aac-blocks',
         category: 'AAC Blocks',
+        pageCategory: 'AAC Blocks',
         
         image: '/images/products/birlanu/AAC_p1.png',
+        galleryImages: [
+          '/images/products/birlanu/AAC_p2.png',
+          '/images/products/birlanu/AAC_p3.png',
+          '/images/products/birlanu/AAC_p4.png',
+        ],
         
-        cardDescription: 'Autoclaved Aerated Concrete blocks for modern construction',
+        bottomSectionTitle: 'Building Better with Aerocon AAC Blocks',
         
-        longDescription: 'Aerocon AAC Blocks are premium quality Autoclaved Aerated Concrete blocks that combine lightweight properties with exceptional strength. These eco-friendly blocks offer superior thermal insulation, fire resistance, and earthquake resistance, making them the ideal choice for modern sustainable construction projects.',
+        cardDescription: 'Eco-friendly, high-performance cement roofs with hybrid fiber reinforcement',
+        
+        longDescription: 'BirlaNu Aerocon AAC Blocks are crafted from fly ash, cement, lime, and an aeration agent to deliver strong, lightweight, and thermally efficient building solutions. These blocks accelerate construction timelines, reduce labour and material costs, and comply with IS 2185 Part 3 standards. Ideal for modern sustainable building, they provide superior insulation, fire resistance, and long-term structural performance.',
         
         sizes: [
-          {
-            sku: 'AAC-600-200-100',
-            dimensions: '600mm × 200mm × 100mm',
-            coverage: '8.33 blocks/sq.m',
-            weight: '7.2 kg',
-          },
-          {
-            sku: 'AAC-600-200-150',
-            dimensions: '600mm × 200mm × 150mm',
-            coverage: '8.33 blocks/sq.m',
-            weight: '10.8 kg',
-          },
-          {
-            sku: 'AAC-600-200-200',
-            dimensions: '600mm × 200mm × 200mm',
-            coverage: '8.33 blocks/sq.m',
-            weight: '14.4 kg',
-          },
-          {
-            sku: 'AAC-600-200-250',
-            dimensions: '600mm × 200mm × 250mm',
-            coverage: '8.33 blocks/sq.m',
-            weight: '18 kg',
-          },
+          'Face Size: 600 × 200 mm',
+          'Thicknesses: 100 / 125 / 150 / 200 / 230 / 300 mm',
+          'Dry Weight: 7.8 kg to 23.4 kg depending on thickness',
         ],
         
         standards: [
-          'Conforms to IS 2185 Part 3',
-          'Compressive strength: 3-4 N/mm²',
-          'Dry density: 550-650 kg/m³',
-          'Fire resistance: 6 hours (200mm thick)',
-          'Thermal conductivity: 0.16 W/mK',
-          'Sound reduction: 45 dB (200mm thick)',
+         'IS 2185 (Part 3):1995',
         ],
         
         applications: [
-          'Load-bearing walls',
-          'Non-load bearing walls',
-          'Partition walls',
-          'Residential buildings',
-          'Commercial complexes',
-          'High-rise buildings',
-          'Earthquake-prone areas',
+         'Internal and external walls in residential', 
+         'commercial', 
+         'institutional and industrial buildings',    
         ],
         
         features: [
           {
-            icon: '/images/icons/lightweight.png',
-            title: 'Ultra Lightweight',
+            icon: '/images/icons/energy_savings.png',
+            title: 'Energy savings',
             description: '1/3rd weight of conventional bricks',
           },
           {
-            icon: '/images/icons/thermal.png',
-            title: 'Thermal Insulation',
+            icon: '/images/icons/superior_acoustic_insulation.png',
+            title: 'Superior acoustic insulation',
             description: 'Reduces cooling/heating costs',
           },
           {
-            icon: '/images/icons/fire.png',
-            title: 'Fire Resistant',
+            icon: '/images/icons/long_lasting_durability.png',
+            title: 'Long lasting durability',
             description: 'Up to 6 hours fire rating',
           },
           {
-            icon: '/images/icons/earthquake.png',
-            title: 'Earthquake Resistant',
+            icon: '/images/icons/thermal_insulation.png',
+            title: 'Thermal insulation',
             description: 'Better seismic performance',
           },
         ],
         
         benefits: [
           {
-            icon: '/images/icons/savings.png',
+            icon: '/images/icons/strength.png',
             title: 'Reduces overall construction cost by 15-20%',
           },
           {
-            icon: '/images/icons/environment.png',
+            icon: '/images/icons/strength.png',
             title: 'Environmentally sustainable with zero waste',
           },
           {
-            icon: '/images/icons/precision.png',
+            icon: '/images/icons/strength.png',
             title: 'Precision-cut blocks ensure minimal mortar usage',
           },
         ],
         
         brochures: [
-          {
-            text: 'Aerocon AAC Blocks - Complete Guide.pdf',
-            size: '2.8 MB',
-            link: '/downloads/birlanu/aerocon-aac-blocks-guide.pdf',
-          },
-          {
-            text: 'Technical Data Sheet.pdf',
-            size: '650 KB',
-            link: '/downloads/birlanu/aerocon-aac-blocks-datasheet.pdf',
-          },
-          {
-            text: 'Construction Best Practices.pdf',
-            size: '1.5 MB',
-            link: '/downloads/birlanu/aerocon-aac-blocks-best-practices.pdf',
+      {
+            text: 'Fortune Fiber Cement Roof ',
+            size: '91 KB',
+            link: 'https://birlanu.aflip.in/052cf7283e.html#page/1',
           },
         ],
         
