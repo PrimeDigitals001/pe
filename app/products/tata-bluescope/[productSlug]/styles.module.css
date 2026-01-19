@@ -1,0 +1,623 @@
+/* app/products/tata-bluescope/[productSlug]/styles.module.css */
+
+/* ============================================
+   TATA BLUESCOPE PRODUCT DETAIL PAGE
+   Base Design: 1920px × 1080px
+   
+   ✅ Matches Brand Identity (Blue #2683C6)
+   ✅ Perfect spacing and alignment
+   ✅ Responsive on all devices
+   ============================================ */
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+
+.productPage {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--color-white);
+    padding-top: clamp(80px, 10vh, 150px);
+    position: relative;
+}
+
+/* ============================================
+   LOGO SECTION
+   ============================================ */
+
+.logoSection {
+    width: 100%;
+    padding-top: clamp(40px, 6.25vw, 120px);
+    margin-bottom: clamp(20px, 1.56vw, 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.companyLogo {
+    width: clamp(80px, 9.01vw, 200px);
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* ============================================
+   BREADCRUMB NAVIGATION
+   ============================================ */
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: clamp(6px, 0.52vw, 10px);
+    margin: 0 0 clamp(20px, 1.56vw, 30px) clamp(20px, 6.3vw, 121px);
+    flex-wrap: wrap;
+}
+
+.breadcrumbLink {
+    color: #A6A6A6;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbLink:hover {
+    color: #2683C6;
+}
+
+.breadcrumbLink:focus-visible {
+    outline: 2px solid #2683C6;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.breadcrumbArrow {
+    color: #A6A6A6;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 600;
+}
+
+.breadcrumbCurrent {
+    color: #2683C6;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 600;
+}
+
+/* ============================================
+   PRODUCT DETAIL SECTION
+   Grid: Image (left) + Info (right)
+   ============================================ */
+
+.productDetailSection {
+    display: grid;
+    grid-template-columns: clamp(350px, 32.3vw, 621px) 1fr;
+    gap: clamp(25px, 3.13vw, 60px);
+    margin: 0 0 0 clamp(20px, 6.3vw, 121px);
+    padding-right: clamp(20px, 7.86vw, 151px);
+    max-width: 1920px;
+}
+
+/* Product Image Container */
+.productImageContainer {
+    width: 100%;
+    max-width: clamp(350px, 32.3vw, 621px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 1.5vw, 24px);
+}
+
+.mainImageWrapper {
+    width: 100%;
+    aspect-ratio: 621 / 618;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.productMainImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.productMainImage:hover {
+    transform: scale(1.03);
+}
+
+/* Gallery Thumbnails */
+.galleryThumbnails {
+    display: flex;
+    gap: clamp(10px, 0.83vw, 16px);
+    width: 100%;
+}
+
+.thumbnailWrapper {
+    flex: 1;
+    min-width: 0;
+    aspect-ratio: 1;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.thumbnailWrapper:hover {
+    border-color: #2683C6;
+}
+
+.activeThumbnail {
+    border: 2px solid #2683C6;
+}
+
+.thumbnailWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ============================================
+   PRODUCT INFORMATION
+   ============================================ */
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 0.63vw, 16px);
+    max-width: clamp(600px, 50.31vw, 966px);
+}
+
+.productTitle {
+    color: #2683C6;
+    font-family: var(--font-heading);
+    font-size: clamp(24px, 1.875vw, 42px);
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.productCategory {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 0.94vw, 18px);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+.productLongDesc p {
+    color: rgba(0, 0, 0, 0.75);
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 0.94vw, 18px);
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Divider Line */
+.dividerLine {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.14);
+    margin: clamp(6px, 0.63vw, 12px) 0;
+}
+
+/* ============================================
+   INFO SECTIONS
+   ============================================ */
+
+.infoSection {
+    margin: clamp(4px, 0.52vw, 10px) 0;
+}
+
+.sectionTitle {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(16px, 1.04vw, 22px);
+    font-weight: 600;
+    margin: 0 0 clamp(10px, 0.63vw, 16px) 0;
+    line-height: 1.3;
+}
+
+/* ============================================
+   SPECIFICATIONS TABLE
+   ============================================ */
+
+.sizesTable {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 0.5vw, 12px);
+}
+
+.sizeRow {
+    display: grid;
+    grid-template-columns: minmax(140px, auto) 1fr;
+    gap: clamp(10px, 1vw, 24px);
+    padding: clamp(8px, 0.6vw, 12px);
+    background: rgba(38, 131, 198, 0.05);
+    /* Very light blue */
+    border-radius: 4px;
+    align-items: baseline;
+    border-left: 3px solid #2683C6;
+}
+
+.sizeLabel {
+    color: rgba(0, 0, 0, 0.7);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.83vw, 16px);
+    font-weight: 600;
+    white-space: wrap;
+}
+
+.sizeValue {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.83vw, 16px);
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+/* ============================================
+   LISTS & COLORS
+   ============================================ */
+
+.simpleList {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.42vw, 8px);
+}
+
+.listItem {
+    color: rgba(0, 0, 0, 0.75);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.noteText {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: var(--font-heading);
+    font-size: clamp(12px, 0.8vw, 14px);
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.bulletList {
+    margin: 0;
+    padding-left: clamp(18px, 1.25vw, 24px);
+    list-style-type: disc;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.42vw, 8px);
+}
+
+.bulletItem {
+    color: rgba(0, 0, 0, 0.75);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ============================================
+   DOWNLOAD LIST
+   ============================================ */
+
+.downloadList {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 0.42vw, 8px);
+}
+
+.downloadLink {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 0.83vw, 16px);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    padding: clamp(6px, 0.4vw, 10px);
+    border: 1px solid rgba(38, 131, 198, 0.3);
+    border-radius: 4px;
+    width: fit-content;
+}
+
+.downloadLink:hover {
+    background: rgba(38, 131, 198, 0.05);
+}
+
+.downloadIcon {
+    width: clamp(20px, 1.1vw, 24px);
+    height: clamp(20px, 1.1vw, 24px);
+    color: #2683C6;
+    flex-shrink: 0;
+}
+
+.downloadText {
+    color: #2683C6;
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* ============================================
+   ENQUIRE BUTTON
+   ============================================ */
+
+.enquireButton {
+    background: #2683C6;
+    border-radius: 64px;
+    border: none;
+    width: clamp(150px, 9.48vw, 200px);
+    height: clamp(46px, 2.81vw, 54px);
+    color: rgba(255, 255, 255, 0.95);
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 0.83vw, 16px);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: clamp(20px, 1.56vw, 30px);
+    align-self: flex-start;
+    box-shadow: 0 4px 10px rgba(38, 131, 198, 0.3);
+}
+
+.enquireButton:hover {
+    background: #1a5c8e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(38, 131, 198, 0.4);
+}
+
+/* ============================================
+   FURTHER PRODUCTS SECTION
+   ============================================ */
+
+.furtherProductsSection {
+    margin: clamp(60px, 5vw, 120px) 0 0 clamp(20px, 6.3vw, 121px);
+    padding-right: clamp(20px, 7.86vw, 151px);
+}
+
+.furtherProductsTitle {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(22px, 2.08vw, 36px);
+    font-weight: 600;
+    margin: 0 0 clamp(10px, 0.63vw, 16px) 0;
+    line-height: 1.3;
+}
+
+.furtherProductsDivider {
+    width: 100%;
+    max-width: clamp(1000px, 85.36vw, 1639px);
+    height: 1.5px;
+    background: rgba(0, 0, 0, 0.8);
+    margin: 0 0 clamp(30px, 2.34vw, 45px) 0;
+}
+
+/* ============================================
+   RELATED PRODUCTS GRID
+   ============================================ */
+
+.relatedProductsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(24px, 2.92vw, 56px);
+    max-width: clamp(1000px, 85.36vw, 1639px);
+}
+
+.relatedProductCard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.relatedProductLink {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid transparent;
+}
+
+.relatedProductLink:hover {
+    transform: translateY(-4px);
+    border-color: rgba(38, 131, 198, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+}
+
+.relatedProductImage {
+    width: 100%;
+    aspect-ratio: 469 / 364;
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    margin-bottom: clamp(10px, 0.83vw, 16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.relatedProductImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.relatedProductLink:hover .relatedProductImage img {
+    transform: scale(1.05);
+}
+
+.relatedProductName {
+    color: #2683C6;
+    font-family: var(--font-heading);
+    font-size: clamp(16px, 1.35vw, 24px);
+    font-weight: 600;
+    margin: 0 0 clamp(6px, 0.52vw, 10px) 0;
+    line-height: 1.3;
+}
+
+.relatedProductDesc {
+    color: rgba(0, 0, 0, 0.7);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 1vw, 16px);
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0 0 clamp(10px, 1.04vw, 20px) 0;
+    flex-grow: 1;
+}
+
+.viewProductLink {
+    color: rgba(0, 0, 0, 0.8);
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 1.25vw, 18px);
+    font-weight: 500;
+    text-decoration: underline;
+    margin-bottom: clamp(14px, 1.56vw, 20px);
+    display: inline-block;
+}
+
+.relatedProductLink:hover .viewProductLink {
+    color: #2683C6;
+}
+
+.relatedProductBorder {
+    width: 100%;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.35);
+    margin-top: auto;
+}
+
+/* ============================================
+   BOTTOM CONTENT
+   ============================================ */
+
+.bottomContent {
+    margin: clamp(20px, 2vw, 40px) 0 clamp(60px, 5vw, 100px) clamp(20px, 6.3vw, 121px);
+    max-width: 1000px;
+    padding-right: clamp(20px, 7.86vw, 151px);
+}
+
+.bottomDescription {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================
+   ERROR PAGE
+   ============================================ */
+
+.errorPage {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 100px 20px;
+}
+
+.errorPage h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 4vw, 40px);
+    color: #2683C6;
+    font-weight: 700;
+}
+
+.errorPage a {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(16px, 2vw, 20px);
+    color: #2683C6;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+    .productDetailSection {
+        grid-template-columns: 1fr;
+        gap: clamp(30px, 5vw, 50px);
+        margin-left: clamp(20px, 5vw, 60px);
+        padding-right: clamp(20px, 5vw, 60px);
+    }
+
+    .productImageContainer {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .productInfo {
+        max-width: 100%;
+    }
+
+    .relatedProductsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .furtherProductsSection {
+        margin-left: clamp(20px, 5vw, 60px);
+        padding-right: clamp(20px, 5vw, 60px);
+    }
+}
+
+@media (max-width: 768px) {
+    .productPage {
+        padding-top: clamp(60px, 15vw, 90px);
+    }
+
+    .logoSection {
+        padding-top: clamp(25px, 6vw, 40px);
+        margin-bottom: clamp(18px, 5vw, 30px);
+    }
+
+    .companyLogo {
+        width: clamp(120px, 30vw, 160px);
+    }
+
+    .breadcrumb {
+        margin-left: clamp(16px, 5vw, 24px);
+        margin-right: clamp(16px, 5vw, 24px);
+    }
+
+    .productDetailSection {
+        margin-left: clamp(16px, 5vw, 24px);
+        padding-right: clamp(16px, 5vw, 24px);
+        gap: 24px;
+    }
+
+    .productTitle {
+        font-size: 28px;
+    }
+
+    .furtherProductsSection {
+        margin-left: clamp(16px, 5vw, 24px);
+        padding-right: clamp(16px, 5vw, 24px);
+    }
+
+    .relatedProductsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .bottomContent {
+        margin-left: clamp(16px, 5vw, 24px);
+        padding-right: clamp(16px, 5vw, 24px);
+    }
+}

@@ -1,9 +1,9 @@
 export const productsData = [
   {
     id: 1,
-    name: 'Company 1',
-    slug: 'company-1',
-    logo: '/images/products/logo_1.png',
+    name: 'Tata Bluescope',
+    slug: 'tata-bluescope',
+    logo: '/images/products/logo_tata-bluescope.png',
     description: 'Leading manufacturer of safety equipment',
     website: 'https://company1.com',
   },
