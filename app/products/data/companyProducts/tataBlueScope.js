@@ -34,7 +34,7 @@ export const tataBluescopeData = {
             "Roofing, Wall cladding"
           ],
 
-          brochure: "/pdf/products/tata-bluescope/trimdek-1015-brochure.pdf",
+          brochure: "https://tatabluescopesteel.com/wp-content/uploads/2024/12/Trimdek-1015-Manual-c2c.pdf",
           brochureFileName: "Trimdek 1015", // ← ADD THIS
           brochureFileSize: "100KB",
 
@@ -305,7 +305,7 @@ export const tataBluescopeData = {
             "Roofing, Wall cladding"
           ],
 
-          brochure: "/pdf/products/tata-bluescope/shadowrib-900-brochure.pdf",
+          brochure: "https://tatabluescopesteel.com/wp-content/uploads/2024/12/SHADOWRIB-900.pdf",
           brochureFileName: "SHADOWRIB 900",
           brochureFileSize: "91KB",
 
@@ -687,7 +687,7 @@ export const tataBluescopeData = {
           backgroundColor: "#FFFEEF",
 
           // Individual Product Page
-          longDescription: "LYSAGHT KLIP-LOK® 770 is a new generation widest cover with concealed-fixed cladding. Made of high tensile steel of 550 MPa yield strength, it spans widest, with better uplift performance than all available comparable profiles.",
+          longDescription: "FLEXICLAD® 1110 is an economical and attractive wall cladding profile suitable for a wide range of residential, commercial and industrial applications.",
 
           specifications: [
             "Base Metal Thickness - 0.42 mm/ 0.45 mm",
@@ -703,7 +703,7 @@ export const tataBluescopeData = {
             "Roofing, Wall cladding"
           ],
 
-          brochure: "/pdf/products/tata-bluescope/flexiclad-1110-brochure.pdf",
+          brochure: "https://tatabluescopesteel.com/wp-content/uploads/2024/12/FLEXICLAD-1110.pdf",
           brochureFileName: "FLEXICLAD1110",
           brochureFileSize: "91KB",
 
