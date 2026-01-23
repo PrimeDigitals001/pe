@@ -49,9 +49,9 @@ export const productsData = [
   },
   {
     id: 7,
-    name: 'Company 7',
-    slug: 'company-7',
-    logo: '/images/products/logo_7.png',
+    name: 'Saint-Gobain',
+    slug: 'saint-gobain',
+    logo: '/images/products/logo_saint-gobain.png',
     description: 'Advanced safety technology',
     website: 'https://company7.com',
   },

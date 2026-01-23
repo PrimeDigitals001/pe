@@ -1,0 +1,310 @@
+/* app/products/saint-gobain/styles.module.css */
+
+/* ============================================
+   SAINT-GOBAIN TYPE SELECTION PAGE
+   Base Design: 1920px × 1080px
+   
+   ✅ Clean 2-card layout
+   ✅ Perfect spacing and alignment
+   ✅ Responsive on all devices
+   ============================================ */
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+
+.saintGobainPage {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-white);
+  padding-top: clamp(80px, 10vh, 150px);
+  position: relative;
+}
+
+/* ============================================
+   LOGO SECTION
+   ============================================ */
+
+.logoSection {
+  width: 100%;
+  padding-top: clamp(40px, 6.25vw, 120px);
+  /* 120px @ 1920px */
+  margin-bottom: clamp(30px, 2.6vw, 50px);
+  /* 50px @ 1920px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.companyLogo {
+  width: clamp(120px, 15.16vw, 291px);
+  /* 291px @ 1920px */
+  height: auto;
+  aspect-ratio: 291 / 122;
+  object-fit: contain;
+  display: block;
+}
+
+/* ============================================
+   HEADER SECTION - Title + Count
+   ============================================ */
+
+.headerSection {
+  margin: 0 0 clamp(10px, 1.25vw, 24px) clamp(20px, 6.3vw, 121px);
+  /* 121px left margin @ 1920px */
+  display: flex;
+  align-items: baseline;
+  gap: clamp(10px, 1.04vw, 20px);
+  /* 20px gap @ 1920px */
+}
+
+.pageTitle {
+  color: var(--color-black);
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.08vw, 40px);
+  /* 40px @ 1920px - Medium */
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+.typeCount {
+  color: var(--color-black);
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.04vw, 20px);
+  /* 20px @ 1920px */
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* ============================================
+   DIVIDER LINE
+   ============================================ */
+
+.dividerLine {
+  width: 100%;
+  max-width: clamp(1000px, 85.36vw, 1639px);
+  /* 1639px @ 1920px */
+  height: 1.5px;
+  background: var(--color-black);
+  margin: 0 0 clamp(35px, 3.44vw, 66px) clamp(20px, 6.3vw, 121px);
+  /* 66px bottom margin @ 1920px */
+}
+
+/* ============================================
+   TYPE CARDS GRID - 2 Cards
+   ============================================ */
+
+.typeCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Always 2 columns on desktop */
+  column-gap: clamp(40px, 5.68vw, 109px);
+  /* 109px gap (966-121-121-794-794) @ 1920px */
+  max-width: clamp(800px, 87.24vw, 1675px);
+  /* 1675px @ 1920px */
+  padding: 0 clamp(20px, 6.3vw, 121px);
+  /* 121px side padding @ 1920px */
+  margin-bottom: clamp(60px, 6.25vw, 120px);
+}
+
+/* ============================================
+   TYPE CARD
+   ============================================ */
+
+.typeCard {
+  background: #E6E6E6;
+  /* Light gray background as per Figma */
+  border-radius: clamp(12px, 1.3vw, 25px);
+  /* 25px @ 1920px */
+  width: 100%;
+  height: clamp(150px, 10.52vw, 202px);
+  /* 202px @ 1920px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  backdrop-filter: blur(2px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.typeCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.typeCard:hover {
+  background: #D6D6D6;
+  /* Slightly darker on hover */
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.typeCard:hover::before {
+  opacity: 1;
+}
+
+.typeCard:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* ============================================
+   TYPE CARD TITLE
+   ============================================ */
+
+.typeCardTitle {
+  color: var(--color-black);
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2.08vw, 40px);
+  /* 40px @ 1920px - SemiBold */
+  font-weight: 600;
+  margin: 0;
+  padding: clamp(16px, 1.56vw, 30px);
+  text-align: center;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.typeCard:hover .typeCardTitle {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   TABLET RESPONSIVE - 768px to 1024px
+   ============================================ */
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .typeCardsGrid {
+    column-gap: clamp(30px, 4vw, 50px);
+    padding: 0 clamp(20px, 4vw, 40px);
+  }
+
+  .typeCard {
+    height: clamp(140px, 12vw, 180px);
+  }
+
+  .headerSection {
+    margin-left: clamp(20px, 4vw, 40px);
+  }
+
+  .dividerLine {
+    margin-left: clamp(20px, 4vw, 40px);
+    margin-right: clamp(20px, 4vw, 40px);
+    width: calc(100% - clamp(40px, 8vw, 80px));
+  }
+}
+
+/* ============================================
+   MOBILE RESPONSIVE - Below 768px
+   ============================================ */
+
+@media (max-width: 768px) {
+  .saintGobainPage {
+    padding-top: clamp(60px, 15vw, 90px);
+  }
+
+  .logoSection {
+    padding-top: clamp(30px, 8vw, 50px);
+    margin-bottom: clamp(25px, 6vw, 40px);
+  }
+
+  .companyLogo {
+    width: clamp(140px, 35vw, 200px);
+  }
+
+  .headerSection {
+    margin-left: clamp(16px, 5vw, 24px);
+    margin-right: clamp(16px, 5vw, 24px);
+    margin-bottom: clamp(12px, 3vw, 20px);
+    gap: clamp(8px, 2vw, 12px);
+  }
+
+  .pageTitle {
+    font-size: clamp(20px, 5.5vw, 28px);
+  }
+
+  .typeCount {
+    font-size: clamp(13px, 3.5vw, 16px);
+  }
+
+  .dividerLine {
+    margin-left: clamp(16px, 5vw, 24px);
+    margin-right: clamp(16px, 5vw, 24px);
+    width: calc(100% - clamp(32px, 10vw, 48px));
+    margin-bottom: clamp(25px, 6vw, 35px);
+  }
+
+  .typeCardsGrid {
+    grid-template-columns: 1fr;
+    /* Stack cards vertically on mobile */
+    row-gap: clamp(20px, 5vw, 30px);
+    padding: 0 clamp(16px, 5vw, 24px);
+  }
+
+  .typeCard {
+    height: clamp(120px, 30vw, 160px);
+  }
+
+  .typeCardTitle {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+}
+
+/* ============================================
+   SMALL MOBILE - Below 400px
+   ============================================ */
+
+@media (max-width: 400px) {
+  .logoSection {
+    padding-top: clamp(25px, 7vw, 40px);
+  }
+
+  .companyLogo {
+    width: clamp(120px, 32vw, 160px);
+  }
+
+  .typeCard {
+    height: clamp(100px, 28vw, 140px);
+  }
+
+  .typeCardTitle {
+    font-size: clamp(16px, 4.5vw, 20px);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY - Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .typeCard,
+  .typeCardTitle,
+  .typeCard::before {
+    transition: none !important;
+  }
+
+  .typeCard:hover {
+    transform: none !important;
+  }
+}
+
+/* ============================================
+   HIGH DPI DISPLAYS
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .companyLogo {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
