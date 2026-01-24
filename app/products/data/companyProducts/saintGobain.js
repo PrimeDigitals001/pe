@@ -27,24 +27,29 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/glass-wool-roll.png",
                     cardDescription: "Glass wool roll is a flexible, lightweight insulation material made from recycled glass fibers. It provides thermal insulation, sound absorption, and fire resistance, and is commonly used in roofs, walls, ceilings, and HVAC ducts.",
                     longDescription: "Glass wool roll is a flexible, lightweight insulation material made from recycled glass fibers. Designed for superior thermal and acoustic performance, it reduces heat transfer, improves indoor comfort, and lowers energy consumption. Non-combustible and easy to install, it is ideal for roofs, walls, ceilings, partitions, and HVAC duct insulation.",
-                    range: ["25mm thickness", "50mm thickness", "75mm thickness", "100mm thickness"],
-                    facings: ["Unfaced", "Aluminium foil faced", "Black glass tissue faced", "White glass tissue faced"],
+                    range: ["Density : 10 to 48 kg/m3",
+                        "Thickness : 25 to 130 mm",
+                        "Width : 1.1 to 1.2 m",
+                        "Length : 7.5 to 30 m",
+                        "Available with or without facing"],
+                    facings: ["Aluminium : FSK, R3035HD, Aluglass",
+                        "Polypropylene : White Metalized Polypropylene",
+                        "Tissue : FGT, BGT"],
                     basicInformation: [
-                        "Density: 12-24 kg/m³",
-                        "Thermal Conductivity: 0.035-0.040 W/mK",
-                        "Temperature Range: -40°C to +250°C",
-                        "Fire Rating: Non-combustible (Class A1)",
-                        "Roll Width: 1200mm standard"
+                        "Make / Brand - Twigainsul",
+                        "Material - Resin bonded glass wool",
+                        "Standard / Code - IS 8183"
                     ],
                     properties: [
-                        { name: "Thermal Insulation", icon: "/images/icons/thermal_insulation.png", description: "Excellent thermal resistance" },
-                        { name: "Acoustic Performance", icon: "/images/icons/superior_acoustic_insulation.png", description: "Superior sound absorption" },
-                        { name: "Fire Resistance", icon: "/images/icons/fire-resistant.png", description: "Non-combustible" },
-                        { name: "Lightweight", icon: "/images/icons/lightweight.png", description: "Easy to handle" }
+                        { name: "Long Resilient Blanks", icon: "/images/products/saint-gobain/icons/icon_4.png", description: "Excellent thermal resistance" },
+                        { name: "Yellow in Colour", icon: "/images/products/saint-gobain/icons/icon_6.png", description: "Superior sound absorption" },
+                        { name: "Lightweight and Flexible", icon: "/images/products/saint-gobain/icons/icon_7.png", description: "Non-combustible" },
+                        { name: "Customized Product", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Easy to handle" },
+                        { name: "Fewer Joints and Less Wastage", icon: "/images/products/saint-gobain/icons/icon_8.png", description: "Easy to handle" }
                     ],
                     brochure: "/pdf/products/saint-gobain/glass-wool-roll-brochure.pdf",
-                    brochureFileName: "Glass Wool Roll",
-                    brochureFileSize: "85 KB"
+                    brochureFileName: "SAINTGOBAIN",
+                    brochureFileSize: "101KB"
                 },
                 {
                     id: 2,
@@ -54,15 +59,15 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/glass-wool-board.png",
                     cardDescription: "Glass wool board is specifically designed for insulating pipes, ducts, and cylindrical surfaces. Made from high-quality glass fibers, it provides excellent thermal efficiency, prevents condensation, and reduces energy loss.",
                     longDescription: "Glass wool board is a semi-rigid insulation panel offering excellent thermal and acoustic performance. Made from high-quality glass fibers, it provides superior energy efficiency and fire protection in residential and commercial buildings. Ideal for external walls, partitions, and roofs.",
-                    range: ["Density : 10 to 48 kg/m3", "Thickness : 25 to 130 mm", "Width : 1.1 to 1.2 m", "Length : 7.5 to 30 m"],
-                    facings: ["Aluminium : FSK, R3035HD, Aluglass", "Polypropylene : White Metalized Polypropylene", "Tissue : FGT, BGT"],
+                    range: ["Density : 32 to 120 kg/m3", "Thickness : 15 to 100 mm", "Width : 0.6 m", "Length : 1.2 m", "Available with or without facing"],
+                    facings: ["Aluminium : FSK, R3035HD, Aluglass", "Polypropylene : White Metalized Polypropylene", "Tissue : FGT, BGT", "Glass Cloth : WGC, BGC"],
                     basicInformation: ["Make / Brand - Twigainsul", "Material - Resin bonded glass wool", "Standard / Code - IS 8183"],
                     properties: [
-                        { name: "Long Resilient Blanks", icon: "/images/icons/durable.png", description: "Durable and long-lasting" },
-                        { name: "Yellow in Colour", icon: "/images/icons/aesthetic.png", description: "Characteristic finish" },
-                        { name: "Lightweight and Flexible", icon: "/images/icons/lightweight.png", description: "Easy to handle" },
-                        { name: "Customized Product", icon: "/images/icons/flexible.png", description: "Tailored to requirements" },
-                        { name: "Fewer Joints", icon: "/images/icons/energy_savings.png", description: "Optimized lengths" }
+                        { name: "Rigid and Semi-Rigid Product", icon: "/images/products/saint-gobain/icons/icon_9.png", description: "Durable and long-lasting" },
+                        { name: "Ease of use", icon: "/images/products/saint-gobain/icons/icon_10.png", description: "Characteristic finish" },
+                        { name: "Self Supported", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Easy to handle" },
+                        { name: "Customized Sizes", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Tailored to requirements" },
+
                     ],
                     brochure: "/pdf/products/saint-gobain/glass-wool-board-brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
@@ -76,17 +81,20 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/glass-wool-roll-and-board.png",
                     cardDescription: "Glass wool is a lightweight insulation material made from recycled glass fibers. It provides thermal insulation, sound absorption, and fire resistance.",
                     longDescription: "Glass wool slabs and rolls are rigid to flexible insulation products made from compressed glass fibers. They offer superior thermal and acoustic insulation for walls, roofs, and partitions.",
-                    range: ["25mm to 150mm thickness", "Variable densities"],
-                    facings: ["Unfaced", "Black glass tissue faced", "Aluminium foil faced"],
-                    basicInformation: ["Density: 48-96 kg/m³", "Thermal Conductivity: 0.033-0.036 W/mK", "Fire Rating: Non-combustible"],
+                    range: ["Density (kg/m3) :10 to 48", "Thickness (mm) :25 to 130", "Width (m) :1.1 to 1.2", "Density :7.5 to 30", "Available with or without facing"],
+                    facings: ["Aluminium : FSK, R3035 HD, Aluglass", "Polypropylene : White Metalized Polypropylene", "Tissue : FGT, BGT", "Glass Cloth : WGC, BGC"],
+                    basicInformation: ["Make / Brand - Ecoinsul", "Material - Resin bonded glass wool", "Standard / Code - IS 8183"],
                     properties: [
-                        { name: "Thermal Insulation", icon: "/images/icons/thermal_insulation.png", description: "Superior performance" },
-                        { name: "Acoustic Insulation", icon: "/images/icons/superior_acoustic_insulation.png", description: "Excellent absorption" },
-                        { name: "Fire Resistance", icon: "/images/icons/fire-resistant.png", description: "Class A1" }
+                        { name: "Green Blinder", icon: "/images/products/saint-gobain/icons/icon_11.png", description: "Superior performance" },
+                        { name: "Soft to Touch", icon: "/images/products/saint-gobain/icons/icon_12.png", description: "Excellent absorption" },
+                        { name: "Odourless", icon: "/images/products/saint-gobain/icons/icon_13.png", description: "Class A1" },
+                        { name: "Formaldehyde Free", icon: "/images/products/saint-gobain/icons/icon_14.png", description: "Class A1" },
+                        { name: "Available in Both Roll and Board Form", icon: "/images/products/saint-gobain/icons/icon_15.png", description: "Class A1" },
+                        { name: "Customized Sizes", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Class A1" },
                     ],
                     brochure: "/pdf/products/saint-gobain/glass-wool-roll-board-brochure.pdf",
-                    brochureFileName: "Glass Wool Roll & Board",
-                    brochureFileSize: "88 KB"
+                    brochureFileName: "SAINTGOBAIN",
+                    brochureFileSize: "101 KB"
                 },
                 {
                     id: 4,
@@ -96,17 +104,20 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/glass-wool-pipe-insulation.png",
                     cardDescription: "Specifically designed for insulating pipes, ducts, and cylindrical surfaces. Prevents condensation and reduces energy loss.",
                     longDescription: "Glass wool pipe insulation is specifically designed for insulating pipes, ducts, and cylindrical surfaces. Made from high-quality glass fibers, it provides excellent thermal efficiency, prevents condensation, and reduces energy loss in HVAC and plumbing systems.",
-                    range: ["Pipe diameter: 15mm to 600mm", "Thickness: 25mm to 100mm"],
-                    facings: ["Unfaced", "Aluminium foil jacket", "PVC jacket"],
-                    basicInformation: ["Density: 40-80 kg/m³", "Temperature Range: -40°C to +250°C", "Fire Rating: Class A1"],
+                    range: ["Density (kg/m3) :80", "Thickness (mm) :25 to 75", "Diameter NB (mm) :25 to 450", "Length (m) :1.2", "Available with or without facing (without facing in case of preformed pipe section)",],
+                    facings: ["Aluminium : FSK"],
+                    basicInformation: ["Make / Brand - Twigainsul", "Material - Resin bonded glass wool", "Standard / Code - IS 9842"],
                     properties: [
-                        { name: "Energy Efficiency", icon: "/images/icons/energy_savings.png", description: "Reduces heat loss" },
-                        { name: "Condensation Control", icon: "/images/icons/moisture_protection.png", description: "Prevents moisture" },
-                        { name: "Easy Installation", icon: "/images/icons/labour_efficiency.png", description: "Pre-formed sections" }
+                        { name: "Performed Pipe Section", icon: "/images/products/saint-gobain/icons/icon_1.png", description: "Reduces heat loss" },
+                        { name: "Rigid", icon: "/images/products/saint-gobain/icons/icon_3.png", description: "Prevents moisture" },
+                        { name: "Easy and Fast Installation", icon: "/images/products/saint-gobain/icons/icon_5.png", description: "Pre-formed sections" },
+                        { name: "Customizable", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Pre-formed sections" },
+                        { name: "Made of Glass Fiber Wedges Laminated With AlumInium Foil", icon: "/images/products/saint-gobain/icons/icon_4.png", description: "Pre-formed sections" },
+                        { name: "Compression Resistant", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Pre-formed sections" },
                     ],
                     brochure: "/pdf/products/saint-gobain/glass-wool-pipe-brochure.pdf",
-                    brochureFileName: "Pipe Insulation",
-                    brochureFileSize: "92 KB"
+                    brochureFileName: "SAINTGOBAIN",
+                    brochureFileSize: "101 KB"
                 },
                 {
                     id: 5,
@@ -116,17 +127,22 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/flexible-duct-insulation.png",
                     cardDescription: "Wraps easily around rectangular and round ducts, improving energy efficiency and indoor air quality.",
                     longDescription: "Flexible duct insulation (Duct Wrap) is designed to insulate HVAC ducts, reducing heat loss/gain and condensation. Its flexible design wraps easily around rectangular and round ducts.",
-                    range: ["25mm to 50mm thickness", "Roll width: 1200mm"],
-                    facings: ["Aluminium foil FSK", "White vinyl", "Unfaced"],
-                    basicInformation: ["Density: 24-48 kg/m³", "Thermal Conductivity: 0.035-0.038 W/mK", "Temperature: -40°C to +250°C"],
+                    range: ["Density (kg/m3) :80", "Thickness (mm) :25 to 75", "Diameter NB (mm) :25 to 450", "Length (m) :1.2", "Available with or without facing (without facing in case of preformed pipe section)",],
+                    facings: ["Aluminium : FSK"],
+                    basicInformation: ["Make / Brand - Twigainsul", "Material - Resin bonded glass wool", "Standard / Code - IS 9842"],
                     properties: [
-                        { name: "Energy Saving", icon: "/images/icons/energy_savings.png", description: "Lower consumption" },
-                        { name: "Moisture Protection", icon: "/images/icons/moisture_protection.png", description: "Prevents buildup" },
-                        { name: "Flexible", icon: "/images/icons/flexible.png", description: "Easy wrap" }
+                        { name: "High Degree of Flexibility", icon: "/images/products/saint-gobain/icons/icon_16.png", description: "Lower consumption" },
+                        { name: "Allows Ducting Around Obstacles", icon: "/images/products/saint-gobain/icons/icon_17.png", description: "Prevents buildup" },
+                        { name: "Lightweight", icon: "/images/products/saint-gobain/icons/icon_7.png", description: "Easy wrap" },
+                        { name: "Stong, Dimensionally Stable", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Easy wrap" },
+                        { name: "Easy to Install", icon: "/images/products/saint-gobain/icons/icon_10.png", description: "Easy wrap" },
+                        { name: "Compressible", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Easy wrap" }
+
+
                     ],
                     brochure: "/pdf/products/saint-gobain/flexible-duct-brochure.pdf",
-                    brochureFileName: "Duct Insulation",
-                    brochureFileSize: "86 KB"
+                    brochureFileName: "SAINTGOBAIN",
+                    brochureFileSize: "101 KB"
                 },
                 {
                     id: 6,
@@ -136,37 +152,37 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/acoustic-board.png",
                     cardDescription: "Specifically designed to reduce sound transmission. Ideal for offices, auditoriums, and commercial spaces.",
                     longDescription: "Acoustic boards and panels are specifically designed to reduce sound transmission and improve acoustics in buildings. Made from high-quality compressed glass fibers.",
-                    range: ["Thickness: 25mm to 100mm", "Standard 600x600mm or 1200x600mm"],
-                    facings: ["Fabric finish", "Painted finish", "Tissue faced"],
-                    basicInformation: ["Density: 60-100 kg/m³", "NRC: 0.85 to 1.00", "Fire Rating: Euroclass A1"],
+                    range: ["Density : 70 to 80 kg/m3", "Thickness : 25 to 50 mm", "Width : 0.6 and 1.2 m", "Length : 1.2 and 2.5 m"],
+                    facings: ["FSK on one side + BGC on the other side"],
+                    basicInformation: ["Make / Brand - Twigainsul", "Material - Resin bonded glass wool", "Standard / Code - IS 8183"],
                     properties: [
-                        { name: "Acoustic Performance", icon: "/images/icons/superior_acoustic_insulation.png", description: "Superior absorption" },
-                        { name: "Fire Safety", icon: "/images/icons/fire-resistant.png", description: "Non-combustible" },
-                        { name: "Aesthetic", icon: "/images/icons/aesthetic.png", description: "Decorative finishes" }
+                        { name: "Rigid", icon: "/images/products/saint-gobain/icons/icon_9.png", description: "Superior absorption" },
+                        { name: "For Acoustic Sensitive Area", icon: "/images/products/saint-gobain/icons/icon_18.png", description: "Non-combustible" },
+                        { name: "Easy to Install", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Decorative finishes" }
                     ],
                     brochure: "/pdf/products/saint-gobain/acoustic-board-brochure.pdf",
-                    brochureFileName: "Acoustic Board",
-                    brochureFileSize: "90 KB"
+                    brochureFileName: "SAINTGOBAIN",
+                    brochureFileSize: "101 KB"
                 },
                 {
                     id: 7,
-                    name: "Acoustic Board | Acoustic Panels and Foam",
-                    slug: "acoustic-board-2",
+                    name: "Mineral Fiber Marine Board (MFMB)",
+                    slug: "mineral-fiber-marine-board",
                     type: "Acoustic",
-                    image: "/images/products/saint-gobain/acoustic-board-2.png",
+                    image: "/images/products/saint-gobain/mineral-fiber-marine-board.png",
                     cardDescription: "High-quality materials provide excellent sound absorption for commercial environments.",
                     longDescription: "Acoustic panels and foam are specifically designed to reduce sound transmission in buildings. Made from high-quality materials, they provide excellent sound absorption.",
-                    range: ["Thickness: 25mm to 100mm", "Custom sizes available"],
-                    facings: ["Unfaced", "Aluminium foil", "White tissue"],
-                    basicInformation: ["Density: 10-24 kg/m³", "Thermal Conductivity: 0.038-0.042 W/mK", "Fire Rating: Class A1"],
+                    range: ["Density : 56 kg/m3", "Thickness : 25 to 75 mm", "Width : 0.6 m", "Length : 0.9 m"],
+                    facings: ["Glass Cloth: WGC"],
+                    basicInformation: ["Make / Brand - Twigainsul", "Material - Resin bonded glass wool", "Standard / Code - Naval Engineering Standard 802 Part 1, NCD 1427 Issue 1"],
                     properties: [
-                        { name: "Sound Absorption", icon: "/images/icons/superior_acoustic_insulation.png", description: "Absorbs airborne sound" },
-                        { name: "Lightweight", icon: "/images/icons/lightweight.png", description: "Easy to handle" },
-                        { name: "Eco-Friendly", icon: "/images/icons/eco-friendly.png", description: "Recycled content" }
+                        { name: "Rigid Board", icon: "/images/products/saint-gobain/icons/icon_9.png", description: "Absorbs airborne sound" },
+                        { name: "Used in ships: Bulkhead, Deckhead and duck Insulation", icon: "/images/products/saint-gobain/icons/icon_19.png", description: "Easy to handle" },
+                        { name: "Helps Withstand Extreme Ambient Conditions", icon: "/images/products/saint-gobain/icons/icon_20.png", description: "Recycled content" }
                     ],
                     brochure: "/pdf/products/saint-gobain/acoustic-panels-brochure.pdf",
-                    brochureFileName: "Acoustic Panels",
-                    brochureFileSize: "84 KB"
+                    brochureFileName: "SAINTGOBAIN",
+                    brochureFileSize: "101 KB"
                 }
             ]
         },
@@ -189,17 +205,19 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/rockwool-lrb-mattress.png",
                     cardDescription: "High-temperature insulation material made from volcanic rock. Ideal for industrial applications, piping, and equipment insulation.",
                     longDescription: "Rockwool LRB (Lamella Reinforced Blanket) Mattress is a high-density stone wool insulation designed for cylindrical surfaces such as tanks, vessels, and large-diameter pipes. It offers exceptional thermal efficiency and fire protection at high temperatures.",
-                    range: ["Thickness: 50mm to 150mm", "Density: 80-120 kg/m³"],
-                    facings: ["Wire mesh reinforced", "Aluminium foil facing"],
-                    basicInformation: ["Density: 80-120 kg/m³", "Operating Temperature: Up to 750°C", "Fire Rating: Euroclass A1"],
+                    range: ["Density : 70 to 160 kg/m3", "Thickness : 25 to 100 mm", "Width : 1.22 m", "Length : 1.52 to 5 m"],
+                    facings: ["GI Wire Mesh", "SS Wire Mesh"],
+                    basicInformation: ["Make / Brand - Rockinsul", "Material - Low resin bonded stone wool mattress", "Standard / Code - IS 8183, IS 3144, ASTM C592"],
                     properties: [
-                        { name: "High Temperature", icon: "/images/icons/high-temp.png", description: "Withstands up to 750°C" },
-                        { name: "Fire Protection", icon: "/images/icons/fire-resistant.png", description: "Non-combustible" },
-                        { name: "Thermal Efficiency", icon: "/images/icons/thermal_insulation.png", description: "Excellent insulation" }
+                        { name: "High Density", icon: "/images/products/saint-gobain/icons/s1.png", description: "Withstands up to 750°C" },
+                        { name: "Low Binder", icon: "/images/products/saint-gobain/icons/s2.png", description: "Non-combustible" },
+                        { name: "Semi- Flexible Mat", icon: "/images/products/saint-gobain/icons/s3.png", description: "Excellent insulation" },
+                        { name: "Customized Lengths", icon: "/images/products/saint-gobain/icons/s4.png", description: "Excellent insulation" },
+                        { name: "Fewer Joints and Less Wastage", icon: "/images/products/saint-gobain/icons/s5.png", description: "Excellent insulation" }
                     ],
                     brochure: "/pdf/products/saint-gobain/rockwool-lrb-mattress-brochure.pdf",
-                    brochureFileName: "Rockwool LRB Mattress",
-                    brochureFileSize: "95 KB"
+                    brochureFileName: "SAINTGOBAIN",
+                    brochureFileSize: "101 KB"
                 },
                 {
                     id: 9,
@@ -209,17 +227,19 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/rb-slab-stone-wool.png",
                     cardDescription: "Rigid, high-density insulation boards designed for walls, roofs, and partitions in industrial and commercial buildings.",
                     longDescription: "Resin Bonded (RB) Slabs are semi-rigid to rigid stone wool insulation boards designed for superior fire protection, thermal insulation, and acoustic performance. They are ideal for high-temperature applications and building partitions.",
-                    range: ["Thickness: 25mm to 200mm", "Density: 48kg/m³ to 160kg/m³"],
-                    facings: ["Unfaced", "Black glass tissue", "Aluminium foil"],
-                    basicInformation: ["Operating Temperature: Up to 750°C", "Fire Rating: Class A1", "Sound Absorption: High"],
+                    range: ["Density : 40 to 180 kg/m3", "Thickness : 25 to 150 mm", "Width : 0.6 m", "Length : 0.6 to 1.2 m", "Available with or without facing"],
+                    facings: ["Aluminium : FSK", "Aluglass Tissue : BGT / Black Glass Fabric"],
+                    basicInformation: ["Make / Brand - Rockinsul", "Material - Low resin bonded stone wool mattress", "Standard / Code - IS 8183, IS 3144, ASTM C 612"],
                     properties: [
-                        { name: "Fire Resistance", icon: "/images/icons/fire-resistant.png", description: "Non-combustible up to 1000°C" },
-                        { name: "Thermal Insulation", icon: "/images/icons/thermal_insulation.png", description: "Excellent performance" },
-                        { name: "Acoustic Performance", icon: "/images/icons/superior_acoustic_insulation.png", description: "Superior absorption" }
+                        { name: "Rigid / semi-rigid", icon: "/images/products/saint-gobain/icons/s6.png", description: "Non-combustible up to 1000°C" },
+                        { name: "Strong", icon: "/images/products/saint-gobain/icons/s7.png", description: "Excellent performance" },
+                        { name: "Easy to handle", icon: "/images/products/saint-gobain/icons/s8.png", description: "Superior absorption" },
+                        { name: "Easy to cut", icon: "/images/products/saint-gobain/icons/s9.png", description: "Superior absorption" },
+                        { name: "Dimensionally stable", icon: "/images/products/saint-gobain/icons/s10.png", description: "Superior absorption" }
                     ],
                     brochure: "/pdf/products/saint-gobain/rb-slab-brochure.pdf",
-                    brochureFileName: "RB Slab",
-                    brochureFileSize: "100 KB"
+                    brochureFileName: "SAINTGOBAIN",
+                    brochureFileSize: "101 KB"
                 },
                 {
                     id: 10,
@@ -229,17 +249,21 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/stone-wool-pipe-section.png",
                     cardDescription: "Pre-formed insulation designed for high-temperature pipes in industrial and process applications.",
                     longDescription: "Stone wool pipe sections are pre-formed insulation designed for high-temperature pipes. They provide superior fire resistance, thermal efficiency, and are easy to install on hot piping systems.",
-                    range: ["Pipe diameter: 21mm to 600mm", "Thickness: 25mm to 100mm"],
-                    facings: ["Unfaced", "Aluminium foil jacket", "Cladding available"],
-                    basicInformation: ["Density: 100-150 kg/m³", "Operating Temperature: Up to 750°C", "Fire Rating: Class A1"],
+                    range: ["Density : 100 to 160 kg/m3", "Thickness : 25 to 100 mm", "Diameter : 15 to 600 mm (NB)", "Length : 1.2 to 1.25 m"],
+                    facings: ["Unfaced / plain", "Aluminium : FSK"],
+                    basicInformation: ["Make / Brand - Rockinsul", "Material - Stone wool pipe section", "Standard / Code - IS 9842, ASTM C 547"],
                     properties: [
-                        { name: "High Temp", icon: "/images/icons/high-temp.png", description: "Up to 750°C" },
-                        { name: "Energy Efficiency", icon: "/images/icons/energy_savings.png", description: "Reduces heat loss" },
-                        { name: "Easy Installation", icon: "/images/icons/labour_efficiency.png", description: "Pre-cut sections" }
+                        { name: "Pre-formed pipe section", icon: "/images/products/saint-gobain/icons/s11.png", description: "Up to 750°C" },
+                        { name: "Rigid", icon: "/images/products/saint-gobain/icons/s7.png", description: "Reduces heat loss" },
+                        { name: "Ease of installation", icon: "/images/products/saint-gobain/icons/s12.png", description: "Pre-cut sections" },
+                        { name: "Less joints and wastage", icon: "/images/products/saint-gobain/icons/s5.png", description: "Pre-cut sections" },
+                        { name: "Good compressive strength", icon: "/images/products/saint-gobain/icons/s13.png", description: "Pre-cut sections" },
+                        { name: "No sagging", icon: "/images/products/saint-gobain/icons/s14.png", description: "Pre-cut sections" },
+
                     ],
                     brochure: "/pdf/products/saint-gobain/stone-wool-pipe-brochure.pdf",
-                    brochureFileName: "Pipe Section",
-                    brochureFileSize: "98 KB"
+                    brochureFileName: "SAINTGOBAIN",
+                    brochureFileSize: "101 KB"
                 },
                 {
                     id: 11,
@@ -249,17 +273,17 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/tuffinsul-slab.png",
                     cardDescription: "Exceptional fire resistance and thermal performance for façades, fire barriers, and industrial applications.",
                     longDescription: "Tuffinsul Slabs are high-density, rigid stone wool boards offering exceptional fire resistance. They are specifically designed for external façades, fire barriers, and high-temperature industrial environments.",
-                    range: ["Thickness: 30mm to 200mm", "Density: 80kg/m³ to 140kg/m³"],
-                    facings: ["Unfaced", "Glass tissue", "Aluminium foil"],
-                    basicInformation: ["Density: 80-140 kg/m³", "Operating Temperature: Up to 750°C", "Fire Rating: Euroclass A1"],
+                    range: ["Density : 80 to 150 kg/m3", "Thickness : 50 to 100 mm", "Width : 0.6 m", "Length : 1 to 1.2 m"],
+                    facings: ["Unfaced / plain",],
+                    basicInformation: ["Make / Brand - Tuffinsul", "Material - Stone wool pipe section", "Standard / Code - IS 8183, IS 3144"],
                     properties: [
-                        { name: "Fire Protection", icon: "/images/icons/fire-resistant.png", description: "Non-combustible" },
-                        { name: "High Stability", icon: "/images/icons/rigid.png", description: "Dimensionally stable" },
-                        { name: "Thermal Insulation", icon: "/images/icons/thermal_insulation.png", description: "Low conductivity" }
+                        { name: "Superior Rigidity", icon: "/images/products/saint-gobain/icons/s7.png", description: "Non-combustible" },
+                        { name: "High Compressive Strength", icon: "/images/products/saint-gobain/icons/s6.png", description: "Dimensionally stable" },
+
                     ],
                     brochure: "/pdf/products/saint-gobain/tuffinsul-slab-brochure.pdf",
-                    brochureFileName: "Tuffinsul Slab",
-                    brochureFileSize: "97 KB"
+                    brochureFileName: "SAINTGOBAIN",
+                    brochureFileSize: "101 KB"
                 },
                 {
                     id: 12,
@@ -269,13 +293,12 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/tuffinsul-lamella-bat.png",
                     cardDescription: "Orientation of fibers provides high compressive strength, making it ideal for sandwich panels.",
                     longDescription: "Tuffinsul Lamella Bat is a specialized stone wool product where fibers are oriented perpendicular to the surface. This provides extremely high compressive strength, making it the perfect core material for sandwich panels and structural insulation.",
-                    range: ["Thickness: 40mm to 100mm", "Custom widths"],
-                    facings: ["Unfaced", "Primed for bonding"],
-                    basicInformation: ["High Compressive Strength", "Melting Point: >1000°C", "Fire Rating: Euroclass A1"],
+                    range: ["Density : 80 to 150 kg/m3", "Thickness : 25 to 110 mm", "Width : 100 to 110 mm", "Length : 1 to 1.2 m", "Available without facing"],
+                    facings: [],
+                    basicInformation: ["Make / Brand - Tuffinsul", "Material - Stone wool pipe section", "Standard / Code - IS 8183, IS 3144"],
                     properties: [
-                        { name: "Structural", icon: "/images/icons/strength.png", description: "High compressive strength" },
-                        { name: "Fire Safety", icon: "/images/icons/fire-resistant.png", description: "Exceptional resistance" },
-                        { name: "Thermal", icon: "/images/icons/thermal_insulation.png", description: "Constant efficiency" }
+                        { name: "Rigid Bat", icon: "/images/products/saint-gobain/icons/s15.png", description: "High compressive strength" },
+
                     ],
                     brochure: "/pdf/products/saint-gobain/tuffinsul-lamella-brochure.pdf",
                     brochureFileName: "Lamella Bat",
@@ -289,17 +312,16 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/stone-wool-building-roll.png",
                     cardDescription: "Flexible stone wool rolls for large-area thermal and acoustic insulation in buildings.",
                     longDescription: "Stone wool building rolls are flexible, high-performance insulation rolls designed for large-area applications. Perfect for industrial buildings, warehouses, and metal structures, providing thermal and acoustic benefits.",
-                    range: ["Thickness: 25mm to 100mm", "Roll width: 1200mm"],
-                    facings: ["Unfaced", "Aluminium foil FSK", "Kraft paper"],
-                    basicInformation: ["Density: 40-70 kg/m³", "Operating Temp: Up to 750°C", "Water Repellent"],
+                    range: ["Density : 40 to 100 kg/m3", "Thickness : 50 to 100 mm", "Width : 1.1 to 1.2 m", "Length : 5 to 10 m", "Available with or without facing"],
+                    facings: ["Aluminium : FSK", "Alu Glass"],
+                    basicInformation: ["Make / Brand - Rockinsul", "Material - Resin bonded stone wool blanket", "Standard / Code - IS 8183"],
                     properties: [
-                        { name: "Thermal", icon: "/images/icons/thermal_insulation.png", description: "Effective transfer reduction" },
-                        { name: "Acoustic", icon: "/images/icons/superior_acoustic_insulation.png", description: "Sound absorption" },
-                        { name: "Fire Rating", icon: "/images/icons/fire-resistant.png", description: "Class A1" }
+                        { name: "Superior Rigidity", icon: "/images/products/saint-gobain/icons/s16.png", description: "Effective transfer reduction" },
+                        { name: "High Compressive Strength", icon: "/images/products/saint-gobain/icons/s17.png", description: "Sound absorption" },
                     ],
                     brochure: "/pdf/products/saint-gobain/building-roll-brochure.pdf",
-                    brochureFileName: "Building Roll",
-                    brochureFileSize: "89 KB"
+                    brochureFileName: "SAINTGOBAIN",
+                    brochureFileSize: "101 KB"
                 },
                 {
                     id: 14,
@@ -309,13 +331,13 @@ export const saintGobainData = {
                     image: "/images/products/saint-gobain/stone-wool-loose-wool.png",
                     cardDescription: "Bulk stone wool fibers for filling irregular spaces and cavities where pre-formed insulation cannot be used.",
                     longDescription: "Stone wool loose wool consists of bulk fibers designed for filling irregular spaces, cavities, and complex geometries. It is widely used for thermal insulation in high-temperature industrial equipment and fire-stopping applications.",
-                    range: ["Supplied in 20kg/40kg bags", "Bulk fiber state"],
-                    facings: ["N/A"],
-                    basicInformation: ["Application: Hand-packed or blown", "Fire Rating: Non-combustible", "Temp Limit: 750°C"],
+                    range: [],
+                    facings: [],
+                    basicInformation: ["Make / Brand - Rockinsul", "Material - Unbonded stone wool fibers", "Standard / Code - IS 3677, ASTM C 764"],
                     properties: [
-                        { name: "Versatile", icon: "/images/icons/flexible.png", description: "Fills any shape" },
-                        { name: "High Temp", icon: "/images/icons/high-temp.png", description: "Industrial performance" },
-                        { name: "Fire Safety", icon: "/images/icons/fire-resistant.png", description: "Fills gaps perfectly" }
+                        { name: "Unbonded Loose Stone Wool Fibers", icon: "/images/products/saint-gobain/icons/s18.png", description: "Fills any shape" },
+                        { name: "No Specific Density or Thickness", icon: "/images/products/saint-gobain/icons/s19.png", description: "Industrial performance" },
+                        { name: "In Fill Material For Complex Shapes", icon: "/images/products/saint-gobain/icons/s20.png", description: "Fills gaps perfectly" }
                     ],
                     brochure: "/pdf/products/saint-gobain/loose-wool-brochure.pdf",
                     brochureFileName: "Loose Wool",

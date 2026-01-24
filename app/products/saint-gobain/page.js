@@ -12,6 +12,9 @@ import { saintGobainData } from '../data/companyProducts/saintGobain';
 import styles from './styles.module.css';
 
 export default function SaintGobainPage() {
+    const totalTypes = saintGobainData.types.length;
+    const formattedCount = String(totalTypes).padStart(2, '0');
+
     return (
         <>
             <Header />
@@ -20,7 +23,7 @@ export default function SaintGobainPage() {
 
             <main className={styles.saintGobainPage}>
 
-                {/* Saint-Gobain Logo */}
+                {/* Saint-Gobain Logo Section */}
                 <div className={styles.logoSection}>
                     <img
                         src={saintGobainData.companyInfo.logo}
@@ -30,24 +33,28 @@ export default function SaintGobainPage() {
                     />
                 </div>
 
-                {/* Page Header */}
+                {/* Category Header - Matching Tata Structural Density */}
                 <div className={styles.headerSection}>
                     <h1 className={styles.pageTitle}>Select types</h1>
-                    <span className={styles.typeCount} aria-label="2 types available">
-                        02
+                    <span
+                        className={styles.typeCount}
+                        aria-label={`${totalTypes} categories available`}
+                    >
+                        {formattedCount}
                     </span>
                 </div>
 
-                {/* Divider Line */}
+                {/* Category Divider Line */}
                 <div className={styles.dividerLine} role="separator"></div>
 
-                {/* Type Selection Cards */}
+                {/* Category Selection Cards */}
                 <div className={styles.typeCardsGrid}>
                     {saintGobainData.types.map((type) => (
                         <Link
                             key={type.id}
                             href={`/products/saint-gobain/${type.slug}`}
                             className={styles.typeCard}
+                            title={`View all products in ${type.name}`}
                         >
                             <h2 className={styles.typeCardTitle}>{type.name}</h2>
                         </Link>

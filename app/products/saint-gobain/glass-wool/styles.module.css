@@ -19,6 +19,8 @@
   background: var(--color-white);
   padding-top: clamp(80px, 10vh, 150px);
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ============================================
@@ -335,9 +337,10 @@
 
 @media (max-width: 600px) {
   .glassWoolPage {
-    padding-top: clamp(60px, 15vw, 90px);
+    min-height: auto;
+    padding-bottom: 40px;
   }
-
+  
   .logoSection {
     padding-top: clamp(30px, 8vw, 50px);
     margin-bottom: clamp(25px, 6vw, 40px);
@@ -385,6 +388,7 @@
     /* 1 column on mobile */
     padding: 0 clamp(16px, 5vw, 24px);
     row-gap: clamp(20px, 5vw, 30px);
+    margin-bottom: 20px;
   }
 
   .productCard {
