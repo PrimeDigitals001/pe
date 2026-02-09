@@ -22,9 +22,17 @@ export default function EjotProductDetailPage() {
   const product = getEjotProductBySlug(productSlug);
 
   // Get related products (limit to 3)
-  const relatedProducts = product?.relatedProducts
-    ? getEjotRelatedProducts(product.id).slice(0, 3)
-    : ejotScrewData.products.slice(0, 3);
+
+  let relatedProducts = getEjotRelatedProducts(product.id);
+
+  // If no related products, show other products (exclude current)
+  if (relatedProducts.length === 0) {
+    relatedProducts = ejotScrewData.products
+      .filter((p) => p.id !== product.id)
+      .slice(0, 3);
+  } else {
+    relatedProducts = relatedProducts.slice(0, 3);
+  }
 
   if (!product) {
     return (
