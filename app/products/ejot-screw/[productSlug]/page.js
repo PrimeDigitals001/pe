@@ -7,10 +7,10 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
-import { 
-  ejotScrewData, 
+import {
+  ejotScrewData,
   getEjotProductBySlug,
-  getEjotRelatedProducts 
+  getEjotRelatedProducts
 } from '../../data/companyProducts/ejotScrew';
 import styles from './styles.module.css';
 
@@ -22,7 +22,7 @@ export default function EjotProductDetailPage() {
   const product = getEjotProductBySlug(productSlug);
 
   // Get related products (limit to 3)
-  const relatedProducts = product?.relatedProducts 
+  const relatedProducts = product?.relatedProducts
     ? getEjotRelatedProducts(product.id).slice(0, 3)
     : ejotScrewData.products.slice(0, 3);
 
@@ -47,10 +47,10 @@ export default function EjotProductDetailPage() {
       <FloatingQuoteButton />
 
       <main className={styles.productPage}>
-        
+
         {/* EJOT Logo */}
         <div className={styles.ejotLogoSection}>
-          <img 
+          <img
             src="/images/products/logo_ejot.png"
             alt="EJOT"
             className={styles.ejotLogo}
@@ -73,10 +73,10 @@ export default function EjotProductDetailPage() {
 
         {/* Product Detail Section */}
         <div className={styles.productDetailSection}>
-          
+
           {/* Left: Product Image */}
           <div className={styles.productImageContainer}>
-            <img 
+            <img
               src={product.image}
               alt={`${product.name} - ${product.category}`}
               className={styles.productMainImage}
@@ -86,7 +86,7 @@ export default function EjotProductDetailPage() {
 
           {/* Right: Product Information */}
           <div className={styles.productInfo}>
-            
+
             {/* Product Title */}
             <h1 className={styles.productTitle}>
               EJOT® self-tapping screw {product.name}
@@ -96,9 +96,17 @@ export default function EjotProductDetailPage() {
             <p className={styles.productCategory}>self-tapping screw</p>
 
             {/* Use Case */}
-            <p className={styles.productUseCase}>
-              {product.useCase}
-            </p>
+            <div className={styles.simpleList}>
+              {Array.isArray(product.useCase) ? (
+                product.useCase.map((item, index) => (
+                  <p key={index} className={styles.productUseCase}>
+                    {item}
+                  </p>
+                ))
+              ) : (
+                <p className={styles.productUseCase}>{product.useCase}</p>
+              )}
+            </div>
 
             {/* Divider Line */}
             <div className={styles.dividerLine} role="separator"></div>
@@ -140,7 +148,7 @@ export default function EjotProductDetailPage() {
                 <div className={styles.downloadList}>
                   {product.brochures.map((brochure, index) => {
                     const isExternal = brochure.link.startsWith('http');
-                    
+
                     return (
                       <a
                         key={index}
@@ -152,8 +160,8 @@ export default function EjotProductDetailPage() {
                         aria-label={`${isExternal ? 'Open' : 'Download'} ${brochure.text}${brochure.size ? ` (${brochure.size})` : ''}`}
                       >
                         <svg className={styles.downloadIcon} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M12 3V16M12 16L7 11M12 16L17 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M3 17V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                          <path d="M12 3V16M12 16L7 11M12 16L17 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M3 17V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                         </svg>
                         <span className={styles.downloadText}>
                           <span className={styles.downloadName}>{brochure.text}</span>
@@ -184,7 +192,7 @@ export default function EjotProductDetailPage() {
               <article key={relatedProduct.id} className={styles.relatedProductCard}>
                 <Link href={`/products/ejot-screw/${relatedProduct.slug}`} className={styles.relatedProductLink}>
                   <div className={styles.relatedProductImage}>
-                    <img 
+                    <img
                       src={relatedProduct.image}
                       alt={`${relatedProduct.name} - ${relatedProduct.category}`}
                       loading="lazy"

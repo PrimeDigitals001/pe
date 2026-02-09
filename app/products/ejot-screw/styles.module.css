@@ -102,7 +102,15 @@
      ============================================ */
 
 .productsHeader {
-  margin: clamp(35px, 4.95vw, 95px) 0 0 clamp(20px, 6.3vw, 121px);
+  margin: clamp(35px, 4.95vw, 95px) clamp(20px, 6.3vw, 121px) 0 clamp(20px, 6.3vw, 121px);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.titleGroup {
   display: flex;
   align-items: baseline;
   gap: clamp(8px, 0.78vw, 15px);
@@ -135,6 +143,63 @@
   height: 1.5px;
   background: var(--color-black);
   margin: clamp(10px, 0.73vw, 14px) 0 0 clamp(20px, 6.3vw, 121px);
+}
+
+/* ============================================
+   FILTER SECTION
+   ============================================ */
+
+.filterSection {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.04vw, 20px);
+}
+
+.filterLabel {
+  color: var(--color-black);
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.04vw, 18px);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.selectWrapper {
+  position: relative;
+  width: clamp(150px, 12vw, 220px);
+}
+
+.filterDropdown {
+  width: 100%;
+  padding: clamp(6px, 0.5vw, 10px) clamp(30px, 2vw, 40px) clamp(6px, 0.5vw, 10px) clamp(10px, 0.6vw, 12px);
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.04vw, 16px);
+  color: var(--color-black);
+  background-color: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterDropdown:hover, .filterDropdown:focus {
+  border-color: #D1203E;
+  outline: none;
+}
+
+.dropdownArrow {
+  position: absolute;
+  right: clamp(10px, 0.8vw, 15px);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-black);
+  transition: transform 0.3s ease;
+}
+
+.selectWrapper:hover .dropdownArrow {
+  color: #D1203E;
 }
 
 /* ============================================
@@ -195,7 +260,7 @@
 .productImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   transition: transform 0.4s ease;
 }
@@ -203,6 +268,7 @@
 .productCard:hover .productImage {
   transform: scale(1.05);
 }
+
 
 /* Product Name */
 .productName {
@@ -277,6 +343,15 @@
   height: 1px;
   background: rgba(0, 0, 0, 0.35);
   margin-top: auto;
+}
+
+.noProducts {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 1.25vw, 24px);
+  color: #666;
 }
 
 /* ============================================
@@ -370,6 +445,34 @@
   .dividerLine {
     margin-left: clamp(16px, 5vw, 24px);
     margin-right: clamp(16px, 5vw, 24px);
+  }
+
+  /* Reset separate filter margin logic */
+  .filterSection {
+    width: 100%;
+    margin-top: 10px;
+    justify-content: space-between;
+  }
+
+  .filterSection {
+    flex-direction: row; /* Keep row on mobile if space allows, or wrap handled by header flex-wrap */
+    align-items: center;
+    width: 100%;
+    margin-top: 4px; /* Small gap from title */
+  }
+
+  .titleGroup {
+    width: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  
+  .filterLabel {
+    font-size: 14px;
+  }
+
+  .selectWrapper {
+    width: 160px; /* Fixed manageable width on mobile */
   }
 
   .descriptionSection {
