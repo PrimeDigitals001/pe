@@ -41,9 +41,9 @@ export const productsData = [
   },
   {
     id: 6,
-    name: 'Company 6',
-    slug: 'company-6',
-    logo: '/images/products/logo_6.png',
+    name: 'Kee-Safety',
+    slug: 'kee-safety',
+    logo: '/images/products/logo_kee-safety.png',
     description: 'Trusted safety solutions provider',
     website: 'https://company6.com',
   },
