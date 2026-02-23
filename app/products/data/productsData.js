@@ -25,9 +25,9 @@ export const productsData = [
   },
   {
     id: 4,
-    name: 'Company 4',
-    slug: 'company-4',
-    logo: '/images/products/logo_4.png',
+    name: 'Hindalco',
+    slug: 'hindalco',
+    logo: '/images/products/logo_hindalco.png',
     description: 'Industrial safety specialists',
     website: 'https://company4.com',
   },

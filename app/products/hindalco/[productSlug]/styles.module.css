@@ -1,0 +1,636 @@
+/* ============================================
+   HINDALCO PRODUCT DETAIL PAGE
+   Base Design: 1920px × 1080px
+   
+   ✅ Hindalco blue theme (#3C55A5)
+   ✅ Image gallery with thumbnails
+   ✅ Color swatches
+   ✅ Full specifications layout
+   ✅ Fully responsive
+   ============================================ */
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+
+.productPage {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-white);
+  padding-top: clamp(80px, 10vh, 150px);
+  position: relative;
+}
+
+/* ============================================
+   LOGO SECTION
+   ============================================ */
+
+.logoSection {
+  width: 100%;
+  padding-top: clamp(30px, 4.17vw, 80px);
+  margin-bottom: clamp(20px, 1.56vw, 30px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.companyLogo {
+  width: clamp(100px, 7.03vw, 135px);
+  height: auto;
+  aspect-ratio: 135 / 132;
+  object-fit: contain;
+  display: block;
+}
+
+/* ============================================
+   BREADCRUMB NAVIGATION
+   ============================================ */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.52vw, 10px);
+  margin: 0 0 clamp(20px, 1.56vw, 30px) clamp(20px, 6.3vw, 121px);
+  flex-wrap: wrap;
+}
+
+.breadcrumbLink {
+  color: #A6A6A6;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(13px, 0.94vw, 18px);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumbLink:hover {
+  color: #3C55A5;
+}
+
+.breadcrumbLink:focus-visible {
+  outline: 2px solid #3C55A5;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.breadcrumbArrow {
+  color: #A6A6A6;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(13px, 0.94vw, 18px);
+  font-weight: 600;
+}
+
+.breadcrumbCurrent {
+  color: #3C55A5;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(13px, 0.94vw, 18px);
+  font-weight: 600;
+}
+
+/* ============================================
+   PRODUCT DETAIL SECTION
+   ============================================ */
+
+.productDetailSection {
+  display: grid;
+  grid-template-columns: clamp(400px, 32.3vw, 621px) 1fr;
+  gap: clamp(30px, 4vw, 80px);
+  margin: 0 0 0 clamp(20px, 6.3vw, 121px);
+  padding-right: clamp(20px, 7.86vw, 151px);
+  max-width: 1920px;
+}
+
+/* ============================================
+   PRODUCT IMAGE SECTION (Left Side)
+   ============================================ */
+
+.productImageSection {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 1.25vw, 24px);
+}
+
+/* Main Image */
+.mainImageContainer {
+  width: 100%;
+  max-width: clamp(400px, 32.3vw, 621px);
+  aspect-ratio: 621 / 618;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  background: var(--color-white);
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.mainImageContainer:hover .mainImage {
+  transform: scale(1.03);
+}
+
+/* Thumbnail Gallery */
+.thumbnailGallery {
+  display: flex;
+  gap: clamp(12px, 1.15vw, 22px);
+}
+
+.thumbnailButton {
+  width: clamp(80px, 10.05vw, 193px);
+  aspect-ratio: 193 / 192;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--color-white);
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.thumbnailButton:hover {
+  border-color: #3C55A5;
+}
+
+.thumbnailButton:focus-visible {
+  outline: 2px solid #3C55A5;
+  outline-offset: 2px;
+}
+
+.thumbnailActive {
+  border-color: #3C55A5;
+  border-width: 2px;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================
+   PRODUCT INFORMATION (Right Side)
+   ============================================ */
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 0.5vw, 10px);
+  max-width: clamp(600px, 50.31vw, 966px);
+}
+
+/* Product Title - Hindalco Blue */
+.productTitle {
+  color: #3C55A5;
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 1.875vw, 36px);
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Product Property */
+.productProperty {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 0.94vw, 18px);
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Product Description */
+.productDescription {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 0.94vw, 18px);
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Divider Line */
+.dividerLine {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.14);
+  margin: clamp(8px, 0.73vw, 14px) 0;
+}
+
+/* ============================================
+   INFO SECTIONS
+   ============================================ */
+
+.infoSection {
+  margin: clamp(4px, 0.4vw, 8px) 0;
+}
+
+.sectionTitle {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(15px, 1.04vw, 20px);
+  font-weight: 500;
+  margin: 0 0 clamp(4px, 0.42vw, 8px) 0;
+  line-height: 1.3;
+}
+
+.sectionContent {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 0.94vw, 18px);
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.sectionNote {
+  color: rgba(0, 0, 0, 0.75);
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 0.94vw, 18px);
+  font-weight: 500;
+  line-height: 1.5;
+  margin: clamp(4px, 0.31vw, 6px) 0 0 0;
+}
+
+/* ============================================
+   DOWNLOAD / BROCHURE SECTION
+   ============================================ */
+
+.downloadList {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.42vw, 8px);
+}
+
+.downloadLink {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 0.63vw, 12px);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  padding: clamp(2px, 0.21vw, 4px) 0;
+}
+
+.downloadLink:hover {
+  opacity: 0.7;
+}
+
+.downloadLink:focus-visible {
+  outline: 2px solid #3C55A5;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.downloadIcon {
+  width: clamp(16px, 0.99vw, 19px);
+  height: clamp(16px, 0.99vw, 19px);
+  color: rgba(0, 0, 0, 0.6);
+  flex-shrink: 0;
+}
+
+.downloadText {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 0.94vw, 18px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.downloadName {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.downloadSize {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ============================================
+   ENQUIRE BUTTON - Hindalco Blue
+   ============================================ */
+
+.enquireButton {
+  background: #3C55A5;
+  border-radius: 64px;
+  border: none;
+  width: clamp(150px, 9.5vw, 182px);
+  height: clamp(46px, 2.81vw, 54px);
+  color: rgba(255, 255, 255, 0.87);
+  font-family: "Inter", sans-serif;
+  font-size: clamp(14px, 0.83vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: clamp(16px, 1.56vw, 30px);
+  margin-bottom: clamp(16px, 1.56vw, 30px);
+  align-self: flex-start;
+  box-shadow: 0 2px 8px rgba(60, 85, 165, 0.2);
+}
+
+.enquireButton:hover {
+  background: #2d4285;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(60, 85, 165, 0.3);
+}
+
+.enquireButton:focus-visible {
+  outline: 3px solid #3C55A5;
+  outline-offset: 3px;
+}
+
+.enquireButton:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   COLOR SECTION
+   ============================================ */
+
+.colorSection {
+  margin-top: clamp(8px, 0.83vw, 16px);
+}
+
+.colorGrid {
+  display: flex;
+  gap: clamp(12px, 1.25vw, 24px);
+  flex-wrap: wrap;
+  margin-top: clamp(12px, 1.04vw, 20px);
+}
+
+.colorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(6px, 0.52vw, 10px);
+}
+
+.colorSwatch {
+  width: clamp(80px, 5.52vw, 106px);
+  height: clamp(60px, 4.32vw, 83px);
+  border-radius: clamp(12px, 0.89vw, 17px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.colorName {
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: clamp(11px, 0.68vw, 13px);
+  font-weight: 700;
+  text-align: center;
+  /* Position name inside swatch */
+  margin-top: clamp(-28px, -1.56vw, -30px);
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   BOTTOM CONTENT SECTION
+   ============================================ */
+
+.bottomContent {
+  margin: clamp(60px, 5vw, 100px) 0 0 clamp(20px, 9.9vw, 190px);
+  max-width: clamp(800px, 78.85vw, 1514px);
+  padding: 0 clamp(20px, 5vw, 100px) clamp(60px, 5vw, 100px) 0;
+}
+
+.bottomTitle {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 1.25vw, 24px);
+  font-weight: 600;
+  margin: 0 0 clamp(12px, 1.04vw, 20px) 0;
+  line-height: 1.4;
+}
+
+.bottomDescription {
+  color: rgba(0, 0, 0, 0.67);
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 1.25vw, 24px);
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   ERROR PAGE
+   ============================================ */
+
+.errorPage {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 100px 20px;
+}
+
+.errorPage h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 4vw, 40px);
+  color: #3C55A5;
+  font-weight: 700;
+}
+
+.errorPage a {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(16px, 2vw, 20px);
+  color: #3C55A5;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.errorPage a:hover {
+  color: #2d4285;
+}
+
+/* ============================================
+   TABLET RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .productDetailSection {
+    grid-template-columns: 1fr;
+    gap: clamp(30px, 5vw, 50px);
+    margin-left: clamp(20px, 5vw, 60px);
+    padding-right: clamp(20px, 5vw, 60px);
+  }
+
+  .productImageSection {
+    max-width: 100%;
+  }
+
+  .mainImageContainer {
+    max-width: 100%;
+  }
+
+  .productInfo {
+    max-width: 100%;
+  }
+
+  .thumbnailGallery {
+    justify-content: flex-start;
+  }
+
+  .thumbnailButton {
+    width: clamp(100px, 20vw, 180px);
+  }
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .productPage {
+    padding-top: clamp(60px, 15vw, 90px);
+  }
+
+  .logoSection {
+    padding-top: clamp(25px, 6vw, 40px);
+    margin-bottom: clamp(16px, 4vw, 24px);
+  }
+
+  .breadcrumb {
+    margin-left: clamp(16px, 5vw, 24px);
+    margin-right: clamp(16px, 5vw, 24px);
+    margin-bottom: clamp(16px, 4vw, 24px);
+  }
+
+  .productDetailSection {
+    margin-left: clamp(16px, 5vw, 24px);
+    padding-right: clamp(16px, 5vw, 24px);
+  }
+
+  .thumbnailGallery {
+    gap: clamp(8px, 2vw, 12px);
+  }
+
+  .thumbnailButton {
+    width: clamp(80px, 25vw, 120px);
+  }
+
+  .colorGrid {
+    gap: clamp(10px, 3vw, 16px);
+  }
+
+  .colorSwatch {
+    width: clamp(70px, 20vw, 100px);
+    height: clamp(50px, 14vw, 75px);
+  }
+
+  .bottomContent {
+    margin-left: clamp(16px, 5vw, 24px);
+    padding-right: clamp(16px, 5vw, 24px);
+  }
+}
+
+/* ============================================
+   SMALL MOBILE
+   ============================================ */
+
+@media (max-width: 480px) {
+  .productPage {
+    padding-top: clamp(50px, 14vw, 70px);
+  }
+
+  .companyLogo {
+    width: clamp(80px, 22vw, 110px);
+  }
+
+  .productTitle {
+    font-size: clamp(20px, 5.5vw, 28px);
+  }
+
+  .thumbnailButton {
+    width: clamp(70px, 28vw, 100px);
+  }
+
+  .colorGrid {
+    justify-content: center;
+  }
+
+  .colorSwatch {
+    width: clamp(65px, 22vw, 90px);
+    height: clamp(48px, 15vw, 70px);
+  }
+
+  .enquireButton {
+    width: 100%;
+    max-width: clamp(180px, 70vw, 250px);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .mainImage,
+  .thumbnailButton,
+  .enquireButton,
+  .downloadLink {
+    transition: none !important;
+  }
+
+  .mainImageContainer:hover .mainImage,
+  .enquireButton:hover {
+    transform: none !important;
+  }
+}
+
+/* ============================================
+   HIGH DPI DISPLAYS
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .mainImage,
+  .thumbnailImage,
+  .companyLogo {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ============================================
+   FOCUS VISIBLE
+   ============================================ */
+
+.thumbnailButton:focus-visible,
+.downloadLink:focus-visible,
+.enquireButton:focus-visible {
+  outline: 2px solid #3C55A5;
+  outline-offset: 3px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .productPage {
+    padding-top: 20px;
+  }
+
+  .mainImageContainer:hover .mainImage,
+  .enquireButton:hover {
+    transform: none;
+  }
+
+  .thumbnailGallery {
+    display: none;
+  }
+
+  .enquireButton {
+    display: none;
+  }
+
+  .colorSwatch {
+    border: 1px solid #000;
+  }
+}

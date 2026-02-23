@@ -1,0 +1,454 @@
+/* ============================================
+   HINDALCO PAGE - SINGLE PRODUCT COMPANY
+   Base Design: 1920px × 1080px
+   
+   ✅ Clean single product layout
+   ✅ Hindalco branding
+   ✅ Fully responsive
+   ============================================ */
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+
+.hindalcoPage {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-white);
+  padding-top: clamp(80px, 10vh, 150px);
+  position: relative;
+}
+
+/* ============================================
+   LOGO SECTION
+   ============================================ */
+
+.logoSection {
+  width: 100%;
+  padding-top: clamp(40px, 5vw, 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.companyLogo {
+  width: clamp(100px, 7.03vw, 135px);
+  height: auto;
+  aspect-ratio: 135 / 132;
+  object-fit: contain;
+  display: block;
+}
+
+/* ============================================
+   PAGE TITLE
+   ============================================ */
+
+.pageTitle {
+  color: rgba(0, 0, 0, 0.76);
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 2.86vw, 55px);
+  font-weight: 500;
+  margin: clamp(35px, 4.5vw, 86px) 0 0 clamp(20px, 6.3vw, 121px);
+  padding: 0;
+  line-height: 1.2;
+}
+
+/* ============================================
+   DESCRIPTION SECTION
+   ============================================ */
+
+.descriptionSection {
+  margin: clamp(18px, 1.8vw, 35px) 0 0 clamp(20px, 6.3vw, 121px);
+  max-width: clamp(600px, 59.84vw, 1149px);
+  padding-right: clamp(20px, 5vw, 100px);
+}
+
+.description {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.04vw, 20px);
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.highlightLink {
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: underline;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.highlightLink:hover {
+  color: #E31E24;
+}
+
+.highlightLink:focus-visible {
+  outline: 2px solid #E31E24;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ============================================
+   PRODUCT SECTION HEADER
+   ============================================ */
+
+.productSectionHeader {
+  margin: clamp(40px, 4.17vw, 80px) clamp(20px, 6.3vw, 121px) 0;
+  display: flex;
+  align-items: baseline;
+  gap: clamp(12px, 1.04vw, 20px);
+}
+
+.productSectionTitle {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.08vw, 40px);
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+.productCount {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.04vw, 20px);
+  font-weight: 400;
+}
+
+.sectionDivider {
+  width: min(1639px, calc(100% - clamp(40px, 12.5vw, 240px)));
+  height: 1.5px;
+  background: #000000;
+  margin: clamp(12px, 1vw, 20px) 0 0 clamp(20px, 6.3vw, 121px);
+}
+
+/* ============================================
+   PRODUCT CARD CONTAINER
+   Single product centered/left aligned
+   ============================================ */
+
+.productCardContainer {
+  margin: clamp(40px, 5.1vw, 98px) 0 0 clamp(20px, 9.95vw, 191px);
+  padding-right: clamp(20px, 5vw, 100px);
+}
+
+/* ============================================
+   PRODUCT CARD
+   ============================================ */
+
+.productCard {
+  width: 100%;
+  max-width: clamp(320px, 24.43vw, 469px);
+  position: relative;
+  background: var(--color-white);
+  transition: transform 0.3s ease;
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+}
+
+.productCardLink {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+}
+
+/* Product Image Wrapper */
+.productImageWrapper {
+  width: 100%;
+  aspect-ratio: 469 / 364;
+  background: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  margin-bottom: clamp(12px, 1.04vw, 20px);
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.productCard:hover .productImage {
+  transform: scale(1.05);
+}
+
+/* Product Name */
+.productName {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 1.35vw, 26px);
+  font-weight: 600;
+  margin: 0 0 clamp(6px, 0.5vw, 10px) 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+/* Product Property */
+.productProperty {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.04vw, 20px);
+  font-weight: 700;
+  opacity: 0.73;
+  margin: 0 0 clamp(8px, 0.625vw, 12px) 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+/* Product Description */
+.productDescription {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 1.25vw, 24px);
+  font-weight: 500;
+  opacity: 0.73;
+  line-height: 1.4;
+  margin: 0 0 clamp(12px, 1.25vw, 24px) 0;
+  padding: 0;
+  flex-grow: 1;
+
+  /* Clamp to 3 lines for consistency */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* View Product Link */
+.viewProductLink {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 1.25vw, 24px);
+  font-weight: 400;
+  text-decoration: underline;
+  margin-bottom: clamp(16px, 1.82vw, 35px);
+  display: inline-block;
+  width: fit-content;
+  transition: color 0.3s ease;
+}
+
+.viewProductLink:hover {
+  color: #000000;
+  opacity: 0.6;
+}
+
+.viewProductLink:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Card Bottom Border */
+.cardBottomBorder {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.35);
+  margin-top: auto;
+}
+
+/* ============================================
+   BOTTOM CONTENT SECTION
+   ============================================ */
+
+.bottomContent {
+  margin: clamp(60px, 6.25vw, 120px) 0 0 clamp(20px, 6.3vw, 121px);
+  max-width: clamp(800px, 75vw, 1400px);
+  padding: 0 clamp(20px, 5vw, 100px) clamp(60px, 6.25vw, 120px) 0;
+}
+
+.bottomTitle {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 1.46vw, 28px);
+  font-weight: 600;
+  margin: 0 0 clamp(16px, 1.56vw, 30px) 0;
+  line-height: 1.4;
+}
+
+.bottomDescription {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.04vw, 20px);
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================================
+   TABLET RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .hindalcoPage {
+    padding-top: clamp(60px, 10vw, 100px);
+  }
+
+  .logoSection {
+    padding-top: clamp(35px, 7vw, 60px);
+  }
+
+  .productCardContainer {
+    margin-left: clamp(20px, 5vw, 60px);
+  }
+
+  .productCard {
+    max-width: clamp(300px, 50vw, 450px);
+  }
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hindalcoPage {
+    padding-top: clamp(60px, 15vw, 90px);
+  }
+
+  .logoSection {
+    padding-top: clamp(30px, 8vw, 50px);
+  }
+
+  .pageTitle,
+  .descriptionSection,
+  .productSectionHeader,
+  .sectionDivider,
+  .bottomContent {
+    margin-left: clamp(16px, 5vw, 24px);
+    margin-right: clamp(16px, 5vw, 24px);
+  }
+
+  .descriptionSection {
+    padding-right: 0;
+    max-width: 100%;
+  }
+
+  .sectionDivider {
+    width: calc(100% - clamp(32px, 10vw, 48px));
+  }
+
+  .productCardContainer {
+    margin-left: clamp(16px, 5vw, 24px);
+    padding-right: clamp(16px, 5vw, 24px);
+  }
+
+  .productCard {
+    max-width: 100%;
+  }
+
+  .bottomContent {
+    padding-right: clamp(16px, 5vw, 24px);
+  }
+}
+
+/* ============================================
+   SMALL MOBILE
+   ============================================ */
+
+@media (max-width: 480px) {
+  .hindalcoPage {
+    padding-top: clamp(50px, 14vw, 70px);
+  }
+
+  .logoSection {
+    padding-top: clamp(25px, 7vw, 40px);
+  }
+
+  .companyLogo {
+    width: clamp(80px, 22vw, 110px);
+  }
+
+  .pageTitle {
+    font-size: clamp(20px, 6vw, 28px);
+  }
+
+  .description {
+    font-size: clamp(13px, 3.8vw, 16px);
+  }
+
+  .productSectionTitle {
+    font-size: clamp(18px, 5.5vw, 26px);
+  }
+
+  .productDescription {
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: visible;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .productImage {
+    transition: none !important;
+  }
+
+  .productCard:hover .productImage {
+    transform: none !important;
+  }
+
+  .productCard:hover {
+    transform: none !important;
+  }
+
+  .viewProductLink,
+  .highlightLink {
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   HIGH DPI DISPLAYS
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .productImage,
+  .companyLogo {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ============================================
+   FOCUS VISIBLE
+   ============================================ */
+
+.productCardLink:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .hindalcoPage {
+    padding-top: 20px;
+  }
+
+  .productCard:hover,
+  .productCard:hover .productImage {
+    transform: none;
+  }
+
+  .viewProductLink {
+    text-decoration: none;
+    color: var(--color-black);
+  }
+}
