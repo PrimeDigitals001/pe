@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,31 +10,15 @@ import { keeSafetyData } from '../data/companyProducts/keeSafety';
 import styles from './styles.module.css';
 
 export default function KeeSafetyPage() {
+    const [selectedCategory, setSelectedCategory] = useState('All Products');
 
-    // Group products by category for display
-    const productsByCategory = {
-        'Roof Guardrails': keeSafetyData.products.filter(p =>
-            ['kee-001', 'kee-002'].includes(p.id)
-        ),
-        'Safety Railings': keeSafetyData.products.filter(p =>
-            ['kee-003', 'kee-004'].includes(p.id)
-        ),
-        'Safety Gates': keeSafetyData.products.filter(p =>
-            ['kee-005', 'kee-006'].includes(p.id)
-        ),
-        'Platforms & Walkways': keeSafetyData.products.filter(p =>
-            ['kee-007', 'kee-008', 'kee-009', 'kee-010', 'kee-011', 'kee-012'].includes(p.id)
-        ),
-        'Lifelines & Anchors': keeSafetyData.products.filter(p =>
-            ['kee-013', 'kee-014', 'kee-015', 'kee-016', 'kee-017', 'kee-018'].includes(p.id)
-        ),
-        'Skylight Fall Protection': keeSafetyData.products.filter(p =>
-            ['kee-019', 'kee-020'].includes(p.id)
-        ),
-        'Safe Connections': keeSafetyData.products.filter(p =>
-            ['kee-021', 'kee-022'].includes(p.id)
-        ),
-    };
+    // Filter products based on selection
+    const filteredProducts = useMemo(() => {
+        if (selectedCategory === 'All Products') {
+            return keeSafetyData.products;
+        }
+        return keeSafetyData.products.filter(p => p.category === selectedCategory);
+    }, [selectedCategory]);
 
     return (
         <>
@@ -44,7 +28,7 @@ export default function KeeSafetyPage() {
 
             <main className={styles.keeSafetyPage}>
 
-                {/* Kee Safety Logo */}
+                {/* Logo */}
                 <div className={styles.logoSection}>
                     <img
                         src={keeSafetyData.companyInfo.logo}
@@ -60,61 +44,88 @@ export default function KeeSafetyPage() {
                 {/* Description */}
                 <div className={styles.descriptionSection}>
                     <p className={styles.description}>
-                        Kee Safety is part of a global company that supplies engineered safety systems designed to protect people working at height and separate them from hazards (like falls or unprotected edges). They focus on fall-protection and safe-access products used across industries such as construction, manufacturing, facilities management, and data centres. The solutions offered on their Safety Solutions page include a wide range of systems and engineered products you.
+                        Kee Safety is part of a global company that supplies engineered safety systems designed to protect people working at height and separate them from hazards. They focus on fall-protection and safe-access products used across industries such as construction, manufacturing, facilities management, and data centres.
                     </p>
                 </div>
 
-                {/* Category Sections */}
-                {Object.entries(productsByCategory).map(([categoryName, products]) => (
-                    <section key={categoryName} className={styles.categorySection}>
-                        {/* Category Header */}
-                        <div className={styles.categoryHeader}>
-                            <h2 className={styles.categoryTitle}>{categoryName}</h2>
-                            <span className={styles.categoryCount}>
-                                {String(products.length).padStart(2, '0')}
-                            </span>
+                {/* Products Header with Filter */}
+                <div className={styles.productsHeader}>
+                    <div className={styles.titleGroup}>
+                        <h2 className={styles.productsTitle}>
+                            {selectedCategory === 'All Products' ? 'Products' : selectedCategory}
+                        </h2>
+                        <span className={styles.productsCount} aria-live="polite">
+                            ({filteredProducts.length})
+                        </span>
+                    </div>
+
+                    <div className={styles.filterSection}>
+                        <label htmlFor="categoryFilter" className={styles.filterLabel}>
+                            Filter by Category:
+                        </label>
+                        <div className={styles.selectWrapper}>
+                            <select
+                                id="categoryFilter"
+                                value={selectedCategory}
+                                onChange={(e) => setSelectedCategory(e.target.value)}
+                                className={styles.filterDropdown}
+                            >
+                                {keeSafetyData.categories.map((category) => (
+                                    <option key={category} value={category}>
+                                        {category}
+                                    </option>
+                                ))}
+                            </select>
+                            <svg
+                                className={styles.dropdownArrow}
+                                width="12"
+                                height="8"
+                                viewBox="0 0 12 8"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path d="M1 1L6 6L11 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                            </svg>
                         </div>
-                        <div className={styles.categoryDivider}></div>
+                    </div>
+                </div>
 
-                        {/* Products Grid */}
-                        <div className={styles.productsGrid}>
-                            {products.map((product) => (
-                                <article key={product.id} className={styles.productCard}>
-                                    <Link href={`/products/kee-safety/${product.slug}`} className={styles.productCardLink}>
-                                        {/* Product Image */}
-                                        <div className={styles.productImageWrapper}>
-                                            <img
-                                                src={product.cardImage}
-                                                alt={`${product.name} - ${product.category}`}
-                                                className={styles.productImage}
-                                                loading="lazy"
-                                            />
-                                        </div>
+                {/* Divider */}
+                <div className={styles.dividerLine} role="separator" />
 
-                                        {/* Product Name */}
-                                        <h3 className={styles.productName}>{product.name}</h3>
+                {/* Products Grid */}
+                <div className={styles.productsGrid}>
+                    {filteredProducts.length > 0 ? (
+                        filteredProducts.map((product) => (
+                            <article key={product.id} className={styles.productCard}>
+                                <Link
+                                    href={`/products/kee-safety/${product.slug}`}
+                                    className={styles.productCardLink}
+                                >
+                                    <div className={styles.productImageWrapper}>
+                                        <img
+                                            src={product.cardImage}
+                                            alt={product.name}
+                                            className={styles.productImage}
+                                            loading="lazy"
+                                        />
+                                    </div>
 
-                                        {/* Product Property/Category */}
-                                        <p className={styles.productProperty}>{product.cardProperty}</p>
+                                    <h3 className={styles.productName}>{product.name}</h3>
+                                    <p className={styles.productProperty}>{product.cardProperty}</p>
+                                    <p className={styles.productDescription}>{product.cardDescription}</p>
 
-                                        {/* Product Description */}
-                                        <p className={styles.productDescription}>
-                                            {product.cardDescription}
-                                        </p>
-
-                                        {/* View Product CTA */}
-                                        <span className={styles.viewProductLink}>
-                                            View product
-                                        </span>
-
-                                        {/* Bottom Border */}
-                                        <div className={styles.cardBottomBorder}></div>
-                                    </Link>
-                                </article>
-                            ))}
+                                    <span className={styles.viewProductLink}>View product</span>
+                                    <div className={styles.cardBottomBorder} />
+                                </Link>
+                            </article>
+                        ))
+                    ) : (
+                        <div className={styles.noProducts}>
+                            <p>No products found in this category.</p>
                         </div>
-                    </section>
-                ))}
+                    )}
+                </div>
 
             </main>
 
