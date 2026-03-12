@@ -1,0 +1,423 @@
+/* ============================================
+   TEGOLA CANADESE PAGE — MULTI-PRODUCT COMPANY
+   Base Design : 1920 × 3710 px (Figma)
+   Grid        : 3 cols × 2 rows, gap 66 px
+   Card        : 469 × 364 px image area
+
+   ✅ Pixel-accurate at 1920 px
+   ✅ Fully responsive  3 → 2 → 1 columns
+   ✅ Matches Hindalco code patterns
+   ============================================ */
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+
+.tegolaPage {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-white);
+  padding-top: clamp(80px, 10vh, 150px);
+  padding-bottom: clamp(60px, 6.25vw, 120px);
+  position: relative;
+}
+
+/* ============================================
+   LOGO SECTION  (centered)
+   Design: 300 × 83 at center-x, top ≈ 221 px
+   ============================================ */
+
+.logoSection {
+  width: 100%;
+  padding-top: clamp(40px, 5vw, 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.companyLogo {
+  width: clamp(180px, 15.63vw, 300px);
+  height: auto;
+  aspect-ratio: 300 / 83;
+  object-fit: contain;
+  display: block;
+}
+
+/* ============================================
+   PAGE TITLE
+   Design: left 121 px, top ≈ 345 px
+   ============================================ */
+
+.pageTitle {
+  color: rgba(0, 0, 0, 0.76);
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 2.86vw, 55px);
+  font-weight: 500;
+  margin: clamp(35px, 4.5vw, 86px) 0 0 clamp(20px, 6.3vw, 121px);
+  padding: 0;
+  line-height: 1.2;
+}
+
+/* ============================================
+   DESCRIPTION SECTION
+   Design: left 121 px, width 1149 px
+   ============================================ */
+
+.descriptionSection {
+  margin: clamp(18px, 1.8vw, 35px) 0 0 clamp(20px, 6.3vw, 121px);
+  max-width: clamp(600px, 59.84vw, 1149px);
+  padding-right: clamp(20px, 5vw, 100px);
+}
+
+.description {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.04vw, 20px);
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   PRODUCT SECTION HEADER
+   Design: "All Products  06"  left 121 px
+   ============================================ */
+
+.productSectionHeader {
+  margin: clamp(40px, 4.17vw, 80px) clamp(20px, 6.3vw, 121px) 0;
+  display: flex;
+  align-items: baseline;
+  gap: clamp(12px, 1.04vw, 20px);
+}
+
+.productSectionTitle {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(22px, 2.08vw, 40px);
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+.productCount {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.04vw, 20px);
+  font-weight: 400;
+}
+
+.sectionDivider {
+  width: min(1639px, calc(100% - clamp(40px, 12.5vw, 240px)));
+  height: 1.5px;
+  background: #000000;
+  margin: clamp(12px, 1vw, 20px) 0 0 clamp(20px, 6.3vw, 121px);
+}
+
+/* ============================================
+   PRODUCT GRID
+   Design: 3 cols, left 191 px, right 190 px
+   Card width 469 px, gap 66 px
+   Total: 3×469 + 2×66 = 1539 px
+   ============================================ */
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(40px, 3.44vw, 66px);
+  margin: clamp(40px, 5.1vw, 98px) clamp(20px, 9.9vw, 190px) 0 clamp(20px, 9.95vw, 191px);
+}
+
+/* ============================================
+   PRODUCT CARD
+   ============================================ */
+
+.productCard {
+  width: 100%;
+  position: relative;
+  background: var(--color-white);
+  transition: transform 0.3s ease;
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+}
+
+.productCardLink {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+}
+
+/* ── Product Image ── */
+
+.productImageWrapper {
+  width: 100%;
+  aspect-ratio: 469 / 364;
+  background: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 0;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  margin-bottom: clamp(12px, 1.04vw, 20px);
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.productCard:hover .productImage {
+  transform: scale(1.05);
+}
+
+/* ── Product Name ── */
+
+.productName {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 1.35vw, 26px);
+  font-weight: 600;
+  margin: 0 0 clamp(6px, 0.5vw, 10px) 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+/* ── Product Category ── */
+
+.productCategory {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.04vw, 20px);
+  font-weight: 700;
+  opacity: 0.73;
+  margin: 0 0 clamp(8px, 0.625vw, 12px) 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+/* ── Product Description ── */
+
+.productDescription {
+  color: #000000;
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 1.25vw, 24px);
+  font-weight: 500;
+  opacity: 0.73;
+  line-height: 1.4;
+  margin: 0 0 clamp(12px, 1.25vw, 24px) 0;
+  padding: 0;
+  flex-grow: 1;
+
+  /* Clamp to 3 lines for visual consistency */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── View Product Link ── */
+
+.viewProductLink {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 1.25vw, 24px);
+  font-weight: 400;
+  text-decoration: underline;
+  margin-bottom: clamp(16px, 1.82vw, 35px);
+  display: inline-block;
+  width: fit-content;
+  transition: color 0.3s ease;
+}
+
+.viewProductLink:hover {
+  color: #000000;
+  opacity: 0.6;
+}
+
+.viewProductLink:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Card Bottom Border ── */
+
+.cardBottomBorder {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.35);
+  margin-top: auto;
+}
+
+/* ============================================
+   TABLET  ( ≤ 1024 px )
+   3 cols → 2 cols
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .tegolaPage {
+    padding-top: clamp(60px, 10vw, 100px);
+  }
+
+  .logoSection {
+    padding-top: clamp(35px, 7vw, 60px);
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: clamp(20px, 5vw, 60px);
+    margin-right: clamp(20px, 5vw, 60px);
+    gap: clamp(24px, 4vw, 50px);
+  }
+}
+
+/* ============================================
+   MOBILE  ( ≤ 768 px )
+   2 cols → 1 col
+   ============================================ */
+
+@media (max-width: 768px) {
+  .tegolaPage {
+    padding-top: clamp(60px, 15vw, 90px);
+  }
+
+  .logoSection {
+    padding-top: clamp(30px, 8vw, 50px);
+  }
+
+  .pageTitle,
+  .descriptionSection,
+  .productSectionHeader,
+  .sectionDivider {
+    margin-left: clamp(16px, 5vw, 24px);
+    margin-right: clamp(16px, 5vw, 24px);
+  }
+
+  .descriptionSection {
+    padding-right: 0;
+    max-width: 100%;
+  }
+
+  .sectionDivider {
+    width: calc(100% - clamp(32px, 10vw, 48px));
+  }
+
+  .productGrid {
+    grid-template-columns: 1fr;
+    margin-left: clamp(16px, 5vw, 24px);
+    margin-right: clamp(16px, 5vw, 24px);
+    gap: clamp(32px, 8vw, 50px);
+  }
+}
+
+/* ============================================
+   SMALL MOBILE  ( ≤ 480 px )
+   ============================================ */
+
+@media (max-width: 480px) {
+  .tegolaPage {
+    padding-top: clamp(50px, 14vw, 70px);
+  }
+
+  .logoSection {
+    padding-top: clamp(25px, 7vw, 40px);
+  }
+
+  .companyLogo {
+    width: clamp(140px, 40vw, 200px);
+  }
+
+  .pageTitle {
+    font-size: clamp(20px, 6vw, 28px);
+  }
+
+  .description {
+    font-size: clamp(13px, 3.8vw, 16px);
+  }
+
+  .productSectionTitle {
+    font-size: clamp(18px, 5.5vw, 26px);
+  }
+
+  .productDescription {
+    -webkit-line-clamp: unset;
+    display: block;
+    overflow: visible;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .productImage {
+    transition: none !important;
+  }
+
+  .productCard:hover .productImage {
+    transform: none !important;
+  }
+
+  .productCard:hover {
+    transform: none !important;
+  }
+
+  .viewProductLink {
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   HIGH DPI DISPLAYS
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .productImage,
+  .companyLogo {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ============================================
+   FOCUS VISIBLE
+   ============================================ */
+
+.productCardLink:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .tegolaPage {
+    padding-top: 20px;
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .productCard:hover,
+  .productCard:hover .productImage {
+    transform: none;
+  }
+
+  .viewProductLink {
+    text-decoration: none;
+    color: var(--color-black);
+  }
+}
