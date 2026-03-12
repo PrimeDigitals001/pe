@@ -1,0 +1,300 @@
+/* ============================================
+   GALLERY SECTION
+   Base Design: 1920px width
+   4-column grid with mixed portrait / landscape tiles
+   ============================================ */
+
+.gallerySection {
+  width: 100%;
+  padding: 80px 200px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   HEADING (commented out in component)
+   ============================================ */
+
+.headingWrapper {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.heading {
+  font-family: "Grift-Bold", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+}
+
+.subheading {
+  font-family: "Grift-Bold", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #666666;
+  margin: 0;
+}
+
+/* ============================================
+   GRID CONTAINER
+   4 equal columns, auto rows based on a base unit
+   Base unit = 218px (landscape tile height at 1920px)
+   ============================================ */
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 218px;
+  gap: 26px;
+  width: 100%;
+  max-width: 1840px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   IMAGE WRAPPER — shared
+   ============================================ */
+
+.imgWrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+}
+
+.imgWrapper:hover .img {
+  transform: scale(1.04);
+}
+
+/* ============================================
+   TILE VARIANTS
+   ============================================ */
+
+/* Full-width hero — spans all 4 cols, ~3× row height */
+.heroWide {
+  grid-column: 1 / -1;
+  grid-row: span 3;
+}
+
+/* Standard landscape tile — 1 col × 1 row (default) */
+.tile {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* Tall portrait on the RIGHT (col 4) — 1 col × 2 rows */
+.tallPortrait {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+/* Tall portrait on the LEFT (col 1) — 1 col × 2 rows */
+.tallPortraitLeft {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+/* Wide center — spans 2 cols × 2 rows */
+.wideCenter {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* ============================================
+   🔒 LOCK FOR SCREENS > 1440px
+   ============================================ */
+
+@media (min-width: 1441px) {
+  .gallerySection {
+    padding: 80px 200px;
+  }
+
+  .galleryGrid {
+    grid-auto-rows: 218px;
+    gap: 26px;
+  }
+}
+
+/* ============================================
+   1440px — 0.75 scale
+   ============================================ */
+
+@media (max-width: 1440px) {
+  .gallerySection {
+    padding: 60px 150px;
+  }
+
+  .galleryGrid {
+    grid-auto-rows: 164px;
+    gap: 20px;
+  }
+
+  .heading {
+    font-size: 36px;
+  }
+
+  .subheading {
+    font-size: 16px;
+  }
+}
+
+/* ============================================
+   1366px — 0.71 scale
+   ============================================ */
+
+@media (max-width: 1366px) {
+  .galleryGrid {
+    grid-auto-rows: 155px;
+    gap: 18px;
+  }
+}
+
+/* ============================================
+   1280px — 0.67 scale
+   ============================================ */
+
+@media (max-width: 1280px) {
+  .galleryGrid {
+    grid-auto-rows: 146px;
+    gap: 16px;
+  }
+}
+
+/* ============================================
+   1024px — 0.53 scale
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .gallerySection {
+    padding: 48px 24px;
+  }
+
+  .galleryGrid {
+    grid-auto-rows: 120px;
+    gap: 14px;
+  }
+
+  .heading {
+    font-size: 30px;
+  }
+}
+
+/* ============================================
+   768px — Tablet: collapse to 2 columns
+   ============================================ */
+
+@media (max-width: 768px) {
+  .gallerySection {
+    padding: 40px 20px;
+  }
+
+  .galleryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 180px;
+    gap: 12px;
+  }
+
+  /* Reset all span overrides — everything becomes 1×1 on tablet */
+  .heroWide,
+  .tallPortrait,
+  .tallPortraitLeft,
+  .wideCenter {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  /* Hero gets 2 cols wide on tablet */
+  .heroWide {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .heading {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  .subheading {
+    font-size: 15px;
+  }
+}
+
+/* ============================================
+   480px — Mobile
+   ============================================ */
+
+@media (max-width: 480px) {
+  .gallerySection {
+    padding: 32px 16px;
+  }
+
+  .galleryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 140px;
+    gap: 10px;
+  }
+
+  .heroWide {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .subheading {
+    font-size: 14px;
+  }
+}
+
+/* ============================================
+   375px — Small Mobile
+   ============================================ */
+
+@media (max-width: 375px) {
+  .galleryGrid {
+    grid-auto-rows: 120px;
+    gap: 8px;
+  }
+
+  .heading {
+    font-size: 22px;
+  }
+}
+
+/* ============================================
+   320px — Smallest Mobile
+   ============================================ */
+
+@media (max-width: 320px) {
+  .galleryGrid {
+    grid-auto-rows: 100px;
+    gap: 6px;
+  }
+
+  .heading {
+    font-size: 20px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .img {
+    transition: none !important;
+  }
+}

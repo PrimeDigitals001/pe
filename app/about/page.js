@@ -7,8 +7,8 @@ import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
 import OurValues from './components/OurValue';
 import LeadershipTeam from './components/LeadershipTeam';
+import GallerySection from './components/GallerySection';
 import StatsSection from './components/StatsSection';
-
 export const metadata = {
   title: 'About Us - Patel Enterprise',
   description: 'Discover our story, our values, and our dedication to delivering construction excellence.',
@@ -25,6 +25,7 @@ export default function AboutPage() {
         <OurJourney />
         <OurValues />
         <LeadershipTeam />
+        <GallerySection />
         <StatsSection />
         {/* More sections will be added here */}
       </main>
