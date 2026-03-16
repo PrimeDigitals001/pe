@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -19,10 +20,10 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        
+
         {/* Top Section */}
         <div className={styles.topSection}>
-          
+
           {/* Left Column */}
           <div className={styles.leftColumn}>
             <h2 className={styles.mainTitle}>Let's Talk!</h2>
@@ -49,13 +50,13 @@ const Footer = () => {
 
         {/* Middle Section */}
         <div className={styles.middleSection}>
-          
+
           {/* Left Column - Logo & Contact */}
           <div className={styles.contactColumn}>
             {/* Logo */}
             <div className={styles.logoWrapper}>
-              <Image 
-                src="/images/logo.png" 
+              <Image
+                src="/images/logo.png"
                 alt="Patel Enterprise Logo"
                 width={240}
                 height={86}
@@ -70,21 +71,21 @@ const Footer = () => {
 
             {/* Address */}
             <p className={styles.address}>
-              Alpha Arcade, A 201, GIDC Rd, Bholav, Bharuch, Gujarat 392015
+              Plot No - 107 , GIDC - Narmada Nagar , Bharuch - 392015
             </p>
 
             {/* Mail */}
-            <p className={styles.contactItem}>Mail us:</p>
+            <p className={styles.contactItem}><Link href="mailto:meetpatel@patelenterprise.com" style={{ color: 'inherit', textDecoration: 'none' }}>Mail us: meetpatel@patelenterprise.com</Link></p>
 
             {/* Phone */}
             <p className={styles.contactItem}>Call us: +91 73599 51901</p>
 
             {/* Navigation Links */}
             <nav className={styles.navLinks}>
-              <a href="#about" className={styles.navLink}>About</a>
-              <a href="#services" className={styles.navLink}>Services</a>
-              <a href="#testimonials" className={styles.navLink}>Testimonials</a>
-              <a href="#contact" className={styles.navLink}>Contact us</a>
+              <Link href="/about" className={styles.navLink}>About us</Link>
+              <Link href="/products" className={styles.navLink}>Products</Link>
+              <Link href="/projects" className={styles.navLink}>Projects</Link>
+              <Link href="/contact" className={styles.navLink}>Contact us</Link>
             </nav>
           </div>
 
@@ -93,12 +94,12 @@ const Footer = () => {
             <h3 className={styles.newsletterTitle}>
               Sign up to receive the latest news and events from us.
             </h3>
-            
+
             <form onSubmit={handleSubmit} className={styles.newsletterForm}>
               <label htmlFor="email" className={styles.emailLabel}>
                 Your Email*
               </label>
-              
+
               <div className={styles.inputWrapper}>
                 <input
                   type="email"
@@ -116,7 +117,7 @@ const Footer = () => {
               </button>
 
               <p className={styles.disclaimer}>
-                No worries, we don't spamyour inbox.
+                No worries, we don't spam your inbox.
               </p>
             </form>
           </div>
@@ -128,22 +129,22 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className={styles.bottomSection}>
-          
+
           {/* Social Links */}
           <div className={styles.socialSection}>
             <p className={styles.followLabel}>FOLLOW US</p>
-            <a 
-              href="https://instagram.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.socialLink}
             >
               Instagram
             </a>
-            <a 
-              href="https://facebook.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className={styles.socialLink}
             >
               Facebook

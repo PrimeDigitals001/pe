@@ -34,7 +34,7 @@
     font-weight: 700;
     margin: 0 0 clamp(6px, 0.57vw, 11px) 0;
     line-height: var(--leading-tight);
-    white-space: nowrap; /* ✅ KEEPS SINGLE LINE */
+    white-space: nowrap;
   }
   
   /* ============================================
@@ -50,31 +50,26 @@
     font-weight: 500;
     margin: 0 0 clamp(30px, 6.09vw, 117px) 0;
     line-height: var(--leading-normal);
-    white-space: nowrap; /* ✅ KEEPS SINGLE LINE */
-    overflow: visible; /* Allow text to extend beyond container if needed */
+    white-space: nowrap;
+    overflow: visible;
     padding: 0 var(--space-sm);
   }
   
   /* ============================================
-     VIDEO CONTAINER - FLUID
-     Maintains exact aspect ratio
+     VIDEO CONTAINER - FIXED: No black border
      ============================================ */
   
   .videoContainer {
     width: clamp(300px, 52.97vw, 1017px);
-    height: clamp(169px, 29.79vw, 572px); /* Maintains 1017:572 ratio */
+    height: clamp(169px, 29.79vw, 572px);
     border-radius: clamp(16px, 2.08vw, 40px);
     overflow: hidden;
     position: relative;
-    box-shadow: var(--shadow-md);
-    background: var(--color-black);
+    background: transparent;            /* ✅ Was var(--color-black) — caused the border */
+    border: none;                       /* ✅ Explicit no border */
+    outline: none;                      /* ✅ Explicit no outline */
     transition: all var(--transition-base);
-    flex-shrink: 0; /* Prevents shrinking */
-  }
-  
-  .videoContainer:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
+    flex-shrink: 0;
   }
   
   .video {
@@ -82,6 +77,9 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    border: none;                       /* ✅ No border on video element */
+    outline: none;                      /* ✅ No outline on video element */
+    border-radius: clamp(16px, 2.08vw, 40px); /* ✅ Match container radius to kill sub-pixel gaps */
   }
   
   /* ============================================
@@ -151,8 +149,7 @@
   }
   
   /* ============================================
-     RESPONSIVE - TABLET (Allow wrapping)
-     Only on smaller screens where single line is impractical
+     RESPONSIVE - TABLET
      ============================================ */
   
   @media (max-width: 768px) {
@@ -167,14 +164,14 @@
     .title {
       font-size: clamp(22px, 5vw, 32px);
       margin-bottom: var(--space-xs);
-      white-space: normal; /* ✅ Allow wrapping on tablet */
+      white-space: normal;
       max-width: 90%;
     }
   
     .subtitle {
       font-size: clamp(14px, 3vw, 18px);
       margin-bottom: var(--space-2xl);
-      white-space: normal; /* ✅ Allow wrapping on tablet */
+      white-space: normal;
       max-width: 90%;
       padding: 0;
     }
@@ -182,8 +179,12 @@
     .videoContainer {
       width: min(90%, 600px);
       height: auto;
-      aspect-ratio: 1017 / 572; /* Maintains ratio */
+      aspect-ratio: 1017 / 572;
       border-radius: var(--radius-lg);
+    }
+  
+    .video {
+      border-radius: var(--radius-lg);  /* ✅ Match container */
     }
   }
   
@@ -215,6 +216,10 @@
     .videoContainer {
       width: 100%;
       border-radius: var(--radius-md);
+    }
+  
+    .video {
+      border-radius: var(--radius-md);  /* ✅ Match container */
     }
   
     .playButton {
@@ -276,17 +281,6 @@
     }
   }
   
-  .playButton:focus-visible {
-    outline: 3px solid var(--color-primary);
-    outline-offset: 4px;
-    border-radius: 50%;
-  }
-  
-  .videoContainer:focus-within {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 4px;
-  }
-  
   /* ============================================
      HIGH DPI DISPLAYS
      ============================================ */
@@ -307,11 +301,6 @@
       padding: 20px 0;
       break-inside: avoid;
     }
-  
-    /* .videoContainer {
-      box-shadow: none;
-      border: 1px solid #ddd;
-    } */
   
     .playButton {
       display: none;

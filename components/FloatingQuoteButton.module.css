@@ -30,8 +30,13 @@
    
    .quoteButton:hover {
        background: #1a6ba3;
+       color: #fff;
        transform: translateY(-2px);
        box-shadow: 0 6px 20px rgba(38, 131, 198, 0.4);
+   }
+
+   .quoteButton:focus-visible {
+       color: #fff;
    }
    
    .quoteButton:active {

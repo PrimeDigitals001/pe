@@ -1,659 +1,322 @@
 /* ============================================
    LEADERSHIP TEAM SECTION
+   Fluid Responsive Design — No layout jumps
+   Uses clamp() for smooth scaling at any zoom
    Base Design: 1920px
-   4 Cards × 1 Row Layout
    ============================================ */
 
-   .leadershipSection {
-    width: 100%;
-    position: relative;
-    background: #ffffff;
-    padding: 60px 0 100px 0; /* 60px gap from previous section */
+.leadershipSection {
+  width: 100%;
+  position: relative;
+  background: #ffffff;
+  /* Fluid padding: 30px (mobile) → 100px (1920px) */
+  padding: clamp(30px, 5.2vw, 100px) 0;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  /* Fluid horizontal padding: 16px (mobile) → 200px (1920px) */
+  padding: 0 clamp(16px, 10.4vw, 200px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ============================================
+   TITLE — fluid font size, fluid margin
+   ============================================ */
+
+.title {
+  color: #2683C6;
+  text-align: center;
+  font-family: "Grift-Bold", sans-serif;
+  /* Fluid: 24px (320px) → 48px (1920px) */
+  font-size: clamp(24px, 2.5vw, 48px);
+  font-weight: 700;
+  /* Fluid margin: 28px → 119px */
+  margin: 0 0 clamp(28px, 6.2vw, 119px) 0;
+  line-height: 1.2;
+}
+
+/* ============================================
+   LEADERSHIP GRID
+   4 cols on large screens → 2 cols tablet → 1 col mobile
+   Card width is fluid via minmax
+   ============================================ */
+
+.leadershipGrid {
+  display: grid;
+  /* 4 equal fluid columns on large screens */
+  grid-template-columns: repeat(4, minmax(0, 322px));
+  /* Fluid gap: 16px → 30px */
+  gap: clamp(16px, 1.6vw, 30px);
+  justify-content: center;
+  width: 100%;
+}
+
+/* ============================================
+   LEADER CARD
+   Fluid width & height using aspect-ratio trick
+   ============================================ */
+
+.leaderCard {
+  width: 100%;
+  max-width: 322px;
+  /* Card height driven by aspect ratio, no fixed px jumps */
+  aspect-ratio: 322 / 447;
+  position: relative;
+  margin: 0 auto;
+}
+
+.cardContainer {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  /* Fluid border-radius: 13px → 20px */
+  border-radius: clamp(13px, 1.04vw, 20px);
+  box-shadow: 0px 0px 9.7px 0px rgba(0, 0, 0, 0.11);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardContainer:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 8px 24px rgba(38, 131, 198, 0.15);
+}
+
+/* ============================================
+   IMAGE WRAPPER
+   Takes ~80.3% of card height (359/447)
+   ============================================ */
+
+.imageWrapper {
+  width: 100%;
+  /* 80.3% of parent card height — fluid via flex */
+  flex: 0 0 80.3%;
+  position: relative;
+  overflow: hidden;
+}
+
+.leaderImage {
+  width: 100%;
+  height: 100%;
+  scale: 1.05;
+  object-fit: cover;
+  display: block;
+  border: none;
+  outline: none;
+  transition: transform 0.4s ease;
+}
+
+.cardContainer:hover .leaderImage {
+  transform: scale(1.07);
+}
+
+/* LinkedIn Overlay */
+.linkedinOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(38, 131, 198, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.cardContainer:hover .linkedinOverlay {
+  opacity: 1;
+}
+
+.linkedinOverlay svg {
+  /* Fluid icon size: 20px → 32px */
+  width: clamp(20px, 1.7vw, 32px);
+  height: clamp(20px, 1.7vw, 32px);
+  transition: transform 0.3s ease;
+}
+
+.linkedinOverlay:hover svg {
+  transform: scale(1.15);
+}
+
+/* ============================================
+   INFO SECTION
+   Remaining ~19.7% of card height
+   ============================================ */
+
+.infoSection {
+  width: 100%;
+  flex: 1 1 0;
+  /* Fluid padding */
+  padding: clamp(10px, 0.68vw, 13px) clamp(14px, 1.2vw, 23px) clamp(12px, 0.99vw, 19px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.leaderName {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: "Grift-SemiBold", sans-serif;
+  /* Fluid: 13px → 20px */
+  font-size: clamp(13px, 1.04vw, 20px);
+  font-weight: 600;
+  margin: 0 0 clamp(3px, 0.26vw, 5px) 0;
+  line-height: 1.3;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.leaderRole {
+  color: rgba(0, 0, 0, 0.4);
+  font-family: "Grift-Medium", sans-serif;
+  /* Fluid: 11px → 16px */
+  font-size: clamp(11px, 0.83vw, 16px);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+.leadershipSection .animateUp {
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .container {
-    max-width: 1920px;
-    margin: 0 auto;
-    padding: 0 153px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* ============================================
-     TITLE - 48px Bold Blue, Center
-     ============================================ */
-  
-  .title {
-    color: #2683C6;
-    text-align: center;
-    font-family: "Grift-Bold", sans-serif;
-    font-size: 48px;
-    font-weight: 700;
-    margin: 0 0 119px 0;
-    line-height: 1.2;
-  }
-  
-  /* ============================================
-     LEADERSHIP GRID - 4 cards × 1 row
-     ============================================ */
-  
+}
+
+.leadershipSection.animate .animateUp {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+.leadershipSection.animate .title {
+  animation-delay: 0.1s;
+}
+
+/* ============================================
+   BREAKPOINTS
+   Only handle LAYOUT changes (column count)
+   All sizing still via clamp() — no px jumps
+   ============================================ */
+
+/* Tablet: 2-column grid */
+@media (max-width: 1024px) {
   .leadershipGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 322px);
-    gap: 30px;
-    justify-content: center;
-    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 340px));
+    max-width: 740px;
   }
-  
-  /* ============================================
-     LEADER CARD - 322×447px
-     ============================================ */
-  
+
   .leaderCard {
-    width: 322px;
-    height: 447px;
-    position: relative;
-    margin: 0 auto;
+    max-width: 340px;
+    /* Slightly taller aspect on tablet for comfort */
+    aspect-ratio: 322 / 460;
   }
-  
-  .cardContainer {
-    width: 100%;
-    height: 100%;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0px 0px 9.7px 0px rgba(0, 0, 0, 0.11);
-    overflow: hidden;
-    transition: all 0.4s ease;
-    display: flex;
-    flex-direction: column;
-  }
-  
+
   .cardContainer:hover {
-    transform: translateY(-8px);
-    box-shadow: 0px 8px 24px rgba(38, 131, 198, 0.15);
+    transform: none;
   }
-  
-  /* ============================================
-     IMAGE SECTION - 322×359px
-     ============================================ */
-  
-  .imageWrapper {
-    width: 100%;
-    height: 359px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px 20px 0 0;
-  }
-  
-  .leaderImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-  
+
   .cardContainer:hover .leaderImage {
-    transform: scale(1.05);
+    transform: none;
   }
-  
-  /* LinkedIn Overlay - Hidden by default */
+}
+
+/* Mobile: single-column */
+@media (max-width: 600px) {
+  .leadershipGrid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+  }
+
+  .leaderCard {
+    max-width: 450px;
+    aspect-ratio: 322 / 420;
+  }
+
+  .leaderName {
+    white-space: normal;
+  }
+
+  .leaderRole {
+    white-space: normal;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
   .linkedinOverlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(38, 131, 198, 0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
+    background: rgba(38, 131, 198, 0.9);
   }
-  
-  .cardContainer:hover .linkedinOverlay {
+
+  .cardContainer:active .linkedinOverlay {
     opacity: 1;
   }
-  
-  .linkedinOverlay svg {
-    transform: scale(1);
-    transition: transform 0.3s ease;
+
+  .cardContainer:hover {
+    transform: none;
+    box-shadow: 0px 0px 9.7px 0px rgba(0, 0, 0, 0.11);
   }
-  
-  .linkedinOverlay:hover svg {
-    transform: scale(1.15);
+
+  .cardContainer:hover .leaderImage {
+    transform: none;
   }
-  
-  /* ============================================
-     INFO SECTION - 322×88px
-     Name: 20px SemiBold, 80% opacity
-     Role: 16px Medium, 40% opacity
-     ============================================ */
-  
-  .infoSection {
-    width: 100%;
-    height: 88px;
-    padding: 13px 23px 19px 23px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: #ffffff;
-  }
-  
-  .leaderName {
-    color: rgba(0, 0, 0, 0.8);
-    font-family: "Grift-SemiBold", sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0 0 5px 0;
-    line-height: 1.3;
-    text-align: left;
-  }
-  
-  .leaderRole {
-    color: rgba(0, 0, 0, 0.4);
-    font-family: "Grift-Medium", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    margin: 0;
-    line-height: 1.4;
-    text-align: left;
-  }
-  
-  /* ============================================
-     SCROLL ANIMATIONS
-     ============================================ */
-  
+}
+
+/* ============================================
+   ACCESSIBILITY & PERFORMANCE
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
   .leadershipSection .animateUp {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .cardContainer,
+  .leaderImage,
+  .linkedinOverlay {
+    transition: none !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .cardContainer:hover {
+    transform: none;
+  }
+
+  .cardContainer:hover .leaderImage {
+    transform: none;
+  }
+
+  .cardContainer:hover .linkedinOverlay {
     opacity: 0;
-    transform: translateY(40px);
-    will-change: transform, opacity;
   }
-  
-  @keyframes slideInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .leaderImage {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
-  
-  .leadershipSection.animate .animateUp {
-    animation: slideInUp 0.8s ease-out forwards;
-  }
-  
-  .leadershipSection.animate .title {
-    animation-delay: 0.1s;
-  }
-  
-  /* ============================================
-     🔒 RESPONSIVE BREAKPOINTS
-     Scaling Formula: (viewport / 1920) × base-value
-     ============================================ */
-  
-  /* 1440px - Large Laptop (0.75 scale) */
-  @media (max-width: 1440px) {
-    .leadershipSection {
-      padding: 45px 0 75px 0; /* 60×0.75, 100×0.75 */
-    }
-  
-    .container {
-      padding: 0 115px; /* 153×0.75 */
-    }
-  
-    .title {
-      font-size: 36px; /* 48×0.75 */
-      margin-bottom: 89px; /* 119×0.75 */
-    }
-  
-    .leadershipGrid {
-      grid-template-columns: repeat(4, 242px); /* 322×0.75 */
-      gap: 23px; /* 30×0.75 */
-    }
-  
-    .leaderCard {
-      width: 242px;
-      height: 335px; /* 447×0.75 */
-    }
-  
-    .cardContainer {
-      border-radius: 15px;
-    }
-  
-    .imageWrapper {
-      height: 269px; /* 359×0.75 */
-      border-radius: 15px 15px 0 0;
-    }
-  
-    .infoSection {
-      height: 66px; /* 88×0.75 */
-      padding: 10px 17px 14px 17px;
-    }
-  
-    .leaderName {
-      font-size: 15px; /* 20×0.75 */
-      margin-bottom: 4px;
-    }
-  
-    .leaderRole {
-      font-size: 12px; /* 16×0.75 */
-    }
-  
-    .linkedinOverlay svg {
-      width: 24px;
-      height: 24px;
-    }
-  }
-  
-  /* 1366px - Standard Laptop (0.71 scale) */
-  @media (max-width: 1366px) {
-    .leadershipSection {
-      padding: 43px 0 71px 0;
-    }
-  
-    .container {
-      padding: 0 109px;
-    }
-  
-    .title {
-      font-size: 34px;
-      margin-bottom: 84px;
-    }
-  
-    .leadershipGrid {
-      grid-template-columns: repeat(4, 229px);
-      gap: 21px;
-    }
-  
-    .leaderCard {
-      width: 229px;
-      height: 317px;
-    }
-  
-    .cardContainer {
-      border-radius: 14px;
-    }
-  
-    .imageWrapper {
-      height: 255px;
-      border-radius: 14px 14px 0 0;
-    }
-  
-    .infoSection {
-      height: 62px;
-      padding: 9px 16px 13px 16px;
-    }
-  
-    .leaderName {
-      font-size: 14px;
-    }
-  
-    .leaderRole {
-      font-size: 11px;
-    }
-  }
-  
-  /* 1280px - Small Laptop (0.67 scale) */
-  @media (max-width: 1280px) {
-    .leadershipSection {
-      padding: 40px 0 67px 0;
-    }
-  
-    .container {
-      padding: 0 102px;
-    }
-  
-    .title {
-      font-size: 32px;
-      margin-bottom: 80px;
-    }
-  
-    .leadershipGrid {
-      grid-template-columns: repeat(4, 216px);
-      gap: 20px;
-    }
-  
-    .leaderCard {
-      width: 216px;
-      height: 299px;
-    }
-  
-    .cardContainer {
-      border-radius: 13px;
-    }
-  
-    .imageWrapper {
-      height: 240px;
-      border-radius: 13px 13px 0 0;
-    }
-  
-    .infoSection {
-      height: 59px;
-      padding: 9px 15px 13px 15px;
-    }
-  
-    .leaderName {
-      font-size: 13px;
-    }
-  
-    .leaderRole {
-      font-size: 11px;
-    }
-  }
-  
-  /* 1024px - Large Tablet (0.53 scale) - 2×2 Grid */
-  @media (max-width: 1024px) {
-    .leadershipSection {
-      padding: 32px 0 53px 0;
-    }
-  
-    .container {
-      padding: 0 40px;
-    }
-  
-    .title {
-      font-size: 28px;
-      margin-bottom: 60px;
-    }
-  
-    /* 2×2 GRID for Tablet */
-    .leadershipGrid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      max-width: 700px;
-    }
-  
-    .leaderCard {
-      width: 100%;
-      max-width: 340px;
-      height: 420px;
-    }
-  
-    .cardContainer {
-      border-radius: 16px;
-    }
-  
-    .imageWrapper {
-      height: 330px;
-      border-radius: 16px 16px 0 0;
-    }
-  
-    .infoSection {
-      height: 90px;
-      padding: 15px 20px;
-    }
-  
-    .leaderName {
-      font-size: 18px;
-      margin-bottom: 6px;
-    }
-  
-    .leaderRole {
-      font-size: 14px;
-    }
-  
-    .linkedinOverlay svg {
-      width: 28px;
-      height: 28px;
-    }
-  
-    /* Disable hover on tablet */
-    .cardContainer:hover {
-      transform: none;
-    }
-  
-    .cardContainer:hover .leaderImage {
-      transform: none;
-    }
-  }
-  
-  /* ============================================
-     📱 MOBILE OPTIMIZATION (< 768px)
-     Single Column Layout
-     ============================================ */
-  
-  @media (max-width: 768px) {
-    .leadershipSection {
-      padding: 40px 0 60px 0;
-    }
-  
-    .container {
-      padding: 0 20px;
-    }
-  
-    .title {
-      font-size: 32px;
-      margin-bottom: 40px;
-      padding: 0 10px;
-    }
-  
-    /* SINGLE COLUMN LAYOUT */
-    .leadershipGrid {
-      grid-template-columns: 1fr;
-      gap: 28px;
-      max-width: 100%;
-    }
-  
-    .leaderCard {
-      width: 100%;
-      max-width: 450px;
-      height: auto;
-      min-height: 400px;
-    }
-  
-    .cardContainer {
-      border-radius: 20px;
-    }
-  
-    .imageWrapper {
-      height: 320px;
-      border-radius: 20px 20px 0 0;
-    }
-  
-    .infoSection {
-      height: auto;
-      padding: 18px 24px 24px 24px;
-    }
-  
-    .leaderName {
-      font-size: 20px;
-      margin-bottom: 6px;
-    }
-  
-    .leaderRole {
-      font-size: 15px;
-      color: rgba(0, 0, 0, 0.5); /* Slightly darker for mobile */
-    }
-  
-    .linkedinOverlay svg {
-      width: 32px;
-      height: 32px;
-    }
-  
-    /* Always show LinkedIn on mobile (no hover needed) */
-    .linkedinOverlay {
-      opacity: 0;
-      background: rgba(38, 131, 198, 0.9);
-    }
-  
-    /* Tap to show LinkedIn */
-    .cardContainer:active .linkedinOverlay {
-      opacity: 1;
-    }
-  
-    /* Remove hover effects */
-    .cardContainer:hover {
-      transform: none;
-      box-shadow: 0px 0px 9.7px 0px rgba(0, 0, 0, 0.11);
-    }
-  
-    .cardContainer:hover .leaderImage {
-      transform: none;
-    }
-  }
-  
-  /* 480px - Standard Mobile */
-  @media (max-width: 480px) {
-    .leadershipSection {
-      padding: 35px 0 50px 0;
-    }
-  
-    .container {
-      padding: 0 16px;
-    }
-  
-    .title {
-      font-size: 28px;
-      margin-bottom: 32px;
-    }
-  
-    .leadershipGrid {
-      gap: 24px;
-    }
-  
-    .leaderCard {
-      min-height: 360px;
-    }
-  
-    .cardContainer {
-      border-radius: 18px;
-    }
-  
-    .imageWrapper {
-      height: 280px;
-      border-radius: 18px 18px 0 0;
-    }
-  
-    .infoSection {
-      padding: 16px 20px 20px 20px;
-    }
-  
-    .leaderName {
-      font-size: 18px;
-    }
-  
-    .leaderRole {
-      font-size: 14px;
-    }
-  }
-  
-  /* 375px - Small Mobile */
-  @media (max-width: 375px) {
-    .title {
-      font-size: 26px;
-      margin-bottom: 28px;
-    }
-  
-    .leaderCard {
-      min-height: 340px;
-    }
-  
-    .imageWrapper {
-      height: 260px;
-    }
-  
-    .infoSection {
-      padding: 14px 18px 18px 18px;
-    }
-  
-    .leaderName {
-      font-size: 17px;
-    }
-  
-    .leaderRole {
-      font-size: 13px;
-    }
-  }
-  
-  /* 320px - Smallest Mobile */
-  @media (max-width: 320px) {
-    .leadershipSection {
-      padding: 30px 0 45px 0;
-    }
-  
-    .container {
-      padding: 0 12px;
-    }
-  
-    .title {
-      font-size: 24px;
-      margin-bottom: 24px;
-    }
-  
-    .leadershipGrid {
-      gap: 20px;
-    }
-  
-    .leaderCard {
-      min-height: 320px;
-    }
-  
-    .cardContainer {
-      border-radius: 16px;
-    }
-  
-    .imageWrapper {
-      height: 240px;
-      border-radius: 16px 16px 0 0;
-    }
-  
-    .infoSection {
-      padding: 12px 16px 16px 16px;
-    }
-  
-    .leaderName {
-      font-size: 16px;
-    }
-  
-    .leaderRole {
-      font-size: 12px;
-    }
-  
-    .linkedinOverlay svg {
-      width: 28px;
-      height: 28px;
-    }
-  }
-  
-  /* ============================================
-     ACCESSIBILITY & PERFORMANCE
-     ============================================ */
-  
-  @media (prefers-reduced-motion: reduce) {
-    .leadershipSection .animateUp {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-  
-    .cardContainer,
-    .leaderImage,
-    .linkedinOverlay {
-      transition: none !important;
-    }
-  }
-  
-  /* Touch device optimization */
-  @media (hover: none) and (pointer: coarse) {
-    .cardContainer:hover {
-      transform: none;
-    }
-  
-    .cardContainer:hover .leaderImage {
-      transform: none;
-    }
-  
-    .cardContainer:hover .linkedinOverlay {
-      opacity: 0; /* Require tap instead of hover */
-    }
-  }
-  
-  /* High resolution displays */
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .leaderImage {
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-    }
-  }
+}

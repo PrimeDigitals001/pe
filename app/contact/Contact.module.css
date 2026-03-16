@@ -1,0 +1,188 @@
+/* ============================================
+   CONTACT US SECTION
+   Base Design: 1920px
+   Background: #ffffff (or #f9f9f9 for light theme contrast)
+   ============================================ */
+
+.main {
+  padding-top: 150px;
+  background-color: #121212; /* matching the footer's dark, premium feel */
+  color: #fff;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 80px 155px; /* using 155px padding to match footer */
+  display: flex;
+  gap: 100px;
+}
+
+.leftColumn {
+  flex: 1;
+  max-width: 600px;
+}
+
+.title {
+  color: #ffffff;
+  font-family: "Grift-Medium", sans-serif;
+  font-size: 90px;
+  font-weight: 500;
+  margin: 0 0 30px 0;
+  line-height: 1.1;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Grift-Regular", sans-serif;
+  font-size: 24px;
+  margin: 0 0 60px 0;
+  line-height: 1.5;
+}
+
+.infoBlock {
+  margin-bottom: 40px;
+}
+
+.label {
+  color: #2683C6;
+  font-family: "Grift-Medium", sans-serif;
+  font-size: 20px;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.text {
+  color: #ffffff;
+  font-family: "Grift-Regular", sans-serif;
+  font-size: 24px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.text a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.text a:hover {
+  color: #2683C6;
+}
+
+.rightColumn {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 60px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.formTitle {
+  color: #ffffff;
+  font-family: "Grift-Medium", sans-serif;
+  font-size: 40px;
+  margin: 0 0 40px 0;
+}
+
+.formGroup {
+  margin-bottom: 30px;
+}
+
+.inputLabel {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.input, .textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-family: "Grift-Regular", sans-serif;
+  font-size: 20px;
+  padding: 10px 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input::placeholder, .textarea::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.input:focus, .textarea:focus {
+  border-bottom-color: #2683C6;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  width: 100%;
+  padding: 20px;
+  font-family: "Grift-Medium", sans-serif;
+  font-size: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.submitBtn:hover {
+  background: #2683C6;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(38, 131, 198, 0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1440px) {
+  .container {
+    padding: 60px 116px;
+  }
+  .title {
+    font-size: 70px;
+  }
+  .subtitle, .text {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 60px;
+    flex-direction: column;
+    gap: 60px;
+  }
+  .leftColumn, .rightColumn {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 40px 20px;
+  }
+  .title {
+    font-size: 50px;
+  }
+  .rightColumn {
+    padding: 30px 20px;
+  }
+  .main {
+    padding-top: 100px;
+  }
+}

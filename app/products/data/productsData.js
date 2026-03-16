@@ -63,14 +63,14 @@ export const productsData = [
     description: 'Premium roofing solutions with natural slate',
     website: 'https://tegola.com',
   },
-  {
-    id: 9,
-    name: 'Company 9',
-    slug: 'company-9',
-    logo: '/images/products/logo_9.png',
-    description: 'Leading safety equipment manufacturer',
-    website: 'https://company9.com',
-  },
+  // {
+  //   id: 9,
+  //   name: 'Company 9',
+  //   slug: 'company-9',
+  //   logo: '/images/products/logo_9.png',
+  //   description: 'Leading safety equipment manufacturer',
+  //   website: 'https://company9.com',
+  // },
 ];
 
 // Get product by slug (for individual product pages)
