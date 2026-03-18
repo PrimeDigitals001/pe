@@ -1,50 +1,50 @@
 import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASS,
-    },
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASS,
+  },
 });
 
 export async function POST(request) {
-    try {
-        const body = await request.json();
+  try {
+    const body = await request.json();
 
-        const {
-            // Contact fields
-            name,
-            email,
-            phone,
-            companyName,
-            projectLocation,
-            message,
-            // Pre-filled product fields
-            productName,
-            productCategory,
-            productBrand,
-            productProperties,
-            productSpecs,
-        } = body;
+    const {
+      // Contact fields
+      name,
+      email,
+      phone,
+      companyName,
+      projectLocation,
+      message,
+      // Pre-filled product fields
+      productName,
+      productCategory,
+      productBrand,
+      productProperties,
+      productSpecs,
+    } = body;
 
-        // ── Basic validation ──
-        if (!name?.trim() || !email?.trim()) {
-            return Response.json(
-                { success: false, error: 'Name and email are required.' },
-                { status: 400 }
-            );
-        }
+    // ── Basic validation ──
+    if (!name?.trim() || !email?.trim()) {
+      return Response.json(
+        { success: false, error: 'Name and email are required.' },
+        { status: 400 }
+      );
+    }
 
-        if (!/\S+@\S+\.\S+/.test(email)) {
-            return Response.json(
-                { success: false, error: 'Invalid email address.' },
-                { status: 400 }
-            );
-        }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      return Response.json(
+        { success: false, error: 'Invalid email address.' },
+        { status: 400 }
+      );
+    }
 
-        // ── Build HTML email ──
-        const html = `
+    // ── Build HTML email ──
+    const html = `
       <!DOCTYPE html>
       <html lang="en">
       <head>
@@ -65,7 +65,7 @@ export async function POST(request) {
                       🔩 Product Enquiry
                     </h1>
                     <p style="margin:6px 0 0;color:rgba(255,255,255,0.8);font-size:14px;">
-                      Received via patelenterprise.com
+                      Received via patelenterprise.co
                     </p>
                   </td>
                 </tr>
@@ -90,41 +90,41 @@ export async function POST(request) {
 
                 <!-- Properties -->
                 ${productProperties?.length
-                ? `
+        ? `
                   <tr>
                     <td style="padding:20px 40px 0;">
                       <h2 style="margin:0 0 10px;font-size:13px;font-weight:700;color:#6b7280;letter-spacing:0.08em;text-transform:uppercase;">Properties</h2>
                       ${productProperties
-                    .map(
-                        (p) =>
-                            `<p style="margin:0 0 4px;font-size:13px;color:#374151;padding-left:12px;border-left:2px solid #e5e7eb;">• ${p}</p>`
-                    )
-                    .join('')}
+          .map(
+            (p) =>
+              `<p style="margin:0 0 4px;font-size:13px;color:#374151;padding-left:12px;border-left:2px solid #e5e7eb;">• ${p}</p>`
+          )
+          .join('')}
                     </td>
                   </tr>`
-                : ''
-            }
+        : ''
+      }
 
                 <!-- Technical Specs -->
                 ${productSpecs?.length
-                ? `
+        ? `
                   <tr>
                     <td style="padding:20px 40px 0;">
                       <h2 style="margin:0 0 10px;font-size:13px;font-weight:700;color:#6b7280;letter-spacing:0.08em;text-transform:uppercase;">Technical Specifications</h2>
                       <table width="100%" cellpadding="0" cellspacing="0" style="background:#f9fafb;border-radius:8px;">
                         <tr><td style="padding:14px 16px;">
                           ${productSpecs
-                    .map(
-                        (s) =>
-                            `<p style="margin:0 0 5px;font-size:13px;color:#374151;">• ${s}</p>`
-                    )
-                    .join('')}
+          .map(
+            (s) =>
+              `<p style="margin:0 0 5px;font-size:13px;color:#374151;">• ${s}</p>`
+          )
+          .join('')}
                         </td></tr>
                       </table>
                     </td>
                   </tr>`
-                : ''
-            }
+        : ''
+      }
 
                 <!-- Divider -->
                 <tr><td style="padding:24px 40px 0;"><hr style="border:none;border-top:1px solid #e5e7eb;margin:0;" /></td></tr>
@@ -147,7 +147,7 @@ export async function POST(request) {
 
                 <!-- Message -->
                 ${message?.trim()
-                ? `
+        ? `
                   <tr><td style="padding:24px 40px 0;"><hr style="border:none;border-top:1px solid #e5e7eb;margin:0;" /></td></tr>
                   <tr>
                     <td style="padding:24px 40px 0;">
@@ -157,14 +157,14 @@ export async function POST(request) {
                       </p>
                     </td>
                   </tr>`
-                : ''
-            }
+        : ''
+      }
 
                 <!-- Footer -->
                 <tr>
                   <td style="padding:32px 40px;">
                     <p style="margin:0;font-size:12px;color:#9ca3af;text-align:center;">
-                      This email was sent from the product enquiry form on patelenterprise.com
+                      This email was sent from the product enquiry form on patelenterprise.co
                     </p>
                   </td>
                 </tr>
@@ -177,28 +177,28 @@ export async function POST(request) {
       </html>
     `;
 
-        await transporter.sendMail({
-            from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
-            to: process.env.RECIPIENT_EMAIL,
-            replyTo: email,
-            subject: `Product Enquiry — ${productName} | ${name} (${companyName || email})`,
-            html,
-        });
+    await transporter.sendMail({
+      from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
+      to: process.env.RECIPIENT_EMAIL,
+      replyTo: email,
+      subject: `Product Enquiry — ${productName} | ${name} (${companyName || email})`,
+      html,
+    });
 
-        return Response.json({ success: true });
+    return Response.json({ success: true });
 
-    } catch (error) {
-        console.error('[send-enquiry] Error:', error);
-        return Response.json(
-            { success: false, error: 'Failed to send enquiry. Please try again.' },
-            { status: 500 }
-        );
-    }
+  } catch (error) {
+    console.error('[send-enquiry] Error:', error);
+    return Response.json(
+      { success: false, error: 'Failed to send enquiry. Please try again.' },
+      { status: 500 }
+    );
+  }
 }
 
 // ── Helper: table row with accent color ──
 function row(accent, label, value) {
-    return `
+  return `
     <tr>
       <td style="padding:5px 0;width:140px;vertical-align:top;">
         <span style="font-size:13px;font-weight:600;color:#374151;">${label}</span>

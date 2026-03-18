@@ -62,7 +62,7 @@ export default function Contact() {
             <div className={styles.infoBlock}>
               <h3 className={styles.label}>Email Us</h3>
               <p className={styles.text}>
-                <a href="mailto:meetpatel@patelenterprise.com">meetpatel@patelenterprise.com</a>
+                <a href="mailto:meet.patel@patelenterprise.co">meet.patel@patelenterprise.co</a>
               </p>
             </div>
           </div>

@@ -4,49 +4,49 @@ import nodemailer from 'nodemailer';
 // Uses an App Password (NOT your real Gmail password)
 // Generate one at: https://myaccount.google.com/apppasswords
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.GMAIL_USER,       // your Gmail address
-        pass: process.env.GMAIL_APP_PASS,   // 16-char App Password from Google
-    },
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER,       // your Gmail address
+    pass: process.env.GMAIL_APP_PASS,   // 16-char App Password from Google
+  },
 });
 
 export async function POST(request) {
-    try {
-        const body = await request.json();
+  try {
+    const body = await request.json();
 
-        const {
-            name,
-            email,
-            phone,
-            companyName,
-            category,
-            state,
-            city,
-            projectLocation,
-            areaOfBuilding,
-            selectedCompany,
-            selectedProducts,
-            projectDescription,
-        } = body;
+    const {
+      name,
+      email,
+      phone,
+      companyName,
+      category,
+      state,
+      city,
+      projectLocation,
+      areaOfBuilding,
+      selectedCompany,
+      selectedProducts,
+      projectDescription,
+    } = body;
 
-        // ── Basic server-side validation ──
-        if (!name?.trim() || !email?.trim() || !companyName?.trim()) {
-            return Response.json(
-                { success: false, error: 'Name, email and company name are required.' },
-                { status: 400 }
-            );
-        }
+    // ── Basic server-side validation ──
+    if (!name?.trim() || !email?.trim() || !companyName?.trim()) {
+      return Response.json(
+        { success: false, error: 'Name, email and company name are required.' },
+        { status: 400 }
+      );
+    }
 
-        if (!/\S+@\S+\.\S+/.test(email)) {
-            return Response.json(
-                { success: false, error: 'Invalid email address.' },
-                { status: 400 }
-            );
-        }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      return Response.json(
+        { success: false, error: 'Invalid email address.' },
+        { status: 400 }
+      );
+    }
 
-        // ── Build the HTML email ──
-        const html = `
+    // ── Build the HTML email ──
+    const html = `
       <!DOCTYPE html>
       <html lang="en">
       <head>
@@ -67,7 +67,7 @@ export async function POST(request) {
                       📋 New Quote Request
                     </h1>
                     <p style="margin:6px 0 0;color:rgba(255,255,255,0.8);font-size:14px;">
-                      Received via patelenterprise.com
+                      Received via patelenterprise.co
                     </p>
                   </td>
                 </tr>
@@ -123,14 +123,14 @@ export async function POST(request) {
                         </td>
                         <td style="padding:6px 0;">
                           ${selectedProducts?.length
-                ? selectedProducts
-                    .map(
-                        (p) =>
-                            `<span style="display:inline-block;margin:2px 4px 2px 0;padding:3px 10px;background:#eff6ff;border-radius:99px;font-size:12px;font-weight:500;color:#2683C6;">${p}</span>`
-                    )
-                    .join('')
-                : '<span style="color:#9ca3af;font-size:13px;">—</span>'
-            }
+        ? selectedProducts
+          .map(
+            (p) =>
+              `<span style="display:inline-block;margin:2px 4px 2px 0;padding:3px 10px;background:#eff6ff;border-radius:99px;font-size:12px;font-weight:500;color:#2683C6;">${p}</span>`
+          )
+          .join('')
+        : '<span style="color:#9ca3af;font-size:13px;">—</span>'
+      }
                         </td>
                       </tr>
                     </table>
@@ -139,7 +139,7 @@ export async function POST(request) {
 
                 <!-- Project Description -->
                 ${projectDescription?.trim()
-                ? `
+        ? `
                   <tr><td style="padding:24px 40px 0;"><hr style="border:none;border-top:1px solid #e5e7eb;margin:0;" /></td></tr>
                   <tr>
                     <td style="padding:24px 40px 0;">
@@ -149,14 +149,14 @@ export async function POST(request) {
                       </p>
                     </td>
                   </tr>`
-                : ''
-            }
+        : ''
+      }
 
                 <!-- Footer -->
                 <tr>
                   <td style="padding:32px 40px;margin-top:24px;">
                     <p style="margin:0;font-size:12px;color:#9ca3af;text-align:center;">
-                      This email was sent from the quote request form on patelenterprise.com
+                      This email was sent from the quote request form on patelenterprise.co
                     </p>
                   </td>
                 </tr>
@@ -169,29 +169,29 @@ export async function POST(request) {
       </html>
     `;
 
-        // ── Send email ──
-        await transporter.sendMail({
-            from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
-            to: process.env.RECIPIENT_EMAIL,
-            replyTo: email,   // so you can reply directly to the customer
-            subject: `Quote Request — ${name} (${companyName})`,
-            html,
-        });
+    // ── Send email ──
+    await transporter.sendMail({
+      from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
+      to: process.env.RECIPIENT_EMAIL,
+      replyTo: email,   // so you can reply directly to the customer
+      subject: `Quote Request — ${name} (${companyName})`,
+      html,
+    });
 
-        return Response.json({ success: true });
+    return Response.json({ success: true });
 
-    } catch (error) {
-        console.error('[send-quote] Error:', error);
-        return Response.json(
-            { success: false, error: 'Failed to send email. Please try again.' },
-            { status: 500 }
-        );
-    }
+  } catch (error) {
+    console.error('[send-quote] Error:', error);
+    return Response.json(
+      { success: false, error: 'Failed to send email. Please try again.' },
+      { status: 500 }
+    );
+  }
 }
 
 // ── Helper: table row ──
 function row(label, value) {
-    return `
+  return `
     <tr>
       <td style="padding:6px 0;width:140px;vertical-align:top;">
         <span style="font-size:13px;font-weight:600;color:#374151;">${label}</span>
