@@ -1,0 +1,662 @@
+/* ============================================
+   GET QUOTE PAGE - PATEL ENTERPRISE
+   Matches design system: globals.css variables
+   ============================================ */
+
+/* ── Page Shell ── */
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--color-white);
+  padding-top: clamp(80px, 10vh, 150px);
+  padding-bottom: clamp(60px, 6vw, 120px);
+}
+
+/* ── Page Header ── */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: clamp(900px, 85vw, 1400px);
+  margin: 0 auto clamp(40px, 4vw, 72px) auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+}
+
+.pageHeaderInner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.83vw, 14px);
+}
+
+.pageEyebrow {
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pageTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 3.75vw, 72px);
+  font-weight: 700;
+  color: var(--color-dark);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.pageTitleAccent {
+  color: var(--color-primary);
+}
+
+.pageSubtitle {
+  font-family: var(--font-body);
+  font-size: var(--font-base);
+  color: var(--color-gray);
+  margin: 0;
+  max-width: 480px;
+  line-height: var(--leading-relaxed);
+}
+
+.pageHeaderIcon {
+  color: var(--color-primary);
+  opacity: 0.15;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.pageHeaderIcon svg {
+  width: clamp(48px, 6vw, 96px);
+  height: clamp(48px, 6vw, 96px);
+}
+
+/* ── Form Card ── */
+.formCard {
+  max-width: clamp(900px, 85vw, 1400px);
+  margin: 0 auto;
+  padding: clamp(32px, 4vw, 64px) clamp(24px, 5vw, 72px);
+  background: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Grid Rows ── */
+.row3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(12px, 1.25vw, 24px);
+  margin-bottom: clamp(16px, 1.56vw, 28px);
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(12px, 1.25vw, 24px);
+  margin-bottom: clamp(16px, 1.56vw, 28px);
+}
+
+/* ── Field Group ── */
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ── Input ── */
+.input {
+  width: 100%;
+  height: clamp(44px, 3.13vw, 56px);
+  padding: 0 clamp(14px, 1.25vw, 20px);
+  background: #F8F9FA;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: 400;
+  color: var(--color-dark);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  outline: none;
+}
+
+.input::placeholder {
+  color: rgba(107, 114, 128, 0.7);
+}
+
+.input:focus {
+  background: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(38, 131, 198, 0.1);
+}
+
+.inputError {
+  border-color: var(--color-secondary) !important;
+  box-shadow: 0 0 0 3px rgba(209, 32, 62, 0.08) !important;
+}
+
+/* ── Select ── */
+.selectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.select {
+  width: 100%;
+  height: clamp(44px, 3.13vw, 56px);
+  padding: 0 clamp(40px, 3vw, 48px) 0 clamp(14px, 1.25vw, 20px);
+  background: #F8F9FA;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: 400;
+  color: var(--color-dark);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  outline: none;
+}
+
+.selectPlaceholder {
+  color: rgba(107, 114, 128, 0.7);
+}
+
+.select:focus {
+  background: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(38, 131, 198, 0.1);
+}
+
+.selectChevron {
+  position: absolute;
+  right: clamp(12px, 1vw, 16px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--color-gray);
+  pointer-events: none;
+}
+
+/* ── Error Message ── */
+.errorMsg {
+  font-family: var(--font-body);
+  font-size: clamp(11px, 0.63vw, 12px);
+  font-weight: 500;
+  color: var(--color-secondary);
+}
+
+/* ── Product Section ── */
+.productSection {
+  margin-bottom: clamp(16px, 1.56vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1vw, 16px);
+}
+
+.productSectionLabel {
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-dark);
+  letter-spacing: 0.02em;
+}
+
+.required {
+  color: var(--color-secondary);
+}
+
+/* Brand chips — Step 1 */
+.brandGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 0.83vw, 12px);
+}
+
+.brandChip {
+  padding: clamp(6px, 0.52vw, 9px) clamp(14px, 1.25vw, 22px);
+  border-radius: var(--radius-full);
+  border: 1.5px solid rgba(0, 0, 0, 0.14);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--color-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.brandChip:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(38, 131, 198, 0.04);
+}
+
+.brandChipActive {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  color: var(--color-white) !important;
+}
+
+/* Product chips — Step 2 */
+.productGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(6px, 0.63vw, 10px);
+  padding: clamp(14px, 1.25vw, 20px);
+  background: #F8F9FA;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid rgba(0, 0, 0, 0.07);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.productChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: clamp(5px, 0.42vw, 8px) clamp(12px, 1vw, 18px);
+  border-radius: var(--radius-full);
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  background: var(--color-white);
+  font-family: var(--font-body);
+  font-size: clamp(11px, 0.73vw, 13px);
+  font-weight: 500;
+  color: var(--color-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.productChip:hover {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.productChipActive {
+  background: var(--color-secondary) !important;
+  border-color: var(--color-secondary) !important;
+  color: var(--color-white) !important;
+}
+
+.chipCheck {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* ── Textarea ── */
+.textarea {
+  width: 100%;
+  padding: clamp(12px, 1.04vw, 18px) clamp(14px, 1.25vw, 20px);
+  background: #F8F9FA;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: 400;
+  color: var(--color-dark);
+  resize: vertical;
+  min-height: clamp(100px, 10vw, 160px);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  margin-bottom: clamp(16px, 1.56vw, 28px);
+  line-height: var(--leading-relaxed);
+}
+
+.textarea::placeholder {
+  color: rgba(107, 114, 128, 0.7);
+}
+
+.textarea:focus {
+  background: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(38, 131, 198, 0.1);
+}
+
+/* ── Upload Section ── */
+.uploadSection {
+  margin-bottom: clamp(24px, 2.5vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.63vw, 12px);
+}
+
+.uploadLabel {
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.uploadBox {
+  display: block;
+  cursor: pointer;
+}
+
+.fileInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.uploadBoxInner {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1vw, 16px);
+  padding: clamp(12px, 1.04vw, 18px) clamp(16px, 1.56vw, 24px);
+  background: #F8F9FA;
+  border: 1.5px dashed rgba(0, 0, 0, 0.16);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.uploadBox:hover .uploadBoxInner {
+  border-color: var(--color-primary);
+  background: rgba(38, 131, 198, 0.03);
+}
+
+.uploadIcon {
+  width: clamp(18px, 1.25vw, 22px);
+  height: clamp(18px, 1.25vw, 22px);
+  color: var(--color-gray);
+  flex-shrink: 0;
+}
+
+.uploadText {
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  color: var(--color-gray);
+}
+
+/* ── Form Footer ── */
+.formFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(20px, 3vw, 40px);
+  padding-top: clamp(20px, 2.08vw, 32px);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.privacyNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: clamp(11px, 0.63vw, 13px);
+  color: var(--color-gray);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 440px;
+}
+
+.privacyIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--color-primary);
+}
+
+/* ── Submit Button ── */
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 0.63vw, 10px);
+  height: clamp(46px, 3.13vw, 58px);
+  padding: 0 clamp(28px, 2.5vw, 44px);
+  background: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-white);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  box-shadow: var(--shadow-primary);
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(38, 131, 198, 0.4);
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.submitIcon {
+  width: 15px;
+  height: 15px;
+}
+
+.submitBtnSpinner {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spinnerIcon {
+  width: 16px;
+  height: 16px;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Success State ── */
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: clamp(60px, 8vw, 120px) clamp(20px, 5vw, 40px);
+  text-align: center;
+  gap: clamp(16px, 1.56vw, 24px);
+}
+
+.successIcon {
+  width: clamp(64px, 6vw, 96px);
+  height: clamp(64px, 6vw, 96px);
+  color: var(--color-primary);
+  margin-bottom: clamp(8px, 0.83vw, 16px);
+}
+
+.successIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.successTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3vw, 48px);
+  font-weight: 700;
+  color: var(--color-dark);
+  margin: 0;
+}
+
+.successText {
+  font-family: var(--font-body);
+  font-size: var(--font-base);
+  color: var(--color-gray);
+  max-width: 480px;
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.successActions {
+  display: flex;
+  gap: clamp(12px, 1.25vw, 20px);
+  margin-top: clamp(8px, 0.83vw, 16px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.successBtnPrimary {
+  height: clamp(44px, 3vw, 54px);
+  padding: 0 clamp(24px, 2vw, 36px);
+  background: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.successBtnPrimary:hover {
+  background: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.successBtnSecondary {
+  height: clamp(44px, 3vw, 54px);
+  padding: 0 clamp(24px, 2vw, 36px);
+  background: transparent;
+  border: 1.5px solid rgba(0, 0, 0, 0.14);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-dark);
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.successBtnSecondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .row3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .row3 > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .pageHeaderIcon {
+    display: none;
+  }
+
+  .formCard {
+    padding: clamp(20px, 5vw, 32px) clamp(16px, 4vw, 24px);
+  }
+
+  .row3,
+  .row2 {
+    grid-template-columns: 1fr;
+  }
+
+  .row3 > :last-child {
+    grid-column: auto;
+  }
+
+  .formFooter {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .privacyNote {
+    max-width: 100%;
+  }
+
+  .submitBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .brandChip {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  .productChip {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+
+/* ── Accessibility ── */
+@media (prefers-reduced-motion: reduce) {
+  .input,
+  .select,
+  .textarea,
+  .brandChip,
+  .productChip,
+  .submitBtn,
+  .uploadBoxInner {
+    transition: none !important;
+  }
+
+  .spinnerIcon {
+    animation: none !important;
+  }
+
+  .productGrid {
+    animation: none !important;
+  }
+}
+
+/* ── Form Error Banner ── */
+.formError {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: clamp(10px, 0.83vw, 14px) clamp(14px, 1.25vw, 18px);
+  background: rgba(209, 32, 62, 0.06);
+  border: 1px solid rgba(209, 32, 62, 0.2);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  color: var(--color-secondary);
+  margin-bottom: clamp(12px, 1vw, 16px);
+}
+
+.formErrorIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}

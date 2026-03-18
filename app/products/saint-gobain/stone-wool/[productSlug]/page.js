@@ -1,18 +1,26 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
+import EnquireModal from '@/components/EnquireModal';
 import { saintGobainData, getProductBySlug, getRelatedProducts } from '../../../data/companyProducts/saintGobain';
 import styles from './styles.module.css';
 
 export default function StoneWoolProductDetailPage() {
     const params = useParams();
     const { productSlug } = params;
+
+    // ── Modal state ──
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [enquiryProduct, setEnquiryProduct] = useState(null);
+
+    const openEnquiryModal = (p) => { setEnquiryProduct(p); setIsModalOpen(true); };
+    const closeEnquiryModal = () => setIsModalOpen(false);
 
     const product = getProductBySlug(productSlug);
     const relatedProducts = getRelatedProducts(productSlug, 3);
@@ -36,6 +44,14 @@ export default function StoneWoolProductDetailPage() {
             <Header />
             <Logo />
             <FloatingQuoteButton />
+
+            {/* ── Enquire Modal ── */}
+            <EnquireModal
+                isOpen={isModalOpen}
+                onClose={closeEnquiryModal}
+                product={enquiryProduct}
+                companyName={saintGobainData.companyInfo.name}
+            />
 
             <main className={styles.productPage}>
 
@@ -174,9 +190,8 @@ export default function StoneWoolProductDetailPage() {
                         {/* Enquire Now Button */}
                         <button
                             className={styles.enquireButton}
-                            onClick={() => {
-                                window.location.href = '/contact';
-                            }}
+                            aria-label={`Enquire about ${product.name}`}
+                            onClick={() => openEnquiryModal(product)}
                         >
                             Enquire now
                         </button>

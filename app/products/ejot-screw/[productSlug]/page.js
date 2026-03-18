@@ -1,12 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
+import EnquireModal from '@/components/EnquireModal';
 import {
   ejotScrewData,
   getEjotProductBySlug,
@@ -18,17 +19,29 @@ export default function EjotProductDetailPage() {
   const params = useParams();
   const { productSlug } = params;
 
+  // ── Modal state ──
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [enquiryProduct, setEnquiryProduct] = useState(null);
+
+  const openEnquiryModal = (product) => {
+    setEnquiryProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const closeEnquiryModal = () => {
+    setIsModalOpen(false);
+  };
+
   // Get current product
   const product = getEjotProductBySlug(productSlug);
 
   // Get related products (limit to 3)
-
-  let relatedProducts = getEjotRelatedProducts(product.id);
+  let relatedProducts = getEjotRelatedProducts(product?.id);
 
   // If no related products, show other products (exclude current)
   if (relatedProducts.length === 0) {
     relatedProducts = ejotScrewData.products
-      .filter((p) => p.id !== product.id)
+      .filter((p) => p.id !== product?.id)
       .slice(0, 3);
   } else {
     relatedProducts = relatedProducts.slice(0, 3);
@@ -53,6 +66,14 @@ export default function EjotProductDetailPage() {
       <Header />
       <Logo />
       <FloatingQuoteButton />
+
+      {/* ── Enquire Modal ── */}
+      <EnquireModal
+        isOpen={isModalOpen}
+        onClose={closeEnquiryModal}
+        product={enquiryProduct}
+        companyName={ejotScrewData.companyInfo.name}
+      />
 
       <main className={styles.productPage}>
 
@@ -182,8 +203,12 @@ export default function EjotProductDetailPage() {
               </div>
             )}
 
-            {/* Enquire Now Button */}
-            <button className={styles.enquireButton} aria-label="Enquire about this product">
+            {/* ── Enquire Now Button — opens modal with this product pre-filled ── */}
+            <button
+              className={styles.enquireButton}
+              aria-label={`Enquire about ${product.name}`}
+              onClick={() => openEnquiryModal(product)}
+            >
               Enquire now
             </button>
           </div>

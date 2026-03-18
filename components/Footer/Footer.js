@@ -75,7 +75,7 @@ const Footer = () => {
             </p>
 
             {/* Mail */}
-            <p className={styles.contactItem}><Link href="mailto:meetpatel@patelenterprise.com" style={{ color: 'inherit', textDecoration: 'none' }}>Mail us: meetpatel@patelenterprise.com</Link></p>
+            <p className={styles.contactItem}><Link href="mailto:meet,patel@patelenterprise.co.in" style={{ color: 'inherit', textDecoration: 'none' }}>Mail us: meet.patel@patelenterprise.co.in</Link></p>
 
             {/* Phone */}
             <p className={styles.contactItem}>Call us: +91 73599 51901</p>

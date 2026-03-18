@@ -48,7 +48,7 @@ export const projectsData = [
     client: 'Manufacturing Inc',
     category: 'industrial',
     status: 'ongoing',
-    image: '/images/projects/project-4.jpg',
+    image: '/images/projects/project-3.jpg',
     featured: true,
     completionDate: null,
     location: 'Pune, India',

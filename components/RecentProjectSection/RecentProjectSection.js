@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import styles from './RecentProjectSection.module.css';
 
 const RecentProjectSection = () => {
@@ -93,7 +94,7 @@ const RecentProjectSection = () => {
 
             {/* CTA Button */}
             <div className={styles.ctaWrapper}>
-              <button className={styles.ctaButton}>
+              <Link href="/projects" className={styles.ctaButton}>
                 <span>View All Projects</span>
                 <svg 
                   className={styles.arrowIcon}
@@ -111,7 +112,7 @@ const RecentProjectSection = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </button>
+              </Link>
             </div>
 
           </div>

@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
+import EnquireModal from '@/components/EnquireModal';
 import {
     hindalcoData,
     getHindalcoProductBySlug,
@@ -19,6 +20,13 @@ export default function HindalcoProductDetailPage() {
 
     // Get current product
     const product = getHindalcoProductBySlug(productSlug);
+
+    // ── Modal state ──
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [enquiryProduct, setEnquiryProduct] = useState(null);
+
+    const openEnquiryModal = (p) => { setEnquiryProduct(p); setIsModalOpen(true); };
+    const closeEnquiryModal = () => setIsModalOpen(false);
 
     // State for main image (for gallery switching)
     const [mainImage, setMainImage] = useState(0);
@@ -50,6 +58,14 @@ export default function HindalcoProductDetailPage() {
             <Header />
             <Logo />
             <FloatingQuoteButton />
+
+            {/* ── Enquire Modal ── */}
+            <EnquireModal
+                isOpen={isModalOpen}
+                onClose={closeEnquiryModal}
+                product={enquiryProduct}
+                companyName="Hindalco"
+            />
 
             <main className={styles.productPage}>
 
@@ -207,7 +223,11 @@ export default function HindalcoProductDetailPage() {
                         </div>
 
                         {/* Enquire Button */}
-                        <button className={styles.enquireButton} aria-label="Enquire about this product">
+                        <button
+                            className={styles.enquireButton}
+                            aria-label={`Enquire about ${product.name}`}
+                            onClick={() => openEnquiryModal(product)}
+                        >
                             Enquire now
                         </button>
 

@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
+import EnquireModal from '@/components/EnquireModal';
 import { 
   birlanuData, 
   getBirlanuProductBySlug,
@@ -17,6 +18,17 @@ import styles from './styles.module.css';
 export default function BirlanuProductDetailPage() {
   const params = useParams();
   const { productSlug } = params;
+
+  // ── Modal state ──
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [enquiryProduct, setEnquiryProduct] = useState(null);
+
+  const openEnquiryModal = (product) => {
+    setEnquiryProduct(product);
+    setIsModalOpen(true);
+  };
+
+  const closeEnquiryModal = () => setIsModalOpen(false);
 
   // Get current product
   const product = getBirlanuProductBySlug(productSlug);
@@ -53,6 +65,14 @@ export default function BirlanuProductDetailPage() {
       <Header />
       <Logo />
       <FloatingQuoteButton />
+
+      {/* ── Enquire Modal ── */}
+      <EnquireModal
+        isOpen={isModalOpen}
+        onClose={closeEnquiryModal}
+        product={enquiryProduct}
+        companyName={birlanuData.companyInfo.name}
+      />
 
       <main className={styles.productPage}>
         
@@ -209,7 +229,11 @@ export default function BirlanuProductDetailPage() {
             )}
 
             {/* Enquire Now Button */}
-            <button className={styles.enquireButton} aria-label="Enquire about this product">
+            <button
+              className={styles.enquireButton}
+              aria-label={`Enquire about ${product.name}`}
+              onClick={() => openEnquiryModal(product)}
+            >
               Enquire now
             </button>
           </div>

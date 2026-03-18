@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
+import EnquireModal from '@/components/EnquireModal';
 import {
     tegolaData,
     getTegolaProductBySlug,
@@ -17,6 +18,13 @@ import styles from './styles.module.css';
 export default function TegolaProductDetailPage() {
     const params = useParams();
     const { productSlug } = params;
+
+    // ── Modal state ──
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [enquiryProduct, setEnquiryProduct] = useState(null);
+
+    const openEnquiryModal = (p) => { setEnquiryProduct(p); setIsModalOpen(true); };
+    const closeEnquiryModal = () => setIsModalOpen(false);
 
     const product = getTegolaProductBySlug(productSlug);
     const [selectedImage, setSelectedImage] = useState(product?.image);
@@ -48,6 +56,14 @@ export default function TegolaProductDetailPage() {
             <Header />
             <Logo />
             <FloatingQuoteButton />
+
+            {/* ── Enquire Modal ── */}
+            <EnquireModal
+                isOpen={isModalOpen}
+                onClose={closeEnquiryModal}
+                product={enquiryProduct}
+                companyName={tegolaData.companyInfo.name}
+            />
 
             <main className={styles.productPage}>
 
@@ -150,10 +166,8 @@ export default function TegolaProductDetailPage() {
                         {/* Enquire Now Button */}
                         <button
                             className={styles.enquireButton}
-                            aria-label="Enquire about this product"
-                            onClick={() => {
-                                window.location.href = '/contact';
-                            }}
+                            aria-label={`Enquire about ${product.name}`}
+                            onClick={() => openEnquiryModal(product)}
                         >
                             Enquire now
                         </button>
