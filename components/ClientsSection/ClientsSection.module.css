@@ -81,12 +81,12 @@
      INFINITE SCROLL ANIMATION
      ============================================ */
   
-  .logoScroll {
-    display: flex;
-    gap: 0;
-    width: max-content;
-    animation: scroll 40s linear infinite;
-  }
+ .logoScroll {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: scroll 60s linear infinite; /* Changed from 40s to 60s for 30 logos */
+}
   
   @keyframes scroll {
     0% {

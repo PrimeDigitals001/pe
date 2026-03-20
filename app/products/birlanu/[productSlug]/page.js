@@ -8,10 +8,10 @@ import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
 import EnquireModal from '@/components/EnquireModal';
-import { 
-  birlanuData, 
+import {
+  birlanuData,
   getBirlanuProductBySlug,
-  getBirlanuRelatedProducts 
+  getBirlanuRelatedProducts
 } from '../../data/companyProducts/birlanu';
 import styles from './styles.module.css';
 
@@ -42,7 +42,7 @@ export default function BirlanuProductDetailPage() {
   }, [product]);
 
   // Get related products (limit to 3)
-  const relatedProducts = product?.relatedProducts 
+  const relatedProducts = product?.relatedProducts
     ? getBirlanuRelatedProducts(product.id).slice(0, 3)
     : birlanuData.products.filter(p => p.id !== product?.id).slice(0, 3);
 
@@ -75,10 +75,10 @@ export default function BirlanuProductDetailPage() {
       />
 
       <main className={styles.productPage}>
-        
+
         {/* Birlanu Logo */}
         <div className={styles.logoSection}>
-          <img 
+          <img
             src={birlanuData.companyInfo.logo}
             alt={birlanuData.companyInfo.name}
             className={styles.companyLogo}
@@ -101,26 +101,26 @@ export default function BirlanuProductDetailPage() {
 
         {/* Product Detail Section */}
         <div className={styles.productDetailSection}>
-          
+
           {/* Left: Product Image */}
           <div className={styles.productImageContainer}>
             <div className={styles.mainImageWrapper}>
-              <img 
+              <img
                 src={selectedImage || product.image}
                 alt={`${product.name} - ${product.category}`}
                 className={styles.productMainImage}
                 loading="lazy"
               />
             </div>
-            
+
             {/* Gallery Thumbnails */}
             {product.galleryImages && product.galleryImages.length > 0 && (
               <div className={styles.galleryThumbnails}>
                 {/* Include main image as first thumbnail if desired, or just extra images */}
 
                 {product.galleryImages.slice(0, 3).map((img, index) => (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     className={`${styles.thumbnailWrapper} ${selectedImage === img ? styles.activeThumbnail : ''}`}
                     onClick={() => setSelectedImage(img)}
                   >
@@ -133,7 +133,7 @@ export default function BirlanuProductDetailPage() {
 
           {/* Right: Product Information */}
           <div className={styles.productInfo}>
-            
+
             {/* Product Title */}
             <h1 className={styles.productTitle}>
               {product.name}
@@ -214,8 +214,8 @@ export default function BirlanuProductDetailPage() {
                         aria-label={`${isExternal ? 'Open' : 'Download'} ${brochure.text}${brochure.size ? ` (${brochure.size})` : ''}`}
                       >
                         <svg className={styles.downloadIcon} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M12 3V16M12 16L7 11M12 16L17 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                          <path d="M3 17V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                          <path d="M12 3V16M12 16L7 11M12 16L17 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M3 17V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                         </svg>
                         <span className={styles.downloadText}>
                           <span className={styles.downloadName}>{brochure.text}</span>
@@ -243,7 +243,7 @@ export default function BirlanuProductDetailPage() {
         {product.features && product.features.length > 0 && (
           <section className={styles.featuresSection}>
             <h2 className={styles.featuresSectionTitle}>Features</h2>
-            
+
             <div className={styles.featuresGrid}>
               {product.features.map((feature, index) => (
                 <div key={index} className={styles.featureItem}>
@@ -284,7 +284,7 @@ export default function BirlanuProductDetailPage() {
               <article key={relatedProduct.id} className={styles.relatedProductCard}>
                 <Link href={`/products/birlanu/${relatedProduct.slug}`} className={styles.relatedProductLink}>
                   <div className={styles.relatedProductImage}>
-                    <img 
+                    <img
                       src={relatedProduct.image}
                       alt={`${relatedProduct.name} - ${relatedProduct.category}`}
                       loading="lazy"
