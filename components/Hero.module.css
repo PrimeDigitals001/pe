@@ -1,27 +1,55 @@
 /* ============================================
-   HERO SECTION - PERFECT ZOOM SCALING
-   Works flawlessly at ANY zoom level
+   HERO SECTION - FLUID RESPONSIVE
+   Base Design: 1920px
+   Mobile Image switches at 768px
    ============================================ */
 
-   .hero {
+.hero {
     position: relative;
     width: 100%;
-    height: clamp(550px, 59.79vw, 1148px);
+    height: clamp(500px, 59.79vw, 1148px);
     overflow: hidden;
-    background: transparent;
+    background: #1a1a1a;
 }
 
-/* Background Image Container */
-.heroBackground {
+/* ============================================
+   BACKGROUND IMAGES
+   ============================================ */
+
+.heroBackgroundDesktop {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 0;
+    display: block;
 }
 
-/* Black Overlay - 23% opacity */
+.heroBackgroundMobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .heroBackgroundDesktop {
+        display: none;
+    }
+
+    .heroBackgroundMobile {
+        display: block;
+    }
+
+    .hero {
+        height: clamp(550px, 85vh, 750px);
+    }
+}
+
 .overlay {
     position: absolute;
     top: 0;
@@ -32,7 +60,10 @@
     z-index: 1;
 }
 
-/* Content Container */
+/* ============================================
+   CONTENT CONTAINER - DESKTOP
+   ============================================ */
+
 .heroContent {
     position: absolute;
     z-index: 2;
@@ -40,43 +71,62 @@
     top: clamp(160px, 32.55vw, 625px);
     left: clamp(20px, 6.51vw, 125px);
     right: clamp(20px, 6.51vw, 125px);
-    max-width: clamp(300px, 62.5vw, 1200px);
+    max-width: clamp(280px, 62.5vw, 1200px);
 }
 
-/* Main Heading - LEFT ALIGNED */
+/* ============================================
+   MAIN HEADING
+   ============================================ */
+
 .heroTitle {
     font-family: 'Grift', Georgia, serif;
     font-weight: 700;
-    font-size: clamp(28px, 3.33vw, 64px);
+    font-size: clamp(24px, 3.33vw, 64px);
     line-height: 1.2;
-    margin-bottom: clamp(14px, 1.25vw, 24px);
+    margin-bottom: clamp(12px, 1.25vw, 24px);
     text-align: left;
     color: white;
+    margin-top: 0;
 }
 
-/* Description Text - LEFT ALIGNED */
+.desktopBreak {
+    display: inline;
+}
+
+.mobileBreak {
+    display: none;
+}
+
+/* ============================================
+   DESCRIPTION TEXT
+   ============================================ */
+
 .heroDescription {
     font-family: 'Grift', Georgia, serif;
     font-weight: 400;
-    font-size: clamp(13px, 1.25vw, 24px);
+    font-size: clamp(12px, 1.25vw, 24px);
     line-height: 1.6;
-    margin-bottom: clamp(22px, 2.08vw, 40px);
+    margin-bottom: clamp(20px, 2.08vw, 40px);
     text-align: left;
     color: white;
-    max-width: clamp(300px, 46.88vw, 900px);
+    max-width: clamp(260px, 46.88vw, 900px);
+    margin-top: 0;
 }
 
-/* CTA Button */
+/* ============================================
+   CTA BUTTON
+   ============================================ */
+
 .ctaButton {
     background: #2683C6;
     color: white;
     text-decoration: none;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    font-size: clamp(12px, 0.83vw, 16px);
-    border-radius: clamp(26px, 1.95vw, 37.5px);
-    width: clamp(160px, 10.73vw, 206px);
-    height: clamp(52px, 3.91vw, 75px);
+    font-size: clamp(11px, 0.83vw, 16px);
+    border-radius: clamp(24px, 1.95vw, 37.5px);
+    width: clamp(140px, 10.73vw, 206px);
+    height: clamp(46px, 3.91vw, 75px);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -92,102 +142,107 @@
 }
 
 /* ============================================
-   RESPONSIVE BREAKPOINTS
-   Fine-tuning for specific devices
+   MOBILE - BOTTOM LEFT with margin
    ============================================ */
 
-/* Tablet Adjustments */
-@media (max-width: 1024px) {
-    .hero {
-        height: clamp(600px, 70vh, 800px);
-    }
-
-    .heroContent {
-        top: clamp(180px, 25vh, 300px);
-    }
-
-    .heroTitle {
-        font-size: clamp(32px, 5vw, 48px);
-    }
-
-    .heroDescription {
-        font-size: clamp(14px, 2vw, 18px);
-    }
-}
-
-/* Mobile Optimization */
 @media (max-width: 768px) {
-    .hero {
-        height: clamp(550px, 80vh, 700px);
-    }
-
     .heroContent {
-        top: clamp(160px, 22vh, 250px);
+        /* Pin to bottom-left */
+        top: auto;
+        bottom: 40px;
         left: 20px;
         right: 20px;
+        max-width: none;
+    }
+
+    .desktopBreak {
+        display: none;
+    }
+
+    .mobileBreak {
+        display: inline;
     }
 
     .heroTitle {
-        font-size: clamp(28px, 7vw, 42px);
+        font-size: clamp(24px, 7vw, 36px);
         line-height: 1.3;
     }
 
     .heroDescription {
-        font-size: clamp(13px, 3.5vw, 16px);
+        font-size: clamp(13px, 3.8vw, 18px);
         line-height: 1.7;
+        max-width: none;
     }
 
     .ctaButton {
-        width: clamp(150px, 45vw, 200px);
-        height: clamp(50px, 15vw, 65px);
+        width: clamp(150px, 42vw, 200px);
+        height: clamp(48px, 13vw, 60px);
         font-size: clamp(12px, 3.5vw, 15px);
     }
 }
 
-/* Small Mobile */
 @media (max-width: 480px) {
-    .hero {
-        min-height: 550px;
-    }
-
     .heroContent {
-        top: 160px;
+        bottom: 30px;
+        left: 16px;
+        right: 16px;
     }
 
     .heroTitle {
-        font-size: clamp(26px, 8vw, 36px);
+        font-size: clamp(22px, 7vw, 32px);
     }
 
     .heroDescription {
-        font-size: clamp(12px, 4vw, 15px);
+        font-size: clamp(12px, 3.8vw, 16px);
     }
 }
 
-/* Landscape Mobile */
-@media (orientation: landscape) and (max-height: 600px) and (max-width: 1023px) {
-    .hero {
-        height: 100vh;
-    }
-
+@media (max-width: 375px) {
     .heroContent {
-        top: 15vh;
-        left: 40px;
-        right: 40px;
+        bottom: 25px;
+        left: 14px;
+        right: 14px;
     }
 
     .heroTitle {
-        font-size: clamp(24px, 4vh, 32px);
-        margin-bottom: 12px;
+        font-size: clamp(20px, 6.5vw, 28px);
     }
 
     .heroDescription {
-        font-size: clamp(12px, 2.5vh, 16px);
-        margin-bottom: 18px;
+        font-size: clamp(11px, 3.5vw, 14px);
+    }
+}
+
+/* ============================================
+   LANDSCAPE MOBILE
+   ============================================ */
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .hero {
+        height: 100vh;
+        min-height: 400px;
+    }
+
+    .heroContent {
+        top: auto;
+        bottom: 20px;
+        left: 5vw;
+        right: 5vw;
+    }
+
+    .heroTitle {
+        font-size: clamp(20px, 4vh, 28px);
+        margin-bottom: 10px;
+    }
+
+    .heroDescription {
+        font-size: clamp(11px, 2.5vh, 14px);
+        margin-bottom: 16px;
     }
 
     .ctaButton {
-        width: 150px;
-        height: 48px;
+        width: 140px;
+        height: 44px;
         font-size: 12px;
     }
 }
@@ -206,11 +261,20 @@
     }
 }
 
-/* High DPI Displays */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .heroTitle,
     .heroDescription {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
+}
+
+.line1,
+.line2 {
+    display: inline;
+}
+
+/* Both lines visible, br creates the break */
+.heroTitle br {
+    display: block;
 }

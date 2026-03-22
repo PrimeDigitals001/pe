@@ -45,7 +45,7 @@ const MissionSection = () => {
   };
 
   return (
-    <motion.section 
+    <motion.section
       className={styles.missionSection}
       initial="hidden"
       whileInView="visible"
@@ -53,26 +53,26 @@ const MissionSection = () => {
       variants={containerVariants}
     >
       <div className={styles.missionContainer}>
-        
+
         {/* Top Images Row */}
         <div className={styles.topImages}>
-          <motion.div 
+          <motion.div
             className={styles.imageBox}
             variants={slideFromLeft}
           >
-            <img 
-              src="/images/rectangle-169.png" 
-              alt="Patel Enterprise Project 1" 
+            <img
+              src="/images/rectangle-169.png"
+              alt="Patel Enterprise Project 1"
               className={styles.image}
             />
           </motion.div>
-          <motion.div 
+          <motion.div
             className={styles.imageBox}
             variants={slideFromRight}
           >
-            <img 
-              src="/images/rectangle-170.png" 
-              alt="Patel Enterprise Project 2" 
+            <img
+              src="/images/rectangle-170.png"
+              alt="Patel Enterprise Project 2"
               className={styles.image}
             />
           </motion.div>
@@ -81,7 +81,7 @@ const MissionSection = () => {
         {/* Center Content */}
         <div className={styles.centerContent}>
           {/* Heading Container */}
-          <motion.div 
+          <motion.div
             className={styles.headingContainer}
             variants={slideFromBottom}
           >
@@ -93,7 +93,7 @@ const MissionSection = () => {
           </motion.div>
 
           {/* Description Container */}
-          <motion.div 
+          <motion.div
             className={styles.descriptionContainer}
             variants={slideFromBottom}
           >
@@ -105,14 +105,15 @@ const MissionSection = () => {
           </motion.div>
 
           {/* Button */}
-          <motion.button 
+          <motion.button
             className={styles.quoteButton}
             variants={slideFromBottom}
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
               transition: { duration: 0.2 }
             }}
             whileTap={{ scale: 0.95 }}
+            link="/get-quote"
           >
             GET QUOTE
           </motion.button>
@@ -120,23 +121,23 @@ const MissionSection = () => {
 
         {/* Bottom Images Row */}
         <div className={styles.bottomImages}>
-          <motion.div 
+          <motion.div
             className={styles.imageBox}
             variants={slideFromLeft}
           >
-            <img 
-              src="/images/rectangle-171.png" 
-              alt="Patel Enterprise Project 3" 
+            <img
+              src="/images/rectangle-171.png"
+              alt="Patel Enterprise Project 3"
               className={styles.image}
             />
           </motion.div>
-          <motion.div 
+          <motion.div
             className={styles.imageBox}
             variants={slideFromRight}
           >
-            <img 
-              src="/images/rectangle-172.png" 
-              alt="Patel Enterprise Project 4" 
+            <img
+              src="/images/rectangle-172.png"
+              alt="Patel Enterprise Project 4"
               className={styles.image}
             />
           </motion.div>

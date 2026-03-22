@@ -1,13 +1,15 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import styles from './Header.module.css'
 
 export default function Header() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const [isHidden, setIsHidden] = useState(false)
     const [lastScrollY, setLastScrollY] = useState(0)
+    const mobileNavRef = useRef(null)
+    const toggleButtonRef = useRef(null)
 
     // Smart scroll behavior
     useEffect(() => {
@@ -31,12 +33,51 @@ export default function Header() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [lastScrollY])
 
+    // Prevent body scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = ''
+        }
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [isMobileMenuOpen])
+
+    // Handle escape key to close menu
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === 'Escape' && isMobileMenuOpen) {
+                closeMobileMenu()
+            }
+        }
+
+        document.addEventListener('keydown', handleEscape)
+        return () => document.removeEventListener('keydown', handleEscape)
+    }, [isMobileMenuOpen])
+
+    // Handle inert attribute manually (React doesn't support it natively yet)
+    useEffect(() => {
+        if (mobileNavRef.current) {
+            if (isMobileMenuOpen) {
+                mobileNavRef.current.removeAttribute('inert')
+            } else {
+                mobileNavRef.current.setAttribute('inert', '')
+            }
+        }
+    }, [isMobileMenuOpen])
+
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen)
     }
 
     const closeMobileMenu = () => {
         setIsMobileMenuOpen(false)
+        // Return focus to toggle button when menu closes
+        if (toggleButtonRef.current) {
+            toggleButtonRef.current.focus()
+        }
     }
 
     return (
@@ -62,23 +103,30 @@ export default function Header() {
                 </nav>
             </header>
 
-            {/* Mobile Toggle */}
-            <button 
+            {/* Mobile Toggle - Always visible on mobile, acts as close button when menu open */}
+            <button
+                ref={toggleButtonRef}
                 className={`
                     ${styles.mobileToggle} 
-                    ${isHidden ? styles.mobileToggleHidden : ''} 
+                    ${isHidden && !isMobileMenuOpen ? styles.mobileToggleHidden : ''} 
                     ${isMobileMenuOpen ? styles.mobileToggleActive : ''}
                 `}
                 onClick={toggleMobileMenu}
-                aria-label="Toggle Menu"
+                aria-label={isMobileMenuOpen ? 'Close Menu' : 'Open Menu'}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-navigation"
             >
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            {/* Mobile Navigation with Quote Button */}
-            <nav className={`${styles.mobileNav} ${isMobileMenuOpen ? styles.mobileNavOpen : ''}`}>
+            {/* Mobile Navigation Overlay */}
+            <nav
+                id="mobile-navigation"
+                ref={mobileNavRef}
+                className={`${styles.mobileNav} ${isMobileMenuOpen ? styles.mobileNavOpen : ''}`}
+            >
                 <Link href="/" className={styles.mobileNavLink} onClick={closeMobileMenu}>
                     HOME
                 </Link>
@@ -94,9 +142,9 @@ export default function Header() {
                 <Link href="/contact" className={styles.mobileNavLink} onClick={closeMobileMenu}>
                     CONTACT US
                 </Link>
-                
-                {/* Quote Button in Mobile Menu */}
-                <Link href="/contact" className={styles.mobileQuoteButton} onClick={closeMobileMenu}>
+
+                {/* Quote Button - Goes to /quote page */}
+                <Link href="/quote" className={styles.mobileQuoteButton} onClick={closeMobileMenu}>
                     GET QUOTE
                 </Link>
             </nav>
