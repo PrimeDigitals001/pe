@@ -8,40 +8,34 @@
     width: 100%;
     position: relative;
     background: #ffffff;
-    /* Fluid padding: 100px at 1920px */
     padding: clamp(35px, 5.21vw, 100px) 0;
 }
 
 .container {
     max-width: 1920px;
     margin: 0 auto;
-    /* Fluid padding: 153px at 1920px */
     padding: 0 clamp(16px, 7.97vw, 153px);
     position: relative;
 }
 
 /* ============================================
-   HEADER
+   HEADER - Standard spacing
    ============================================ */
 
 .header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Fluid margin-bottom: 80px at 1920px */
-    margin-bottom: clamp(35px, 4.17vw, 80px);
+    margin: 0;
 }
 
 .title {
     color: #2683C6;
     text-align: center;
     font-family: "Grift-Bold", sans-serif;
-    /* Fluid font-size: 48px at 1920px */
-    font-size: clamp(20px, 2.5vw, 48px);
+    font-size: clamp(28px, 2.5vw, 48px); /* ← Standard */
     font-weight: 700;
-    margin: 0;
-    /* Fluid margin-bottom: 11px at 1920px */
-    margin-bottom: clamp(6px, 0.57vw, 11px);
+    margin: 0 0 clamp(6px, 0.57vw, 11px) 0;
     line-height: 1.2;
 }
 
@@ -49,13 +43,11 @@
     color: rgba(0, 0, 0, 0.5);
     text-align: center;
     font-family: "Grift-Medium", sans-serif;
-    /* Fluid font-size: 25px at 1920px */
-    font-size: clamp(12px, 1.30vw, 25px);
+    font-size: clamp(15px, 1.3vw, 25px); /* ← Standard */
     font-weight: 500;
-    margin: 0;
+    margin: 0 clamp(0px, 5.21vw, 50px) clamp(20px, 3vw, 60px) clamp(0px, 5.21vw, 50px); /* ← Standard */
     line-height: 1.5;
-    /* Fluid max-width: 1331px at 1920px */
-    max-width: clamp(280px, 69.32vw, 1331px);
+    max-width: clamp(280px, 70vw, 1000px); /* ← Standard */
 }
 
 /* ============================================
@@ -64,7 +56,6 @@
 
 .logoScrollWrapper {
     width: 100%;
-    /* Fluid height: 140px at 1920px */
     height: clamp(55px, 7.29vw, 140px);
     overflow: hidden;
     position: relative;
@@ -96,15 +87,10 @@
 }
 
 @keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
-/* Pause on hover */
 .logoScroll:hover {
     animation-play-state: paused;
 }
@@ -115,11 +101,9 @@
 
 .logoTrack {
     display: flex;
-    /* Fluid gap: 80px at 1920px */
     gap: clamp(25px, 4.17vw, 80px);
     align-items: center;
     flex-shrink: 0;
-    /* Match gap for seamless loop */
     padding-right: clamp(25px, 4.17vw, 80px);
 }
 
@@ -132,16 +116,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Fluid height: 140px at 1920px */
     height: clamp(55px, 7.29vw, 140px);
-    /* Fluid min-width: 120px at 1920px */
     min-width: clamp(50px, 6.25vw, 120px);
 }
 
 .logo {
-    /* Fluid max-width: 180px at 1920px */
     max-width: clamp(70px, 9.38vw, 180px);
-    /* Fluid max-height: 70px at 1920px */
     max-height: clamp(28px, 3.65vw, 70px);
     width: auto;
     height: auto;
@@ -187,21 +167,20 @@
 }
 
 /* ============================================
-   MOBILE ADJUSTMENTS
-   Slower animation for smaller screens
+   PORTRAIT - Slower animation
    ============================================ */
 
-@media (max-width: 768px) {
+@media (orientation: portrait) {
     .logoScroll {
         animation-duration: 50s;
     }
-    
-    .subtitle {
-        max-width: 90%;
-    }
 }
 
-@media (max-width: 480px) {
+/* ============================================
+   LANDSCAPE MOBILE
+   ============================================ */
+
+@media (orientation: landscape) and (max-height: 500px) {
     .logoScroll {
         animation-duration: 40s;
     }

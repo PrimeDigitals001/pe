@@ -144,7 +144,7 @@ export default function Header() {
                 </Link>
 
                 {/* Quote Button - Goes to /quote page */}
-                <Link href="/quote" className={styles.mobileQuoteButton} onClick={closeMobileMenu}>
+                <Link href="/get-quote" className={styles.mobileQuoteButton} onClick={closeMobileMenu}>
                     GET QUOTE
                 </Link>
             </nav>

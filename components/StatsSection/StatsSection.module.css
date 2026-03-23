@@ -1,442 +1,288 @@
 /* ============================================
-   STATS SECTION - ZOOM-PROOF
-   Structure locked, only fonts/spacing scale
-   4 columns on desktop, 2×2 grid on mobile
+   STATS SECTION - FLUID RESPONSIVE
+   No hard breakpoints - ctrl+zoom proof
+   4 columns desktop, 2x2 portrait
    ============================================ */
 
-   .statsSection {
-    width: 100%;
-    position: relative;
-    background: var(--color-white);
-    padding: 0;
-    margin: clamp(25px, 5.21vw, 100px) 0;
-    overflow: hidden;
+.statsSection {
+  width: 100%;
+  position: relative;
+  background: #ffffff;
+  padding: 0;
+  margin: clamp(25px, 5.21vw, 100px) 0;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 clamp(12px, 6.35vw, 122px);
+  position: relative;
+}
+
+/* ============================================
+   BORDER LINES
+   ============================================ */
+
+.topLine,
+.bottomLine {
+  width: 100%;
+  max-width: clamp(280px, 87.29vw, 1676px);
+  height: 1px;
+  background: rgba(0, 0, 0, 0.25);
+  margin: 0 auto;
+}
+
+/* ============================================
+   STATS GRID - 4 columns desktop
+   ============================================ */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding: clamp(25px, 3.23vw, 62px) 0 clamp(30px, 3.8vw, 73px) 0;
+  max-width: clamp(280px, 87.29vw, 1676px);
+  margin: 0 auto;
+}
+
+/* ============================================
+   STAT ITEM
+   ============================================ */
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 0 clamp(10px, 1.04vw, 20px);
+  transition: transform 0.3s ease;
+}
+
+.statItem:hover {
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   ICON
+   ============================================ */
+
+.iconWrapper {
+  width: clamp(45px, 4.01vw, 77px);
+  height: clamp(45px, 4.01vw, 77px);
+  margin-bottom: clamp(12px, 1.77vw, 34px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.statItem:hover .icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* ============================================
+   LABEL
+   ============================================ */
+
+.label {
+  color: rgba(0, 0, 0, 0.75);
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: clamp(11px, 1.04vw, 20px);
+  font-weight: 600;
+  margin-bottom: clamp(8px, 0.83vw, 16px);
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ============================================
+   VALUE
+   ============================================ */
+
+.value {
+  color: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 2.5vw, 48px);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+.statsSection .animateUp {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+.statsSection.animate .animateUp {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+.statsSection.animate .statItem:nth-child(1) { animation-delay: 0.1s; }
+.statsSection.animate .statItem:nth-child(2) { animation-delay: 0.2s; }
+.statsSection.animate .statItem:nth-child(3) { animation-delay: 0.3s; }
+.statsSection.animate .statItem:nth-child(4) { animation-delay: 0.4s; }
+
+/* ============================================
+   PORTRAIT - 2x2 grid
+   ============================================ */
+
+@media (orientation: portrait) {
   .container {
-    max-width: var(--container-full);
-    margin: 0 auto;
-    padding: 0 clamp(12px, 6.35vw, 122px);
-    position: relative;
+    padding: 0 clamp(20px, 6vw, 122px);
   }
-  
-  /* ============================================
-     BORDER LINES - Scale with container
-     ============================================ */
-  
-  .topLine,
-  .bottomLine {
-    width: 100%;
-    max-width: clamp(280px, 87.29vw, 1676px);
-    height: 1px;
-    background: rgba(0, 0, 0, 0.25);
-    margin: 0 auto;
-  }
-  
-  .topLine {
-    margin-bottom: 0;
-  }
-  
-  .bottomLine {
-    margin-top: 0;
-  }
-  
-  /* ============================================
-     STATS GRID - Always 4 columns on desktop
-     ============================================ */
-  
+
   .statsGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    padding: clamp(25px, 3.23vw, 62px) 0 clamp(30px, 3.8vw, 73px) 0;
-    max-width: clamp(280px, 87.29vw, 1676px);
-    margin: 0 auto;
+    /* Switch to 2x2 */
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(30px, 6vw, 50px) clamp(20px, 4vw, 40px);
+    padding: clamp(30px, 6vw, 62px) clamp(10px, 3vw, 30px);
+    max-width: clamp(280px, 90vw, 600px);
   }
-  
-  /* ============================================
-     STAT ITEM
-     ============================================ */
-  
+
   .statItem {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    padding: 0 clamp(10px, 1.04vw, 20px);
-    transition: transform var(--transition-base);
+    padding: clamp(10px, 3vw, 20px);
+    border-radius: clamp(8px, 2vw, 16px);
   }
-  
+
   .statItem:hover {
-    transform: translateY(-4px);
+    background-color: rgba(38, 131, 198, 0.05);
   }
-  
-  /* ============================================
-     ICON - Fluid scaling
-     ============================================ */
-  
+
   .iconWrapper {
-    width: clamp(45px, 4.01vw, 77px);
-    height: clamp(45px, 4.01vw, 77px);
-    margin-bottom: clamp(12px, 1.77vw, 34px);
+    width: clamp(48px, 11vw, 70px);
+    height: clamp(48px, 11vw, 70px);
+    margin-bottom: clamp(14px, 3vw, 22px);
+  }
+
+  .label {
+    font-size: clamp(12px, 2.8vw, 18px);
+    white-space: normal; /* Can wrap on portrait */
+    margin-bottom: clamp(8px, 2vw, 14px);
+    min-height: clamp(28px, 6vw, 44px);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
   }
-  
-  .icon {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transition: transform var(--transition-base);
-  }
-  
-  .statItem:hover .icon {
-    transform: scale(1.1) rotate(5deg);
-  }
-  
-  /* ============================================
-     LABEL - Fluid scaling, single line on desktop
-     ============================================ */
-  
-  .label {
-    color: rgba(0, 0, 0, 0.75);
-    text-align: center;
-    font-family: var(--font-heading);
-    font-size: clamp(11px, 1.04vw, 20px);
-    font-weight: 600;
-    margin-bottom: clamp(8px, 0.83vw, 16px);
-    line-height: var(--leading-tight);
-    letter-spacing: 0.5px;
-    white-space: nowrap; /* ✅ Single line on desktop */
-  }
-  
-  /* ============================================
-     VALUE - Fluid scaling
-     ============================================ */
-  
+
   .value {
-    color: rgba(0, 0, 0, 0.9);
-    text-align: center;
-    font-family: var(--font-heading);
-    font-size: clamp(24px, 2.5vw, 48px);
-    font-weight: 700;
-    line-height: 1;
-    white-space: nowrap; /* ✅ Always single line */
+    font-size: clamp(28px, 6vw, 44px);
   }
-  
-  /* ============================================
-     SCROLL ANIMATIONS
-     ============================================ */
-  
+}
+
+/* ============================================
+   LANDSCAPE MOBILE
+   ============================================ */
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .container {
+    padding: 0 clamp(20px, 4vw, 80px);
+  }
+
+  .statsGrid {
+    /* Keep 4 columns in landscape */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    padding: clamp(16px, 3vh, 30px) 0;
+  }
+
+  .iconWrapper {
+    width: clamp(36px, 6vh, 55px);
+    height: clamp(36px, 6vh, 55px);
+    margin-bottom: clamp(8px, 2vh, 16px);
+  }
+
+  .label {
+    font-size: clamp(9px, 2vh, 14px);
+    margin-bottom: clamp(4px, 1vh, 8px);
+  }
+
+  .value {
+    font-size: clamp(20px, 4vh, 36px);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
   .statsSection .animateUp {
-    opacity: 0;
-    transform: translateY(30px);
-    will-change: transform, opacity;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
-  
-  @keyframes slideInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  .icon,
+  .statItem {
+    transition: none !important;
   }
-  
-  .statsSection.animate .animateUp {
-    animation: slideInUp 0.8s ease-out forwards;
+
+  .statItem:hover {
+    transform: none;
   }
-  
-  /* Stagger animations */
-  .statsSection.animate .statItem:nth-child(1) { animation-delay: 0.1s; }
-  .statsSection.animate .statItem:nth-child(2) { animation-delay: 0.2s; }
-  .statsSection.animate .statItem:nth-child(3) { animation-delay: 0.3s; }
-  .statsSection.animate .statItem:nth-child(4) { animation-delay: 0.4s; }
-  
-  /* ============================================
-     RESPONSIVE - TABLET (2×2 grid)
-     ============================================ */
-  
-  @media (max-width: 768px) {
-    .statsSection {
-      margin: clamp(30px, 6vw, 50px) 0;
-    }
-  
-    .container {
-      padding: 0 var(--space-lg);
-    }
-  
-    .topLine,
-    .bottomLine {
-      width: 100%;
-      max-width: 600px;
-    }
-  
-    .statsGrid {
-      grid-template-columns: repeat(2, 1fr); /* ✅ 2×2 grid */
-      grid-template-rows: repeat(2, auto);
-      gap: clamp(35px, 7vw, 50px) clamp(20px, 4vw, 30px);
-      padding: clamp(35px, 6vw, 50px) var(--space-lg);
-      max-width: 600px;
-    }
-  
-    .statItem {
-      padding: var(--space-lg);
-      border-radius: var(--radius-lg);
-      transition: all var(--transition-base);
-    }
-  
-    .statItem:hover {
-      background-color: rgba(38, 131, 198, 0.05);
-      transform: translateY(-5px);
-    }
-  
-    .iconWrapper {
-      width: clamp(55px, 10vw, 70px);
-      height: clamp(55px, 10vw, 70px);
-      margin-bottom: clamp(16px, 3vw, 22px);
-    }
-  
-    .label {
-      font-size: clamp(14px, 2.8vw, 18px); /* ✅ Bigger on tablet */
-      margin-bottom: clamp(10px, 2vw, 14px);
-      white-space: normal; /* ✅ Can wrap on tablet */
-      min-height: clamp(32px, 6vw, 44px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .value {
-      font-size: clamp(32px, 6vw, 44px); /* ✅ Bigger on tablet */
-    }
+
+  .statItem:hover .icon {
+    transform: none;
   }
-  
-  /* ============================================
-     RESPONSIVE - SMALL TABLET
-     ============================================ */
-  
-  @media (max-width: 600px) {
-    .statsSection {
-      margin: clamp(25px, 5vw, 40px) 0;
-    }
-  
-    .container {
-      padding: 0 var(--space-md);
-    }
-  
-    .topLine,
-    .bottomLine {
-      max-width: 100%;
-    }
-  
-    .statsGrid {
-      gap: clamp(30px, 6vw, 40px) clamp(15px, 3vw, 25px);
-      padding: clamp(30px, 5vw, 40px) var(--space-md);
-    }
-  
-    .statItem {
-      padding: var(--space-md);
-    }
-  
-    .iconWrapper {
-      width: clamp(50px, 11vw, 65px);
-      height: clamp(50px, 11vw, 65px);
-      margin-bottom: clamp(14px, 3vw, 20px);
-    }
-  
-    .label {
-      font-size: clamp(13px, 3vw, 16px);
-      margin-bottom: clamp(8px, 2vw, 12px);
-      min-height: clamp(28px, 6vw, 38px);
-    }
-  
-    .value {
-      font-size: clamp(28px, 6.5vw, 38px);
-    }
+}
+
+.statItem:focus-within {
+  outline: 2px solid #2683C6;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* ============================================
+   HIGH DPI
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .icon {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
-  
-  /* ============================================
-     RESPONSIVE - MOBILE (2×2 grid maintained)
-     ============================================ */
-  
-  @media (max-width: 480px) {
-    .statsSection {
-      margin: clamp(20px, 5vw, 35px) 0;
-    }
-  
-    .container {
-      padding: 0 var(--space-sm);
-    }
-  
-    .statsGrid {
-      gap: clamp(28px, 6vw, 35px) clamp(12px, 3vw, 18px);
-      padding: clamp(25px, 5vw, 35px) var(--space-sm);
-    }
-  
-    .statItem {
-      padding: clamp(10px, 2.5vw, 15px);
-    }
-  
-    .iconWrapper {
-      width: clamp(48px, 12vw, 60px);
-      height: clamp(48px, 12vw, 60px);
-      margin-bottom: clamp(12px, 3vw, 18px);
-    }
-  
-    .label {
-      font-size: clamp(12px, 3.2vw, 15px); /* ✅ Bigger */
-      margin-bottom: clamp(8px, 2vw, 10px);
-      min-height: clamp(26px, 6vw, 34px);
-    }
-  
-    .value {
-      font-size: clamp(26px, 7vw, 34px); /* ✅ Bigger */
-    }
+}
+
+/* ============================================
+   PRINT
+   ============================================ */
+
+@media print {
+  .statsSection {
+    margin: 15px 0;
+    break-inside: avoid;
   }
-  
-  /* ============================================
-     RESPONSIVE - STANDARD MOBILE
-     ============================================ */
-  
-  @media (max-width: 375px) {
-    .statsSection {
-      margin: clamp(18px, 5vw, 30px) 0;
-    }
-  
-    .statsGrid {
-      gap: clamp(25px, 6.5vw, 32px) clamp(10px, 3vw, 15px);
-      padding: clamp(22px, 5vw, 30px) var(--space-xs);
-    }
-  
-    .statItem {
-      padding: clamp(8px, 2.5vw, 12px);
-    }
-  
-    .iconWrapper {
-      width: clamp(45px, 12.5vw, 55px);
-      height: clamp(45px, 12.5vw, 55px);
-      margin-bottom: clamp(10px, 3vw, 16px);
-    }
-  
-    .label {
-      font-size: clamp(11px, 3.3vw, 14px);
-      margin-bottom: clamp(7px, 2vw, 9px);
-      min-height: clamp(24px, 6.5vw, 32px);
-      letter-spacing: 0.3px;
-    }
-  
-    .value {
-      font-size: clamp(24px, 7.5vw, 30px);
-    }
+
+  .statsGrid {
+    padding: 20px 0;
+    break-inside: avoid;
   }
-  
-  /* ============================================
-     RESPONSIVE - SMALLEST MOBILE
-     ============================================ */
-  
-  @media (max-width: 320px) {
-    .statsSection {
-      margin: clamp(15px, 5vw, 25px) 0;
-    }
-  
-    .statsGrid {
-      gap: clamp(22px, 7vw, 28px) clamp(8px, 3vw, 12px);
-      padding: clamp(20px, 5vw, 25px) var(--space-2xs);
-    }
-  
-    .statItem {
-      padding: clamp(6px, 2.5vw, 10px);
-    }
-  
-    .iconWrapper {
-      width: clamp(42px, 13vw, 50px);
-      height: clamp(42px, 13vw, 50px);
-      margin-bottom: clamp(10px, 3vw, 14px);
-    }
-  
-    .label {
-      font-size: clamp(10px, 3.5vw, 13px);
-      margin-bottom: clamp(6px, 2vw, 8px);
-      min-height: clamp(22px, 7vw, 30px);
-      letter-spacing: 0.2px;
-    }
-  
-    .value {
-      font-size: clamp(22px, 8vw, 28px);
-    }
+
+  .statItem:hover {
+    transform: none;
+    background: none;
   }
-  
-  /* ============================================
-     ACCESSIBILITY
-     ============================================ */
-  
-  @media (prefers-reduced-motion: reduce) {
-    .statsSection .animateUp {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-  
-    .icon,
-    .statItem {
-      transition: none !important;
-    }
-  
-    .statItem:hover {
-      transform: none;
-    }
-  
-    .statItem:hover .icon {
-      transform: none;
-    }
-  }
-  
-  /* Focus states for accessibility */
-  .statItem:focus-within {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 4px;
-    border-radius: var(--radius-lg);
-  }
-  
-  /* ============================================
-     HIGH DPI DISPLAYS
-     ============================================ */
-  
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .icon {
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-    }
-  }
-  
-  /* ============================================
-     PRINT STYLES
-     ============================================ */
-  
-  @media print {
-    .statsSection {
-      margin: 15px 0;
-      break-inside: avoid;
-    }
-  
-    .topLine,
-    .bottomLine {
-      background: #000;
-    }
-  
-    .statsGrid {
-      padding: 20px 0;
-      break-inside: avoid;
-    }
-  
-    .statItem {
-      break-inside: avoid;
-    }
-  
-    .statItem:hover {
-      transform: none;
-      background: none;
-    }
-  }
+}

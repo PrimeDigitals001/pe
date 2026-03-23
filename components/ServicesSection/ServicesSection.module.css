@@ -1,504 +1,380 @@
 /* ============================================
-   SERVICES SECTION - ZOOM-PROOF
-   Structure locked, only fonts/spacing scale
+   SERVICES SECTION - FLUID RESPONSIVE
+   No hard breakpoints - ctrl+zoom proof
    ============================================ */
 
-   .servicesSection {
-    width: 100%;
-    position: relative;
-    background: var(--color-white);
-    padding: clamp(30px, 5.21vw, 100px) 0;
-    overflow: hidden;
-  }
+.servicesSection {
+  width: 100%;
+  position: relative;
+  background: #ffffff;
+  padding: clamp(30px, 5.21vw, 100px) 0;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 clamp(15px, 7.97vw, 153px);
+  position: relative;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin: 0 clamp(0px, 5.21vw, 50px) clamp(20px, 3vw, 60px) clamp(0px, 5.21vw, 50px); */
+
+}
+
+.title {
+  color: #2683C6;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 2.5vw, 48px);
+  font-weight: 700;
+  margin: 0 0 clamp(6px, 0.57vw, 11px) 0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: clamp(15px, 1.3vw, 25px);
+  font-weight: 500;
+  margin: 0 clamp(0px, 5.21vw, 50px) clamp(20px, 3vw, 60px) clamp(0px, 5.21vw, 50px);
+  line-height: 1.5;
+  max-width: clamp(280px, 70vw, 1000px);
   
+}
+
+/* ============================================
+   SERVICES GRID - Desktop 3 columns
+   ============================================ */
+
+.servicesGrid {
+  display: grid;
+  /* 3 columns on desktop */
+  grid-template-columns: repeat(3, clamp(225px, 22.08vw, 424px));
+  gap: clamp(32px, 3.13vw, 60px) clamp(21px, 2.08vw, 40px);
+  justify-content: center;
+  width: 100%;
+}
+
+/* ============================================
+   SERVICE CARD - Fixed structure, no aspect-ratio
+   ============================================ */
+
+.serviceCard {
+  width: 100%;
+  /* NO aspect-ratio - causes the stretching problem */
+  background: #ffffff;
+  border-radius: clamp(11px, 1.04vw, 20px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: visible;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  /* All cards same height in same row */
+  height: 100%;
+}
+
+.serviceCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   CARD IMAGE - Fixed height, never moves
+   ============================================ */
+
+.cardImage {
+  width: 100%;
+  /* Fixed height - NEVER changes regardless of content */
+  height: clamp(149px, 14.64vw, 281px);
+  border-radius: clamp(11px, 1.04vw, 20px) clamp(11px, 1.04vw, 20px) 0 0;
+  overflow: hidden;
+  position: relative;
+  /* Critical - prevents shrinking */
+  flex-shrink: 0;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.serviceCard:hover .cardImage img {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   ICON CIRCLE - Anchored to image bottom
+   ============================================ */
+
+.iconCircle {
+  width: clamp(52px, 5.16vw, 99px);
+  height: clamp(52px, 5.16vw, 99px);
+  background: #F3F3F3;
+  border-radius: 50%;
+  position: absolute;
+  /* Always relative to image height */
+  top: clamp(123px, 12.03vw, 231px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.iconCircle img {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+}
+
+/* ============================================
+   CARD CONTENT - Grows to fill remaining space
+   ============================================ */
+
+.cardContent {
+  padding: clamp(44px, 4.27vw, 82px) clamp(24px, 2.4vw, 46px) clamp(21px, 2.08vw, 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* Fills remaining card height equally */
+  flex-grow: 1;
+  /* Prevents content overflow */
+  overflow: hidden;
+}
+
+.cardTitle {
+  color: #2683C6;
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.35vw, 26px);
+  font-weight: 700;
+  margin: 0 0 clamp(8px, 0.83vw, 16px) 0;
+  line-height: 1.3;
+  /* Consistent across all cards */
+  flex-shrink: 0;
+}
+
+.cardDescription {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: var(--font-heading);
+  font-size: clamp(11px, 1.04vw, 20px);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+.servicesSection .animateUp {
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.servicesSection.animate .animateUp {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+.servicesSection.animate .title { animation-delay: 0.1s; }
+.servicesSection.animate .subtitle { animation-delay: 0.2s; }
+.servicesSection.animate .serviceCard:nth-child(1) { animation-delay: 0.2s; }
+.servicesSection.animate .serviceCard:nth-child(2) { animation-delay: 0.3s; }
+.servicesSection.animate .serviceCard:nth-child(3) { animation-delay: 0.4s; }
+.servicesSection.animate .serviceCard:nth-child(4) { animation-delay: 0.5s; }
+.servicesSection.animate .serviceCard:nth-child(5) { animation-delay: 0.6s; }
+.servicesSection.animate .serviceCard:nth-child(6) { animation-delay: 0.7s; }
+
+/* ============================================
+   PORTRAIT ORIENTATION
+   Below ~700px wide → 1 column
+   ============================================ */
+
+@media (orientation: portrait) {
   .container {
-    max-width: var(--container-full);
+    padding: 0 clamp(20px, 5vw, 153px);
+  }
+
+  .servicesGrid {
+    /* 2 columns on portrait tablet/medium */
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(24px, 4vw, 40px);
+    max-width: clamp(400px, 90vw, 800px);
     margin: 0 auto;
-    padding: 0 clamp(15px, 7.97vw, 153px);
-    position: relative;
   }
-  
-  /* ============================================
-     HEADER - Single line text on desktop
-     ============================================ */
-  
-  .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: clamp(50px, 9.64vw, 185px);
-  }
-  
-  .title {
-    color: var(--color-primary);
-    text-align: center;
-    font-family: var(--font-heading);
-    font-size: clamp(22px, 2.5vw, 48px);
-    font-weight: 700;
-    margin: 0 0 clamp(6px, 0.57vw, 11px) 0;
-    line-height: var(--leading-tight);
-    white-space: nowrap; /* ✅ NEVER wraps on desktop */
-  }
-  
-  .subtitle {
-    color: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    font-family: var(--font-heading);
-    font-size: clamp(13px, 1.3vw, 25px);
-    font-weight: 500;
-    margin: 0;
-    line-height: var(--leading-normal);
-    max-width: clamp(280px, 70.42vw, 1352px);
-    padding: 0 var(--space-md);
-  }
-  
-  /* ============================================
-     SERVICES GRID - Always 3 columns on desktop
-     ============================================ */
-  
-  .servicesGrid {
-    display: grid;
-    grid-template-columns: repeat(3, clamp(225px, 22.08vw, 424px));
-    gap: clamp(32px, 3.13vw, 60px) clamp(21px, 2.08vw, 40px);
-    justify-content: center;
-    width: 100%;
-  }
-  
-  /* ============================================
-     SERVICE CARD - Maintains aspect ratio
-     ============================================ */
-  
-  .serviceCard {
-    width: 100%;
-    aspect-ratio: 424 / 608; /* ✅ Locked ratio */
-    background: var(--color-white);
-    border-radius: clamp(11px, 1.04vw, 20px);
-    box-shadow: var(--shadow-md);
-    position: relative;
-    overflow: visible;
-    transition: all var(--transition-base);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .serviceCard:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-  }
-  
-  /* ============================================
-     CARD IMAGE - Maintains ratio within card
-     ============================================ */
-  
+
   .cardImage {
-    width: 100%;
-    height: clamp(149px, 14.64vw, 281px); /* Proportional to card */
-    border-radius: clamp(11px, 1.04vw, 20px) clamp(11px, 1.04vw, 20px) 0 0;
-    overflow: hidden;
-    position: relative;
-    flex-shrink: 0;
+    height: clamp(130px, 25vw, 220px);
+    border-radius: clamp(11px, 2vw, 20px) clamp(11px, 2vw, 20px) 0 0;
   }
-  
-  .cardImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-  
-  .serviceCard:hover .cardImage img {
-    transform: scale(1.05);
-  }
-  
-  /* ============================================
-     ICON CIRCLE - Positioned at image/content border
-     ============================================ */
-  
+
   .iconCircle {
-    width: clamp(52px, 5.16vw, 99px);
-    height: clamp(52px, 5.16vw, 99px);
-    background: #F3F3F3;
-    border-radius: 50%;
-    position: absolute;
-    top: clamp(123px, 12.03vw, 231px); /* Adjusted for image height minus half circle */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-sm);
-    flex-shrink: 0;
+    width: clamp(50px, 10vw, 75px);
+    height: clamp(50px, 10vw, 75px);
+    top: calc(clamp(130px, 25vw, 220px) - clamp(25px, 5vw, 37px));
   }
-  
-  .iconCircle img {
-    width: 50%;
-    height: 50%;
-    object-fit: contain;
-  }
-  
-  /* ============================================
-     CARD CONTENT - Text scales but stays on same lines
-     ============================================ */
-  
+
   .cardContent {
-    padding: clamp(44px, 4.27vw, 82px) clamp(24px, 2.4vw, 46px) clamp(21px, 2.08vw, 40px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex-grow: 1;
+    padding: clamp(36px, 8vw, 55px) clamp(16px, 3vw, 36px) clamp(20px, 4vw, 36px);
   }
-  
-  .cardTitle {
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-size: clamp(14px, 1.35vw, 26px);
-    font-weight: 700;
-    margin: 0 0 clamp(8px, 0.83vw, 16px) 0;
-    line-height: var(--leading-snug);
-    /* Text can wrap naturally within card */
-  }
-  
-  .cardDescription {
-    color: rgba(0, 0, 0, 0.6);
-    font-family: var(--font-heading);
-    font-size: clamp(11px, 1.04vw, 20px);
-    font-weight: 500;
-    margin: 0;
-    line-height: var(--leading-relaxed);
-    /* Text can wrap naturally within card */
-  }
-  
-  /* ============================================
-     SCROLL ANIMATIONS
-     ============================================ */
-  
-  .servicesSection .animateUp {
-    opacity: 0;
-    transform: translateY(40px);
-    will-change: transform, opacity;
-  }
-  
-  @keyframes slideInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .servicesSection.animate .animateUp {
-    animation: slideInUp 0.8s ease-out forwards;
-  }
-  
-  .servicesSection.animate .title {
-    animation-delay: 0.1s;
-  }
-  
-  .servicesSection.animate .subtitle {
-    animation-delay: 0.2s;
-  }
-  
-  /* Stagger card animations */
-  .servicesSection.animate .serviceCard:nth-child(1) { animation-delay: 0.2s; }
-  .servicesSection.animate .serviceCard:nth-child(2) { animation-delay: 0.3s; }
-  .servicesSection.animate .serviceCard:nth-child(3) { animation-delay: 0.4s; }
-  .servicesSection.animate .serviceCard:nth-child(4) { animation-delay: 0.5s; }
-  .servicesSection.animate .serviceCard:nth-child(5) { animation-delay: 0.6s; }
-  .servicesSection.animate .serviceCard:nth-child(6) { animation-delay: 0.7s; }
-  
-  /* /* ============================================
-   RESPONSIVE - TABLET (2 columns)
-   Increase font sizes
-   ============================================ */
 
-@media (max-width: 1024px) {
+  .cardTitle {
+    font-size: clamp(16px, 3vw, 22px);
+  }
+
+  .cardDescription {
+    font-size: clamp(13px, 2.5vw, 17px);
+  }
+}
+@media (orientation: portrait) and (max-width: 500px) {
   .servicesGrid {
-    grid-template-columns: repeat(2, clamp(280px, 40vw, 400px));
-    gap: var(--gap-lg) var(--gap-md);
+    grid-template-columns: 1fr;
+    max-width: clamp(280px, 85vw, 440px);
   }
 
-  /* Increase card text on tablet */
+  .cardImage {
+    height: clamp(160px, 42vw, 220px);
+  }
+
+  .iconCircle {
+    width: clamp(52px, 11vw, 70px);
+    height: clamp(52px, 11vw, 70px);
+    top: calc(clamp(160px, 42vw, 220px) - clamp(26px, 5.5vw, 35px));
+  }
+
   .cardTitle {
-    font-size: clamp(18px, 2.5vw, 24px);
+    font-size: clamp(18px, 4.5vw, 22px);
   }
 
   .cardDescription {
-    font-size: clamp(15px, 2vw, 18px);
+    font-size: clamp(14px, 3.5vw, 17px);
   }
 }
 
 /* ============================================
-   RESPONSIVE - TABLET PORTRAIT
-   Bigger fonts, better spacing
+   LANDSCAPE MOBILE
    ============================================ */
 
-@media (max-width: 768px) {
-  .servicesSection {
-    padding: var(--space-3xl) 0;
-  }
-
+@media (orientation: landscape) and (max-height: 500px) {
   .container {
-    padding: 0 var(--space-lg);
+    padding: 0 clamp(20px, 4vw, 80px);
   }
 
-  .header {
-    margin-bottom: var(--space-3xl);
+  .servicesGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2vw, 30px);
   }
 
-  .title {
-    font-size: clamp(28px, 5.5vw, 40px); /* ✅ Bigger */
-    margin-bottom: var(--space-sm);
-    white-space: normal;
+  .cardImage {
+    height: clamp(100px, 18vh, 160px);
   }
 
-  .subtitle {
-    font-size: clamp(16px, 3.5vw, 20px); /* ✅ Bigger */
-    max-width: 100%;
-    padding: 0;
+  .iconCircle {
+    width: clamp(40px, 8vh, 60px);
+    height: clamp(40px, 8vh, 60px);
+    top: calc(clamp(100px, 18vh, 160px) - clamp(20px, 4vh, 30px));
+  }
+
+  .cardContent {
+    padding: clamp(28px, 6vh, 45px) clamp(12px, 2vw, 24px) clamp(16px, 3vh, 24px);
+  }
+
+  .cardTitle {
+    font-size: clamp(12px, 2.5vh, 18px);
+  }
+
+  .cardDescription {
+    font-size: clamp(10px, 2vh, 14px);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .servicesSection .animateUp {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .serviceCard,
+  .cardImage img {
+    transition: none !important;
+  }
+
+  .serviceCard:hover {
+    transform: none;
+  }
+
+  .serviceCard:hover .cardImage img {
+    transform: none;
+  }
+}
+
+.serviceCard:focus-within {
+  outline: 2px solid #2683C6;
+  outline-offset: 4px;
+}
+
+/* ============================================
+   HIGH DPI
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .cardImage img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ============================================
+   PRINT
+   ============================================ */
+
+@media print {
+  .servicesSection {
+    padding: 20px 0;
   }
 
   .servicesGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--gap-xl) var(--gap-md);
-    max-width: 700px;
-    margin: 0 auto;
+    gap: 15px;
   }
 
   .serviceCard {
-    aspect-ratio: auto; /* ✅ Remove fixed ratio */
-    min-height: auto; /* ✅ Let content determine height */
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
   }
 
-  .cardImage {
-    height: 220px; /* ✅ Fixed height for consistency */
-  }
-
-  .iconCircle {
-    width: 80px;
-    height: 80px;
-    top: 180px; /* ✅ Adjusted for 220px image */
-  }
-
-  .cardContent {
-    padding: clamp(55px, 8vw, 70px) clamp(20px, 4vw, 30px) clamp(25px, 4vw, 35px); /* ✅ Better padding */
-  }
-
-  .cardTitle {
-    font-size: clamp(20px, 3.5vw, 26px); /* ✅ Bigger */
-    margin-bottom: clamp(12px, 2vw, 16px);
-    line-height: 1.3;
-  }
-
-  .cardDescription {
-    font-size: clamp(15px, 2.8vw, 18px); /* ✅ Bigger */
-    line-height: 1.6;
+  .serviceCard:hover {
+    transform: none;
   }
 }
-
-/* ============================================
-   RESPONSIVE - MOBILE (1 column)
-   Much bigger fonts for readability
-   ============================================ */
-
-@media (max-width: 480px) {
-  .servicesSection {
-    padding: var(--space-2xl) 0;
-  }
-
-  .container {
-    padding: 0 var(--space-md);
-  }
-
-  .header {
-    margin-bottom: var(--space-2xl);
-  }
-
-  .title {
-    font-size: clamp(26px, 7vw, 36px); /* ✅ Much bigger */
-    margin-bottom: var(--space-sm);
-  }
-
-  .subtitle {
-    font-size: clamp(15px, 4vw, 18px); /* ✅ Bigger */
-  }
-
-  .servicesGrid {
-    grid-template-columns: 1fr;
-    gap: var(--gap-xl);
-    max-width: 400px;
-  }
-
-  .serviceCard {
-    aspect-ratio: auto; /* ✅ Remove fixed ratio */
-    min-height: auto; /* ✅ Content-based height */
-  }
-
-  .cardImage {
-    height: 200px; /* ✅ Fixed image height */
-  }
-
-  .iconCircle {
-    width: 75px;
-    height: 75px;
-    top: 162px; /* ✅ Adjusted for 200px image (200 - 38) */
-  }
-
-  .cardContent {
-    padding: clamp(50px, 10vw, 65px) clamp(20px, 5vw, 25px) clamp(25px, 5vw, 30px); /* ✅ Optimized padding */
-  }
-
-  .cardTitle {
-    font-size: clamp(20px, 5.5vw, 24px); /* ✅ Much bigger */
-    margin-bottom: clamp(12px, 3vw, 16px);
-    line-height: 1.3;
-  }
-
-  .cardDescription {
-    font-size: clamp(15px, 4vw, 17px); /* ✅ Much bigger */
-    line-height: 1.65;
-  }
-}
-
-/* ============================================
-   SMALL MOBILE - Even bigger fonts
-   ============================================ */
-
-@media (max-width: 375px) {
-  .title {
-    font-size: clamp(24px, 7.5vw, 32px); /* ✅ Bigger */
-  }
-
-  .subtitle {
-    font-size: clamp(14px, 4.2vw, 17px); /* ✅ Bigger */
-  }
-
-  .cardImage {
-    height: 180px; /* ✅ Slightly smaller image */
-  }
-
-  .iconCircle {
-    width: 70px;
-    height: 70px;
-    top: 145px; /* ✅ Adjusted (180 - 35) */
-  }
-
-  .cardTitle {
-    font-size: clamp(19px, 5.8vw, 22px); /* ✅ Bigger */
-  }
-
-  .cardDescription {
-    font-size: clamp(14px, 4.2vw, 16px); /* ✅ Bigger */
-    line-height: 1.65;
-  }
-}
-
-/* ============================================
-   SMALLEST MOBILE - Maximum readability
-   ============================================ */
-
-@media (max-width: 320px) {
-  .servicesSection {
-    padding: var(--space-xl) 0;
-  }
-
-  .title {
-    font-size: clamp(22px, 8vw, 28px); /* ✅ Bigger */
-  }
-
-  .subtitle {
-    font-size: clamp(13px, 4.5vw, 16px); /* ✅ Bigger */
-  }
-
-  .cardImage {
-    height: 160px; /* ✅ Smaller image for tiny screens */
-  }
-
-  .iconCircle {
-    width: 65px;
-    height: 65px;
-    top: 127px; /* ✅ Adjusted (160 - 33) */
-  }
-
-  .cardContent {
-    padding: 48px 18px 22px; /* ✅ Tighter padding on small screens */
-  }
-
-  .cardTitle {
-    font-size: clamp(18px, 6vw, 21px); /* ✅ Bigger */
-    margin-bottom: 10px;
-  }
-
-  .cardDescription {
-    font-size: clamp(13px, 4.5vw, 15px); /* ✅ Bigger */
-    line-height: 1.6;
-  }
-}
-  
-  /* ============================================
-     ACCESSIBILITY
-     ============================================ */
-  
-  @media (prefers-reduced-motion: reduce) {
-    .servicesSection .animateUp {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-  
-    .serviceCard,
-    .cardImage img {
-      transition: none !important;
-    }
-  
-    .serviceCard:hover {
-      transform: none;
-    }
-  
-    .serviceCard:hover .cardImage img {
-      transform: none;
-    }
-  }
-  
-  /* Focus states for keyboard navigation */
-  .serviceCard:focus-within {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 4px;
-  }
-  
-  /* ============================================
-     HIGH DPI DISPLAYS
-     ============================================ */
-  
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .cardImage img {
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-    }
-  }
-  
-  /* ============================================
-     PRINT STYLES
-     ============================================ */
-  
-  @media print {
-    .servicesSection {
-      padding: 20px 0;
-    }
-  
-    .servicesGrid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-  
-    .serviceCard {
-      box-shadow: none;
-      border: 1px solid #ddd;
-      break-inside: avoid;
-    }
-  
-    .serviceCard:hover {
-      transform: none;
-    }
-  }

@@ -1,11 +1,11 @@
-'use client'; // Add this at the very top!
+'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import styles from './MissionSection.module.css';
 
 const MissionSection = () => {
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -44,6 +44,9 @@ const MissionSection = () => {
     }
   };
 
+  // Create motion-compatible Link
+  const MotionLink = motion(Link);
+
   return (
     <motion.section
       className={styles.missionSection}
@@ -80,6 +83,7 @@ const MissionSection = () => {
 
         {/* Center Content */}
         <div className={styles.centerContent}>
+
           {/* Heading Container */}
           <motion.div
             className={styles.headingContainer}
@@ -104,8 +108,9 @@ const MissionSection = () => {
             </p>
           </motion.div>
 
-          {/* Button */}
-          <motion.button
+          {/* GET QUOTE Button - Now navigates to /quote */}
+          <MotionLink
+            href="/get-quote"
             className={styles.quoteButton}
             variants={slideFromBottom}
             whileHover={{
@@ -113,10 +118,10 @@ const MissionSection = () => {
               transition: { duration: 0.2 }
             }}
             whileTap={{ scale: 0.95 }}
-            link="/get-quote"
           >
             GET QUOTE
-          </motion.button>
+          </MotionLink>
+
         </div>
 
         {/* Bottom Images Row */}
