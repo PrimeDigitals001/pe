@@ -8,8 +8,16 @@
   width: 100%;
   min-height: 100vh;
   background: var(--color-white);
+  /* Mobile is fine — desktop needs more room to clear the fixed floating header */
   padding-top: clamp(80px, 10vh, 150px);
   padding-bottom: clamp(60px, 6vw, 120px);
+}
+
+/* Desktop: header is ~65px top-padding + ~75px nav height = ~140px total */
+@media (min-width: 1024px) {
+  .page {
+    padding-top: clamp(140px, 9.9vw, 190px);
+  }
 }
 
 /* ── Page Header ── */

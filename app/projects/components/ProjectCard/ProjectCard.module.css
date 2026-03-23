@@ -1,304 +1,319 @@
 /* ============================================
-   PROJECT CARD - ZOOM-PROOF & RESPONSIVE
+   PROJECT CARD - FLUID RESPONSIVE
    Base Design: 501×501px @ 1920px
-   Image: 501×286px (57% of card)
-   
-   ✅ Images fill edges completely (no white lines)
-   ✅ Fluid scaling with clamp()
-   ✅ No background visible on hover or normal state
+   Matches LeadershipTeam card pattern exactly
    ============================================ */
 
 /* ============================================
    CARD CONTAINER
    ============================================ */
 
-   .projectCard {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background: var(--color-white);
-    border-radius: clamp(12px, 1.04vw, 20px);
-    overflow: hidden; /* ✅ CRITICAL: Clips image to card edges */
-    box-shadow: 0px 0px clamp(5px, 0.51vw, 9.7px) 0px rgba(0, 0, 0, 0.11);
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
+.projectCard {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--color-white);
+  border-radius: clamp(12px, 1.04vw, 20px);
+  overflow: hidden;
+  box-shadow: 0px 0px clamp(5px, 0.51vw, 9.7px) 0px rgba(0, 0, 0, 0.11);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(38, 131, 198, 0.15);
+}
+
+/* ============================================
+   IMAGE WRAPPER - 57% of card height
+   ============================================ */
+
+.imageWrapper {
+  width: 100%;
+  height: 57%;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  scale: 1.05; /* Pre-scaled to fill edge-to-edge — same as LeadershipTeam */
+  transition: transform 0.4s ease;
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.08);
+}
+
+/* ============================================
+   CONTENT AREA - 43% of card height
+   ============================================ */
+
+.content {
+  flex: 1;
+  padding: clamp(12px, 1.5vw, 22px) clamp(14px, 1.8vw, 36px) clamp(12px, 1.3vw, 20px) clamp(14px, 1.8vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 0.6vw, 10px);
+  background: var(--color-white);
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ============================================
+   TITLE ROW - Title + Status Badge
+   ============================================ */
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: clamp(6px, 0.8vw, 14px);
+  flex-shrink: 0;
+}
+
+.title {
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(14px, 1.2vw, 24px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  flex: 1;
+  text-align: left;
+  /* Cap at 2 lines so badge stays in same row */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Status Badge */
+.statusBadge {
+  background: rgba(38, 131, 198, 0.49);
+  border-radius: 50px;
+  padding: clamp(3px, 0.21vw, 4px) clamp(8px, 0.57vw, 11px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: clamp(18px, 1.2vw, 23px);
+}
+
+.statusText {
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(11px, 0.73vw, 14px);
+  font-weight: 500;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ============================================
+   DESCRIPTION - 2 lines max
+   ============================================ */
+
+.description {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: var(--font-heading);
+  font-size: clamp(12px, 0.94vw, 18px);
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
+  /* Takes remaining vertical space between title and client */
+  flex: 1;
+  min-height: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: left;
+  align-self: stretch;
+}
+
+/* ============================================
+   CLIENT INFO - Bottom
+   ============================================ */
+
+.client {
+  font-family: var(--font-heading);
+  font-size: clamp(12px, 0.83vw, 16px);
+  font-weight: 500;
+  text-align: left;
+  flex-shrink: 0; /* Never shrink — always visible */
+  margin-top: auto; /* Push to bottom naturally within gap layout */
+}
+
+.clientLabel {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.clientName {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+/* ============================================
+   PORTRAIT TABLET - disable hover effects
+   ============================================ */
+
+@media (orientation: portrait) {
   .projectCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 20px rgba(38, 131, 198, 0.15);
+    transform: none;
+    box-shadow: 0px 0px clamp(5px, 0.51vw, 9.7px) 0px rgba(0, 0, 0, 0.11);
   }
-  
-  /* ============================================
-     IMAGE WRAPPER - 57% of card height
-     ✅ FIXED: No background color
-     ============================================ */
-  
-  .imageWrapper {
-    width: 100%;
-    height: 57%; /* 286px / 501px = 57% */
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-    background: transparent; /* ✅ FIXED: Transparent instead of #f5f5f5 */
-  }
-  
-  .projectImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-  
+
   .projectCard:hover .projectImage {
-    transform: scale(1.08);
+    transform: none;
   }
-  
-  /* ============================================
-     CONTENT AREA - 43% of card height
-     ============================================ */
-  
+
   .content {
-    flex: 1;
-    padding: clamp(16px, 2vw, 23px) clamp(16px, 2.34vw, 45px) clamp(16px, 1.67vw, 32px) clamp(16px, 2.34vw, 45px);
-    display: flex;
-    flex-direction: column;
-    gap: clamp(8px, 0.94vw, 18px);
-    position: relative;
-    background: var(--color-white); /* ✅ Explicit white background for content area */
+    padding: clamp(10px, 2.5vw, 18px) clamp(12px, 3vw, 24px);
+    gap: clamp(6px, 1.5vw, 10px);
   }
-  
-  /* ============================================
-     TITLE ROW - Title + Status Badge
-     ============================================ */
-  
-  .titleRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: clamp(8px, 1.04vw, 20px);
-    margin-bottom: clamp(4px, 0.52vw, 10px);
-  }
-  
+
   .title {
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-size: clamp(16px, 1.35vw, 26px);
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0;
-    flex: 1;
-    text-align: left;
+    font-size: clamp(14px, 2.5vw, 20px);
   }
-  
-  /* Status Badge */
-  .statusBadge {
-    background: rgba(38, 131, 198, 0.49);
-    border-radius: 50px;
-    padding: clamp(3px, 0.21vw, 4px) clamp(8px, 0.57vw, 11px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    height: clamp(18px, 1.2vw, 23px);
-  }
-  
-  .statusText {
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-size: clamp(11px, 0.73vw, 14px);
-    font-weight: 500;
-    white-space: nowrap;
-    line-height: 1;
-  }
-  
-  /* ============================================
-     DESCRIPTION - 2 lines max
-     ============================================ */
-  
+
   .description {
-    color: rgba(0, 0, 0, 0.6);
-    font-family: var(--font-heading);
-    font-size: clamp(13px, 1.04vw, 20px);
-    font-weight: 500;
-    line-height: 1.4;
-    margin: 0;
-    flex: 1;
-    
-    /* Clamp to 2 lines */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-align: left;
+    font-size: clamp(12px, 1.8vw, 16px);
   }
-  
-  /* ============================================
-     CLIENT INFO - Bottom
-     ============================================ */
-  
+
   .client {
-    font-family: var(--font-heading);
-    font-size: clamp(12px, 0.94vw, 18px);
-    font-weight: 500;
-    text-align: left;
-    margin-top: auto;
+    font-size: clamp(11px, 1.6vw, 15px);
   }
-  
-  .clientLabel {
-    color: rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================
+   PORTRAIT PHONE - single column, larger text
+   ============================================ */
+
+@media (orientation: portrait) and (max-width: 500px) {
+  .projectCard {
+    max-width: 500px;
+    margin: 0 auto;
   }
-  
-  .clientName {
-    color: rgba(0, 0, 0, 0.9);
+
+  .content {
+    padding: clamp(16px, 4.5vw, 24px) clamp(16px, 5vw, 28px);
+    gap: clamp(10px, 2.5vw, 16px);
   }
-  
-  /* ============================================
-     TABLET - Adjustments
-     ============================================ */
-  
-  @media (max-width: 899px) and (min-width: 600px) {
-    .content {
-      padding: clamp(14px, 3vw, 20px) clamp(14px, 4vw, 28px) clamp(14px, 3vw, 20px) clamp(14px, 4vw, 28px);
-      gap: clamp(8px, 2vw, 14px);
-    }
-  
-    .title {
-      font-size: clamp(16px, 2.5vw, 22px);
-    }
-  
-    .description {
-      font-size: clamp(13px, 2vw, 18px);
-      -webkit-line-clamp: 2;
-    }
-  
-    .client {
-      font-size: clamp(12px, 1.8vw, 16px);
-    }
-  
-    .statusBadge {
-      padding: clamp(3px, 0.5vw, 5px) clamp(8px, 1.2vw, 12px);
-      height: clamp(18px, 2.5vw, 22px);
-    }
-  
-    .statusText {
-      font-size: clamp(11px, 1.5vw, 13px);
-    }
+
+  .titleRow {
+    gap: clamp(10px, 2.5vw, 16px);
+    margin-bottom: clamp(6px, 1.5vw, 10px);
   }
-  
-  /* ============================================
-     MOBILE - Single Column
-     ============================================ */
-  
-  @media (max-width: 599px) {
-    .projectCard {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-  
-    .imageWrapper {
-      height: 57%;
-    }
-  
-    .content {
-      padding: clamp(16px, 4vw, 24px) clamp(16px, 5vw, 28px);
-      gap: clamp(10px, 2.5vw, 16px);
-    }
-  
-    .titleRow {
-      gap: clamp(10px, 2.5vw, 16px);
-      margin-bottom: clamp(6px, 1.5vw, 10px);
-    }
-  
-    .title {
-      font-size: clamp(18px, 5vw, 24px);
-    }
-  
-    .description {
-      font-size: clamp(14px, 3.8vw, 18px);
-      line-height: 1.5;
-      -webkit-line-clamp: 3;
-    }
-  
-    .client {
-      font-size: clamp(13px, 3.5vw, 16px);
-    }
-  
-    .statusBadge {
-      padding: clamp(4px, 1vw, 6px) clamp(10px, 2.5vw, 14px);
-      height: clamp(20px, 5vw, 24px);
-    }
-  
-    .statusText {
-      font-size: clamp(12px, 3vw, 14px);
-    }
+
+  .title {
+    font-size: clamp(18px, 5vw, 24px);
   }
-  
-  /* ============================================
-     SMALL MOBILE - Extra Refinement
-     ============================================ */
-  
-  @media (max-width: 480px) {
-    .content {
-      padding: clamp(14px, 3.5vw, 20px) clamp(14px, 4.5vw, 24px);
-    }
-  
-    .title {
-      font-size: clamp(16px, 4.5vw, 20px);
-    }
-  
-    .description {
-      font-size: clamp(13px, 3.5vw, 16px);
-    }
-  
-    .client {
-      font-size: clamp(12px, 3.2vw, 15px);
-    }
+
+  .description {
+    font-size: clamp(14px, 3.8vw, 18px);
+    line-height: 1.5;
+    -webkit-line-clamp: 3;
   }
-  
-  /* ============================================
-     ACCESSIBILITY - Reduced Motion
-     ============================================ */
-  
-  @media (prefers-reduced-motion: reduce) {
-    .projectCard {
-      transition: none !important;
-    }
-  
-    .projectCard:hover {
-      transform: none !important;
-    }
-  
-    .projectImage {
-      transition: none !important;
-    }
-  
-    .projectCard:hover .projectImage {
-      transform: none !important;
-    }
+
+  .client {
+    font-size: clamp(13px, 3.5vw, 16px);
   }
-  
-  /* ============================================
-     FOCUS STATE - Keyboard Navigation
-     ============================================ */
-  
-  .projectCard:focus-visible {
-    outline: 3px solid var(--color-primary);
-    outline-offset: 3px;
-    box-shadow: 0px 0px 0px 3px rgba(38, 131, 198, 0.2);
+
+  .statusBadge {
+    padding: clamp(4px, 1vw, 6px) clamp(10px, 2.5vw, 14px);
+    height: clamp(20px, 5vw, 24px);
   }
-  
-  /* ============================================
-     HIGH RESOLUTION DISPLAYS
-     ============================================ */
-  
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .projectImage {
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-    }
+
+  .statusText {
+    font-size: clamp(12px, 3vw, 14px);
   }
+}
+
+/* ============================================
+   LANDSCAPE MOBILE - compact adjustments
+   ============================================ */
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .content {
+    padding: clamp(10px, 2vh, 16px) clamp(12px, 2.5vw, 24px);
+    gap: clamp(6px, 1.5vh, 12px);
+  }
+
+  .title {
+    font-size: clamp(13px, 2vh, 18px);
+  }
+
+  .description {
+    font-size: clamp(11px, 1.8vh, 15px);
+    -webkit-line-clamp: 2;
+  }
+
+  .client {
+    font-size: clamp(10px, 1.6vh, 14px);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY - Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .projectCard,
+  .projectImage {
+    transition: none !important;
+  }
+
+  .projectCard:hover {
+    transform: none !important;
+  }
+
+  .projectCard:hover .projectImage {
+    transform: none !important;
+  }
+}
+
+/* ============================================
+   TOUCH DEVICES - disable hover effects
+   ============================================ */
+
+@media (hover: none) and (pointer: coarse) {
+  .projectCard:hover {
+    transform: none;
+    box-shadow: 0px 0px clamp(5px, 0.51vw, 9.7px) 0px rgba(0, 0, 0, 0.11);
+  }
+
+  .projectCard:hover .projectImage {
+    transform: none;
+  }
+}
+
+/* ============================================
+   FOCUS STATE - Keyboard Navigation
+   ============================================ */
+
+.projectCard:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  box-shadow: 0px 0px 0px 3px rgba(38, 131, 198, 0.2);
+}
+
+/* ============================================
+   HIGH RESOLUTION DISPLAYS
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .projectImage {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}

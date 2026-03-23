@@ -58,32 +58,29 @@ const OurValues = () => {
   ];
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className={`${styles.ourValuesSection} ${isVisible ? styles.animate : ''}`}
     >
       <div className={styles.container}>
-        
+
         {/* Title */}
         <h2 className={`${styles.title} ${styles.animateUp}`}>
           Our Values
         </h2>
 
-        {/* Values Grid - 4 cards in 1 row */}
+        {/* Values Grid */}
         <div className={styles.valuesGrid}>
           {values.map((value, index) => (
-            <div 
-              key={value.id} 
+            <div
+              key={value.id}
               className={`${styles.valueCard} ${styles.animateUp}`}
               style={{ animationDelay: `${0.2 + (index * 0.1)}s` }}
             >
-              {/* Card Background */}
-              <div className={styles.cardBackground}></div>
-
               {/* Icon */}
               <div className={styles.iconWrapper}>
-                <img 
-                  src={value.icon} 
+                <img
+                  src={value.icon}
                   alt={value.title}
                   className={styles.icon}
                 />

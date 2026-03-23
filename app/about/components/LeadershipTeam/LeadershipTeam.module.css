@@ -1,7 +1,5 @@
 /* ============================================
-   LEADERSHIP TEAM SECTION
-   Fluid Responsive Design — No layout jumps
-   Uses clamp() for smooth scaling at any zoom
+   LEADERSHIP TEAM SECTION - FLUID RESPONSIVE
    Base Design: 1920px
    ============================================ */
 
@@ -9,15 +7,13 @@
   width: 100%;
   position: relative;
   background: #ffffff;
-  /* Fluid padding: 30px (mobile) → 100px (1920px) */
   padding: clamp(30px, 5.2vw, 100px) 0;
 }
 
 .container {
   max-width: 1920px;
   margin: 0 auto;
-  /* Fluid horizontal padding: 16px (mobile) → 200px (1920px) */
-  padding: 0 clamp(16px, 10.4vw, 200px);
+  padding: 0 clamp(15px, 7.97vw, 153px);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -25,32 +21,27 @@
 }
 
 /* ============================================
-   TITLE — fluid font size, fluid margin
+   TITLE
+   Aligned to site-wide standard: clamp(28px, 2.5vw, 48px)
    ============================================ */
 
 .title {
   color: #2683C6;
   text-align: center;
   font-family: "Grift-Bold", sans-serif;
-  /* Fluid: 24px (320px) → 48px (1920px) */
-  font-size: clamp(24px, 2.5vw, 48px);
+  font-size: clamp(28px, 2.5vw, 48px);
   font-weight: 700;
-  /* Fluid margin: 28px → 119px */
   margin: 0 0 clamp(28px, 6.2vw, 119px) 0;
   line-height: 1.2;
 }
 
 /* ============================================
-   LEADERSHIP GRID
-   4 cols on large screens → 2 cols tablet → 1 col mobile
-   Card width is fluid via minmax
+   LEADERSHIP GRID - 4 cols desktop
    ============================================ */
 
 .leadershipGrid {
   display: grid;
-  /* 4 equal fluid columns on large screens */
   grid-template-columns: repeat(4, minmax(0, 322px));
-  /* Fluid gap: 16px → 30px */
   gap: clamp(16px, 1.6vw, 30px);
   justify-content: center;
   width: 100%;
@@ -58,13 +49,11 @@
 
 /* ============================================
    LEADER CARD
-   Fluid width & height using aspect-ratio trick
    ============================================ */
 
 .leaderCard {
   width: 100%;
   max-width: 322px;
-  /* Card height driven by aspect ratio, no fixed px jumps */
   aspect-ratio: 322 / 447;
   position: relative;
   margin: 0 auto;
@@ -74,7 +63,6 @@
   width: 100%;
   height: 100%;
   background: #ffffff;
-  /* Fluid border-radius: 13px → 20px */
   border-radius: clamp(13px, 1.04vw, 20px);
   box-shadow: 0px 0px 9.7px 0px rgba(0, 0, 0, 0.11);
   overflow: hidden;
@@ -89,13 +77,11 @@
 }
 
 /* ============================================
-   IMAGE WRAPPER
-   Takes ~80.3% of card height (359/447)
+   IMAGE WRAPPER — 80.3% of card height
    ============================================ */
 
 .imageWrapper {
   width: 100%;
-  /* 80.3% of parent card height — fluid via flex */
   flex: 0 0 80.3%;
   position: relative;
   overflow: hidden;
@@ -107,8 +93,6 @@
   scale: 1.05;
   object-fit: cover;
   display: block;
-  border: none;
-  outline: none;
   transition: transform 0.4s ease;
 }
 
@@ -138,7 +122,6 @@
 }
 
 .linkedinOverlay svg {
-  /* Fluid icon size: 20px → 32px */
   width: clamp(20px, 1.7vw, 32px);
   height: clamp(20px, 1.7vw, 32px);
   transition: transform 0.3s ease;
@@ -149,14 +132,12 @@
 }
 
 /* ============================================
-   INFO SECTION
-   Remaining ~19.7% of card height
+   INFO SECTION — remaining ~19.7% of card
    ============================================ */
 
 .infoSection {
   width: 100%;
   flex: 1 1 0;
-  /* Fluid padding */
   padding: clamp(10px, 0.68vw, 13px) clamp(14px, 1.2vw, 23px) clamp(12px, 0.99vw, 19px);
   display: flex;
   flex-direction: column;
@@ -168,7 +149,6 @@
 .leaderName {
   color: rgba(0, 0, 0, 0.8);
   font-family: "Grift-SemiBold", sans-serif;
-  /* Fluid: 13px → 20px */
   font-size: clamp(13px, 1.04vw, 20px);
   font-weight: 600;
   margin: 0 0 clamp(3px, 0.26vw, 5px) 0;
@@ -180,7 +160,6 @@
 .leaderRole {
   color: rgba(0, 0, 0, 0.4);
   font-family: "Grift-Medium", sans-serif;
-  /* Fluid: 11px → 16px */
   font-size: clamp(11px, 0.83vw, 16px);
   font-weight: 500;
   margin: 0;
@@ -215,12 +194,9 @@
 }
 
 /* ============================================
-   BREAKPOINTS
-   Only handle LAYOUT changes (column count)
-   All sizing still via clamp() — no px jumps
+   TABLET — 2 columns
    ============================================ */
 
-/* Tablet: 2-column grid */
 @media (max-width: 1024px) {
   .leadershipGrid {
     grid-template-columns: repeat(2, minmax(0, 340px));
@@ -229,20 +205,27 @@
 
   .leaderCard {
     max-width: 340px;
-    /* Slightly taller aspect on tablet for comfort */
     aspect-ratio: 322 / 460;
   }
 
   .cardContainer:hover {
     transform: none;
+    box-shadow: 0px 0px 9.7px 0px rgba(0, 0, 0, 0.11);
   }
 
   .cardContainer:hover .leaderImage {
     transform: none;
   }
+
+  .cardContainer:hover .linkedinOverlay {
+    opacity: 0;
+  }
 }
 
-/* Mobile: single-column */
+/* ============================================
+   MOBILE — 1 column
+   ============================================ */
+
 @media (max-width: 600px) {
   .leadershipGrid {
     grid-template-columns: 1fr;
@@ -263,15 +246,6 @@
     color: rgba(0, 0, 0, 0.5);
   }
 
-  .linkedinOverlay {
-    opacity: 0;
-    background: rgba(38, 131, 198, 0.9);
-  }
-
-  .cardContainer:active .linkedinOverlay {
-    opacity: 1;
-  }
-
   .cardContainer:hover {
     transform: none;
     box-shadow: 0px 0px 9.7px 0px rgba(0, 0, 0, 0.11);
@@ -280,10 +254,19 @@
   .cardContainer:hover .leaderImage {
     transform: none;
   }
+
+  /* Tap to reveal LinkedIn on mobile */
+  .linkedinOverlay {
+    opacity: 0;
+  }
+
+  .cardContainer:active .linkedinOverlay {
+    opacity: 1;
+  }
 }
 
 /* ============================================
-   ACCESSIBILITY & PERFORMANCE
+   ACCESSIBILITY
    ============================================ */
 
 @media (prefers-reduced-motion: reduce) {

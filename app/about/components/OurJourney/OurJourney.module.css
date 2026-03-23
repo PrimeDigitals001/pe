@@ -1,315 +1,223 @@
 /* ============================================
-   OUR JOURNEY SECTION - ZOOM-PROOF
-   Base Design: 1920px × 1080px
-   
-   ✅ Text column height = Image height (425px)
-   ✅ Text auto-scales to fit perfectly
-   ✅ Never cuts off, never overflows
+   OUR JOURNEY SECTION - FLUID RESPONSIVE
+   Base Design: 1920px
    ============================================ */
 
 /* ============================================
    SECTION WRAPPER
    ============================================ */
 
-   .ourJourneySection {
-    width: 100%;
-    background: var(--color-white);
-    padding: clamp(60px, 8.33vw, 160px) 0 clamp(40px, 2.6vw, 50px) 0;
-    position: relative;
+.ourJourneySection {
+  width: 100%;
+  background: var(--color-white);
+  padding: clamp(40px, 8.33vw, 160px) 0 clamp(30px, 2.6vw, 50px) 0;
+  position: relative;
+}
+
+.container {
+  max-width: clamp(900px, 83.7vw, 1607px);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 2.08vw, 40px);
+  display: flex;
+  gap: clamp(30px, 4.48vw, 86px);
+  align-items: flex-start;
+}
+
+/* ============================================
+   TEXT CONTENT COLUMN - Left Side
+   Height locked to image height
+   ============================================ */
+
+.contentColumn {
+  flex: 1 1 clamp(300px, 38.49vw, 739px);
+  max-width: clamp(300px, 38.49vw, 739px);
+  height: clamp(190px, 22.14vw, 425px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(10px, 1.25vw, 24px);
+  padding: clamp(10px, 1vw, 20px) 0;
+}
+
+.title {
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+ font-size: clamp(32px, 2.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.description {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: var(--font-heading);
+  font-size: clamp(11px, 1.15vw, 22px);
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: block;
+  overflow: visible;
+}
+
+/* ============================================
+   IMAGE COLUMN - Right Side
+   782×425px @ 1920px
+   ============================================ */
+
+.imageColumn {
+  flex: 1 1 clamp(350px, 40.73vw, 782px);
+  max-width: clamp(350px, 40.73vw, 782px);
+  height: clamp(190px, 22.14vw, 425px);
+  border-radius: clamp(12px, 1.04vw, 20px);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.imageColumn:hover .image {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+.animateUp {
+  opacity: 0;
+  transform: translateY(40px);
+  will-change: transform, opacity;
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+.animate .animateUp {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+.animate .title {
+  animation-delay: 0.1s;
+}
+
+.animate .description {
+  animation-delay: 0.2s;
+}
+
+.animate .imageColumn {
+  animation-delay: 0.3s;
+}
+
+/* ============================================
+   TABLET / MOBILE — Stack vertically
+   ============================================ */
+
+@media (max-width: 768px) {
+  .ourJourneySection {
+    padding: clamp(40px, 10vw, 80px) 0 clamp(30px, 8vw, 60px) 0;
+  }
+
   .container {
-    max-width: clamp(900px, 83.7vw, 1607px); /* 1607px @ 1920px */
-    margin: 0 auto;
-    padding: 0 clamp(20px, 2.08vw, 40px);
-    display: flex;
-    gap: clamp(30px, 4.48vw, 86px); /* 86px @ 1920px */
-    align-items: flex-start;
-  }
-  
-  /* ============================================
-     TEXT CONTENT COLUMN - Left Side
-     🔒 HEIGHT LOCKED TO IMAGE HEIGHT (425px)
-     ✅ Content auto-scales to fit
-     ============================================ */
-  
-  .contentColumn {
-    flex: 1 1 clamp(300px, 38.49vw, 739px);
-    max-width: clamp(300px, 38.49vw, 739px);
-    height: clamp(190px, 22.14vw, 425px); /* 🔒 SAME AS IMAGE HEIGHT */
-    display: flex;
     flex-direction: column;
-    justify-content: center; /* ✅ Vertically centers content */
-    gap: clamp(10px, 1.25vw, 24px);
-    padding: clamp(10px, 1vw, 20px) 0; /* Internal padding for safety */
+    align-items: center;
+    gap: clamp(24px, 7vw, 50px);
+    padding: 0 clamp(16px, 4vw, 24px);
   }
-  
-  .title {
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-size: clamp(22px, 2.5vw, 48px); /* 48px @ 1920px, scales down more */
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0;
-    text-align: left;
-    flex-shrink: 0;
-  }
-  
-  .description {
-    color: rgba(0, 0, 0, 0.5);
-    font-family: var(--font-heading);
-    font-size: clamp(11px, 1.15vw, 22px); /* 22px @ 1920px (reduced from 25px) */
-    font-weight: 500;
-    line-height: clamp(1.3, 1.35, 1.5); /* Responsive line-height */
-    margin: 0;
-    text-align: left;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+
+  .contentColumn {
     flex: 1 1 auto;
-    
-    /* ✅ NO line clamping - text wraps naturally */
-    display: block;
-    overflow: visible; /* Shows all text */
-  }
-  
-  /* ============================================
-     IMAGE COLUMN - Right Side
-     782×425px @ 1920px
-     ============================================ */
-  
-  .imageColumn {
-    flex: 1 1 clamp(350px, 40.73vw, 782px);
-    max-width: clamp(350px, 40.73vw, 782px);
-    height: clamp(190px, 22.14vw, 425px); /* 🔒 Fixed height */
-    border-radius: clamp(12px, 1.04vw, 20px);
-    overflow: hidden;
-    position: relative;
-    flex-shrink: 0;
-  }
-  
-  .image {
+    max-width: 100%;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
+    height: auto;
+    justify-content: flex-start;
+    gap: clamp(14px, 4vw, 24px);
+    padding: 0;
   }
-  
-  .imageColumn:hover .image {
-    transform: scale(1.05);
+
+    .title {
+    font-size: clamp(26px, 6vw, 36px);  /* was 22px → 26px */
   }
-  
-  /* ============================================
-     ANIMATIONS
-     ============================================ */
-  
+
+  .description {
+    font-size: clamp(15px, 3.8vw, 18px);  /* was 13px → 15px */
+  }
+
+  .imageColumn {
+    flex: 1 1 auto;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 782 / 425;
+    border-radius: clamp(10px, 3vw, 20px);
+  }
+}
+
+/* ============================================
+   SMALL MOBILE
+   ============================================ */
+
+@media (max-width: 480px) {
+  .ourJourneySection {
+    padding: clamp(30px, 8vw, 50px) 0 clamp(25px, 7vw, 45px) 0;
+  }
+
+  .container {
+    gap: clamp(20px, 6vw, 35px);
+    padding: 0 clamp(12px, 3vw, 16px);
+  }
+
+ .title {
+    font-size: clamp(24px, 5.5vw, 28px);  /* was 20px → 24px */
+  }
+
+  .description {
+    font-size: clamp(15px, 3.5vw, 16px);  /* was 13px → 15px */
+  }
+}
+
+/* ============================================
+   HIGH RESOLUTION DISPLAYS
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY - Reduced Motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
   .animateUp {
-    opacity: 0;
-    transform: translateY(40px);
-    will-change: transform, opacity;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
-  
-  @keyframes slideInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  .image {
+    transition: none !important;
   }
-  
-  .animate .animateUp {
-    animation: slideInUp 0.8s ease-out forwards;
+
+  .imageColumn:hover .image {
+    transform: none !important;
   }
-  
-  .animate .title {
-    animation-delay: 0.1s;
-  }
-  
-  .animate .description {
-    animation-delay: 0.2s;
-  }
-  
-  .animate .imageColumn {
-    animation-delay: 0.3s;
-  }
-  
-  /* ============================================
-     RESPONSIVE ADJUSTMENTS FOR PERFECT FIT
-     Fine-tuned breakpoints for text fitting
-     ============================================ */
-  
-  /* Large Desktop - Base size */
-  @media (min-width: 1920px) {
-    .title {
-      font-size: 48px;
-    }
-    
-    .description {
-      font-size: 22px;
-      line-height: 1.4;
-    }
-    
-    .contentColumn {
-      gap: 24px;
-    }
-  }
-  
-  /* Medium Desktop - Slight reduction */
-  @media (max-width: 1600px) {
-    .title {
-      font-size: clamp(28px, 2.8vw, 42px);
-    }
-    
-    .description {
-      font-size: clamp(13px, 1.25vw, 20px);
-      line-height: 1.38;
-    }
-    
-    .contentColumn {
-      gap: clamp(12px, 1.4vw, 20px);
-    }
-  }
-  
-  /* Small Desktop - More reduction */
-  @media (max-width: 1280px) {
-    .title {
-      font-size: clamp(24px, 2.6vw, 36px);
-    }
-    
-    .description {
-      font-size: clamp(12px, 1.2vw, 18px);
-      line-height: 1.35;
-    }
-    
-    .contentColumn {
-      gap: clamp(10px, 1.2vw, 16px);
-    }
-  }
-  
-  /* Laptop - Further reduction */
-  @media (max-width: 1024px) {
-    .title {
-      font-size: clamp(22px, 2.4vw, 32px);
-    }
-    
-    .description {
-      font-size: clamp(11px, 1.15vw, 16px);
-      line-height: 1.32;
-    }
-    
-    .contentColumn {
-      gap: clamp(8px, 1vw, 14px);
-      padding: clamp(8px, 0.8vw, 16px) 0;
-    }
-  }
-  
-  /* ============================================
-     MOBILE/TABLET - Structure Changes
-     Below 768px: Stack vertically, no height restriction
-     ============================================ */
-  
-  @media (max-width: 768px) {
-    .ourJourneySection {
-      padding: clamp(40px, 10vw, 80px) 0 clamp(40px, 8vw, 60px) 0;
-    }
-  
-    .container {
-      flex-direction: column; /* ✅ Stack vertically */
-      align-items: center;
-      gap: clamp(30px, 8vw, 50px);
-      padding: 0 clamp(16px, 4vw, 24px);
-    }
-  
-    .contentColumn {
-      flex: 1 1 auto;
-      max-width: 100%;
-      width: 100%;
-      height: auto; /* ✅ Remove height restriction on mobile */
-      justify-content: flex-start;
-      gap: clamp(16px, 4vw, 24px);
-      padding: 0;
-    }
-  
-    .title {
-      font-size: clamp(24px, 6.5vw, 36px);
-      line-height: 1.2;
-      text-align: left;
-    }
-  
-    .description {
-      font-size: clamp(14px, 4vw, 18px);
-      line-height: 1.6;
-      text-align: left;
-    }
-  
-    .imageColumn {
-      flex: 1 1 auto;
-      max-width: 100%;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 782 / 425; /* ✅ Maintains proportions */
-      border-radius: clamp(12px, 3vw, 20px);
-    }
-  }
-  
-  /* ============================================
-     SMALL MOBILE - Extra Adjustments
-     ============================================ */
-  
-  @media (max-width: 480px) {
-    .ourJourneySection {
-      padding: clamp(35px, 8vw, 50px) 0 clamp(35px, 7vw, 45px) 0;
-    }
-  
-    .container {
-      gap: clamp(25px, 6vw, 35px);
-      padding: 0 clamp(12px, 3vw, 16px);
-    }
-  
-    .contentColumn {
-      gap: clamp(14px, 3.5vw, 20px);
-    }
-  
-    .title {
-      font-size: clamp(22px, 6vw, 28px);
-    }
-  
-    .description {
-      font-size: clamp(13px, 3.5vw, 16px);
-      line-height: 1.65;
-    }
-  
-    .imageColumn {
-      border-radius: clamp(10px, 2.5vw, 14px);
-    }
-  }
-  
-  /* ============================================
-     HIGH RESOLUTION DISPLAYS
-     ============================================ */
-  
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .image {
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-    }
-  }
-  
-  /* ============================================
-     ACCESSIBILITY - Reduced Motion
-     ============================================ */
-  
-  @media (prefers-reduced-motion: reduce) {
-    .animateUp {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-  
-    .image {
-      transition: none !important;
-    }
-  
-    .imageColumn:hover .image {
-      transform: none !important;
-    }
-  }
+}
