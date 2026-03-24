@@ -1,10 +1,6 @@
 /* ============================================
-   EJOT SCREW SYSTEMS PAGE - PRODUCTION READY
-   Base Design: 1920px × 1080px
-   
-   ✅ Perfect logo positioning
-   ✅ Perfect scaling at ANY zoom level (50%-200%)
-   ✅ Flawless on ALL devices (320px-4K)
+   EJOT SCREW SYSTEMS PAGE - FLUID RESPONSIVE
+   No hard breakpoints - ctrl+zoom proof
    ============================================ */
 
 /* ============================================
@@ -14,20 +10,18 @@
 .ejotPage {
   width: 100%;
   min-height: 100vh;
-  background: var(--color-white);
+  background: #ffffff;
   padding-top: clamp(80px, 10vh, 150px);
   position: relative;
 }
 
 /* ============================================
-     EJOT LOGO SECTION - REDUCED TOP SPACING
-     ✅ FIXED: Less space from top
-     ============================================ */
+   LOGO SECTION
+   ============================================ */
 
 .ejotLogoSection {
   width: 100%;
   padding-top: clamp(40px, 6.25vw, 120px);
-  /* ✅ REDUCED from 219px to 120px @ 1920px */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +29,6 @@
 
 .ejotLogo {
   width: clamp(80px, 9.01vw, 173px);
-  /* 173px @ 1920px */
   height: auto;
   aspect-ratio: 173 / 52;
   object-fit: contain;
@@ -43,14 +36,13 @@
 }
 
 /* ============================================
-     PAGE TITLE
-     ============================================ */
+   PAGE TITLE
+   ============================================ */
 
 .pageTitle {
   color: #D1203E;
   font-family: var(--font-heading);
   font-size: clamp(24px, 2.86vw, 55px);
-  /* 55px @ 1920px */
   font-weight: 300;
   margin: clamp(35px, 4.95vw, 95px) 0 0 clamp(20px, 6.25vw, 120px);
   padding: 0;
@@ -58,28 +50,26 @@
 }
 
 /* ============================================
-     DESCRIPTION SECTION
-     ============================================ */
+   DESCRIPTION SECTION
+   ============================================ */
 
 .descriptionSection {
   margin: clamp(18px, 1.98vw, 38px) 0 0 clamp(20px, 6.25vw, 120px);
   max-width: clamp(600px, 65.78vw, 1263px);
-  /* 1263px @ 1920px */
   padding-right: clamp(20px, 5.21vw, 100px);
 }
 
 .description {
-  color: var(--color-black);
+  color: #000000;
   font-family: var(--font-heading);
   font-size: clamp(14px, 1.04vw, 20px);
-  /* 20px @ 1920px */
   font-weight: 600;
   line-height: 1.6;
   margin: 0;
 }
 
 .furtherInfoLink {
-  color: var(--color-black);
+  color: #000000;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
@@ -98,8 +88,8 @@
 }
 
 /* ============================================
-     PRODUCTS HEADER
-     ============================================ */
+   PRODUCTS HEADER
+   ============================================ */
 
 .productsHeader {
   margin: clamp(35px, 4.95vw, 95px) clamp(20px, 6.3vw, 121px) 0 clamp(20px, 6.3vw, 121px);
@@ -107,7 +97,7 @@
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap: wrap;
-  gap: clamp(16px, 2vw, 24px);
+  gap: clamp(12px, 1.5vw, 24px);
 }
 
 .titleGroup {
@@ -117,32 +107,18 @@
 }
 
 .productsTitle {
-  color: var(--color-black);
+  color: #000000;
   font-family: var(--font-heading);
   font-size: clamp(22px, 2.08vw, 40px);
-  /* 40px @ 1920px */
   font-weight: 500;
   margin: 0;
-  padding: 0;
 }
 
 .productsCount {
-  color: var(--color-black);
+  color: #000000;
   font-family: var(--font-heading);
   font-size: clamp(14px, 1.04vw, 20px);
-  /* 20px @ 1920px */
   font-weight: 400;
-}
-
-/* ============================================
-     DIVIDER LINE
-     ============================================ */
-
-.dividerLine {
-  width: min(1639px, calc(100% - clamp(40px, 12.5vw, 240px)));
-  height: 1.5px;
-  background: var(--color-black);
-  margin: clamp(10px, 0.73vw, 14px) 0 0 clamp(20px, 6.3vw, 121px);
 }
 
 /* ============================================
@@ -157,7 +133,7 @@
 }
 
 .filterLabel {
-  color: var(--color-black);
+  color: #000000;
   font-family: var(--font-heading);
   font-size: clamp(14px, 1.04vw, 18px);
   font-weight: 500;
@@ -174,8 +150,8 @@
   padding: clamp(6px, 0.5vw, 10px) clamp(30px, 2vw, 40px) clamp(6px, 0.5vw, 10px) clamp(10px, 0.6vw, 12px);
   font-family: var(--font-heading);
   font-size: clamp(14px, 1.04vw, 16px);
-  color: var(--color-black);
-  background-color: var(--color-white);
+  color: #000000;
+  background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 4px;
   appearance: none;
@@ -183,7 +159,8 @@
   transition: all 0.3s ease;
 }
 
-.filterDropdown:hover, .filterDropdown:focus {
+.filterDropdown:hover,
+.filterDropdown:focus {
   border-color: #D1203E;
   outline: none;
 }
@@ -194,7 +171,7 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  color: var(--color-black);
+  color: #000000;
   transition: transform 0.3s ease;
 }
 
@@ -203,32 +180,38 @@
 }
 
 /* ============================================
-     PRODUCTS GRID - 3 Columns on Desktop
-     ============================================ */
+   DIVIDER LINE
+   ============================================ */
+
+.dividerLine {
+  width: min(1639px, calc(100% - clamp(40px, 12.5vw, 240px)));
+  height: 1.5px;
+  background: #000000;
+  margin: clamp(10px, 0.73vw, 14px) 0 0 clamp(20px, 6.3vw, 121px);
+}
+
+/* ============================================
+   PRODUCTS GRID - 3 columns desktop
+   ============================================ */
 
 .productsGrid {
   margin: clamp(40px, 5.1vw, 98px) auto 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* 🔒 Always 3 columns on desktop */
   column-gap: clamp(32px, 3.44vw, 66px);
-  /* 66px @ 1920px */
   row-gap: clamp(24px, 1.98vw, 38px);
-  /* 38px @ 1920px */
   max-width: clamp(1000px, 87.24vw, 1675px);
-  /* 3×469 + 2×66 + padding = 1675px */
   padding: 0 clamp(20px, 9.9vw, 190px);
-  /* 190px @ 1920px */
 }
 
 /* ============================================
-     PRODUCT CARD
-     ============================================ */
+   PRODUCT CARD
+   ============================================ */
 
 .productCard {
   width: 100%;
   position: relative;
-  background: var(--color-white);
+  background: #ffffff;
   transition: transform 0.3s ease;
 }
 
@@ -244,14 +227,11 @@
   width: 100%;
 }
 
-/* Product Image Wrapper */
 .productImageWrapper {
   width: 100%;
   aspect-ratio: 469 / 364;
-  /* Maintain exact proportions */
-  background: var(--color-white);
+  background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 0;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   margin-bottom: clamp(12px, 1.04vw, 20px);
@@ -269,56 +249,42 @@
   transform: scale(1.05);
 }
 
-
-/* Product Name */
 .productName {
   color: #D1203E;
   font-family: var(--font-heading);
   font-size: clamp(16px, 1.35vw, 26px);
-  /* 26px @ 1920px */
   font-weight: 600;
   margin: 0 0 clamp(8px, 0.625vw, 12px) 0;
-  padding: 0;
   line-height: 1.3;
 }
 
-/* Product Feature */
 .productFeature {
-  color: var(--color-black);
+  color: #000000;
   font-family: var(--font-heading);
   font-size: clamp(13px, 1.04vw, 20px);
-  /* 20px @ 1920px */
   font-weight: 700;
   margin: 0 0 clamp(8px, 0.625vw, 12px) 0;
-  padding: 0;
   line-height: 1.2;
 }
 
-/* Product Description */
 .productDescription {
-  color: var(--color-black);
+  color: #000000;
   font-family: var(--font-heading);
   font-size: clamp(14px, 1.25vw, 24px);
-  /* 24px @ 1920px */
   font-weight: 500;
   line-height: 1.4;
   margin: 0 0 clamp(12px, 1.25vw, 24px) 0;
-  padding: 0;
   flex-grow: 1;
-
-  /* Clamp to 3 lines for consistency */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* View Product Link */
 .viewProductLink {
   color: rgba(0, 0, 0, 0.8);
   font-family: var(--font-heading);
   font-size: clamp(14px, 1.25vw, 24px);
-  /* 24px @ 1920px */
   font-weight: 400;
   text-decoration: underline;
   margin-bottom: clamp(16px, 1.82vw, 35px);
@@ -331,13 +297,6 @@
   color: #D1203E;
 }
 
-.viewProductLink:focus-visible {
-  outline: 2px solid #D1203E;
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
-/* Card Bottom Border */
 .cardBottomBorder {
   width: 100%;
   height: 1px;
@@ -355,22 +314,19 @@
 }
 
 /* ============================================
-     BOTTOM CONTENT SECTION
-     ============================================ */
+   BOTTOM CONTENT SECTION
+   ============================================ */
 
 .bottomContent {
   margin: clamp(40px, 3.9vw, 75px) auto 0;
   max-width: clamp(1000px, 87.24vw, 1675px);
-  /* Match productsGrid max-width */
   padding: 0 clamp(20px, 9.9vw, 190px) clamp(40px, 5.21vw, 100px);
-  /* Match productsGrid padding */
 }
 
 .bottomTitle {
   color: #D1203E;
   font-family: var(--font-heading);
   font-size: clamp(24px, 2.5vw, 48px);
-  /* 48px @ 1920px */
   font-weight: 500;
   margin: 0 0 clamp(20px, 2.6vw, 50px) 0;
   line-height: 1.3;
@@ -380,172 +336,153 @@
   color: #D1203E;
   font-family: var(--font-heading);
   font-size: clamp(15px, 1.25vw, 24px);
-  /* 24px @ 1920px */
   font-weight: 600;
   margin: 0 0 clamp(10px, 1.04vw, 20px) 0;
   line-height: 1.5;
 }
 
 .bottomDescription {
-  color: var(--color-black);
+  color: #000000;
   font-family: var(--font-heading);
   font-size: clamp(14px, 1.25vw, 24px);
-  /* 24px @ 1920px */
   font-weight: 500;
   line-height: 1.6;
   margin: 0 0 clamp(30px, 3.9vw, 75px) 0;
 }
 
 /* ============================================
-     TABLET - 2 Columns
-     ============================================ */
+   PORTRAIT - Responsive layout
+   ============================================ */
 
-@media (max-width: 1024px) and (min-width: 601px) {
-  .ejotPage {
-    padding-top: clamp(60px, 10vw, 100px);
+@media (orientation: portrait) {
+  .headerSection,
+  .pageTitle,
+  .descriptionSection {
+    margin-left: clamp(16px, 5vw, 40px);
+    margin-right: clamp(16px, 5vw, 40px);
   }
 
-  .ejotLogoSection {
-    padding-top: clamp(35px, 7vw, 60px);
-    /* ✅ Reduced for tablet */
+  .descriptionSection {
+    padding-right: 0;
+    max-width: none;
   }
 
+  .productsHeader {
+    margin-left: clamp(16px, 5vw, 40px);
+    margin-right: clamp(16px, 5vw, 40px);
+  }
+
+  .dividerLine {
+    margin-left: clamp(16px, 5vw, 40px);
+    margin-right: clamp(16px, 5vw, 40px);
+    width: calc(100% - clamp(32px, 10vw, 80px));
+  }
+
+  /* Products - 2 columns on tablet portrait */
   .productsGrid {
     grid-template-columns: repeat(2, 1fr);
-    /* 2 columns on tablet */
-    column-gap: clamp(24px, 4vw, 40px);
-    row-gap: clamp(24px, 4vw, 36px);
-    padding: 0 clamp(20px, 5vw, 60px);
-    max-width: clamp(600px, 90vw, 900px);
+    padding: 0 clamp(16px, 5vw, 40px);
+    column-gap: clamp(20px, 4vw, 40px);
   }
 
-  .productDescription {
-    -webkit-line-clamp: 4;
-    /* Allow 4 lines on tablet */
+  .bottomContent {
+    padding-left: clamp(16px, 5vw, 40px);
+    padding-right: clamp(16px, 5vw, 40px);
+  }
+
+  /* Filter adjusts */
+  .filterSection {
+    width: 100%;
+    margin-top: clamp(4px, 1vw, 10px);
+  }
+
+  .selectWrapper {
+    width: clamp(140px, 35vw, 200px);
   }
 }
 
 /* ============================================
-     MOBILE - 1 Column
-     ============================================ */
+   PORTRAIT PHONE - 1 column
+   ============================================ */
 
-@media (max-width: 600px) {
+@media (orientation: portrait) and (max-width: 500px) {
   .ejotPage {
     padding-top: clamp(60px, 15vw, 90px);
   }
 
   .ejotLogoSection {
-    padding-top: clamp(30px, 8vw, 50px);
-    /* ✅ Reduced for mobile */
+    padding-top: clamp(25px, 7vw, 45px);
   }
 
-  .pageTitle,
-  .descriptionSection,
-  .productsHeader,
-  .dividerLine {
-    margin-left: clamp(16px, 5vw, 24px);
-    margin-right: clamp(16px, 5vw, 24px);
+  .ejotLogo {
+    width: clamp(70px, 22vw, 120px);
   }
 
-  /* Reset separate filter margin logic */
-  .filterSection {
-    width: 100%;
-    margin-top: 10px;
-    justify-content: space-between;
-  }
-
-  .filterSection {
-    flex-direction: row; /* Keep row on mobile if space allows, or wrap handled by header flex-wrap */
-    align-items: center;
-    width: 100%;
-    margin-top: 4px; /* Small gap from title */
-  }
-
-  .titleGroup {
-    width: 100%;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-  
-  .filterLabel {
-    font-size: 14px;
-  }
-
-  .selectWrapper {
-    width: 160px; /* Fixed manageable width on mobile */
-  }
-
-  .descriptionSection {
-    padding-right: 0;
-    max-width: 100%;
-  }
-
-  .dividerLine {
-    width: calc(100% - clamp(32px, 10vw, 48px));
-  }
-
+  /* Products - 1 column */
   .productsGrid {
     grid-template-columns: 1fr;
-    /* 1 column on mobile */
     padding: 0 clamp(16px, 5vw, 24px);
-    max-width: 100%;
     row-gap: clamp(28px, 7vw, 40px);
   }
 
   .productCard {
-    max-width: clamp(280px, 100%, 500px);
+    max-width: clamp(280px, 100%, 440px);
     margin: 0 auto;
   }
 
   .productDescription {
     -webkit-line-clamp: unset;
-    /* Show full text on mobile */
     overflow: visible;
   }
 
-  .bottomContent {
-    padding: 0 clamp(16px, 5vw, 24px) clamp(40px, 10vw, 60px);
+  /* Filter full width */
+  .productsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(8px, 2vw, 14px);
+  }
+
+  .filterSection {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .selectWrapper {
+    width: clamp(140px, 40vw, 180px);
   }
 }
 
 /* ============================================
-     SMALL MOBILE - Extra Refinement
-     ============================================ */
+   LANDSCAPE MOBILE
+   ============================================ */
 
-@media (max-width: 400px) {
+@media (orientation: landscape) and (max-height: 500px) {
   .ejotPage {
-    padding-top: clamp(50px, 14vw, 70px);
+    padding-top: clamp(50px, 10vh, 80px);
   }
 
   .ejotLogoSection {
-    padding-top: clamp(25px, 7vw, 40px);
-    /* ✅ Reduced for small mobile */
-  }
-
-  .ejotLogo {
-    width: clamp(70px, 20vw, 100px);
+    padding-top: clamp(20px, 4vh, 40px);
   }
 
   .pageTitle {
-    font-size: clamp(20px, 6vw, 28px);
+    margin-top: clamp(16px, 4vh, 40px);
   }
 
-  .description {
-    font-size: clamp(13px, 3.8vw, 16px);
+  .descriptionSection {
+    margin-top: clamp(10px, 2vh, 20px);
   }
 
-  .productsTitle {
-    font-size: clamp(18px, 5.5vw, 26px);
-  }
-
-  .productsCount {
-    font-size: clamp(13px, 3.5vw, 16px);
+  .productsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 clamp(16px, 4vw, 60px);
+    margin-top: clamp(20px, 4vh, 50px);
   }
 }
 
 /* ============================================
-     ACCESSIBILITY - Reduced Motion
-     ============================================ */
+   ACCESSIBILITY
+   ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
   .productImage {
@@ -556,29 +493,15 @@
     transform: none !important;
   }
 
+  .productCard:hover {
+    transform: none !important;
+  }
+
   .furtherInfoLink,
   .viewProductLink {
     transition: none !important;
   }
 }
-
-/* ============================================
-     HIGH DPI DISPLAYS
-     ============================================ */
-
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
-
-  .productImage,
-  .ejotLogo {
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-  }
-}
-
-/* ============================================
-     FOCUS VISIBLE - Enhanced Accessibility
-     ============================================ */
 
 .productCardLink:focus-visible {
   outline: 2px solid #D1203E;
@@ -587,8 +510,20 @@
 }
 
 /* ============================================
-     PRINT STYLES
-     ============================================ */
+   HIGH DPI
+   ============================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .productImage,
+  .ejotLogo {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* ============================================
+   PRINT
+   ============================================ */
 
 @media print {
   .ejotPage {
@@ -599,12 +534,8 @@
     transform: none;
   }
 
-  .viewProductLink {
-    text-decoration: none;
-    color: var(--color-black);
-  }
-
-  .furtherInfoLink {
-    color: var(--color-black);
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 }
