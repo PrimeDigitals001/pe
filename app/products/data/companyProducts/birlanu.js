@@ -275,7 +275,7 @@ export const birlanuData = {
         {
           icon: '/images/icons/long_lasting_durability.png',
           title: 'Long lasting durability',
-          description: 'Up to 6 hours fire rating',
+          description: 'Up to 4 hours (200mm thick) fire rating',
         },
         {
           icon: '/images/icons/thermal_insulation.png',
@@ -823,6 +823,96 @@ export const birlanuData = {
       isFeatured: false,
       relatedProducts: ['birlanu-004', 'birlanu-008', 'birlanu-007'],
     },
+    {
+      id: 'birlanu-010',
+      name: 'PUA 5000',
+      slug: 'pua-5000',
+      category: 'Tile Adhesives',
+      productType: 'Tile Adhesives',
+      pageCategory: 'Premium 2-component adhesive for all tile types on any surface',
+
+      image: '/images/products/birlanu/PUA5000_p1.png',
+      galleryImages: [],
+
+      cardDescription: 'High-performance deformable adhesives for flexible bonding',
+
+      longDescription: 'BirlaNu PUA 5000 is a high-performance 2-component adhesive designed to provide superior bonding for all types of tiles & stones. Its advanced formulation ensures excellent adhesion on ceramic, vitrified, and natural stone tiles for both walls and floors, in interior and exterior applications.',
+
+      sizes: [
+        '4 kg',
+        '8 kg'
+      ],
+
+      standards: [
+        'IS 15477: 2019',
+        'Type: 5T S2',
+      ],
+
+      applications: [
+        'All tile types',
+        'Glass',
+        'Grid iron',
+        'Mild steel',
+        'Stainless steel',
+        'Aluminium',
+        'Plywood',
+        'Dry surfaces'
+      ],
+
+      features: [
+        {
+          icon: '/images/icons/excellent_bonding.png',
+          title: 'High bond strength',
+          description: 'Strong adhesion for lasting results',
+        },
+        {
+          icon: '/images/icons/long_lasting_durability.png',
+          title: 'High durability',
+          description: 'Long-lasting performance',
+        },
+        {
+          icon: '/images/icons/thermal_and_noise_protection.png',
+          title: 'Interior & exterior application',
+          description: 'Insulation properties',
+        },
+        {
+          icon: '/images/icons/thermal_shock_resistant.png',
+          title: 'Thermal shock resistant',
+          description: 'Prevents mold growth',
+        },
+      ],
+
+      benefits: [
+        {
+          icon: '/images/icons/strength.png',
+          title: 'Superior strength with eco-conscious approach',
+        },
+        {
+          icon: '/images/icons/strength.png',
+          title: 'Fights highly corrosive environments',
+        },
+        {
+          icon: '/images/icons/strength.png',
+          title: 'Withstands high impacts and tough conditions',
+        },
+
+      ],
+
+      bottomSectionTitle: 'Why Choose DSTA 615 & DSTA 620?',
+
+      brochures: [
+        {
+          text: 'Fortune Fiber Cement Roofs',
+          size: '91 KB',
+          link: 'https://birlanu.aflip.in/052cf7283e.html#page/1',
+        },
+      ],
+
+      inStock: true,
+      isNew: true,
+      isFeatured: false,
+      relatedProducts: ['birlanu-004', 'birlanu-008', 'birlanu-007'],
+    }
   ]
 };
 
