@@ -452,14 +452,12 @@ export const ejotScrewData = {
       image: '/images/products/ejot/JA2-6.5_p9.png',
 
       cardDescription: 'For fixing wall flashing profiles and roofing sheet to timber substructure',
-      useCase: 'For fixing wall flashing profiles. For fixing roofing sheet to timber substructure',
+      useCase: 'For fastening profiled steel sheet to timber substructure, fastening profiled steel sheet ≤ 2 mm steel substructure, side lap stitching. ',
 
       properties: [
-        'A2 stainless steel',
-        'Stainless steel sealing washer',
-        'Truss head and bonded washer mill finish or coloured',
+        'Case-hardened steel, zinc-plated',
+        'Steel sealing washer, zinc-plated',
         'Pre-assembled sealing washer',
-        'Thread according to DIN 7998',
       ],
 
       technicalSpecifications: [
@@ -511,7 +509,7 @@ export const ejotScrewData = {
         {
           text: 'EPD Self-tapping screws.pdf',
           size: '1 MB',
-          link: 'https://www.ejot.com/Building-Fasteners/Products/Self-tapping-Screws/self-tapping-screw-JZ2-6-3/p/JZ2-6_3',
+          link: 'https://www.ejot.com/medias/sys_master/epdsilb/002/hf4/h66/9261587398686/EJOT-epd-self-tapping-screws-EN.pdf',
         },
       ],
 
@@ -1077,7 +1075,7 @@ export const ejotScrewData = {
       image: '/images/products/ejot/JT2-6-5.5 F12.png',
 
       cardDescription: 'F12 certified timber screw for demanding applications',
-      useCase: ['Fastening profiled steel sheets to 1.5 - 4 mm steel substructure',
+      useCase: ['Fastening profiled steel sheets to 1.5 - 5 mm steel substructure',
         'For high-strength steel substructures according to ETA-21/0420'],
 
       properties: [
@@ -1551,7 +1549,7 @@ export const ejotScrewData = {
       image: '/images/products/ejot/JT2-ST-2-6.8.png',
 
       cardDescription: 'Heavy-duty structural timber screw',
-      useCase: ['Fastening timber components to thin-walled steel substructures',
+      useCase: ['Fastening timber components to thin-walled steel and aluminium substructures',
         'Fastening fixing rails to thin-walled steel and aluminium substructures',
       ],
       properties: [
