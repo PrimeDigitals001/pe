@@ -30,58 +30,60 @@ const ServicesSection = () => {
     };
   }, []);
 
+
   const services = [
     {
       id: 1,
       image: '/images/rectangle-20.png',
-      icon: '/icons/fall-protection.svg', // Optional icon for circle
+      icon: '/icons/fall.svg',
       title: 'Fall Protection Systems',
       description: 'Complete range of horizontal lifelines, overhead lifelines & anchor points ensuring safe work at height.'
     },
     {
       id: 2,
       image: '/images/rectangle-21.png',
-      icon: '/icons/roof-edge.svg',
+      icon: '/icons/home-roof.svg',
       title: 'Roof Edge Protection',
       description: 'Non-penetrative guardrail systems for permanent or temporary protection on all roof types.'
     },
     {
       id: 3,
       image: '/images/rectangle-22.png',
-      icon: '/icons/rooftop-walkways.svg',
+      icon: '/icons/people-roof.svg',
       title: 'Rooftop Walkways',
       description: 'Anti-slip walkways that offer safe, stable access across uneven or fragile roofs.'
     },
     {
       id: 4,
       image: '/images/rectangle-23.png',
-      icon: '/icons/step-over.svg',
+      icon: '/icons/step.svg',
       title: 'Step-Over & Access Platforms',
       description: 'Modular platforms designed to cross obstacles, ducts, pipelines & level changes safely.'
     },
     {
       id: 5,
       image: '/images/rectangle-24.png',
-      icon: '/icons/structural-decking.svg',
+      icon: '/icons/solar-roof-bold.svg',
       title: 'Structural Decking (SMARTDEK 51)',
       description: 'High-strength steel decking providing fast construction, reduced steel usage, and superior load performance.'
     },
     {
       id: 6,
       image: '/images/rectangle-25.png',
-      icon: '/icons/roofing-materials.svg',
+      icon: '/icons/solar-roof.svg',
       title: 'Premium Roofing & Cladding Materials',
       description: 'Long-lasting COLORBOND® XRW, ZINCALUME® roofing & cladding for industrial and commercial structures.'
     }
   ];
 
+
   return (
-    <section 
+    <section
       ref={sectionRef}
       className={`${styles.servicesSection} ${isVisible ? styles.animate : ''}`}
     >
       <div className={styles.container}>
-        
+
         {/* Header */}
         <div className={styles.header}>
           <h2 className={`${styles.title} ${styles.animateUp}`}>
@@ -95,15 +97,15 @@ const ServicesSection = () => {
         {/* Services Grid */}
         <div className={styles.servicesGrid}>
           {services.map((service, index) => (
-            <div 
-              key={service.id} 
+            <div
+              key={service.id}
               className={`${styles.serviceCard} ${styles.animateUp}`}
               style={{ animationDelay: `${0.2 + (index * 0.1)}s` }}
             >
               {/* Card Image */}
               <div className={styles.cardImage}>
-                <img 
-                  src={service.image} 
+                <img
+                  src={service.image}
                   alt={service.title}
                   loading="lazy"
                 />
@@ -112,7 +114,7 @@ const ServicesSection = () => {
               {/* Icon Circle (positioned at image/content border) */}
               <div className={styles.iconCircle}>
                 {/* Optional: Add icon inside */}
-                {/* <img src={service.icon} alt="" /> */}
+                <img src={service.icon} alt="" />
               </div>
 
               {/* Card Content */}

@@ -142,6 +142,7 @@
   width: 50%;
   height: 50%;
   object-fit: contain;
+  /* filter: invert(44%) sepia(72%) saturate(469%) hue-rotate(174deg) brightness(95%) contrast(92%); */
 }
 
 /* ============================================
