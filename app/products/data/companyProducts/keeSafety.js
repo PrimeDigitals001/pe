@@ -405,14 +405,14 @@ export const keeSafetyData = {
         // PRODUCT 8: Step Rooftop Crossovers and Stepovers
         {
             id: 'kee-008',
-            name: 'Step Rooftop Crossovers and Stepovers',
-            slug: 'step-rooftop-crossovers-stepovers',
+            name: 'Kee® Step Rooftop Crossovers and Stepovers',
+            slug: 'Kee® step-rooftop-crossovers-stepovers',
             category: 'Platforms & Walkways',
 
             cardImage: '/images/products/kee-safety/p8.1.png',
             internalImage: '/images/products/kee-safety/p8.2.png',
 
-            cardName: 'Step Rooftop Crossovers and Stepovers',
+            cardName: 'Kee® Step Rooftop Crossovers and Stepovers',
             cardProperty: 'Platforms & Walkways',
             cardDescription: 'We offer a portfolio of solutions which allow people to work safely, whether they\'re on a roof, on a raised platform.',
 
