@@ -1,57 +1,81 @@
 /* ============================================
-   CONTACT US SECTION
-   Base Design: 1920px
-   Background: #ffffff (or #f9f9f9 for light theme contrast)
+   CONTACT PAGE — FLUID RESPONSIVE
+   Base design: 1920px | No hard breakpoints
+   ctrl+zoom proof · orientation-aware
+   ============================================ */
+
+/* ============================================
+   PAGE WRAPPER
    ============================================ */
 
 .main {
-  padding-top: 150px;
-  background-color: #121212; /* matching the footer's dark, premium feel */
+  padding-top: clamp(80px, 9vw, 150px);
+  background-color: #121212;
   color: #fff;
   min-height: 100vh;
   position: relative;
   overflow: hidden;
 }
 
+/* ============================================
+   CONTAINER
+   ============================================ */
+
 .container {
   max-width: 1920px;
   margin: 0 auto;
-  padding: 80px 155px; /* using 155px padding to match footer */
+  padding: clamp(40px, 4.17vw, 80px) clamp(20px, 8.07vw, 155px);
   display: flex;
-  gap: 100px;
+  gap: clamp(40px, 5.21vw, 100px);
 }
+
+/* ============================================
+   LEFT COLUMN
+   ============================================ */
 
 .leftColumn {
   flex: 1;
   max-width: 600px;
 }
 
+/* ============================================
+   TITLE
+   ============================================ */
+
 .title {
   color: #ffffff;
   font-family: "Grift-Medium", sans-serif;
-  font-size: 90px;
+  font-size: clamp(36px, 4.69vw, 72px);
   font-weight: 500;
-  margin: 0 0 30px 0;
+  margin: 0 0 clamp(16px, 1.56vw, 30px) 0;
   line-height: 1.1;
 }
+
+/* ============================================
+   SUBTITLE
+   ============================================ */
 
 .subtitle {
   color: rgba(255, 255, 255, 0.8);
   font-family: "Grift-Regular", sans-serif;
-  font-size: 24px;
-  margin: 0 0 60px 0;
-  line-height: 1.5;
+  font-size: clamp(14px, 1.25vw, 20px);
+  margin: 0 0 clamp(30px, 3.13vw, 60px) 0;
+  line-height: 1.6;
 }
 
+/* ============================================
+   INFO BLOCK
+   ============================================ */
+
 .infoBlock {
-  margin-bottom: 40px;
+  margin-bottom: clamp(24px, 2.08vw, 40px);
 }
 
 .label {
   color: #2683C6;
   font-family: "Grift-Medium", sans-serif;
-  font-size: 20px;
-  margin: 0 0 10px 0;
+  font-size: clamp(11px, 0.94vw, 16px);
+  margin: 0 0 clamp(6px, 0.52vw, 10px) 0;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -59,9 +83,9 @@
 .text {
   color: #ffffff;
   font-family: "Grift-Regular", sans-serif;
-  font-size: 24px;
+  font-size: clamp(14px, 1.15vw, 18px);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .text a {
@@ -74,71 +98,96 @@
   color: #2683C6;
 }
 
+/* ============================================
+   RIGHT COLUMN — FORM CARD
+   ============================================ */
+
 .rightColumn {
   flex: 1;
   background: rgba(255, 255, 255, 0.03);
-  padding: 60px;
-  border-radius: 12px;
+  padding: clamp(28px, 3.13vw, 60px);
+  border-radius: clamp(8px, 0.63vw, 12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+/* ============================================
+   FORM TITLE
+   ============================================ */
 
 .formTitle {
   color: #ffffff;
   font-family: "Grift-Medium", sans-serif;
-  font-size: 40px;
-  margin: 0 0 40px 0;
+  font-size: clamp(22px, 2.08vw, 36px);
+  margin: 0 0 clamp(24px, 2.08vw, 40px) 0;
+  line-height: 1.2;
 }
 
+/* ============================================
+   FORM GROUP
+   ============================================ */
+
 .formGroup {
-  margin-bottom: 30px;
+  margin-bottom: clamp(20px, 1.56vw, 30px);
 }
 
 .inputLabel {
   display: block;
   color: rgba(255, 255, 255, 0.8);
   font-family: "Grift-Medium", sans-serif;
-  font-size: 18px;
-  margin-bottom: 15px;
+  font-size: clamp(12px, 0.83vw, 15px);
+  margin-bottom: clamp(8px, 0.78vw, 14px);
 }
 
-.input, .textarea {
+/* ============================================
+   INPUT & TEXTAREA
+   ============================================ */
+
+.input,
+.textarea {
   width: 100%;
   background: transparent;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   color: #fff;
   font-family: "Grift-Regular", sans-serif;
-  font-size: 20px;
-  padding: 10px 0;
+  font-size: clamp(13px, 0.94vw, 16px);
+  padding: clamp(8px, 0.52vw, 10px) 0;
   outline: none;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
-.input::placeholder, .textarea::placeholder {
+.input::placeholder,
+.textarea::placeholder {
   color: rgba(255, 255, 255, 0.2);
 }
 
-.input:focus, .textarea:focus {
+.input:focus,
+.textarea:focus {
   border-bottom-color: #2683C6;
 }
 
 .textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: clamp(90px, 7.81vw, 120px);
 }
+
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
 
 .submitBtn {
   background: #ffffff;
   color: #000000;
   border: none;
   width: 100%;
-  padding: 20px;
+  padding: clamp(14px, 1.04vw, 20px);
   font-family: "Grift-Medium", sans-serif;
-  font-size: 20px;
-  border-radius: 6px;
+  font-size: clamp(13px, 0.94vw, 16px);
+  border-radius: clamp(4px, 0.31vw, 6px);
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 20px;
+  margin-top: clamp(12px, 1.04vw, 20px);
 }
 
 .submitBtn:hover {
@@ -148,41 +197,151 @@
   box-shadow: 0 10px 20px rgba(38, 131, 198, 0.3);
 }
 
-/* RESPONSIVE */
-@media (max-width: 1440px) {
-  .container {
-    padding: 60px 116px;
-  }
-  .title {
-    font-size: 70px;
-  }
-  .subtitle, .text {
-    font-size: 20px;
-  }
-}
+/* ============================================
+   PORTRAIT (tablets & phones upright)
+   ============================================ */
 
-@media (max-width: 1024px) {
-  .container {
-    padding: 60px;
-    flex-direction: column;
-    gap: 60px;
+@media (orientation: portrait) {
+  .main {
+    padding-top: clamp(70px, 12vw, 120px);
   }
-  .leftColumn, .rightColumn {
+
+  .container {
+    padding: clamp(30px, 6vw, 60px) clamp(16px, 5vw, 40px);
+    flex-direction: column;
+    gap: clamp(30px, 6vw, 50px);
+  }
+
+  .leftColumn {
     max-width: 100%;
   }
+
+  .title {
+    font-size: clamp(32px, 7vw, 56px);
+  }
+
+  .subtitle {
+    font-size: clamp(13px, 3vw, 18px);
+    margin-bottom: clamp(24px, 5vw, 40px);
+  }
+
+  .label {
+    font-size: clamp(10px, 2.5vw, 14px);
+  }
+
+  .text {
+    font-size: clamp(13px, 3vw, 17px);
+  }
+
+  .rightColumn {
+    padding: clamp(20px, 5vw, 40px);
+  }
+
+  .formTitle {
+    font-size: clamp(20px, 5vw, 30px);
+  }
+
+  .inputLabel {
+    font-size: clamp(11px, 2.5vw, 14px);
+  }
+
+  .input,
+  .textarea {
+    font-size: clamp(12px, 3vw, 16px);
+  }
+
+  .submitBtn {
+    font-size: clamp(12px, 3vw, 16px);
+    padding: clamp(12px, 3vw, 18px);
+  }
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 40px 20px;
-  }
-  .title {
-    font-size: 50px;
-  }
-  .rightColumn {
-    padding: 30px 20px;
-  }
+/* ============================================
+   LANDSCAPE MOBILE (short screens)
+   ============================================ */
+
+@media (orientation: landscape) and (max-height: 500px) {
   .main {
-    padding-top: 100px;
+    padding-top: clamp(60px, 10vh, 90px);
+  }
+
+  .container {
+    padding: clamp(20px, 3vh, 40px) clamp(16px, 4vw, 60px);
+    gap: clamp(24px, 3vw, 50px);
+  }
+
+  .title {
+    font-size: clamp(28px, 5vh, 48px);
+  }
+
+  .subtitle {
+    font-size: clamp(12px, 2vh, 16px);
+  }
+
+  .label {
+    font-size: clamp(10px, 1.5vh, 13px);
+  }
+
+  .text {
+    font-size: clamp(12px, 2vh, 16px);
+  }
+
+  .formTitle {
+    font-size: clamp(18px, 3.5vh, 28px);
+  }
+
+  .inputLabel {
+    font-size: clamp(11px, 2vh, 14px);
+  }
+
+  .input,
+  .textarea {
+    font-size: clamp(12px, 2vh, 15px);
+  }
+
+  .submitBtn {
+    font-size: clamp(12px, 2vh, 15px);
+    padding: clamp(10px, 2vh, 16px);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .submitBtn,
+  .text a {
+    transition: none !important;
+  }
+
+  .submitBtn:hover {
+    transform: none;
+  }
+}
+
+/* ============================================
+   PRINT
+   ============================================ */
+
+@media print {
+  .main {
+    background: #fff;
+    color: #000;
+    padding-top: 20px;
+  }
+
+  .container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .rightColumn {
+    border: 1px solid #ccc;
+  }
+
+  .submitBtn {
+    display: none;
   }
 }

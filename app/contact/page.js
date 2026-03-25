@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
-// import Footer from '@/components/Footer';
 import styles from './Contact.module.css';
 
 export default function Contact() {
@@ -14,17 +13,38 @@ export default function Contact() {
     subject: '',
     message: ''
   });
+  const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add real form submission later
-    alert("Thank you for reaching out! We will get back to you shortly.");
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setStatus('loading');
+    setErrorMsg('');
+
+    try {
+      const res = await fetch('/api/send-contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setStatus('error');
+        setErrorMsg(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setStatus('error');
+      setErrorMsg('Failed to send message. Please try again.');
+    }
   };
 
   return (
@@ -69,70 +89,83 @@ export default function Contact() {
 
           <div className={styles.rightColumn}>
             <h2 className={styles.formTitle}>Send a Message</h2>
-            <form onSubmit={handleSubmit}>
 
-              <div className={styles.formGroup}>
-                <label className={styles.inputLabel}>Full Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="John Doe"
-                  className={styles.input}
-                />
+            {status === 'success' ? (
+              <div className={styles.successMessage}>
+                <p>✅ Thank you for reaching out! We will get back to you shortly.</p>
               </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
 
-              <div className={styles.formGroup}>
-                <label className={styles.inputLabel}>Email Address</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="john@example.com"
-                  className={styles.input}
-                />
-              </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.inputLabel}>Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="John Doe"
+                    className={styles.input}
+                  />
+                </div>
 
-              <div className={styles.formGroup}>
-                <label className={styles.inputLabel}>Subject</label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  placeholder="Project Inquiry"
-                  className={styles.input}
-                />
-              </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.inputLabel}>Email Address</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    placeholder="john@example.com"
+                    className={styles.input}
+                  />
+                </div>
 
-              <div className={styles.formGroup}>
-                <label className={styles.inputLabel}>Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  placeholder="Tell us about your project..."
-                  className={styles.textarea}
-                ></textarea>
-              </div>
+                <div className={styles.formGroup}>
+                  <label className={styles.inputLabel}>Subject</label>
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    placeholder="Project Inquiry"
+                    className={styles.input}
+                  />
+                </div>
 
-              <button type="submit" className={styles.submitBtn}>
-                Submit Inquiry
-              </button>
+                <div className={styles.formGroup}>
+                  <label className={styles.inputLabel}>Message</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    placeholder="Tell us about your project..."
+                    className={styles.textarea}
+                  ></textarea>
+                </div>
 
-            </form>
+                {status === 'error' && (
+                  <p className={styles.errorMessage}>{errorMsg}</p>
+                )}
+
+                <button
+                  type="submit"
+                  className={styles.submitBtn}
+                  disabled={status === 'loading'}
+                >
+                  {status === 'loading' ? 'Sending...' : 'Submit Inquiry'}
+                </button>
+
+              </form>
+            )}
           </div>
 
         </div>
       </main>
-
-      {/* <Footer /> */}
     </>
   );
 }
