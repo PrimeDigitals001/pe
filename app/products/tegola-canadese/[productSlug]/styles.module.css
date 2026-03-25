@@ -385,7 +385,10 @@
 }
 
 /* ============================================
-   FEATURES SECTION - auto-fit fluid
+   FEATURES SECTION
+   Desktop:  5 columns — all in one row
+   Tablet:   3 columns — 3 + 2
+   Mobile:   2 columns — 2 + 2 + 1
    ============================================ */
 
 .featuresSection {
@@ -402,12 +405,10 @@
   line-height: 1.2;
 }
 
+/* ── Desktop: single row of 5 ── */
 .featuresGrid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(clamp(140px, 16vw, 260px), 1fr)
-  );
+  grid-template-columns: repeat(5, 1fr);
   gap: clamp(16px, 2.97vw, 57px);
   margin: 0 clamp(16px, 5.47vw, 105px);
 }
@@ -503,7 +504,7 @@
 }
 
 /* ============================================
-   PORTRAIT - tablet stacks detail section
+   PORTRAIT TABLET — 3 columns (3 + 2)
    ============================================ */
 
 @media (orientation: portrait) {
@@ -524,14 +525,15 @@
     padding-top: 0;
   }
 
+  /* ── Tablet portrait: 3 cols → renders as 3 + 2 ── */
   .featuresGrid {
-    grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 20vw, 280px), 1fr));
+    grid-template-columns: repeat(3, 1fr);
     margin: 0 clamp(16px, 5vw, 60px);
   }
 }
 
 /* ============================================
-   PORTRAIT PHONE
+   PORTRAIT PHONE — 2 columns (2 + 2 + 1)
    ============================================ */
 
 @media (orientation: portrait) and (max-width: 500px) {
@@ -574,9 +576,11 @@
     gap: clamp(6px, 2vw, 10px);
   }
 
+  /* ── Mobile: 2 cols → renders as 2 + 2 + 1 ── */
   .featuresGrid {
     grid-template-columns: repeat(2, 1fr);
     margin: 0 clamp(16px, 5vw, 24px);
+    gap: clamp(16px, 5vw, 28px);
   }
 
   .featureCard {
@@ -626,8 +630,9 @@
     margin: 0 clamp(16px, 4vw, 60px);
   }
 
+  /* ── Landscape mobile keeps 5-col (wide enough) ── */
   .featuresGrid {
-    grid-template-columns: repeat(auto-fit, minmax(clamp(120px, 16vw, 240px), 1fr));
+    grid-template-columns: repeat(5, 1fr);
     margin: 0 clamp(16px, 4vw, 60px);
   }
 }

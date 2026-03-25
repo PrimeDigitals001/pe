@@ -280,7 +280,7 @@ export const tataBluescopeData = {
           id: 6,
           name: "SHADOWRIB™ 900",
           slug: "shadowrib-900",
-          category: "Screw Down Roof and Wall Sheets",
+          category: "Wall Liner Panels",
 
           // Card Display
           image: "/images/products/tata-bluescope/shadowrib-900.png",
@@ -333,7 +333,7 @@ export const tataBluescopeData = {
           id: 7,
           name: "SMARTDEK® 51",
           slug: "smartdek-51",
-          category: "Screw Down Roof and Wall Sheets",
+          category: "Decking Sheets",
 
           // Card Display
           image: "/images/products/tata-bluescope/smartdek-51.png",
@@ -386,7 +386,7 @@ export const tataBluescopeData = {
           id: 8,
           name: "EZYDEK™ 44",
           slug: "ezydek-44",
-          category: "Screw Down Roof and Wall Sheets",
+          category: "Decking Sheets",
 
           // Card Display
           image: "/images/products/tata-bluescope/ezydek-44.png",
@@ -755,7 +755,7 @@ export const tataBluescopeData = {
             "Wall cladding, Liner Panel, False ceiling"
           ],
 
-          brochure: "https://tatabluescopesteel.com/wp-content/uploads/2024/12/Flexlok-6-pager-New.pdf",
+          brochure: "https://tatabluescopesteel.com/wp-content/uploads/2024/12/PANELRIB-1110.pdf",
           brochureFileName: "PANELRIB1110",
           brochureFileSize: "91KB",
 

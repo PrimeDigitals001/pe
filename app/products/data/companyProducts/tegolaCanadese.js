@@ -1,5 +1,3 @@
-
-
 // ============================================
 // TEGOLA CANADESE PRODUCTS DATA
 // Company ID: 6 (6th company)
@@ -77,7 +75,7 @@ export const tegolaData = {
     categories: [
         'All Products',
         'Prestige',
-        'Ultimetal',
+        'Ultimetal HD',   // ✅ FIXED: was 'Ultimetal'
         'Master',
         'Top Shingle',
     ],
@@ -175,8 +173,8 @@ export const tegolaData = {
             id: 'tegola-003',
             name: 'Ultimetal HD',
             slug: 'ultimetal-hd',
-            category: 'Ultimetal',
-            pageCategory: 'Ultimetal',
+            category: 'Ultimetal HD',   // ✅ FIXED: was 'Ultimetal'
+            pageCategory: 'Ultimetal HD',
 
             image: '/images/products/tegola-canadese/p3.png',
             galleryImages: [
@@ -253,12 +251,12 @@ export const tegolaData = {
         },
 
         // ============================================
-        // PRODUCT 5: Master J Series
+        // PRODUCT 5: Master J
         // ============================================
         {
             id: 'tegola-005',
-            name: 'Master J Series',
-            slug: 'master-j-series',
+            name: 'Master J',               // ✅ FIXED: was 'Master J Series'
+            slug: 'master-j',              // ✅ FIXED: was 'master-j-series'
             category: 'Master',
             pageCategory: 'Master',
 
@@ -295,12 +293,12 @@ export const tegolaData = {
         },
 
         // ============================================
-        // PRODUCT 6: Top Shingle Rectangular In Line
+        // PRODUCT 6: Top Shingle Rectangular
         // ============================================
         {
             id: 'tegola-006',
-            name: 'Top Shingle Rectangular In Line',
-            slug: 'top-shingle-rectangular-in-line',
+            name: 'Top Shingle Rectangular',       // ✅ FIXED: was 'Top Shingle Rectangular In Line'
+            slug: 'top-shingle-rectangular',       // ✅ FIXED: was 'top-shingle-rectangular-in-line'
             category: 'Top Shingle',
             pageCategory: 'Top Shingle',
 
@@ -321,8 +319,28 @@ export const tegolaData = {
 
             colorRange: [
                 {
-                    name: 'Surfmist',
+                    name: 'Unired 506',
                     image: '/images/products/tegola-canadese/p6c1.png',
+                },
+                {
+                    name: 'Terracotta 535',
+                    image: '/images/products/tegola-canadese/p6c2.png',
+                },
+                {
+                    name: 'Shaded Brown 061',
+                    image: '/images/products/tegola-canadese/p6c3.png',
+                },
+                {
+                    name: 'Slate Grey 060',
+                    image: '/images/products/tegola-canadese/p6c4.png',
+                },
+                {
+                    name: 'Black 473',
+                    image: '/images/products/tegola-canadese/p6c5.png',
+                },
+                {
+                    name: 'Shaded Green',
+                    image: '/images/products/tegola-canadese/p6c6.png',
                 },
             ],
 
