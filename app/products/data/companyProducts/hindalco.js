@@ -62,12 +62,20 @@ export const hindalcoData = {
                 range: '1500 mm to 6500 mm',
                 min: '1500 mm',
                 max: '6500 mm',
-                customNote: 'Customized lengths are available subject to prior confirmation.',
+                customNote: 'Customised length can be made available, subject to prior confirmation.',
             },
+
+            // ✅ UPDATED: Added finish types from brochure
+            finish: [
+                'Plain Mill',
+                'Stucco-embossed',
+                'Colour-coated',
+            ],
 
             colourCoatedCoils: {
                 description: 'Colour Coated Coils for Accessories',
-                note: 'Procurement and T&C require contacting the sales team',
+                // ✅ UPDATED: Correct note from brochure
+                note: 'Colour Coated order will be accepted upon confirmation of RAL codes strictly.',
             },
 
             compliance: [
@@ -78,7 +86,7 @@ export const hindalcoData = {
             colors: [
                 {
                     name: 'Royal Blue',
-                    code: '#007CC4', // Approximate color code
+                    code: '#007CC4',
                 },
                 {
                     name: 'Brick Red',
@@ -96,45 +104,51 @@ export const hindalcoData = {
 
             brochures: [
                 {
-                    text: 'Fortune Fiber Cement Roofs',
-                    size: '91 KB',
-                    link: 'https://birlanu.aflip.in/052cf7283e.html#page/1',
-                    type: 'flipbook', // or 'pdf'
+                    // ✅ UPDATED: Correct brochure name and local PDF path
+                    // Rename your PDF to: everlast-b2b-brochure.pdf
+                    // Place it in: /public/brochures/everlast-b2b-brochure.pdf
+                    text: 'Everlast B2B Brochure',
+                    size: '2 MB',
+                    link: '/brochures/everlast-b2b-brochure.pdf',
+                    type: 'pdf',
                 },
             ],
 
-            // Bottom content section
+            // ✅ UPDATED: Bottom content now reflects actual Everlast product info from brochure
             bottomContent: {
-                title: 'Wide application range: For components made of steel, timber, aluminium',
-                description: 'Fortune Fiber Cement Roofs offer a smart and durable roofing solution built with advanced reinforcing hybrid fibers. These eco-friendly roofing sheets are engineered for fire resistance, corrosion resistance, and long-term performance. With high impact strength, excellent noise insulation, and an easy-to-handle, easy-to-fix design, Fortune Fiber Cement Roofs ensure a reliable, low-maintenance roofing experience for a wide range of applications.',
+                title: "India's Leading Aluminium Roofing Brand",
+                description: "Hindalco Everlast is India's leading brand of Aluminium Roofing Sheets. Manufactured by Hindalco Industries Ltd., the world's largest Aluminium Rolling Company and the metals flagship of the Aditya Birla Group. Hindalco Everlast is the preferred choice for industrial and residential applications. Available in a wide range of colours and profiles like circular corrugated, trapezoidal and tiled, Everlast Roofing Sheets are aesthetically pleasing and of best-in-class quality. They do not rust, have excellent thermal properties which keep interiors cool, carry a high resale value and are 100% environment-friendly.",
             },
 
-            // Additional product info
+            // ✅ UPDATED: Features now match the advantages listed in the brochure
             features: [
-                'Fire resistance',
-                'Corrosion resistance',
-                'Long-term performance',
-                'High impact strength',
-                'Excellent noise insulation',
-                'Easy-to-handle design',
-                'Easy-to-fix installation',
-                'Low-maintenance',
-                'Eco-friendly',
+                'Rust-proof',
+                'Low maintenance',
+                'Strong but one-third the weight of G.I.',
+                'Attractive look — looks good forever',
+                'Reflects heat and moderates temperature below roof up to 6°C due to lower emissivity',
+                'Lifespan of over 40 years',
+                'Resale value up to 60% of initial investment',
+                '100% recyclable — Green Metal certified',
             ],
 
+            // ✅ UPDATED: Applications now match the brochure exactly
             applications: [
-                'Industrial buildings',
-                'Commercial buildings',
-                'Residential projects',
-                'Manufacturing facilities',
-                'Warehouses',
-                'Factory sheds',
+                'Plants & Manufacturing Facilities',
+                'Roof-on-Roof',
+                'Direct Roofing',
+                'Bus and Train Terminus',
+                'Warehouses and Parking Bays',
+                'Hotels and Shopping Malls',
+                'Airports and Seaports',
+                'Stadiums',
+                'Plantations and Farms',
             ],
 
             inStock: true,
             isNew: false,
             isFeatured: true,
-            relatedProducts: [], // No related products since it's the only one
+            relatedProducts: [],
         },
 
     ],
@@ -160,7 +174,6 @@ export const getHindalcoFeaturedProducts = () => {
 };
 
 export const getHindalcoProduct = () => {
-    // Since there's only one product, this returns it directly
     return hindalcoData.products[0];
 };
 
