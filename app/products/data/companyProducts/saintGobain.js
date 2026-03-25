@@ -47,7 +47,7 @@ export const saintGobainData = {
                         { name: "Customized Product", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Easy to handle" },
                         { name: "Fewer Joints and Less Wastage", icon: "/images/products/saint-gobain/icons/icon_8.png", description: "Easy to handle" }
                     ],
-                    brochure: "/pdf/products/saint-gobain/glass-wool-roll-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101KB"
                 },
@@ -69,7 +69,7 @@ export const saintGobainData = {
                         { name: "Customized Sizes", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Tailored to requirements" },
 
                     ],
-                    brochure: "/pdf/products/saint-gobain/glass-wool-board-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101 KB"
                 },
@@ -92,7 +92,7 @@ export const saintGobainData = {
                         { name: "Available in Both Roll and Board Form", icon: "/images/products/saint-gobain/icons/icon_15.png", description: "Class A1" },
                         { name: "Customized Sizes", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Class A1" },
                     ],
-                    brochure: "/pdf/products/saint-gobain/glass-wool-roll-board-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101 KB"
                 },
@@ -115,7 +115,7 @@ export const saintGobainData = {
                         { name: "Made of Glass Fiber Wedges Laminated With AlumInium Foil", icon: "/images/products/saint-gobain/icons/icon_4.png", description: "Pre-formed sections" },
                         { name: "Compression Resistant", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Pre-formed sections" },
                     ],
-                    brochure: "/pdf/products/saint-gobain/glass-wool-pipe-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101 KB"
                 },
@@ -140,7 +140,7 @@ export const saintGobainData = {
 
 
                     ],
-                    brochure: "/pdf/products/saint-gobain/flexible-duct-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101 KB"
                 },
@@ -160,7 +160,7 @@ export const saintGobainData = {
                         { name: "For Acoustic Sensitive Area", icon: "/images/products/saint-gobain/icons/icon_18.png", description: "Non-combustible" },
                         { name: "Easy to Install", icon: "/images/products/saint-gobain/icons/icon_2.png", description: "Decorative finishes" }
                     ],
-                    brochure: "/pdf/products/saint-gobain/acoustic-board-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101 KB"
                 },
@@ -180,7 +180,7 @@ export const saintGobainData = {
                         { name: "Used in ships: Bulkhead, Deckhead and duck Insulation", icon: "/images/products/saint-gobain/icons/icon_19.png", description: "Easy to handle" },
                         { name: "Helps Withstand Extreme Ambient Conditions", icon: "/images/products/saint-gobain/icons/icon_20.png", description: "Recycled content" }
                     ],
-                    brochure: "/pdf/products/saint-gobain/acoustic-panels-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101 KB"
                 }
@@ -215,7 +215,7 @@ export const saintGobainData = {
                         { name: "Customized Lengths", icon: "/images/products/saint-gobain/icons/s4.png", description: "Excellent insulation" },
                         { name: "Fewer Joints and Less Wastage", icon: "/images/products/saint-gobain/icons/s5.png", description: "Excellent insulation" }
                     ],
-                    brochure: "/pdf/products/saint-gobain/rockwool-lrb-mattress-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101 KB"
                 },
@@ -237,7 +237,7 @@ export const saintGobainData = {
                         { name: "Easy to cut", icon: "/images/products/saint-gobain/icons/s9.png", description: "Superior absorption" },
                         { name: "Dimensionally stable", icon: "/images/products/saint-gobain/icons/s10.png", description: "Superior absorption" }
                     ],
-                    brochure: "/pdf/products/saint-gobain/rb-slab-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101 KB"
                 },
@@ -261,7 +261,7 @@ export const saintGobainData = {
                         { name: "No sagging", icon: "/images/products/saint-gobain/icons/s14.png", description: "Pre-cut sections" },
 
                     ],
-                    brochure: "/pdf/products/saint-gobain/stone-wool-pipe-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101 KB"
                 },
@@ -281,7 +281,7 @@ export const saintGobainData = {
                         { name: "High Compressive Strength", icon: "/images/products/saint-gobain/icons/s6.png", description: "Dimensionally stable" },
 
                     ],
-                    brochure: "/pdf/products/saint-gobain/tuffinsul-slab-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101 KB"
                 },
@@ -300,7 +300,7 @@ export const saintGobainData = {
                         { name: "Rigid Bat", icon: "/images/products/saint-gobain/icons/s15.png", description: "High compressive strength" },
 
                     ],
-                    brochure: "/pdf/products/saint-gobain/tuffinsul-lamella-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "Lamella Bat",
                     brochureFileSize: "92 KB"
                 },
@@ -319,7 +319,7 @@ export const saintGobainData = {
                         { name: "Superior Rigidity", icon: "/images/products/saint-gobain/icons/s16.png", description: "Effective transfer reduction" },
                         { name: "High Compressive Strength", icon: "/images/products/saint-gobain/icons/s17.png", description: "Sound absorption" },
                     ],
-                    brochure: "/pdf/products/saint-gobain/building-roll-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "SAINTGOBAIN",
                     brochureFileSize: "101 KB"
                 },
@@ -339,7 +339,7 @@ export const saintGobainData = {
                         { name: "No Specific Density or Thickness", icon: "/images/products/saint-gobain/icons/s19.png", description: "Industrial performance" },
                         { name: "In Fill Material For Complex Shapes", icon: "/images/products/saint-gobain/icons/s20.png", description: "Fills gaps perfectly" }
                     ],
-                    brochure: "/pdf/products/saint-gobain/loose-wool-brochure.pdf",
+                    brochure: "https://www.insulation-india.saint-gobain.com/insulation/pdf/Saint-Gobain-India-Insulation_ProductRange_Brochure.pdf",
                     brochureFileName: "Loose Wool",
                     brochureFileSize: "75 KB"
                 }
