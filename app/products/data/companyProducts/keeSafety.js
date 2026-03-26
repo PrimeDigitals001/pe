@@ -253,6 +253,7 @@ export const keeSafetyData = {
         // ============================================
 
         // PRODUCT 5: Kee Gate® Self-Closing Safety Gate
+
         {
             id: 'kee-005',
             name: 'Kee Gate® Self-Closing Safety Gate',
@@ -260,35 +261,45 @@ export const keeSafetyData = {
             category: 'Safety Gates',
 
             cardImage: '/images/products/kee-safety/p5.1.png',
-            internalImage: '/images/products/kee-safety/p5.2.png',
+            internalImage: '/images/products/kee-safety/p5.1.png',
 
             cardName: 'Kee Gate® Self-Closing Safety Gate',
             cardProperty: 'Safety Gates',
-            cardDescription: 'Our Pallet, Mezzanine & Rooftop Safety Gates are self-closing, spring loaded gates for hazard protection in internal or external applications.',
+            cardDescription: 'Fully adjustable self-closing safety gates for use in rooftop or industrial environments, ideal for protecting openings, ladder/stair access points, roof hatches, and areas requiring regular access.',
 
-            mainProperty: 'Self-closing industrial access gate',
-            mainDescription: 'Kee Gate® Self-Closing Safety Gates provide automatic closure at railing openings, ladder access points, and platform gaps.',
+            mainProperty: 'Choose high quality, fully compliant and extensively tested self-closing safety gates.',
+            mainDescription: 'Kee Gate® is a fully adjustable self-closing safety gate for use in rooftop or industrial environments. The spring-loaded hinge mechanism ensures the gate automatically closes behind the user, overcoming the problem of human error. Gates fit openings up to 1 metre wide and can be cut to size on site. Reversible hinges can be fitted on the left or right side of an opening, making installation easy and flexible. Available in galvanised steel or powder-coated safety yellow finish.',
 
             sizesAndSKUs: [
-                'Single gate: 450mm - 600mm opening',
-                'Wide single gate: 600mm - 900mm opening',
+                'Single gate: fits openings up to 1m wide (can be cut to size on site)',
+                'Finish options: hot-dip galvanized or powder-coated safety yellow',
+                'Universal mounting clamps fit square, round, or flat steel',
             ],
 
             standardsAndSpecifications: [
-                'EN ISO 14122-3 - Access Gates',
-                'BS 6180 - Safety Barriers',
+                'CE accredited to the requirements of EN 1090',
+                'Complies with Work at Height Regulations',
+                'Complies with EN 14122-3:2016',
+                'Complies with test requirements of EN 13374',
+                'Compliant with OSHA Standards',
+                'Salt spray tested to ASTM B117-11-55 (neutral solution, 200+ hours)',
+                'Mechanism tested to over 50,000 open/close cycles',
             ],
 
             applicationAndUsage: [
-                'Ladder access openings',
-                'Platform and mezzanine entry points',
+                'Ladder and stair access point protection',
+                'Roof hatch and rooftop openings',
+                'Walkway and platform access points',
+                'Industrial machinery restricted areas',
+                'Data centres and server room access',
+                'Any opening requiring regular maintenance access',
             ],
 
             brochures: [
                 {
-                    text: 'Kee Gate Product Brochure.pdf',
-                    size: '1.5 MB',
-                    link: '/brochures/kee-safety/kee-gate-brochure.pdf',
+                    text: 'Kee Gate Brochure 2023',
+                    size: 'PDF',
+                    link: 'https://keesafety.in/media/bkojewys/kee-gate-self-closing-safety-gates_india_s_ind.pdf',
                 },
             ],
 
@@ -310,31 +321,46 @@ export const keeSafetyData = {
 
             cardName: 'Kee Pivot® Mezzanine Safety Gates',
             cardProperty: 'Safety Gates',
-            cardDescription: 'Our Pallet, Mezzanine & Rooftop Safety Gates are self-closing, spring loaded gates for hazard protection in internal or external applications.',
+            cardDescription: 'Designed to provide safe access for factory and warehouse workers responsible for loading and unloading pallets onto mezzanine floors or raised working surfaces.',
 
-            mainProperty: 'Dual-gate interlocking safety system',
-            mainDescription: 'Kee Pivot® Mezzanine Safety Gates provide a safe solution for loading and unloading materials at elevated platforms.',
+            mainProperty: 'Mezzanine pallet safety gates that ensure continuous fall protection while goods are being moved to or from elevated surfaces.',
+            mainDescription: 'Kee Pivot® Mezzanine Safety Gates eliminate the fall hazard when workers load and unload pallets on mezzanine floors or raised working surfaces. The gates fit seamlessly into new or existing guardrails and ensure continuous protection is in place throughout the loading process. Available in five configurations to suit different load sizes, ceiling heights, and floor areas. Constructed using Kee Klamp® fittings — if damaged by a forklift or general use, individual fittings can be easily replaced without replacing the whole gate.',
 
             sizesAndSKUs: [
-                'Clear opening widths: 1200mm - 3000mm',
-                'Gate heights: 1000mm, 1100mm',
+                'Standard Pallet Gate — for loads 1.48m wide x 1.6m high',
+                'Tall Load Pallet Gate — for loads 1.48m wide x 2.20m high',
+                'Narrow Mezzanine Pallet Gate — for loads 1.48m wide x 1.8m high',
+                'Wide Load Pallet Gate — for loads 1.95m wide x 1.60m high',
+                'Pallet Gate With Weights — for loads 1.50m deep x 2.50m high',
+                'Available in galvanised steel, aluminum, or custom powder coat finish',
             ],
 
             standardsAndSpecifications: [
-                'EN ISO 14122-3 - Mezzanine Safety Gates',
-                'BS 6180 - Barriers in Buildings',
+                'Compliant with EN 14122-3 for assured safe operation',
+                'Compliant with OSHA requirements',
+                'Built using Kee Klamp® fittings — TÜV approved components',
+                'No welded parts — individual components easily replaceable',
+                'Available in galvanised steel or aluminum construction',
             ],
 
             applicationAndUsage: [
-                'Mezzanine loading bays',
-                'Pallet handling areas',
+                'Mezzanine floor pallet loading and unloading areas',
+                'Factory and warehouse raised working surfaces',
+                'Goods transfer points at elevated platforms',
+                'Forklift pallet drop zones on upper floors',
+                'Any elevated area where pallets are moved to/from ground level',
             ],
 
             brochures: [
                 {
-                    text: 'Kee Pivot Product Guide.pdf',
-                    size: '2.2 MB',
-                    link: '/brochures/kee-safety/kee-pivot-guide.pdf',
+                    text: 'Kee Gate Brochure IND',
+                    size: 'PDF',
+                    link: 'https://keesafety.in/media/2dhb4dow/kee-gate-brochure_ind.pdf',
+                },
+                {
+                    text: 'Kee Pivot Operation & Maintenance Manual',
+                    size: 'PDF',
+                    link: 'https://keesafety.in/media/senk2bbg/kee_gate_pallet_gate_om_ind.pdf',
                 },
             ],
 
@@ -406,7 +432,7 @@ export const keeSafetyData = {
         {
             id: 'kee-008',
             name: 'Kee® Step Rooftop Crossovers and Stepovers',
-            slug: 'Kee® step-rooftop-crossovers-stepovers',
+            slug: 'kee-step-rooftop-crossovers-stepovers',
             category: 'Platforms & Walkways',
 
             cardImage: '/images/products/kee-safety/p8.1.png',

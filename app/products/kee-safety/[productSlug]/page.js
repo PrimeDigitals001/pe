@@ -226,22 +226,44 @@ export default function KeeSafetyProductDetailPage() {
                     <h2 className={styles.furtherProductsTitle}>Further Products</h2>
                     <div className={styles.furtherProductsDivider} role="separator"></div>
 
-                    {/* Related Products Grid */}
+                    {/* Related Products Grid — identical card structure to main listing page */}
                     <div className={styles.relatedProductsGrid}>
                         {relatedProducts.map((relatedProduct) => (
                             <article key={relatedProduct.id} className={styles.relatedProductCard}>
-                                <Link href={`/products/kee-safety/${relatedProduct.slug}`} className={styles.relatedProductLink}>
-                                    <div className={styles.relatedProductImage}>
+                                <Link
+                                    href={`/products/kee-safety/${relatedProduct.slug}`}
+                                    className={styles.relatedProductLink}
+                                >
+                                    {/* Image wrapper */}
+                                    <div className={styles.relatedProductImageWrapper}>
                                         <img
                                             src={relatedProduct.cardImage}
-                                            alt={`${relatedProduct.name} - ${relatedProduct.category}`}
+                                            alt={relatedProduct.name}
                                             loading="lazy"
                                         />
                                     </div>
-                                    <h3 className={styles.relatedProductName}>{relatedProduct.name}</h3>
-                                    <p className={styles.relatedProductCategory}>{relatedProduct.cardProperty}</p>
-                                    <p className={styles.relatedProductDesc}>{relatedProduct.cardDescription}</p>
-                                    <span className={styles.viewProductLink}>View product</span>
+
+                                    {/* Name */}
+                                    <h3 className={styles.relatedProductName}>
+                                        {relatedProduct.name}
+                                    </h3>
+
+                                    {/* Category / property label */}
+                                    <p className={styles.relatedProductCategory}>
+                                        {relatedProduct.cardProperty}
+                                    </p>
+
+                                    {/* Description */}
+                                    <p className={styles.relatedProductDesc}>
+                                        {relatedProduct.cardDescription}
+                                    </p>
+
+                                    {/* View product link */}
+                                    <span className={styles.viewRelatedProductLink}>
+                                        View product
+                                    </span>
+
+                                    {/* Bottom border */}
                                     <div className={styles.relatedProductBorder}></div>
                                 </Link>
                             </article>

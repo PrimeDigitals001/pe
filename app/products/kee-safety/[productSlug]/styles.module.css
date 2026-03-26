@@ -298,112 +298,123 @@
    ============================================ */
 
 .furtherProductsSection {
-  margin: clamp(40px, 4.69vw, 90px) clamp(16px, 6.3vw, 121px) 0;
-  padding-bottom: clamp(40px, 4.17vw, 80px);
+  margin: clamp(40px, 4.69vw, 90px) auto 0;
+  max-width: clamp(1000px, 87.24vw, 1675px);
+  padding: 0 clamp(20px, 9.9vw, 190px) clamp(40px, 4.17vw, 80px);
 }
 
 .furtherProductsTitle {
   color: #000000;
   font-family: var(--font-heading);
-  font-size: clamp(18px, 2.08vw, 40px);
+  font-size: clamp(22px, 2.08vw, 40px);
   font-weight: 500;
   margin: 0 0 clamp(6px, 0.63vw, 12px) 0;
+  margin-left: calc(-1 * clamp(20px, 9.9vw, 190px));
   line-height: 1.3;
 }
 
 .furtherProductsDivider {
-  width: 100%;
+  width: calc(100% + 2 * clamp(20px, 9.9vw, 190px));
+  margin-left: calc(-1 * clamp(20px, 9.9vw, 190px));
   height: 1.5px;
   background: #000000;
-  margin: 0 0 clamp(24px, 2.34vw, 45px) 0;
+  margin-bottom: clamp(24px, 2.34vw, 45px);
 }
 
 /* ============================================
-   RELATED PRODUCTS GRID - auto-fit fluid
+   RELATED PRODUCTS GRID
+   Mirrors the main listing page exactly:
+   3 equal columns, same gaps, same card design
    ============================================ */
 
 .relatedProductsGrid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(clamp(220px, 26vw, 500px), 1fr)
-  );
-  gap: clamp(20px, 2.92vw, 56px);
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: clamp(32px, 3.44vw, 66px);
+  row-gap: clamp(24px, 1.98vw, 38px);
 }
+
+/* ============================================
+   RELATED PRODUCT CARD
+   1:1 match with main page .productCard
+   ============================================ */
 
 .relatedProductCard {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.relatedProductLink {
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  background: #ffffff;
   transition: transform 0.3s ease;
-  height: 100%;
 }
 
-.relatedProductLink:hover {
+.relatedProductCard:hover {
   transform: translateY(-4px);
 }
 
+.relatedProductLink {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+}
+
 .relatedProductLink:focus-visible {
-  outline: 3px solid #000000;
+  outline: 2px solid #000000;
   outline-offset: 4px;
   border-radius: 4px;
 }
 
-.relatedProductImage {
+/* Image wrapper — exact match to main page .productImageWrapper */
+.relatedProductImageWrapper {
   width: 100%;
   aspect-ratio: 469 / 364;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   overflow: hidden;
-  margin-bottom: clamp(8px, 0.83vw, 16px);
+  margin-bottom: clamp(12px, 1.04vw, 20px);
 }
 
-.relatedProductImage img {
+.relatedProductImageWrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
-.relatedProductLink:hover .relatedProductImage img {
+.relatedProductCard:hover .relatedProductImageWrapper img {
   transform: scale(1.05);
 }
 
+/* Text — exact match to main page .productName / .productProperty / .productDescription */
 .relatedProductName {
   color: #000000;
   font-family: var(--font-heading);
-  font-size: clamp(14px, 1.35vw, 26px);
+  font-size: clamp(16px, 1.35vw, 26px);
   font-weight: 600;
-  margin: 0 0 clamp(4px, 0.52vw, 10px) 0;
+  margin: 0 0 clamp(6px, 0.5vw, 10px) 0;
   line-height: 1.3;
 }
 
 .relatedProductCategory {
   color: #000000;
   font-family: var(--font-heading);
-  font-size: clamp(12px, 1.04vw, 20px);
+  font-size: clamp(13px, 1.04vw, 20px);
   font-weight: 700;
   opacity: 0.73;
-  margin: 0 0 clamp(4px, 0.52vw, 10px) 0;
+  margin: 0 0 clamp(8px, 0.625vw, 12px) 0;
   line-height: 1.2;
 }
 
 .relatedProductDesc {
   color: #000000;
   font-family: var(--font-heading);
-  font-size: clamp(12px, 1.25vw, 24px);
+  font-size: clamp(14px, 1.25vw, 24px);
   font-weight: 500;
   opacity: 0.73;
   line-height: 1.4;
-  margin: 0 0 clamp(8px, 1.04vw, 20px) 0;
+  margin: 0 0 clamp(12px, 1.25vw, 24px) 0;
   flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -412,22 +423,25 @@
   overflow: hidden;
 }
 
-.viewProductLink {
+/* "View product" link — exact match to main page .viewProductLink */
+.viewRelatedProductLink {
   color: rgba(0, 0, 0, 0.8);
   font-family: var(--font-heading);
-  font-size: clamp(12px, 1.25vw, 24px);
+  font-size: clamp(14px, 1.25vw, 24px);
   font-weight: 400;
   text-decoration: underline;
-  margin-bottom: clamp(12px, 1.56vw, 30px);
+  margin-bottom: clamp(16px, 1.82vw, 35px);
   display: inline-block;
+  width: fit-content;
   transition: color 0.3s ease;
 }
 
-.relatedProductLink:hover .viewProductLink {
+.relatedProductLink:hover .viewRelatedProductLink {
   color: #000000;
   opacity: 0.6;
 }
 
+/* Bottom border — exact match to main page .cardBottomBorder */
 .relatedProductBorder {
   width: 100%;
   height: 1px;
@@ -489,6 +503,12 @@
   .productInfo {
     max-width: 100%;
   }
+
+  /* Related products: 2 cols on portrait tablet */
+  .relatedProductsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: clamp(20px, 4vw, 40px);
+  }
 }
 
 /* ============================================
@@ -515,6 +535,17 @@
 
   .productImageContainer {
     width: min(72vw, 340px);
+  }
+
+  /* Related products: 1 col on phone */
+  .relatedProductsGrid {
+    grid-template-columns: 1fr;
+    row-gap: clamp(28px, 7vw, 40px);
+  }
+
+  .relatedProductCard {
+    max-width: clamp(280px, 100%, 440px);
+    margin: 0 auto;
   }
 
   .relatedProductDesc {
@@ -554,16 +585,16 @@
 
 @media (prefers-reduced-motion: reduce) {
   .productMainImage,
-  .relatedProductImage img,
-  .relatedProductLink,
+  .relatedProductImageWrapper img,
+  .relatedProductCard,
   .enquireButton,
   .downloadLink {
     transition: none !important;
   }
 
   .productMainImage:hover,
-  .relatedProductLink:hover .relatedProductImage img,
-  .relatedProductLink:hover,
+  .relatedProductCard:hover .relatedProductImageWrapper img,
+  .relatedProductCard:hover,
   .enquireButton:hover {
     transform: none !important;
   }
@@ -575,7 +606,7 @@
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .productMainImage,
-  .relatedProductImage img,
+  .relatedProductImageWrapper img,
   .companyLogo {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
