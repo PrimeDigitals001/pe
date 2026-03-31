@@ -668,3 +668,100 @@
   height: 18px;
   flex-shrink: 0;
 }
+/* ============================================
+   ADD THESE to the bottom of page.module.css
+   (paste before the last closing comment)
+   ============================================ */
+
+/* ── Selected count label next to "Products *" ── */
+.selectedCount {
+    margin-left: 10px;
+    color: var(--color-primary);
+    font-size: clamp(11px, 0.63vw, 12px);
+    font-weight: 600;
+    background: rgba(38, 131, 198, 0.08);
+    padding: 2px 8px;
+    border-radius: 99px;
+}
+
+/* ── Badge on brand chip showing how many from that brand are selected ── */
+.brandBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: 6px;
+    flex-shrink: 0;
+}
+
+.brandBadgeActive {
+    background: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+/* ── Selected products summary strip ── */
+.selectionSummary {
+    padding: clamp(12px, 1.04vw, 18px) clamp(14px, 1.25vw, 20px);
+    background: #f0f7ff;
+    border-radius: var(--radius-lg);
+    border: 1.5px solid rgba(38, 131, 198, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 0.63vw, 12px);
+    animation: fadeIn 0.2s ease;
+}
+
+.selectionSummaryLabel {
+    font-family: var(--font-body);
+    font-size: clamp(11px, 0.63vw, 12px);
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0;
+}
+
+.selectionPills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(6px, 0.52vw, 10px);
+}
+
+.selectionPill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: clamp(4px, 0.31vw, 6px) clamp(10px, 0.83vw, 14px);
+    background: #ffffff;
+    border: 1.5px solid rgba(38, 131, 198, 0.25);
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: clamp(11px, 0.63vw, 12px);
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.pillRemove {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.35);
+    font-size: 15px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.pillRemove:hover {
+    color: var(--color-secondary);
+}

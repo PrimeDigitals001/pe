@@ -91,6 +91,9 @@ export default function Header() {
                     <Link href="/about" className={styles.navLink}>
                         ABOUT US
                     </Link>
+                    <Link href="/services" className={styles.navLink}>
+                        SERVICES
+                    </Link>
                     <Link href="/products" className={styles.navLink}>
                         PRODUCTS
                     </Link>
@@ -132,6 +135,9 @@ export default function Header() {
                 </Link>
                 <Link href="/about" className={styles.mobileNavLink} onClick={closeMobileMenu}>
                     ABOUT US
+                </Link>
+                <Link href="/services" className={styles.mobileNavLink} onClick={closeMobileMenu}>
+                    SERVICES
                 </Link>
                 <Link href="/products" className={styles.mobileNavLink} onClick={closeMobileMenu}>
                     PRODUCTS

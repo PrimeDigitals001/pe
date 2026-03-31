@@ -1,0 +1,264 @@
+/* ============================================================
+   CHEMICALS SECTION — for /products page
+   Card design: full-image + black gradient overlay
+   Brand: #2683C6 | Base: 1920px
+   ============================================================ */
+
+.chemicalsSection {
+    width: 100%;
+    background: #f8fafc;
+    padding: clamp(60px, 6.25vw, 120px) 0;
+    position: relative;
+}
+
+.container {
+    max-width: var(--container-full);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 6.3vw, 121px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ── HEADER ── */
+
+.header {
+    text-align: center;
+    margin-bottom: clamp(40px, 4.17vw, 80px);
+    width: 100%;
+    max-width: clamp(560px, 52vw, 1000px);
+}
+
+.eyebrow {
+    color: #2683C6;
+    font-family: var(--font-heading);
+    font-size: clamp(11px, 0.73vw, 14px);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin: 0 0 clamp(8px, 0.63vw, 12px) 0;
+}
+
+.title {
+    color: var(--color-black);
+    font-family: var(--font-heading);
+    font-size: clamp(28px, 3.33vw, 64px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 clamp(12px, 1.04vw, 20px) 0;
+}
+
+.subtitle {
+    color: rgba(0, 0, 0, 0.6);
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 1.04vw, 20px);
+    font-weight: 500;
+    line-height: 1.6;
+    margin: 0 auto;
+}
+
+/* ── GRID ── */
+
+.chemicalsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(14px, 1.25vw, 24px);
+    width: 100%;
+    max-width: clamp(900px, 82vw, 1560px);
+}
+
+/* ── CARD — full image + gradient overlay ── */
+
+.chemicalCard {
+    position: relative;
+    display: block;
+    text-decoration: none;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: clamp(8px, 0.625vw, 12px);
+    background: #111;
+}
+
+.cardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.chemicalCard:hover .cardImage {
+    transform: scale(1.07);
+}
+
+/* Black gradient — transparent at top, solid at bottom */
+.cardOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.82) 0%,
+        rgba(0, 0, 0, 0.35) 45%,
+        rgba(0, 0, 0, 0) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: clamp(12px, 1.25vw, 24px);
+    transition: background 0.4s ease;
+}
+
+.chemicalCard:hover .cardOverlay {
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.90) 0%,
+        rgba(0, 0, 0, 0.45) 50%,
+        rgba(0, 0, 0, 0.05) 100%
+    );
+}
+
+.cardCategory {
+    color: rgba(255, 255, 255, 0.65);
+    font-family: var(--font-heading);
+    font-size: clamp(10px, 0.57vw, 11px);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: clamp(3px, 0.26vw, 5px);
+    display: block;
+}
+
+.cardName {
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: clamp(14px, 1.15vw, 22px);
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 0;
+}
+
+.cardTradeName {
+    font-weight: 400;
+    font-size: clamp(12px, 0.83vw, 16px);
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.chemicalCard:focus-visible {
+    outline: 3px solid #2683C6;
+    outline-offset: 3px;
+}
+
+/* ── VIEW ALL CTA ── */
+
+.viewAllWrapper {
+    margin-top: clamp(36px, 3.65vw, 70px);
+}
+
+.viewAllBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(12px, 0.83vw, 16px) clamp(28px, 2.08vw, 40px);
+    border: 2px solid #2683C6;
+    border-radius: 64px;
+    color: #2683C6;
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.94vw, 18px);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 0.02em;
+}
+
+.viewAllBtn:hover {
+    background: #2683C6;
+    color: #ffffff;
+}
+
+.viewAllBtn:focus-visible {
+    outline: 3px solid #2683C6;
+    outline-offset: 3px;
+}
+
+/* ── ANIMATIONS ── */
+
+.animateUp {
+    opacity: 0;
+    transform: translateY(28px);
+    will-change: transform, opacity;
+}
+
+@keyframes slideInUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate .animateUp {
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+/* ── TABLET — 2 cols ── */
+
+@media (max-width: 1024px) and (min-width: 601px) {
+    .chemicalsGrid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: clamp(560px, 85vw, 780px);
+    }
+
+    .chemicalCard:hover .cardImage { transform: none; }
+    .chemicalCard:active .cardImage { transform: scale(1.03); }
+}
+
+/* ── MOBILE — 1 col ── */
+
+@media (max-width: 600px) {
+    .container { padding: 0 clamp(12px, 4vw, 20px); }
+
+    .chemicalsGrid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+
+    .chemicalCard {
+        max-width: clamp(280px, 88vw, 440px);
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .chemicalCard:hover .cardImage { transform: none; }
+    .chemicalCard:active .cardImage {
+        transform: scale(1.03);
+        transition: transform 0.15s ease;
+    }
+}
+
+/* ── ACCESSIBILITY ── */
+
+@media (prefers-reduced-motion: reduce) {
+    .animateUp {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .cardImage,
+    .cardOverlay,
+    .viewAllBtn {
+        transition: none !important;
+    }
+
+    .chemicalCard:hover .cardImage { transform: none !important; }
+}
+
+/* ── TOUCH DEVICES ── */
+
+@media (hover: none) and (pointer: coarse) {
+    .chemicalCard:hover .cardImage { transform: none; }
+    .chemicalCard:hover .cardOverlay {
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.82) 0%,
+            rgba(0, 0, 0, 0.35) 45%,
+            rgba(0, 0, 0, 0) 100%
+        );
+    }
+}

@@ -1,0 +1,332 @@
+/* ============================================
+   SERVICES CONTACT / CTA SECTION
+   Base Design: 1920px
+   Dark overlay background, two-column layout
+   Left: heading + CTA button
+   Right: contact details
+   ============================================ */
+
+/* ============================================
+   SECTION
+   ============================================ */
+
+.servicesContact {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(60px, 7.29vw, 140px) 0;
+  background: #0f1f35;
+}
+
+/* ============================================
+   BACKGROUND IMAGE + OVERLAY
+   ============================================ */
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.18;
+}
+
+/* Dark gradient overlay on top of image */
+.servicesContact::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 31, 53, 0.95) 0%,
+    rgba(38, 131, 198, 0.25) 100%
+  );
+  z-index: 1;
+}
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 7.97vw, 153px);
+  display: flex;
+  align-items: center;
+  gap: clamp(40px, 5.21vw, 100px);
+}
+
+/* ============================================
+   LEFT BLOCK
+   ============================================ */
+
+.leftBlock {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(12px, 1.25vw, 24px);
+}
+
+.eyebrow {
+  color: #2683C6;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(12px, 0.94vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1;
+}
+
+.heading {
+  color: #ffffff;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(28px, 2.92vw, 56px);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.subtext {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(13px, 1.04vw, 20px);
+  font-weight: 500;
+  line-height: 1.65;
+  margin: 0;
+  max-width: clamp(280px, 28vw, 520px);
+}
+
+/* ── Get Quote Button ── */
+
+.quoteBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(8px, 0.63vw, 12px);
+  margin-top: clamp(8px, 0.83vw, 16px);
+  padding: clamp(14px, 1.15vw, 22px) clamp(28px, 2.29vw, 44px);
+  background: #2683C6;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quoteBtn:hover {
+  background: #1a6aaa;
+  transform: translateY(-3px);
+  box-shadow: 0px 12px 32px rgba(38, 131, 198, 0.45);
+}
+
+.quoteBtnText {
+  color: #ffffff;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(13px, 1.04vw, 20px);
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.quoteBtnArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.quoteBtn:hover .quoteBtnArrow {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   VERTICAL DIVIDER — desktop only
+   ============================================ */
+
+.verticalDivider {
+  flex-shrink: 0;
+  width: 1px;
+  height: clamp(160px, 16.67vw, 320px);
+  background: rgba(255, 255, 255, 0.12);
+  align-self: center;
+}
+
+/* ============================================
+   RIGHT BLOCK — contact details
+   ============================================ */
+
+.rightBlock {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 1.77vw, 34px);
+}
+
+.contactLabel {
+  color: rgba(255, 255, 255, 0.4);
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(11px, 0.83vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1;
+}
+
+/* ── Each contact row ── */
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.04vw, 20px);
+  text-decoration: none;
+  transition: transform 0.25s ease;
+  width: fit-content;
+}
+
+.contactItem:hover {
+  transform: translateX(6px);
+}
+
+.contactIcon {
+  width: clamp(36px, 2.6vw, 50px);
+  height: clamp(36px, 2.6vw, 50px);
+  border-radius: 50%;
+  background: rgba(38, 131, 198, 0.2);
+  border: 1px solid rgba(38, 131, 198, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2683C6;
+  flex-shrink: 0;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.contactItem:hover .contactIcon {
+  background: rgba(38, 131, 198, 0.35);
+  border-color: rgba(38, 131, 198, 0.6);
+}
+
+.contactText {
+  color: rgba(255, 255, 255, 0.82);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(12px, 1.04vw, 20px);
+  font-weight: 500;
+  line-height: 1.3;
+  transition: color 0.25s ease;
+}
+
+.contactItem:hover .contactText {
+  color: #ffffff;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+.animateUp {
+  opacity: 0;
+  transform: translateY(36px);
+  will-change: transform, opacity;
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate .animateUp {
+  animation: slideInUp 0.8s ease-out forwards;
+}
+
+.animate .eyebrow       { animation-delay: 0.05s; }
+.animate .heading       { animation-delay: 0.15s; }
+.animate .subtext       { animation-delay: 0.22s; }
+.animate .quoteBtn      { animation-delay: 0.30s; }
+.animate .verticalDivider { animation-delay: 0.25s; }
+.animate .rightBlock    { animation-delay: 0.35s; }
+
+/* ============================================
+   TABLET — stack vertically
+   ============================================ */
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(36px, 8vw, 60px);
+  }
+
+  .verticalDivider {
+    display: none;
+  }
+
+  .subtext {
+    max-width: 100%;
+  }
+
+  .leftBlock,
+  .rightBlock {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   MOBILE
+   ============================================ */
+
+@media (max-width: 480px) {
+  .servicesContact {
+    padding: clamp(48px, 12vw, 80px) 0;
+  }
+
+  .quoteBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contactItem {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .animate .animateUp {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .quoteBtn,
+  .contactItem,
+  .quoteBtnArrow,
+  .contactIcon,
+  .contactText {
+    transition: none !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .quoteBtn:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .contactItem:hover {
+    transform: none;
+  }
+}

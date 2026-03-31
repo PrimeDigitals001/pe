@@ -1,0 +1,135 @@
+/* ============================================
+   SERVICES HERO SECTION - FLUID RESPONSIVE
+   Base Design: 1920px
+   Mirrors AboutHero pattern exactly
+   Title: "Our Services" - 64px Bold
+   Subtitle: 24px Bold
+   ============================================ */
+
+/* ============================================
+   MAIN SECTION
+   ============================================ */
+
+.servicesHero {
+  width: 100%;
+  /* Fluid height: 300px on smallest → 786px at 1920px */
+  height: clamp(300px, 40.94vw, 786px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================
+   HERO IMAGE - Full bleed background
+   ============================================ */
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dark overlay for text readability */
+.heroImage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  z-index: 2;
+}
+
+/* ============================================
+   HERO CONTENT
+   ============================================ */
+
+.heroContent {
+  position: absolute;
+  bottom: clamp(30px, 8vw, 130px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  max-width: clamp(300px, 70vw, 900px);
+}
+
+/* ============================================
+   TITLE - "Our Services"
+   Fluid: 24px (mobile) → 64px (1920px)
+   ============================================ */
+
+.title {
+  color: #ffffff;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(24px, 3.33vw, 64px);
+  font-weight: 700;
+  margin: 0 0 clamp(10px, 1.41vw, 27px) 0;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+/* ============================================
+   SUBTITLE
+   Fluid: 13px (mobile) → 24px (1920px)
+   ============================================ */
+
+.subtitle {
+  color: #ffffff;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(13px, 1.25vw, 24px);
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  max-width: 90vw;
+}
+
+/* ============================================
+   MOBILE - Allow subtitle to wrap naturally
+   ============================================ */
+
+@media (max-width: 600px) {
+  .subtitle {
+    white-space: normal;
+    max-width: clamp(260px, 85vw, 480px);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    transition: none !important;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}

@@ -1,0 +1,444 @@
+/* ============================================
+   SERVICES GRID SECTION
+   Base Design: 1920px
+   3×2 card grid
+   Each card: large image top + content bottom
+   Hover: overlay slides up on image
+   Click: ServiceEnquireModal opens
+   ============================================ */
+
+/* ============================================
+   SECTION
+   ============================================ */
+
+.servicesGridSection {
+  width: 100%;
+  background: #f8fafc;
+  padding: clamp(50px, 6.25vw, 120px) 0;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 7.97vw, 153px);
+}
+
+/* ============================================
+   HEADING
+   ============================================ */
+
+.headingBlock {
+  text-align: center;
+  margin-bottom: clamp(36px, 4.69vw, 90px);
+}
+
+.sectionTitle {
+  color: #2683C6;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(28px, 2.5vw, 48px);
+  font-weight: 700;
+  margin: 0 0 clamp(10px, 0.83vw, 16px) 0;
+  line-height: 1.2;
+}
+
+.sectionSubtitle {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(13px, 1.04vw, 20px);
+  font-weight: 500;
+  margin: 0 auto;
+  line-height: 1.6;
+  max-width: clamp(300px, 40vw, 640px);
+}
+
+/* ============================================
+   GRID — 3 columns desktop
+   ============================================ */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.08vw, 40px);
+}
+
+/* ============================================
+   CARD
+   ============================================ */
+
+.card {
+  background: #ffffff;
+  border-radius: clamp(14px, 1.25vw, 24px);
+  overflow: hidden;
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.card:hover {
+  box-shadow: 0px 12px 40px rgba(38, 131, 198, 0.16);
+  transform: translateY(-6px);
+}
+
+/* ============================================
+   IMAGE WRAP
+   ============================================ */
+
+.imageWrap {
+  width: 100%;
+  /* 16:10 cinematic ratio */
+  aspect-ratio: 16 / 10;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #1a2a3a;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover .cardImage {
+  transform: scale(1.07);
+}
+
+/* ── Number watermark ── */
+
+.imageNumber {
+  position: absolute;
+  top: clamp(10px, 0.83vw, 16px);
+  left: clamp(14px, 1.15vw, 22px);
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(36px, 4.17vw, 80px);
+  font-weight: 700;
+  color: #ffffff;
+  opacity: 0.12;
+  line-height: 1;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.card:hover .imageNumber {
+  opacity: 0.05;
+}
+
+/* ── Hover overlay — slides up from bottom ── */
+
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(100%);
+  background: linear-gradient(
+    to top,
+    rgba(38, 131, 198, 0.97) 0%,
+    rgba(38, 131, 198, 0.9) 100%
+  );
+  padding: clamp(16px, 1.56vw, 30px) clamp(16px, 1.56vw, 30px) clamp(20px, 1.77vw, 34px);
+  z-index: 3;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card:hover .imageOverlay {
+  transform: translateY(0%);
+}
+
+.overlayTagline {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(11px, 0.83vw, 16px);
+  font-weight: 700;
+  font-style: italic;
+  margin: 0 0 clamp(8px, 0.63vw, 12px) 0;
+  line-height: 1.4;
+}
+
+.overlayList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.36vw, 7px);
+}
+
+.overlayItem {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.52vw, 10px);
+  color: rgba(255, 255, 255, 0.88);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(9px, 0.68vw, 13px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.overlayDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  flex-shrink: 0;
+}
+
+.overlayMore {
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(9px, 0.63vw, 12px);
+  font-weight: 500;
+  font-style: italic;
+  margin-top: clamp(2px, 0.21vw, 4px);
+  padding-left: clamp(10px, 0.83vw, 16px);
+}
+
+/* ============================================
+   CARD BODY
+   ============================================ */
+
+.cardBody {
+  padding: clamp(18px, 1.56vw, 30px) clamp(18px, 1.56vw, 30px) clamp(22px, 1.77vw, 34px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.63vw, 12px);
+  flex: 1;
+}
+
+/* ── Number + rule ── */
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 0.63vw, 12px);
+}
+
+.cardNumber {
+  color: #2683C6;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(11px, 0.78vw, 15px);
+  font-weight: 700;
+  opacity: 0.6;
+  line-height: 1;
+}
+
+.cardRule {
+  flex: 0 0 clamp(20px, 2.08vw, 40px);
+  height: 1px;
+  background: #2683C6;
+  opacity: 0.25;
+}
+
+/* ── Title ── */
+
+.cardTitle {
+  color: #1a1a1a;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(15px, 1.25vw, 24px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* ── Tagline ── */
+
+.cardTagline {
+  color: #2683C6;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(11px, 0.78vw, 15px);
+  font-weight: 700;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.4;
+  opacity: 0.8;
+}
+
+/* ── Description ── */
+
+.cardDesc {
+  color: rgba(0, 0, 0, 0.52);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(11px, 0.83vw, 16px);
+  font-weight: 500;
+  line-height: 1.65;
+  margin: 0;
+  /* 3-line clamp to keep cards uniform height */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Enquire button ── */
+
+.enquireBtn {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.52vw, 10px);
+  margin-top: auto;
+  padding-top: clamp(10px, 0.83vw, 16px);
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  color: #2683C6;
+  transition: gap 0.25s ease;
+}
+
+.enquireBtn:hover {
+  gap: clamp(10px, 0.83vw, 16px);
+}
+
+.enquireBtn:focus-visible {
+  outline: 2px solid #2683C6;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.enquireBtnText {
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(12px, 0.83vw, 16px);
+  font-weight: 700;
+  line-height: 1;
+  border-bottom: 1.5px solid rgba(38, 131, 198, 0.3);
+  padding-bottom: 2px;
+  transition: border-color 0.25s ease;
+}
+
+.enquireBtn:hover .enquireBtnText {
+  border-color: #2683C6;
+}
+
+.enquireBtnIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.enquireBtn:hover .enquireBtnIcon {
+  transform: translateX(3px);
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+.animateUp {
+  opacity: 0;
+  transform: translateY(44px);
+  will-change: transform, opacity;
+}
+
+.animateUp.visible {
+  animation: slideInUp 0.75s ease-out forwards;
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   TABLET — 2 columns
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(16px, 2.5vw, 28px);
+  }
+
+  .card:hover {
+    transform: none;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.07);
+  }
+
+  /* Overlay always slightly peeking on tablet */
+  .imageOverlay {
+    transform: translateY(72%);
+    background: linear-gradient(
+      to top,
+      rgba(38, 131, 198, 0.95) 0%,
+      rgba(38, 131, 198, 0.0) 100%
+    );
+    padding-top: clamp(32px, 6vw, 60px);
+  }
+
+  .card:hover .imageOverlay {
+    transform: translateY(0%);
+  }
+}
+
+/* ============================================
+   MOBILE — 1 column
+   ============================================ */
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: clamp(16px, 5vw, 24px);
+  }
+
+  .imageWrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .imageOverlay {
+    transform: translateY(100%);
+    background: linear-gradient(
+      to top,
+      rgba(38, 131, 198, 0.97) 0%,
+      rgba(38, 131, 198, 0.9) 100%
+    );
+    padding-top: clamp(16px, 5vw, 28px);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .animateUp {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .card,
+  .cardImage,
+  .imageOverlay,
+  .enquireBtn,
+  .enquireBtnIcon,
+  .enquireBtnText {
+    transition: none !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .card:hover {
+    transform: none;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.07);
+  }
+
+  .imageOverlay {
+    transform: translateY(72%);
+    background: linear-gradient(
+      to top,
+      rgba(38, 131, 198, 0.95) 0%,
+      rgba(38, 131, 198, 0) 100%
+    );
+    padding-top: clamp(40px, 8vw, 80px);
+  }
+}

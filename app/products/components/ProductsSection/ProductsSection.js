@@ -27,12 +27,12 @@ const ProductsSection = () => {
   }, []);
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className={`${styles.productsSection} ${isVisible ? styles.animate : ''}`}
     >
       <div className={styles.container}>
-        
+
         {/* Header */}
         <div className={styles.header}>
           <h2 className={`${styles.title} ${styles.animateUp}`}>
@@ -59,7 +59,7 @@ const ProductsSection = () => {
                   src={product.logo}
                   alt={product.name}
                   className={styles.logo}
-                  // REMOVED fixed width/height for responsive scaling
+                // REMOVED fixed width/height for responsive scaling
                 />
               </div>
             </Link>

@@ -1,0 +1,545 @@
+/* ============================================
+   SERVICE MODAL
+   Centered modal — matches existing modal style
+   Expands when form opens
+   Labeled close bar fixed at bottom
+   ============================================ */
+
+/* ============================================
+   BACKDROP
+   ============================================ */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 2vw, 40px);
+  transition: background 0.3s ease;
+}
+
+.backdropOpen {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================
+   MODAL
+   ============================================ */
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: clamp(340px, 52vw, 860px);
+  /* max height — leaves room so close bar is always visible */
+  max-height: 88vh;
+  background: #ffffff;
+  border-radius: clamp(16px, 1.25vw, 24px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 24px 80px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.modalOpen {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ============================================
+   SCROLL AREA — everything scrolls here
+   close bar stays fixed at bottom
+   ============================================ */
+
+.scrollArea {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Scrollbar styling */
+.scrollArea::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollArea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.scrollArea::-webkit-scrollbar-thumb {
+  background: rgba(38, 131, 198, 0.3);
+  border-radius: 4px;
+}
+
+/* ============================================
+   IMAGE
+   ============================================ */
+
+.imageWrap {
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #1a2a3a;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gradient fade at bottom of image into white */
+.imageGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  pointer-events: none;
+}
+
+/* ============================================
+   SERVICE INFO BLOCK
+   ============================================ */
+
+.infoBlock {
+  padding: clamp(20px, 2.08vw, 40px) clamp(20px, 2.6vw, 50px) clamp(24px, 2.08vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.04vw, 20px);
+}
+
+.title {
+  color: #1a1a1a;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(20px, 1.77vw, 34px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.tagline {
+  color: #2683C6;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(12px, 0.94vw, 18px);
+  font-weight: 700;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+.divider {
+  width: clamp(40px, 3.13vw, 60px);
+  height: 3px;
+  background: #2683C6;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.description {
+  color: rgba(0, 0, 0, 0.58);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(12px, 0.94vw, 18px);
+  font-weight: 500;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Highlights ── */
+
+.highlightsBlock {
+  background: #f0f7ff;
+  border-radius: clamp(10px, 0.83vw, 16px);
+  padding: clamp(14px, 1.25vw, 24px);
+  margin-top: clamp(4px, 0.42vw, 8px);
+}
+
+.highlightsLabel {
+  color: #2683C6;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(11px, 0.83vw, 16px);
+  font-weight: 700;
+  margin: 0 0 clamp(10px, 0.83vw, 16px) 0;
+  line-height: 1.3;
+}
+
+.highlightsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(6px, 0.52vw, 10px) clamp(16px, 1.25vw, 24px);
+}
+
+.highlightItem {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.52vw, 10px);
+  color: rgba(0, 0, 0, 0.65);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(10px, 0.73vw, 14px);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.highlightDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #2683C6;
+  flex-shrink: 0;
+}
+
+/* ── Enquire Now button ── */
+
+.enquireNowBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: clamp(48px, 3.13vw, 60px);
+  background: #2683C6;
+  border: none;
+  border-radius: 100px;
+  color: #ffffff;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(13px, 0.94vw, 18px);
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: clamp(4px, 0.42vw, 8px);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.enquireNowBtn:hover {
+  background: #1a6aaa;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(38, 131, 198, 0.3);
+}
+
+.enquireNowBtn:focus-visible {
+  outline: 2px solid #2683C6;
+  outline-offset: 3px;
+}
+
+/* ============================================
+   FORM BLOCK — appears below info on expand
+   ============================================ */
+
+.formBlock {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: clamp(20px, 2.08vw, 40px) clamp(20px, 2.6vw, 50px) clamp(24px, 2.08vw, 40px);
+  background: #fafbfc;
+}
+
+.formTitle {
+  color: #1a1a1a;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(16px, 1.25vw, 24px);
+  font-weight: 700;
+  margin: 0 0 clamp(4px, 0.36vw, 7px) 0;
+  line-height: 1.3;
+}
+
+.formSubtitle {
+  color: rgba(0, 0, 0, 0.45);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(11px, 0.78vw, 15px);
+  font-weight: 500;
+  margin: 0 0 clamp(16px, 1.56vw, 30px) 0;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.25vw, 24px);
+}
+
+/* ── Two column row ── */
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.04vw, 20px);
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5px, 0.42vw, 8px);
+}
+
+.label {
+  color: rgba(0, 0, 0, 0.7);
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(11px, 0.73vw, 14px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.required {
+  color: #2683C6;
+}
+
+.input {
+  width: 100%;
+  height: clamp(42px, 2.92vw, 52px);
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: clamp(8px, 0.63vw, 12px);
+  padding: 0 clamp(12px, 0.94vw, 18px);
+  background: #ffffff;
+  color: #1a1a1a;
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(12px, 0.83vw, 16px);
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: rgba(0, 0, 0, 0.28);
+}
+
+.input:focus {
+  border-color: #2683C6;
+  box-shadow: 0 0 0 3px rgba(38, 131, 198, 0.1);
+}
+
+.textarea {
+  width: 100%;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: clamp(8px, 0.63vw, 12px);
+  padding: clamp(10px, 0.83vw, 16px) clamp(12px, 0.94vw, 18px);
+  background: #ffffff;
+  color: #1a1a1a;
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(12px, 0.83vw, 16px);
+  font-weight: 500;
+  outline: none;
+  resize: vertical;
+  min-height: clamp(90px, 6.25vw, 120px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+
+.textarea::placeholder {
+  color: rgba(0, 0, 0, 0.28);
+}
+
+.textarea:focus {
+  border-color: #2683C6;
+  box-shadow: 0 0 0 3px rgba(38, 131, 198, 0.1);
+}
+
+.errorMsg {
+  color: #dc2626;
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(11px, 0.73vw, 14px);
+  font-weight: 500;
+  margin: 0;
+  padding: clamp(10px, 0.83vw, 16px);
+  background: #fef2f2;
+  border-radius: 8px;
+  border-left: 3px solid #dc2626;
+  line-height: 1.5;
+}
+
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: clamp(48px, 3.13vw, 60px);
+  background: #2683C6;
+  border: none;
+  border-radius: 100px;
+  color: #ffffff;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(13px, 0.94vw, 18px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: #1a6aaa;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(38, 131, 198, 0.3);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   SUCCESS STATE
+   ============================================ */
+
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(10px, 0.83vw, 16px);
+  padding: clamp(20px, 2.08vw, 40px) 0;
+}
+
+.successIconWrap {
+  width: clamp(56px, 3.65vw, 70px);
+  height: clamp(56px, 3.65vw, 70px);
+  border-radius: 50%;
+  background: rgba(38, 131, 198, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successTitle {
+  color: #1a1a1a;
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(18px, 1.46vw, 28px);
+  font-weight: 700;
+  margin: 0;
+}
+
+.successText {
+  color: rgba(0, 0, 0, 0.55);
+  font-family: "Grift-Medium", sans-serif;
+  font-size: clamp(12px, 0.83vw, 16px);
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 360px;
+}
+
+.successText strong {
+  color: #2683C6;
+  font-family: "Grift-Bold", sans-serif;
+}
+
+/* ============================================
+   CLOSE BAR — fixed at bottom of modal
+   ============================================ */
+
+.closeBar {
+  flex-shrink: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: clamp(12px, 1.04vw, 20px) clamp(20px, 2.6vw, 50px);
+  background: #ffffff;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: clamp(44px, 2.92vw, 56px);
+  background: transparent;
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 100px;
+  color: rgba(0, 0, 0, 0.55);
+  font-family: "Grift-Bold", sans-serif;
+  font-size: clamp(12px, 0.83vw, 16px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.closeBtn:hover {
+  border-color: rgba(0, 0, 0, 0.35);
+  color: #1a1a1a;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid #2683C6;
+  outline-offset: 2px;
+  border-radius: 100px;
+}
+
+/* ============================================
+   MOBILE
+   ============================================ */
+
+@media (max-width: 600px) {
+  .backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal {
+    max-width: 100%;
+    max-height: 92vh;
+    border-radius: 20px 20px 0 0;
+    transform: translateY(100%);
+    transition: opacity 0.35s ease,
+      transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .modalOpen {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fieldRow {
+    grid-template-columns: 1fr;
+  }
+
+  .highlightsList {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .backdrop,
+  .enquireNowBtn,
+  .submitBtn,
+  .closeBtn,
+  .input,
+  .textarea {
+    transition: none !important;
+  }
+
+  .spinner {
+    animation: none !important;
+  }
+}

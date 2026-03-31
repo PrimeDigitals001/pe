@@ -15,6 +15,7 @@ const COMPANIES = [
     'Kee-Safety',
     'Saint-Gobain',
     'Tegola Canadese',
+    'Chemicals',
 ];
 
 const PRODUCTS = {
@@ -25,11 +26,20 @@ const PRODUCTS = {
         'JT2-2H-4.8', 'JT2-3-4.8', 'JT2-6-5.5 F12', 'JT2-6-6.3',
         'JT2-FZ-6-6.3 EJOGUARD', 'JT2-FZ-12-6.3 EJOGUARD',
     ],
-    'Hindalco': ['Aluminium Sheets', 'Aluminium Coils', 'Roofing Products'],
+    'Hindalco': ['Everlast Aluminium Roofing'],
     'Birlanu': ['Roofing Solutions', 'Insulation Panels', 'Metal Profiles'],
     'Kee-Safety': ['Safety Rails', 'Roof Access', 'Fall Protection Systems'],
     'Saint-Gobain': ['Gyproc Boards', 'Insulation', 'Glass Wool', 'Weber Products'],
     'Tegola Canadese': ['Bituminous Shingles', 'Slate Tiles', 'Waterproofing Membranes'],
+    'Chemicals': [
+        'Phosphoric Acid — 80% Technical Grade',
+        'Hydrochloric Acid — 33%',
+        'Caustic Soda Lye — 47–50%',
+        'Caustic Soda Flakes — 98–99%',
+        'Sodium Carbonate (Soda Ash)',
+        'Sodium Bisulphate — Technical Grade',
+        'Glycerine — Technical Grade',
+    ],
 };
 
 const CATEGORIES = [
@@ -39,6 +49,7 @@ const CATEGORIES = [
     'Insulation',
     'Safety Systems',
     'Wall Cladding',
+    'Industrial Chemicals',
     'Other',
 ];
 
@@ -76,12 +87,15 @@ export default function GetQuotePage() {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-        if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
 
         if (name === 'selectedCompany') {
-            setFormData((prev) => ({ ...prev, selectedCompany: value, selectedProducts: [] }));
+            // ── Switch brand tab WITHOUT clearing existing selections ──
+            setFormData((prev) => ({ ...prev, selectedCompany: value }));
+        } else {
+            setFormData((prev) => ({ ...prev, [name]: value }));
         }
+
+        if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
     };
 
     const handleProductToggle = (product) => {
@@ -92,6 +106,14 @@ export default function GetQuotePage() {
                 : [...prev.selectedProducts, product],
         }));
         if (errors.selectedProducts) setErrors((prev) => ({ ...prev, selectedProducts: '' }));
+    };
+
+    // Remove a product from the summary pill strip
+    const handleRemoveProduct = (product) => {
+        setFormData((prev) => ({
+            ...prev,
+            selectedProducts: prev.selectedProducts.filter((p) => p !== product),
+        }));
     };
 
     const handleFileChange = (e) => {
@@ -116,7 +138,6 @@ export default function GetQuotePage() {
         const newErrors = validate();
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
-            // Scroll to first error
             const firstError = document.querySelector('[class*="inputError"]');
             firstError?.scrollIntoView({ behavior: 'smooth', block: 'center' });
             return;
@@ -221,9 +242,8 @@ export default function GetQuotePage() {
                                     onChange={handleChange}
                                     className={`${styles.input} ${errors.name ? styles.inputError : ''}`}
                                     aria-required="true"
-                                    aria-describedby={errors.name ? 'name-error' : undefined}
                                 />
-                                {errors.name && <span id="name-error" className={styles.errorMsg}>{errors.name}</span>}
+                                {errors.name && <span className={styles.errorMsg}>{errors.name}</span>}
                             </div>
 
                             <div className={styles.fieldGroup}>
@@ -235,9 +255,8 @@ export default function GetQuotePage() {
                                     onChange={handleChange}
                                     className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
                                     aria-required="true"
-                                    aria-describedby={errors.email ? 'email-error' : undefined}
                                 />
-                                {errors.email && <span id="email-error" className={styles.errorMsg}>{errors.email}</span>}
+                                {errors.email && <span className={styles.errorMsg}>{errors.email}</span>}
                             </div>
 
                             <div className={styles.fieldGroup}>
@@ -351,27 +370,46 @@ export default function GetQuotePage() {
                             </div>
                         </div>
 
-                        {/* Company + Product Selector */}
+                        {/* ── Product Selector ── */}
                         <div className={styles.productSection}>
                             <div className={styles.productSectionLabel}>
                                 Products <span className={styles.required}>*</span>
+                                {formData.selectedProducts.length > 0 && (
+                                    <span className={styles.selectedCount}>
+                                        {formData.selectedProducts.length} selected
+                                    </span>
+                                )}
                             </div>
 
-                            {/* Step 1: Choose Brand */}
+                            {/* Step 1: Choose Brand tab */}
                             <div className={styles.brandGrid}>
-                                {COMPANIES.map((company) => (
-                                    <button
-                                        key={company}
-                                        type="button"
-                                        onClick={() => handleChange({ target: { name: 'selectedCompany', value: company } })}
-                                        className={`${styles.brandChip} ${formData.selectedCompany === company ? styles.brandChipActive : ''}`}
-                                    >
-                                        {company}
-                                    </button>
-                                ))}
+                                {COMPANIES.map((company) => {
+                                    // Count how many products from this company are selected
+                                    const companyProducts = PRODUCTS[company] || [];
+                                    const selectedFromThisBrand = formData.selectedProducts.filter(
+                                        (p) => companyProducts.includes(p)
+                                    ).length;
+
+                                    return (
+                                        <button
+                                            key={company}
+                                            type="button"
+                                            onClick={() => handleChange({ target: { name: 'selectedCompany', value: company } })}
+                                            className={`${styles.brandChip} ${formData.selectedCompany === company ? styles.brandChipActive : ''}`}
+                                        >
+                                            {company}
+                                            {/* Badge showing how many from this brand are selected */}
+                                            {selectedFromThisBrand > 0 && (
+                                                <span className={`${styles.brandBadge} ${formData.selectedCompany === company ? styles.brandBadgeActive : ''}`}>
+                                                    {selectedFromThisBrand}
+                                                </span>
+                                            )}
+                                        </button>
+                                    );
+                                })}
                             </div>
 
-                            {/* Step 2: Choose Products from brand */}
+                            {/* Step 2: Choose Products from selected brand */}
                             {availableProducts.length > 0 && (
                                 <div className={styles.productGrid}>
                                     {availableProducts.map((product) => (
@@ -389,6 +427,28 @@ export default function GetQuotePage() {
                                             {product}
                                         </button>
                                     ))}
+                                </div>
+                            )}
+
+                            {/* Step 3: Summary of ALL selected products across all brands */}
+                            {formData.selectedProducts.length > 0 && (
+                                <div className={styles.selectionSummary}>
+                                    <p className={styles.selectionSummaryLabel}>Selected products:</p>
+                                    <div className={styles.selectionPills}>
+                                        {formData.selectedProducts.map((product) => (
+                                            <span key={product} className={styles.selectionPill}>
+                                                {product}
+                                                <button
+                                                    type="button"
+                                                    className={styles.pillRemove}
+                                                    onClick={() => handleRemoveProduct(product)}
+                                                    aria-label={`Remove ${product}`}
+                                                >
+                                                    ×
+                                                </button>
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
                             )}
 
@@ -411,9 +471,7 @@ export default function GetQuotePage() {
 
                         {/* Business Card Upload */}
                         <div className={styles.uploadSection}>
-                            <div className={styles.uploadLabel}>
-                                Upload your Business Card
-                            </div>
+                            <div className={styles.uploadLabel}>Upload your Business Card</div>
                             <label className={styles.uploadBox}>
                                 <input
                                     type="file"
@@ -436,7 +494,7 @@ export default function GetQuotePage() {
                             </label>
                         </div>
 
-                        {/* Form-level error banner */}
+                        {/* Form-level error */}
                         {errors._form && (
                             <div className={styles.formError} role="alert">
                                 <svg viewBox="0 0 24 24" fill="none" className={styles.formErrorIcon}>
@@ -447,7 +505,7 @@ export default function GetQuotePage() {
                             </div>
                         )}
 
-                        {/* Footer row */}
+                        {/* Footer */}
                         <div className={styles.formFooter}>
                             <p className={styles.privacyNote}>
                                 <svg viewBox="0 0 24 24" fill="none" className={styles.privacyIcon}>
@@ -462,7 +520,6 @@ export default function GetQuotePage() {
                                 type="submit"
                                 className={styles.submitBtn}
                                 disabled={isSubmitting}
-                                aria-label="Send quote request"
                             >
                                 {isSubmitting ? (
                                     <span className={styles.submitBtnSpinner}>

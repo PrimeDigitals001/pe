@@ -78,8 +78,8 @@ export default function KeeSafetyProductDetailPage() {
                 {/* Kee Safety Logo */}
                 <div className={styles.logoSection}>
                     <img
-                        src="/images/products/logo_kee_safety.png"
-                        alt="Kee Safety"
+                        src={keeSafetyData.companyInfo.logo}
+                        alt={keeSafetyData.companyInfo.name}
                         className={styles.companyLogo}
                         loading="lazy"
                     />

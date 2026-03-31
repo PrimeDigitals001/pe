@@ -4,10 +4,6 @@
    Strategy: orientation only, clamp() everywhere
    ============================================ */
 
-/* ============================================
-   MAIN CONTAINER
-   ============================================ */
-
 .productPage {
   width: 100%;
   min-height: 100vh;
@@ -15,10 +11,6 @@
   padding-top: clamp(60px, 10vh, 150px);
   position: relative;
 }
-
-/* ============================================
-   LOGO SECTION
-   ============================================ */
 
 .logoSection {
   width: 100%;
@@ -37,10 +29,6 @@
   display: block;
 }
 
-/* ============================================
-   BREADCRUMB
-   ============================================ */
-
 .breadcrumb {
   display: flex;
   align-items: center;
@@ -58,9 +46,7 @@
   transition: color 0.3s ease;
 }
 
-.breadcrumbLink:hover {
-  color: #000000;
-}
+.breadcrumbLink:hover { color: #000000; }
 
 .breadcrumbLink:focus-visible {
   outline: 2px solid #000000;
@@ -82,11 +68,6 @@
   font-weight: 600;
 }
 
-/* ============================================
-   PRODUCT DETAIL SECTION
-   Fluid 2-col → wraps naturally on portrait
-   ============================================ */
-
 .productDetailSection {
   display: grid;
   grid-template-columns:
@@ -96,10 +77,6 @@
   margin: 0 clamp(16px, 6.3vw, 121px);
   align-items: start;
 }
-
-/* ============================================
-   PRODUCT IMAGE CONTAINER
-   ============================================ */
 
 .productImageContainer {
   width: 100%;
@@ -120,13 +97,7 @@
   transition: transform 0.4s ease;
 }
 
-.productMainImage:hover {
-  transform: scale(1.03);
-}
-
-/* ============================================
-   PRODUCT INFORMATION
-   ============================================ */
+.productMainImage:hover { transform: scale(1.03); }
 
 .productInfo {
   display: flex;
@@ -169,13 +140,7 @@
   margin: clamp(4px, 0.63vw, 12px) 0;
 }
 
-/* ============================================
-   INFO SECTIONS
-   ============================================ */
-
-.infoSection {
-  margin: clamp(2px, 0.52vw, 10px) 0;
-}
+.infoSection { margin: clamp(2px, 0.52vw, 10px) 0; }
 
 .sectionTitle {
   color: #000000;
@@ -201,10 +166,6 @@
   margin: 0;
 }
 
-/* ============================================
-   DOWNLOAD LIST
-   ============================================ */
-
 .downloadList {
   display: flex;
   flex-direction: column;
@@ -220,9 +181,7 @@
   padding: clamp(2px, 0.31vw, 6px) 0;
 }
 
-.downloadLink:hover {
-  opacity: 0.7;
-}
+.downloadLink:hover { opacity: 0.7; }
 
 .downloadLink:focus-visible {
   outline: 2px solid #000000;
@@ -245,20 +204,8 @@
   line-height: 1.4;
 }
 
-.downloadName {
-  text-decoration: underline;
-  font-weight: 700;
-}
-
-.downloadSize {
-  text-decoration: none;
-  opacity: 0.8;
-  font-weight: 500;
-}
-
-/* ============================================
-   ENQUIRE BUTTON
-   ============================================ */
+.downloadName { text-decoration: underline; font-weight: 700; }
+.downloadSize { text-decoration: none; opacity: 0.8; font-weight: 500; }
 
 .enquireButton {
   background: #000000;
@@ -289,13 +236,9 @@
   outline-offset: 3px;
 }
 
-.enquireButton:active {
-  transform: translateY(0);
-}
+.enquireButton:active { transform: translateY(0); }
 
-/* ============================================
-   FURTHER PRODUCTS SECTION
-   ============================================ */
+/* ── FURTHER PRODUCTS — DESKTOP ── */
 
 .furtherProductsSection {
   margin: clamp(40px, 4.69vw, 90px) auto 0;
@@ -321,23 +264,12 @@
   margin-bottom: clamp(24px, 2.34vw, 45px);
 }
 
-/* ============================================
-   RELATED PRODUCTS GRID
-   Mirrors the main listing page exactly:
-   3 equal columns, same gaps, same card design
-   ============================================ */
-
 .relatedProductsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: clamp(32px, 3.44vw, 66px);
   row-gap: clamp(24px, 1.98vw, 38px);
 }
-
-/* ============================================
-   RELATED PRODUCT CARD
-   1:1 match with main page .productCard
-   ============================================ */
 
 .relatedProductCard {
   width: 100%;
@@ -346,9 +278,7 @@
   transition: transform 0.3s ease;
 }
 
-.relatedProductCard:hover {
-  transform: translateY(-4px);
-}
+.relatedProductCard:hover { transform: translateY(-4px); }
 
 .relatedProductLink {
   display: flex;
@@ -364,7 +294,6 @@
   border-radius: 4px;
 }
 
-/* Image wrapper — exact match to main page .productImageWrapper */
 .relatedProductImageWrapper {
   width: 100%;
   aspect-ratio: 469 / 364;
@@ -383,11 +312,8 @@
   transition: transform 0.4s ease;
 }
 
-.relatedProductCard:hover .relatedProductImageWrapper img {
-  transform: scale(1.05);
-}
+.relatedProductCard:hover .relatedProductImageWrapper img { transform: scale(1.05); }
 
-/* Text — exact match to main page .productName / .productProperty / .productDescription */
 .relatedProductName {
   color: #000000;
   font-family: var(--font-heading);
@@ -423,7 +349,6 @@
   overflow: hidden;
 }
 
-/* "View product" link — exact match to main page .viewProductLink */
 .viewRelatedProductLink {
   color: rgba(0, 0, 0, 0.8);
   font-family: var(--font-heading);
@@ -441,7 +366,6 @@
   opacity: 0.6;
 }
 
-/* Bottom border — exact match to main page .cardBottomBorder */
 .relatedProductBorder {
   width: 100%;
   height: 1px;
@@ -449,9 +373,7 @@
   margin-top: auto;
 }
 
-/* ============================================
-   ERROR PAGE
-   ============================================ */
+/* ── ERROR PAGE ── */
 
 .errorPage {
   min-height: 60vh;
@@ -478,13 +400,9 @@
   transition: color 0.3s ease;
 }
 
-.errorPage a:hover {
-  color: #1a6ba3;
-}
+.errorPage a:hover { color: #1a6ba3; }
 
-/* ============================================
-   PORTRAIT - tablet stacks detail section
-   ============================================ */
+/* ── PORTRAIT TABLET ── */
 
 @media (orientation: portrait) {
   .productDetailSection {
@@ -500,88 +418,125 @@
     margin: 0 auto;
   }
 
-  .productInfo {
-    max-width: 100%;
+  .productInfo { max-width: 100%; }
+
+  /* 2 cols on tablet portrait */
+  .furtherProductsSection {
+    padding: 0 clamp(16px, 4vw, 40px) clamp(40px, 4.17vw, 80px);
   }
 
-  /* Related products: 2 cols on portrait tablet */
+  .furtherProductsTitle { margin-left: 0; }
+
+  .furtherProductsDivider {
+    width: 100%;
+    margin-left: 0;
+  }
+
   .relatedProductsGrid {
     grid-template-columns: repeat(2, 1fr);
     column-gap: clamp(20px, 4vw, 40px);
   }
 }
 
-/* ============================================
-   PORTRAIT PHONE
-   ============================================ */
+/* ── PORTRAIT PHONE ── */
 
 @media (orientation: portrait) and (max-width: 500px) {
-  .productPage {
-    padding-top: clamp(55px, 15vw, 85px);
-  }
+  .productPage { padding-top: clamp(55px, 15vw, 85px); }
 
   .logoSection {
     padding-top: clamp(20px, 7vw, 40px);
     margin-bottom: clamp(12px, 4vw, 24px);
   }
 
-  .companyLogo {
-    width: clamp(60px, 18vw, 90px);
-  }
+  .companyLogo { width: clamp(60px, 18vw, 90px); }
 
-  .productDetailSection {
-    margin: 0 clamp(16px, 5vw, 24px);
-  }
+  .productDetailSection { margin: 0 clamp(16px, 5vw, 24px); }
 
-  .productImageContainer {
-    width: min(72vw, 340px);
-  }
-
-  /* Related products: 1 col on phone */
-  .relatedProductsGrid {
-    grid-template-columns: 1fr;
-    row-gap: clamp(28px, 7vw, 40px);
-  }
-
-  .relatedProductCard {
-    max-width: clamp(280px, 100%, 440px);
-    margin: 0 auto;
-  }
-
-  .relatedProductDesc {
-    -webkit-line-clamp: unset;
-    line-clamp: unset;
-    overflow: visible;
-  }
+  .productImageContainer { width: min(72vw, 340px); }
 
   .enquireButton {
     align-self: center;
     width: clamp(160px, 65vw, 240px);
   }
+
+  /* ── FURTHER PRODUCTS — 2x2 grid, name only ── */
+
+  .furtherProductsSection {
+    padding: 0 clamp(16px, 5vw, 24px) clamp(32px, 8vw, 56px);
+    margin-top: clamp(32px, 8vw, 56px);
+  }
+
+  .furtherProductsTitle {
+    margin-left: 0;
+    font-size: clamp(16px, 5vw, 20px);
+    margin-bottom: clamp(4px, 1.5vw, 8px);
+  }
+
+  .furtherProductsDivider {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: clamp(16px, 4vw, 24px);
+  }
+
+  .relatedProductsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(12px, 4vw, 20px);
+  }
+
+  .relatedProductCard {
+    width: 100%;
+    transform: none !important;
+  }
+
+  .relatedProductLink {
+    flex-direction: column;
+    gap: 0;
+    height: 100%;
+  }
+
+  /* Square full-width image */
+  .relatedProductImageWrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: clamp(8px, 2.5vw, 12px);
+    border-radius: 6px;
+  }
+
+  /* Name only — 2 lines max */
+  .relatedProductName {
+    font-size: clamp(12px, 3.8vw, 15px);
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.35;
+  }
+
+  /* Hide everything else */
+  .relatedProductCategory,
+  .relatedProductDesc,
+  .viewRelatedProductLink,
+  .relatedProductBorder {
+    display: none;
+  }
 }
 
-/* ============================================
-   LANDSCAPE MOBILE
-   ============================================ */
+/* ── LANDSCAPE MOBILE ── */
 
 @media (orientation: landscape) and (max-height: 500px) {
-  .productPage {
-    padding-top: clamp(50px, 10vh, 80px);
-  }
+  .productPage { padding-top: clamp(50px, 10vh, 80px); }
 
   .logoSection {
     padding-top: clamp(16px, 4vh, 40px);
     margin-bottom: clamp(10px, 2vh, 20px);
   }
 
-  .productDetailSection {
-    margin: 0 clamp(16px, 4vw, 60px);
-  }
+  .productDetailSection { margin: 0 clamp(16px, 4vw, 60px); }
 }
 
-/* ============================================
-   ACCESSIBILITY
-   ============================================ */
+/* ── ACCESSIBILITY ── */
 
 @media (prefers-reduced-motion: reduce) {
   .productMainImage,
@@ -600,9 +555,7 @@
   }
 }
 
-/* ============================================
-   HIGH DPI
-   ============================================ */
+/* ── HIGH DPI ── */
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .productMainImage,
@@ -613,20 +566,10 @@
   }
 }
 
-/* ============================================
-   PRINT
-   ============================================ */
+/* ── PRINT ── */
 
 @media print {
-  .productPage {
-    padding-top: 20px;
-  }
-
-  .enquireButton {
-    display: none;
-  }
-
-  .productDetailSection {
-    grid-template-columns: 1fr;
-  }
+  .productPage { padding-top: 20px; }
+  .enquireButton { display: none; }
+  .productDetailSection { grid-template-columns: 1fr; }
 }
