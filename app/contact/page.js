@@ -13,8 +13,13 @@ export default function Contact() {
     subject: '',
     message: ''
   });
-  const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
+  const [status, setStatus] = useState('idle');
   const [errorMsg, setErrorMsg] = useState('');
+
+  const coords = '21.728716,73.012109';
+  const viewLocationUrl = `https://www.google.com/maps?q=${coords}`;
+  const getDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords}`;
+  const embedUrl = `https://maps.google.com/maps?q=${coords}&output=embed&z=17`;
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -56,6 +61,7 @@ export default function Contact() {
       <main className={styles.main}>
         <div className={styles.container}>
 
+          {/* ── LEFT COLUMN ── */}
           <div className={styles.leftColumn}>
             <h1 className={styles.title}>Let's talk<br />about you.</h1>
             <p className={styles.subtitle}>
@@ -66,10 +72,54 @@ export default function Contact() {
             <div className={styles.infoBlock}>
               <h3 className={styles.label}>Where to find us</h3>
               <p className={styles.text}>
-                Alpha Arcade, A 201,<br />
-                GIDC Rd, Bholav, Bharuch,<br />
-                Gujarat 392015
+                Plot No - 107, GIDC - Narmada Nagar,<br />
+                Behind Apex Hotel, Bharuch — 392015,<br />
+                Gujarat, India
               </p>
+            </div>
+
+            {/* ── Map ── */}
+            <div className={styles.mapBlock}>
+              <div className={styles.mapWrapper}>
+                <iframe
+                  src={embedUrl}
+                  className={styles.mapIframe}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Patel Enterprise location"
+                />
+              </div>
+
+              <div className={styles.mapButtons}>
+                <a
+                  href={viewLocationUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.mapBtn}
+                  aria-label="View location on Google Maps"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" className={styles.mapBtnIcon} aria-hidden="true">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+                      fill="currentColor" />
+                  </svg>
+                  View Location
+                </a>
+
+                <a
+                  href={getDirectionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${styles.mapBtn} ${styles.mapBtnPrimary}`}
+                  aria-label="Get directions to Patel Enterprise"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" className={styles.mapBtnIcon} aria-hidden="true">
+                    <path d="M21.71 11.29l-9-9a1 1 0 00-1.42 0l-9 9a1 1 0 000 1.42l9 9a1 1 0 001.42 0l9-9a1 1 0 000-1.42zM14 14.5V12h-4v3H8v-4a1 1 0 011-1h5V7.5l3.5 3.5-3.5 3.5z"
+                      fill="currentColor" />
+                  </svg>
+                  Get Directions
+                </a>
+              </div>
             </div>
 
             <div className={styles.infoBlock}>
@@ -87,6 +137,7 @@ export default function Contact() {
             </div>
           </div>
 
+          {/* ── RIGHT COLUMN ── */}
           <div className={styles.rightColumn}>
             <h2 className={styles.formTitle}>Send a Message</h2>
 
