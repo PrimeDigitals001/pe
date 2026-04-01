@@ -1,36 +1,87 @@
 import nodemailer from 'nodemailer';
+import dns from 'dns/promises';
 
+// ── Disposable / throwaway email domain blocklist ──
+const DISPOSABLE_DOMAINS = new Set([
+  '10minutemail.com', '10minutemail.net', '20minutemail.com',
+  'discard.email', 'discardmail.com', 'dispostable.com',
+  'fakeinbox.com', 'fakeinbox.net', 'fakemail.net',
+  'getnada.com', 'guerrillamail.com', 'guerrillamail.net',
+  'guerrillamail.org', 'guerrillamailblock.com',
+  'maildrop.cc', 'mailinator.com', 'mailinator.net',
+  'mailnull.com', 'mailtemp.info', 'mytemp.email',
+  'sharklasers.com', 'spam4.me', 'spamex.com',
+  'spamgourmet.com', 'spamgourmet.net', 'spamgourmet.org',
+  'temp-mail.io', 'temp-mail.org', 'tempr.email',
+  'throwaway.email', 'trashmail.at', 'trashmail.com',
+  'trashmail.io', 'trashmail.me', 'trashmail.net',
+  'trashmail.org', 'yopmail.com', 'yopmail.fr',
+  'getairmail.com', 'filzmail.com', 'throwam.com',
+  'spamhereplease.com', 'mailnesia.com', 'mailnull.com',
+  'spamspot.com', 'binkmail.com', 'safetymail.info',
+]);
+
+// ── Check domain has real MX records ──
+async function isEmailDomainValid(email) {
+  const domain = email.split('@')[1]?.toLowerCase();
+  if (!domain) return false;
+
+  // Block known disposable domains immediately
+  if (DISPOSABLE_DOMAINS.has(domain)) return false;
+
+  // Check if domain has actual mail servers (MX records)
+  try {
+    const records = await dns.resolveMx(domain);
+    return records && records.length > 0;
+  } catch {
+    return false; // No MX records = not a real mail domain
+  }
+}
+
+// ── Nodemailer transporter ──
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASS,
-    },
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASS,
+  },
 });
 
 export async function POST(request) {
-    try {
-        const body = await request.json();
+  try {
+    const body = await request.json();
+    const { name, email, subject, message } = body;
 
-        const { name, email, subject, message } = body;
+    // ── Basic field validation ──
+    if (!name?.trim() || !email?.trim() || !message?.trim()) {
+      return Response.json(
+        { success: false, error: 'Name, email and message are required.' },
+        { status: 400 }
+      );
+    }
 
-        // ── Basic validation ──
-        if (!name?.trim() || !email?.trim() || !message?.trim()) {
-            return Response.json(
-                { success: false, error: 'Name, email and message are required.' },
-                { status: 400 }
-            );
-        }
+    // ── Email format check ──
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      return Response.json(
+        { success: false, error: 'Invalid email address.' },
+        { status: 400 }
+      );
+    }
 
-        if (!/\S+@\S+\.\S+/.test(email)) {
-            return Response.json(
-                { success: false, error: 'Invalid email address.' },
-                { status: 400 }
-            );
-        }
+    // ── Disposable / fake domain check ──
+    const domainValid = await isEmailDomainValid(email.trim().toLowerCase());
+    if (!domainValid) {
+      return Response.json(
+        {
+          success: false,
+          error: 'Please use a valid business or personal email address (e.g. Gmail, Outlook, company email).',
+        },
+        { status: 400 }
+      );
+    }
 
-        // ── Build HTML email ──
-        const html = `
+    // ── Build HTML email ──
+    const html = `
       <!DOCTYPE html>
       <html lang="en">
       <head>
@@ -100,28 +151,28 @@ export async function POST(request) {
       </html>
     `;
 
-        await transporter.sendMail({
-            from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
-            to: process.env.RECIPIENT_EMAIL,
-            replyTo: email,
-            subject: `Contact: ${subject?.trim() || 'New Message'} — ${name}`,
-            html,
-        });
+    await transporter.sendMail({
+      from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
+      to: process.env.RECIPIENT_EMAIL,
+      replyTo: email,
+      subject: `Contact: ${subject?.trim() || 'New Message'} — ${name}`,
+      html,
+    });
 
-        return Response.json({ success: true });
+    return Response.json({ success: true });
 
-    } catch (error) {
-        console.error('[send-contact] Error:', error);
-        return Response.json(
-            { success: false, error: 'Failed to send message. Please try again.' },
-            { status: 500 }
-        );
-    }
+  } catch (error) {
+    console.error('[send-contact] Error:', error);
+    return Response.json(
+      { success: false, error: 'Failed to send message. Please try again.' },
+      { status: 500 }
+    );
+  }
 }
 
 // ── Helper: table row ──
 function row(label, value) {
-    return `
+  return `
     <tr>
       <td style="padding:6px 0;width:140px;vertical-align:top;">
         <span style="font-size:13px;font-weight:600;color:#374151;">${label}</span>

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import ServiceModal from '@/components/ServiceModal';
 import styles from './ServicesGrid.module.css';
 
@@ -133,11 +134,13 @@ const ServiceCard = ({ service, index, isVisible, onCardClick }) => {
         >
             {/* Image */}
             <div className={styles.imageWrap}>
-                <img
+                <Image
                     src={service.image}
                     alt={service.title}
+                    fill
+                    sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className={styles.cardImage}
-                    loading="lazy"
+                    priority={index === 0}
                 />
 
                 {/* Hover overlay */}
