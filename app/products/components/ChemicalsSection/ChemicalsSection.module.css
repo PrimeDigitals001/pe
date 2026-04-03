@@ -76,13 +76,14 @@
     aspect-ratio: 4 / 3;
     overflow: hidden;
     border-radius: clamp(8px, 0.625vw, 12px);
-    background: #111;
+    background: #ffffff;
 }
 
 .cardImage {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
     transition: transform 0.5s ease;
 }
@@ -91,15 +92,15 @@
     transform: scale(1.07);
 }
 
-/* Black gradient — transparent at top, solid at bottom */
+/* Gradient overlay — bottom strip */
 .cardOverlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.82) 0%,
-        rgba(0, 0, 0, 0.35) 45%,
-        rgba(0, 0, 0, 0) 100%
+        rgba(0, 0, 0, 0.80) 0%,
+        rgba(0, 0, 0, 0.40) 35%,
+        rgba(0, 0, 0, 0) 60%
     );
     display: flex;
     flex-direction: column;
@@ -111,9 +112,9 @@
 .chemicalCard:hover .cardOverlay {
     background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.90) 0%,
-        rgba(0, 0, 0, 0.45) 50%,
-        rgba(0, 0, 0, 0.05) 100%
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.50) 40%,
+        rgba(0, 0, 0, 0.05) 65%
     );
 }
 
@@ -180,20 +181,22 @@
     outline-offset: 3px;
 }
 
-/* ── ANIMATIONS ── */
-
-.animateUp {
-    opacity: 0;
-    transform: translateY(28px);
-    will-change: transform, opacity;
-}
+/* ── ANIMATIONS (desktop only) ── */
 
 @keyframes slideInUp {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.animate .animateUp {
-    animation: slideInUp 0.6s ease-out forwards;
+@media (hover: hover) and (pointer: fine) {
+    .animateUp {
+        opacity: 0;
+        transform: translateY(28px);
+        will-change: transform, opacity;
+    }
+
+    .animate .animateUp {
+        animation: slideInUp 0.6s ease-out forwards;
+    }
 }
 
 /* ── TABLET — 2 cols ── */
@@ -208,20 +211,15 @@
     .chemicalCard:active .cardImage { transform: scale(1.03); }
 }
 
-/* ── MOBILE — 1 col ── */
+/* ── MOBILE — 2 cols ── */
 
 @media (max-width: 600px) {
     .container { padding: 0 clamp(12px, 4vw, 20px); }
 
     .chemicalsGrid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         max-width: 100%;
-    }
-
-    .chemicalCard {
-        max-width: clamp(280px, 88vw, 440px);
-        margin: 0 auto;
-        width: 100%;
+        gap: clamp(10px, 2.5vw, 16px);
     }
 
     .chemicalCard:hover .cardImage { transform: none; }

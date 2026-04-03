@@ -95,7 +95,25 @@ export default function ChemicalProductDetailPage() {
 
                         <div className={styles.dividerLine}></div>
 
-                        {/* Applications & Industries — only section shown */}
+                        {/* 1. Description */}
+                        <div className={styles.infoSection}>
+                            <h2 className={styles.sectionTitle}>Description</h2>
+                            <p className={styles.sectionContent}>{product.cardDescription}</p>
+                            {/* {product.physicalForm && (
+                                <p className={styles.physicalForm}>
+                                    <span className={styles.physicalFormLabel}>Physical Form:</span> {product.physicalForm}
+                                </p>
+                            )}
+                            {product.grade && (
+                                <p className={styles.physicalForm}>
+                                    <span className={styles.physicalFormLabel}>Grade:</span> {product.grade}
+                                </p>
+                            )} */}
+                        </div>
+
+                        <div className={styles.dividerLine}></div>
+
+                        {/* 2. Applications & Industries */}
                         <div className={styles.infoSection}>
                             <h2 className={styles.sectionTitle}>Applications & Industries</h2>
                             <div className={styles.applicationsList}>
@@ -111,35 +129,35 @@ export default function ChemicalProductDetailPage() {
                             </div>
                         </div>
 
-                        {/* Brochures — only renders if brochures exist */}
-                        {product.brochures.length > 0 && (
-                            <>
-                                <div className={styles.dividerLine}></div>
-                                <div className={styles.infoSection}>
-                                    <h2 className={styles.sectionTitle}>Brochure</h2>
-                                    <div className={styles.downloadList}>
-                                        {product.brochures.map((brochure, index) => (
-                                            <a
-                                                key={index}
-                                                href={brochure.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className={styles.downloadLink}
-                                                aria-label={`Open ${brochure.text}`}
-                                            >
-                                                <svg className={styles.downloadIcon} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                                    <path d="M12 3V16M12 16L7 11M12 16L17 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                    <path d="M3 17V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                                                </svg>
-                                                <span className={styles.downloadText}>
-                                                    <span className={styles.downloadName}>{brochure.text}</span>
-                                                    <span className={styles.downloadSize}> {brochure.size}</span>
-                                                </span>
-                                            </a>
-                                        ))}
-                                    </div>
+                        <div className={styles.dividerLine}></div>
+
+                        {/* 3. Suppliers */}
+                        {product.suppliers && product.suppliers.length > 0 && (
+                            <div className={styles.infoSection}>
+                                <h2 className={styles.sectionTitle}>Suppliers</h2>
+                                <div className={styles.suppliersList}>
+                                    {product.suppliers.map((supplier, index) => (
+                                        <span key={index} className={styles.supplierChip}>{supplier}</span>
+                                    ))}
                                 </div>
-                            </>
+                            </div>
+                        )}
+
+                        <div className={styles.dividerLine}></div>
+
+                        {/* 4. Packaging */}
+                        {product.packing && product.packing.length > 0 && (
+                            <div className={styles.infoSection}>
+                                <h2 className={styles.sectionTitle}>Packaging</h2>
+                                <div className={styles.packagingList}>
+                                    {product.packing.map((pack, index) => (
+                                        <div key={index} className={styles.packagingItem}>
+                                            <span className={styles.applicationDot} aria-hidden="true"></span>
+                                            <span>{pack}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         )}
 
                         {/* Enquire Button */}

@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l /c/Users/krish/Desktop/pe/app/products/data/companyProducts/*.js)",
+      "Bash(cp \"phosparic acid 80%.png\" \"phosphoric-acid.png\")",
+      "Bash(cp \"HCL 33%.png\" \"hydrochloric-acid.png\")",
+      "Bash(cp \"nitric acid.png\" \"nitric-acid.png\")",
+      "Bash(cp \"Caustic soda lye.png\" \"caustic-soda-lye.png\")",
+      "Bash(cp \"Caustic soda Flaks.png\" \"caustic-soda-flakes.png\")",
+      "Bash(rm -f \"phosphoric-acid.jpg\" \"hydrochloric-acid.jpg\" \"caustic-soda-lye.jpg\" \"caustic-soda-flakes.jpg\" \"sodium-carbonate.jpg\" \"sodium-bisulphate.jpg\" \"glycerine.jpg\")",
+      "Bash(mv \"sodium-carbonate-new.jpg\" \"sodium-carbonate.jpg\")",
+      "Bash(mv \"sodium-bisulphite-new.jpg\" \"sodium-bisulphite.jpg\")",
+      "Bash(mv \"calcium-chloride-new.jpg\" \"calcium-chloride.jpg\")",
+      "Bash(mv \"glycerine-new.png\" \"glycerine.png\")"
+    ]
+  }
+}

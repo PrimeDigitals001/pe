@@ -14,15 +14,12 @@ const ProductsSection = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0, rootMargin: '0px 0px 50px 0px' }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -38,7 +35,7 @@ const ProductsSection = () => {
           <h2 className={`${styles.title} ${styles.animateUp}`}>
             Our Authorized Partnerships
           </h2>
-          <p className={`${styles.subtitle} ${styles.animateUp}`}>
+          <p className={`${styles.subtitle} ${styles.animateUp}`} style={{ animationDelay: '0.08s' }}>
             We proudly collaborate with top manufacturers as their trusted channel partner.
           </p>
         </div>
@@ -50,16 +47,31 @@ const ProductsSection = () => {
               key={product.id}
               href={`/products/${product.slug}`}
               className={`${styles.productCard} ${styles.animateUp}`}
-              style={{ animationDelay: `${0.1 + (index * 0.05)}s` }}
+              style={{ animationDelay: `${0.12 + index * 0.05}s` }}
             >
-              <div className={styles.cardBackground}></div>
+              {/* Background product image — revealed on hover */}
+              {product.cardImage && (
+                <img
+                  src={product.cardImage}
+                  alt=""
+                  aria-hidden="true"
+                  className={styles.cardImage}
+                  loading="lazy"
+                />
+              )}
 
+              {/* Gradient overlay — slides in from bottom on hover */}
+              <div className={styles.cardOverlay}>
+                <span className={styles.cardTagline}>{product.tagline}</span>
+                <span className={styles.cardCta}>Explore →</span>
+              </div>
+
+              {/* Logo — always visible, floats up on hover */}
               <div className={styles.logoWrapper}>
                 <img
                   src={product.logo}
                   alt={product.name}
                   className={styles.logo}
-                // REMOVED fixed width/height for responsive scaling
                 />
               </div>
             </Link>

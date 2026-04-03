@@ -1,373 +1,383 @@
 /* ============================================
-   PRODUCTS SECTION - ZOOM-PROOF
-   Base Design: 1920px × 1080px
-   Grid: 3 columns × 474px cards
-   
-   ✅ Fluid scaling with clamp()
-   ✅ Structure locked on desktop
-   ✅ Better top spacing on mobile
+   PRODUCTS SECTION — Interactive Partner Cards
+   Card: square aspect-ratio, logo → image on hover
+   Consistent with ChemicalsSection design language
+   Base: 1920px | Fluid with clamp()
    ============================================ */
 
-/* ============================================
-   SECTION WRAPPER
-   ============================================ */
+/* ── SECTION WRAPPER ── */
 
-   .productsSection {
-    width: 100%;
-    background: var(--color-white);
-    padding: clamp(60px, 10.42vw, 200px) 0 clamp(60px, 5.21vw, 100px) 0;
-    position: relative;
+.productsSection {
+  width: 100%;
+  background: var(--color-white);
+  padding: clamp(60px, 10.42vw, 200px) 0 clamp(60px, 5.21vw, 100px) 0;
+  position: relative;
+}
+
+.container {
+  max-width: var(--container-full);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 6.3vw, 121px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── HEADER ── */
+
+.header {
+  text-align: center;
+  margin-bottom: clamp(45px, 4.43vw, 85px);
+  width: 100%;
+  max-width: clamp(600px, 56.25vw, 1080px);
+}
+
+.title {
+  color: var(--color-black);
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 3.33vw, 64px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 clamp(14px, 1.41vw, 27px) 0;
+  text-align: center;
+}
+
+.subtitle {
+  color: var(--color-black);
+  font-family: var(--font-heading);
+  font-size: clamp(15px, 1.25vw, 24px);
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 100%;
+}
+
+/* ── PRODUCTS GRID — 3 columns, matching ChemicalsSection ── */
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.25vw, 24px);
+  width: 100%;
+  max-width: clamp(900px, 82vw, 1560px);
+}
+
+/* ── PRODUCT CARD ── */
+
+.productCard {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: clamp(8px, 0.625vw, 12px);
+  /* White default — always visible */
+  background: #ffffff;
+  box-shadow: 0px 0px clamp(4px, 0.41vw, 8px) 0px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: box-shadow 0.35s ease, transform 0.35s ease, background 0.35s ease;
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px clamp(16px, 1.25vw, 24px) rgba(0, 0, 0, 0.18);
+  /*
+   * Fallback dark bg — shows when cardImage hasn't been added yet.
+   * Once a real image loads it covers this completely.
+   */
+  background: #1c1c2e;
+}
+
+/* ── BACKGROUND IMAGE — hidden by default, fades in on hover ── */
+
+.cardImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 0.45s ease, transform 0.55s ease;
+  z-index: 1;
+}
+
+.productCard:hover .cardImage {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── GRADIENT OVERLAY — slides in from bottom on hover ── */
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(12px, 1.25vw, 24px);
+  z-index: 2;
+  /* Hidden by default — ONLY appears on hover */
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.productCard:hover .cardOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cardTagline {
+  color: rgba(255, 255, 255, 0.80);
+  font-family: var(--font-heading);
+  font-size: clamp(11px, 0.73vw, 14px);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: clamp(4px, 0.3vw, 6px);
+  display: block;
+}
+
+.cardCta {
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: clamp(12px, 0.83vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+/* ── LOGO — always visible, floats up slightly on hover ── */
+
+.logoWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 1.56vw, 30px);
+  transition: transform 0.35s ease;
+}
+
+.productCard:hover .logoWrapper {
+  transform: translateY(-10%);
+}
+
+.logo {
+  object-fit: contain;
+  max-width: 62%;
+  max-height: 55%;
+  display: block;
+  width: auto;
+  height: auto;
+  transition: filter 0.35s ease;
+}
+
+/* Logo emphasis — scale up + glow on hover */
+.productCard:hover .logo {
+  filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.7));
+  transform: scale(1.1);
+}
+
+.logo {
+  transition: filter 0.35s ease, transform 0.35s ease;
+}
+
+/* ── FOCUS STATE ── */
+
+.productCard:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ── ANIMATIONS (desktop only) ── */
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .container {
-    max-width: var(--container-full);
-    margin: 0 auto;
-    padding: 0 clamp(20px, 2.08vw, 40px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* ============================================
-     HEADER - Centered
-     ============================================ */
-  
-  .header {
-    text-align: center;
-    margin-bottom: clamp(45px, 4.43vw, 85px);
-    width: 100%;
-    max-width: clamp(600px, 56.25vw, 1080px);
-  }
-  
-  .title {
-    color: var(--color-black);
-    font-family: var(--font-heading);
-    font-size: clamp(28px, 3.33vw, 64px);
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 clamp(14px, 1.41vw, 27px) 0;
-    text-align: center;
-  }
-  
-  .subtitle {
-    color: var(--color-black);
-    font-family: var(--font-heading);
-    font-size: clamp(15px, 1.25vw, 24px);
-    font-weight: 700;
-    line-height: 1.4;
-    margin: 0 auto;
-    text-align: center;
-    max-width: 100%;
-  }
-  
-  /* ============================================
-     PRODUCTS GRID - 3 Columns on Desktop
-     ============================================ */
-  
-  .productsGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: clamp(28px, 2.4vw, 46px) clamp(40px, 3.44vw, 66px);
-    justify-content: center;
-    width: 100%;
-    max-width: clamp(1000px, 81.25vw, 1560px);
-  }
-  
-  /* ============================================
-     PRODUCT CARD - Fluid Scaling
-     ============================================ */
-  
-  .productCard {
-    width: 100%;
-    aspect-ratio: 474 / 176;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .productCard:hover {
-    transform: translateY(-4px);
-  }
-  
-  .cardBackground {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--color-white);
-    border-radius: clamp(12px, 1.09vw, 21px);
-    box-shadow: 0px 0px clamp(4px, 0.41vw, 7.8px) 0px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .productCard:hover .cardBackground {
-    box-shadow: 0px 4px clamp(12px, 0.83vw, 16px) rgba(0, 0, 0, 0.2);
-  }
-  
-  .logoWrapper {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: clamp(16px, 1.56vw, 30px);
-  }
-  
-  .logo {
-    object-fit: contain;
-    max-width: 70%;
-    max-height: 60%;
-    display: block;
-    width: auto;
-    height: auto;
-  }
-  
-  /* ============================================
-     ANIMATIONS
-     ============================================ */
-  
+}
+
+/* Only apply entrance animation on devices that support hover (desktop) */
+@media (hover: hover) and (pointer: fine) {
   .animateUp {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(28px);
     will-change: transform, opacity;
   }
-  
-  @keyframes slideInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+
   .animate .animateUp {
     animation: slideInUp 0.6s ease-out forwards;
   }
-  
-  .animate .title {
-    animation-delay: 0.1s;
+
+  .animate .title    { animation-delay: 0.10s; }
+  .animate .subtitle { animation-delay: 0.18s; }
+}
+
+/* ── TABLET — 2 columns ── */
+
+@media (max-width: 1024px) and (min-width: 601px) {
+  .productsSection {
+    padding: clamp(80px, 12vw, 120px) 0 clamp(50px, 8vw, 70px) 0;
   }
-  
-  .animate .subtitle {
-    animation-delay: 0.2s;
+
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: clamp(560px, 85vw, 800px);
   }
-  
-  /* ============================================
-     TABLET - 2 Columns
-     ============================================ */
-  
-  @media (max-width: 1024px) and (min-width: 601px) {
-    .productsSection {
-      padding: clamp(80px, 12vw, 120px) 0 clamp(50px, 8vw, 70px) 0; /* ✅ Increased top padding */
-    }
-  
-    .header {
-      margin-bottom: clamp(40px, 7vw, 55px);
-    }
-  
-    .title {
-      font-size: clamp(28px, 5vw, 42px);
-      margin-bottom: clamp(12px, 2vw, 18px);
-    }
-  
-    .subtitle {
-      font-size: clamp(15px, 2.5vw, 20px);
-      line-height: 1.5;
-    }
-  
-    .productsGrid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: clamp(24px, 4vw, 36px) clamp(24px, 4vw, 36px);
-      max-width: clamp(600px, 85vw, 800px);
-    }
-  
-    .logo {
-      max-width: 75%;
-      max-height: 65%;
-    }
-  
-    /* Disable hover on touch devices */
-    .productCard:hover {
-      transform: none;
-    }
-  
-    .productCard:active {
-      transform: scale(0.97);
-    }
+
+  /* Show image by default so cards aren't blank white */
+  .cardImage {
+    opacity: 1;
+    transform: scale(1);
   }
-  
-  /* ============================================
-     MOBILE - 1 Column
-     ✅ INCREASED TOP PADDING FOR BREATHING ROOM
-     ============================================ */
-  
-  @media (max-width: 600px) {
-    .productsSection {
-      padding: clamp(80px, 20vw, 120px) 0 clamp(40px, 10vw, 60px) 0; /* ✅ Much more top padding */
-    }
-  
-    .container {
-      padding: 0 clamp(12px, 4vw, 20px);
-    }
-  
-    .header {
-      margin-bottom: clamp(32px, 8vw, 48px);
-    }
-  
-    .title {
-      font-size: clamp(22px, 6.5vw, 32px);
-      margin-bottom: clamp(12px, 3vw, 16px);
-    }
-  
-    .subtitle {
-      font-size: clamp(13px, 3.8vw, 16px);
-      line-height: 1.6;
-      padding: 0 clamp(8px, 2vw, 16px);
-    }
-  
-    .productsGrid {
-      grid-template-columns: 1fr;
-      gap: clamp(16px, 4.5vw, 24px);
-      max-width: 100%;
-    }
-  
-    .productCard {
-      max-width: clamp(280px, 90vw, 450px);
-      margin: 0 auto;
-      aspect-ratio: 474 / 176;
-    }
-  
-    .cardBackground {
-      border-radius: clamp(12px, 3vw, 16px);
-    }
-  
-    .logoWrapper {
-      padding: clamp(18px, 5vw, 28px);
-    }
-  
-    .logo {
-      max-width: 80%;
-      max-height: 70%;
-    }
-  
-    /* Touch feedback */
-    .productCard:hover {
-      transform: none;
-    }
-  
-    .productCard:active {
-      transform: scale(0.97);
-      transition: transform 0.1s ease;
-    }
-  
-    .productCard:active .cardBackground {
-      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
-    }
+
+  /* Subtle dark tint on card so logo reads well over image */
+  .productCard {
+    background: #1c1c2e;
   }
-  
-  /* ============================================
-     SMALL MOBILE - Extra Top Spacing
-     ============================================ */
-  
-  @media (max-width: 400px) {
-    .productsSection {
-      padding: clamp(70px, 18vw, 100px) 0 clamp(35px, 9vw, 50px) 0; /* ✅ Good top spacing */
-    }
-  
-    .header {
-      margin-bottom: clamp(28px, 7vw, 36px);
-    }
-  
-    .title {
-      font-size: clamp(20px, 6vw, 26px);
-      margin-bottom: clamp(10px, 2.5vw, 14px);
-    }
-  
-    .subtitle {
-      font-size: clamp(12px, 3.5vw, 14px);
-      line-height: 1.6;
-    }
-  
-    .productsGrid {
-      gap: clamp(14px, 4vw, 18px);
-    }
-  
-    .cardBackground {
-      border-radius: clamp(10px, 2.5vw, 14px);
-    }
-  
-    .logoWrapper {
-      padding: clamp(16px, 4.5vw, 22px);
-    }
-  
-    .logo {
-      max-width: 85%;
-      max-height: 75%;
-    }
+
+  /* Overlay always visible at bottom for context */
+  .cardOverlay {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* ============================================
-     ACCESSIBILITY - Reduced Motion
-     ============================================ */
-  
-  @media (prefers-reduced-motion: reduce) {
-    .animateUp {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-  
-    .productCard {
-      transition: none !important;
-    }
-  
-    .productCard:hover {
-      transform: none !important;
-    }
-  
-    .productCard:active {
-      transform: none !important;
-    }
-  
-    .cardBackground {
-      transition: none !important;
-    }
+
+  /* No hover lift on touch devices */
+  .productCard:hover {
+    transform: none;
+    box-shadow: 0px 0px clamp(4px, 0.41vw, 8px) 0px rgba(0, 0, 0, 0.18);
   }
-  
-  /* ============================================
-     TOUCH DEVICES - Better Interaction
-     ============================================ */
-  
-  @media (hover: none) and (pointer: coarse) {
-    .productCard:hover {
-      transform: none;
-    }
-  
-    .productCard:active {
-      transform: scale(0.97);
-      transition: transform 0.1s ease;
-    }
-  
-    .productCard:active .cardBackground {
-      box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
-    }
+
+  .productCard:hover .cardImage   { opacity: 1; transform: scale(1); }
+  .productCard:hover .cardOverlay { opacity: 1; transform: translateY(0); }
+  .productCard:hover .logoWrapper { transform: none; }
+  .productCard:hover .logo        { filter: drop-shadow(0 1px 8px rgba(255, 255, 255, 0.55)); transform: none; }
+
+  .productCard:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
   }
-  
-  /* ============================================
-     FOCUS STATE - Keyboard Navigation
-     ============================================ */
-  
-  .productCard:focus-visible {
-    outline: 3px solid var(--color-primary);
-    outline-offset: 3px;
+}
+
+/* ── MOBILE — 2 columns ── */
+
+@media (max-width: 600px) {
+  .productsSection {
+    padding: clamp(80px, 20vw, 120px) 0 clamp(40px, 10vw, 60px) 0;
   }
-  
-  .productCard:focus-visible .cardBackground {
-    box-shadow: 0px 0px 0px 3px rgba(38, 131, 198, 0.3);
+
+  .container {
+    padding: 0 clamp(12px, 4vw, 20px);
   }
+
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    gap: clamp(10px, 2.5vw, 16px);
+  }
+
+  /* White card with logo by default — same as desktop idle state */
+  .productCard {
+    background: #ffffff;
+  }
+
+  /* Image hidden by default */
+  .cardImage {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+
+  /* Overlay hidden by default */
+  .cardOverlay {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  /* Logo centered, no glow by default — bigger on mobile */
+  .logoWrapper {
+    transform: none;
+    padding: clamp(10px, 3vw, 20px);
+  }
+
+  .logo {
+    filter: none;
+    max-width: 78%;
+    max-height: 65%;
+  }
+
+  /* On tap/touch — reveal image, overlay, and emphasise logo */
+  .productCard:active {
+    background: #1c1c2e;
+  }
+
+  .productCard:active .cardImage {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .productCard:active .cardOverlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .productCard:active .logoWrapper {
+    transform: translateY(-10%);
+  }
+
+  .productCard:active .logo {
+    filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.7));
+    transform: scale(1.1);
+  }
+
+  /* Disable hover completely */
+  .productCard:hover {
+    transform: none;
+    box-shadow: 0px 0px clamp(4px, 0.41vw, 8px) 0px rgba(0, 0, 0, 0.18);
+    background: #ffffff;
+  }
+
+  .productCard:hover .cardImage   { opacity: 0; transform: scale(1.06); }
+  .productCard:hover .cardOverlay { opacity: 0; transform: translateY(8px); }
+  .productCard:hover .logoWrapper { transform: none; }
+  .productCard:hover .logo        { filter: none; transform: none; }
+}
+
+/* ── ACCESSIBILITY — Reduced Motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .animateUp {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .cardImage,
+  .cardOverlay,
+  .logoWrapper,
+  .logo,
+  .productCard {
+    transition: none !important;
+  }
+
+  .productCard:hover .cardImage   { opacity: 1; transform: none; }
+  .productCard:hover .cardOverlay { opacity: 1; transform: none; }
+  .productCard:hover .logoWrapper { transform: none; }
+}
