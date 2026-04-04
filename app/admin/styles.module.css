@@ -1,0 +1,137 @@
+/* ============================================================
+   ADMIN DASHBOARD STYLES
+   ============================================================ */
+
+/* ── LOGIN ── */
+.loginPage { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #f1f5f9; }
+.loginCard { background: #fff; border-radius: 12px; padding: 48px 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); width: 100%; max-width: 400px; text-align: center; }
+.loginTitle { font-size: 24px; font-weight: 700; color: #1e293b; margin: 0 0 8px; }
+.loginSubtitle { font-size: 14px; color: #64748b; margin: 0 0 32px; }
+.loginInput { width: 100%; padding: 12px 16px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 15px; outline: none; transition: border-color 0.2s; box-sizing: border-box; }
+.loginInput:focus { border-color: #2683C6; }
+.loginButton { width: 100%; padding: 12px; background: #2683C6; color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 16px; transition: background 0.2s; }
+.loginButton:hover { background: #1e6faa; }
+.loginError { color: #ef4444; font-size: 13px; margin-top: 12px; }
+
+/* ── LAYOUT ── */
+.adminLayout { display: flex; min-height: 100vh; background: #f8fafc; }
+
+/* ── SIDEBAR ── */
+.sidebar { width: 260px; background: #1e293b; color: #fff; display: flex; flex-direction: column; padding: 24px 0; flex-shrink: 0; position: fixed; top: 0; left: 0; bottom: 0; z-index: 100; overflow-y: auto; }
+.sidebarHeader { padding: 0 20px 24px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.sidebarBrand { font-size: 18px; font-weight: 700; color: #fff; margin: 0; }
+.sidebarTag { font-size: 11px; color: #94a3b8; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
+.sidebarNav { display: flex; flex-direction: column; gap: 2px; padding: 16px 12px; flex: 1; }
+.sidebarLink { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 6px; color: #cbd5e1; font-size: 14px; font-weight: 500; text-decoration: none; transition: all 0.15s; cursor: pointer; border: none; background: none; width: 100%; text-align: left; }
+.sidebarLink:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.sidebarLinkActive { background: #2683C6; color: #fff; }
+.sidebarSection { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; padding: 16px 12px 6px; }
+.sidebarFooter { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+.logoutBtn { background: none; border: 1px solid rgba(255,255,255,0.2); color: #94a3b8; padding: 8px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; width: 100%; transition: all 0.15s; }
+.logoutBtn:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+/* ── MAIN CONTENT ── */
+.mainContent { flex: 1; margin-left: 260px; padding: 32px 40px; min-height: 100vh; }
+.pageHeader { margin-bottom: 32px; }
+.pageTitle { font-size: 28px; font-weight: 700; color: #1e293b; margin: 0 0 4px; }
+.pageSubtitle { font-size: 15px; color: #64748b; margin: 0; }
+.breadcrumbAdmin { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 13px; color: #94a3b8; }
+.breadcrumbAdmin a { color: #2683C6; text-decoration: none; }
+.breadcrumbAdmin a:hover { text-decoration: underline; }
+
+/* ── DASHBOARD GRID ── */
+.dashboardGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.companyCard { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 24px; transition: all 0.2s; text-decoration: none; display: flex; flex-direction: column; gap: 12px; cursor: pointer; }
+.companyCard:hover { border-color: #2683C6; box-shadow: 0 4px 16px rgba(38,131,198,0.1); }
+.companyCardLogo { height: 40px; object-fit: contain; align-self: flex-start; }
+.companyCardName { font-size: 18px; font-weight: 600; color: #1e293b; margin: 0; }
+.companyCardCount { font-size: 13px; color: #64748b; margin: 0; }
+.companyCardBadge { display: inline-block; background: #f0f7ff; color: #2683C6; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px; align-self: flex-start; }
+
+/* ── PRODUCT TABLE ── */
+.tableWrapper { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; }
+.tableHeader { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid #e2e8f0; }
+.tableTitle { font-size: 16px; font-weight: 600; color: #1e293b; margin: 0; }
+.addButton { display: inline-flex; align-items: center; gap: 6px; background: #2683C6; color: #fff; border: none; border-radius: 6px; padding: 8px 16px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+.addButton:hover { background: #1e6faa; }
+.table { width: 100%; border-collapse: collapse; }
+.table th { text-align: left; padding: 12px 24px; font-size: 12px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #e2e8f0; background: #f8fafc; }
+.table td { padding: 14px 24px; font-size: 14px; color: #334155; border-bottom: 1px solid #f1f5f9; }
+.table tr:hover { background: #f8fafc; }
+.tableImage { width: 48px; height: 48px; object-fit: cover; border-radius: 6px; border: 1px solid #e2e8f0; }
+.tableActions { display: flex; gap: 8px; }
+.editBtn { background: #f0f7ff; color: #2683C6; border: none; border-radius: 4px; padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; }
+.editBtn:hover { background: #dbeafe; }
+.deleteBtn { background: #fef2f2; color: #ef4444; border: none; border-radius: 4px; padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer; }
+.deleteBtn:hover { background: #fee2e2; }
+
+/* ── FORM ── */
+.formWrapper { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 32px; }
+.formGrid { display: flex; flex-direction: column; gap: 20px; }
+.formGroup { display: flex; flex-direction: column; gap: 6px; }
+.formLabel { font-size: 13px; font-weight: 600; color: #374151; }
+.formRequired { color: #ef4444; }
+.formInput { padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px; outline: none; transition: border-color 0.2s; width: 100%; box-sizing: border-box; }
+.formInput:focus { border-color: #2683C6; }
+.formTextarea { padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px; outline: none; resize: vertical; min-height: 80px; transition: border-color 0.2s; width: 100%; box-sizing: border-box; }
+.formTextarea:focus { border-color: #2683C6; }
+.formSelect { padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 14px; outline: none; background: #fff; width: 100%; box-sizing: border-box; }
+.formCheckbox { display: flex; align-items: center; gap: 8px; }
+.formCheckboxInput { width: 18px; height: 18px; accent-color: #2683C6; }
+.formActions { display: flex; gap: 12px; padding-top: 16px; border-top: 1px solid #e2e8f0; margin-top: 12px; }
+.saveButton { background: #2683C6; color: #fff; border: none; border-radius: 6px; padding: 10px 24px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+.saveButton:hover { background: #1e6faa; }
+.cancelButton { background: #f1f5f9; color: #64748b; border: none; border-radius: 6px; padding: 10px 24px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; }
+.cancelButton:hover { background: #e2e8f0; color: #334155; }
+.formDivider { height: 1px; background: #e2e8f0; margin: 8px 0; }
+
+/* ── ARRAY FIELD EDITOR ── */
+.arrayField { display: flex; flex-direction: column; gap: 8px; }
+.arrayItem { display: flex; gap: 8px; align-items: center; }
+.arrayItem .formInput { flex: 1; }
+.removeItemBtn { background: #fef2f2; color: #ef4444; border: none; border-radius: 4px; width: 32px; height: 32px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.removeItemBtn:hover { background: #fee2e2; }
+.addItemBtn { background: #f0f7ff; color: #2683C6; border: 1px dashed #2683C6; border-radius: 6px; padding: 8px 14px; font-size: 13px; font-weight: 500; cursor: pointer; align-self: flex-start; transition: all 0.15s; }
+.addItemBtn:hover { background: #dbeafe; }
+
+/* ── OBJECT ARRAY FIELD ── */
+.objectArrayItem { border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 10px; position: relative; background: #fafbfc; }
+.objectArrayHeader { display: flex; justify-content: space-between; align-items: center; }
+.objectArrayIndex { font-size: 12px; font-weight: 600; color: #94a3b8; }
+
+/* ── IMAGE PREVIEW ── */
+.imagePreview { margin-top: 8px; }
+.imagePreview img { max-width: 200px; max-height: 150px; object-fit: contain; border: 1px solid #e2e8f0; border-radius: 6px; background: #f8fafc; }
+
+/* ── TOAST / STATUS ── */
+.toast { position: fixed; bottom: 24px; right: 24px; background: #059669; color: #fff; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; animation: slideUp 0.3s ease; }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* ── UTILITY BUTTONS ── */
+.toolbarActions { display: flex; gap: 8px; margin-bottom: 24px; }
+.secondaryBtn { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+.secondaryBtn:hover { background: #e2e8f0; }
+.dangerBtn { background: #fef2f2; color: #ef4444; border: 1px solid #fecaca; border-radius: 6px; padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer; }
+.dangerBtn:hover { background: #fee2e2; }
+
+/* ── CONFIRM DIALOG ── */
+.confirmOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.confirmDialog { background: #fff; border-radius: 12px; padding: 32px; max-width: 400px; width: 90%; box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
+.confirmTitle { font-size: 18px; font-weight: 600; color: #1e293b; margin: 0 0 8px; }
+.confirmText { font-size: 14px; color: #64748b; margin: 0 0 24px; }
+.confirmActions { display: flex; gap: 10px; justify-content: flex-end; }
+
+/* ── EMPTY STATE ── */
+.emptyState { text-align: center; padding: 60px 20px; color: #94a3b8; }
+.emptyState h3 { font-size: 18px; color: #64748b; margin: 0 0 8px; }
+.emptyState p { font-size: 14px; margin: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .sidebar { width: 100%; position: relative; }
+    .adminLayout { flex-direction: column; }
+    .mainContent { margin-left: 0; padding: 20px 16px; }
+    .dashboardGrid { grid-template-columns: 1fr; }
+    .table { font-size: 13px; }
+    .table th, .table td { padding: 10px 12px; }
+}

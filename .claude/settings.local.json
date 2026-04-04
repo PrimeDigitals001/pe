@@ -11,7 +11,8 @@
       "Bash(mv \"sodium-carbonate-new.jpg\" \"sodium-carbonate.jpg\")",
       "Bash(mv \"sodium-bisulphite-new.jpg\" \"sodium-bisulphite.jpg\")",
       "Bash(mv \"calcium-chloride-new.jpg\" \"calcium-chloride.jpg\")",
-      "Bash(mv \"glycerine-new.png\" \"glycerine.png\")"
+      "Bash(mv \"glycerine-new.png\" \"glycerine.png\")",
+      "Bash(npx next:*)"
     ]
   }
 }

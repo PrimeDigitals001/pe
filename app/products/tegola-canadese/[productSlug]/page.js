@@ -12,7 +12,7 @@ import {
     tegolaData,
     getTegolaProductBySlug,
     getTegolaRelatedProducts
-} from '../../data/companyProducts/tegolaCanadese';
+} from '../../data/dataService';
 import styles from './styles.module.css';
 
 export default function TegolaProductDetailPage() {

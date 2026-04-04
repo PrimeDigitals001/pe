@@ -12,9 +12,9 @@ import FloatingQuoteButton from '@/components/FloatingQuoteButton';
 import EnquireModal from '@/components/EnquireModal';
 import {
   tataBluescopeData,
-  getProductBySlug,
-  getRelatedProducts
-} from '../../data/companyProducts/tataBlueScope';
+  getTataProductBySlug as getProductBySlug,
+  getTataRelatedProducts as getRelatedProducts
+} from '../../data/dataService';
 import styles from './styles.module.css';
 
 export default function TataBluescopeProductDetailPage() {

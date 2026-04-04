@@ -11,7 +11,7 @@ import EnquireModal from '@/components/EnquireModal';
 import {
     hindalcoData,
     getHindalcoProductBySlug,
-} from '../../data/companyProducts/hindalco';
+} from '../../data/dataService';
 import styles from './styles.module.css';
 
 export default function HindalcoProductDetailPage() {

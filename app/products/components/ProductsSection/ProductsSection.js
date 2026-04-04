@@ -2,7 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { productsData } from '../../data/productsData';
+import { getProductsData } from '../../data/dataService';
+const productsData = getProductsData();
 import styles from './ProductsSection.module.css';
 
 const ProductsSection = () => {

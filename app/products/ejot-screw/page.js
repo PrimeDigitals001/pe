@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
-import { ejotScrewData, getEjotProductsByType } from '../data/companyProducts/ejotScrew';
+import { ejotScrewData, getEjotProductsByType } from '../data/dataService';
 import styles from './styles.module.css';
 
 export default function EjotScrewPage() {

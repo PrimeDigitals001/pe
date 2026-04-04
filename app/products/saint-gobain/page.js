@@ -8,7 +8,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
-import { saintGobainData } from '../data/companyProducts/saintGobain';
+import { saintGobainData } from '../data/dataService';
 import styles from './styles.module.css';
 
 export default function SaintGobainPage() {

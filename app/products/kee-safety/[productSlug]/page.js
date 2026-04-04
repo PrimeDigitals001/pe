@@ -12,7 +12,7 @@ import {
     keeSafetyData,
     getKeeSafetyProductBySlug,
     getKeeSafetyRelatedProducts
-} from '../../data/companyProducts/keeSafety';
+} from '../../data/dataService';
 import styles from './styles.module.css';
 
 export default function KeeSafetyProductDetailPage() {

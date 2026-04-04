@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
 import EnquireModal from '@/components/EnquireModal';
-import { getChemicalBySlug } from '../../data/companyProducts/chemicals';
+import { getChemicalBySlug } from '../../data/dataService';
 import styles from './styles.module.css';
 
 export default function ChemicalProductDetailPage() {

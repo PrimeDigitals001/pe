@@ -12,7 +12,7 @@ import {
   ejotScrewData,
   getEjotProductBySlug,
   getEjotRelatedProducts
-} from '../../data/companyProducts/ejotScrew';
+} from '../../data/dataService';
 import styles from './styles.module.css';
 
 export default function EjotProductDetailPage() {

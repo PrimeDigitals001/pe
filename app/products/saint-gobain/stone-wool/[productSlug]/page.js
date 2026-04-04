@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
 import EnquireModal from '@/components/EnquireModal';
-import { saintGobainData, getProductBySlug, getRelatedProducts } from '../../../data/companyProducts/saintGobain';
+import { saintGobainData, getSaintGobainProductBySlug as getProductBySlug, getSaintGobainRelatedProducts as getRelatedProducts } from '../../../data/dataService';
 import styles from './styles.module.css';
 
 export default function StoneWoolProductDetailPage() {

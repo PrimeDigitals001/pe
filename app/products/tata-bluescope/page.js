@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
-import { tataBluescopeData } from '../data/companyProducts/tataBlueScope';
+import { tataBluescopeData } from '../data/dataService';
 import styles from './styles.module.css';
 
 export default function TataBluescopePage() {

@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { getAllChemicals } from '../../data/companyProducts/chemicals';
+import { getAllChemicals } from '../../data/dataService';
 import styles from './ChemicalsSection.module.css';
 
 const ChemicalsSection = () => {

@@ -12,7 +12,7 @@ import {
   birlanuData,
   getBirlanuProductBySlug,
   getBirlanuRelatedProducts
-} from '../../data/companyProducts/birlanu';
+} from '../../data/dataService';
 import styles from './styles.module.css';
 
 export default function BirlanuProductDetailPage() {
