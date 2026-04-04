@@ -210,6 +210,17 @@ export default function KeeSafetyProductDetailPage() {
                             </div>
                         )}
 
+                        {/* Custom Info Fields */}
+                        {product.customFields && product.customFields.length > 0 && product.customFields.map((field, index) => (
+                            <React.Fragment key={`cf-${index}`}>
+                                <div className={styles.dividerLine} role="separator"></div>
+                                <div className={styles.infoSection}>
+                                    <h2 className={styles.sectionTitle}>{field.title}</h2>
+                                    <p className={styles.listItem}>{field.value}</p>
+                                </div>
+                            </React.Fragment>
+                        ))}
+
                         {/* Enquire Now Button */}
                         <button
                             className={styles.enquireButton}

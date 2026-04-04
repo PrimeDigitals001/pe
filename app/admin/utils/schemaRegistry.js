@@ -35,6 +35,10 @@ export const companySchemas = {
                 { key: 'size', label: 'File Size', type: 'text' },
                 { key: 'link', label: 'Link URL', type: 'text' },
             ]},
+            { key: 'customFields', label: 'Custom Info Fields', type: 'array-object', objectShape: [
+                { key: 'title', label: 'Title', type: 'text' },
+                { key: 'value', label: 'Value', type: 'text' },
+            ]},
             { key: 'inStock', label: 'In Stock', type: 'boolean' },
             { key: 'isFeatured', label: 'Featured', type: 'boolean' },
         ],
@@ -82,6 +86,10 @@ export const companySchemas = {
                 { key: 'size', label: 'File Size', type: 'text' },
                 { key: 'link', label: 'Link URL', type: 'text' },
             ]},
+            { key: 'customFields', label: 'Custom Info Fields', type: 'array-object', objectShape: [
+                { key: 'title', label: 'Title', type: 'text' },
+                { key: 'value', label: 'Value', type: 'text' },
+            ]},
             { key: 'inStock', label: 'In Stock', type: 'boolean' },
             { key: 'isNew', label: 'New', type: 'boolean' },
             { key: 'isFeatured', label: 'Featured', type: 'boolean' },
@@ -110,6 +118,10 @@ export const companySchemas = {
                 { key: 'text', label: 'Name', type: 'text' },
                 { key: 'size', label: 'File Size', type: 'text' },
                 { key: 'link', label: 'Link URL', type: 'text' },
+            ]},
+            { key: 'customFields', label: 'Custom Info Fields', type: 'array-object', objectShape: [
+                { key: 'title', label: 'Title', type: 'text' },
+                { key: 'value', label: 'Value', type: 'text' },
             ]},
             { key: 'inStock', label: 'In Stock', type: 'boolean' },
             { key: 'isNew', label: 'New', type: 'boolean' },
@@ -152,6 +164,10 @@ export const companySchemas = {
                 { key: 'link', label: 'Link URL', type: 'text' },
                 { key: 'type', label: 'Type', type: 'text' },
             ]},
+            { key: 'customFields', label: 'Custom Info Fields', type: 'array-object', objectShape: [
+                { key: 'title', label: 'Title', type: 'text' },
+                { key: 'value', label: 'Value', type: 'text' },
+            ]},
             { key: 'inStock', label: 'In Stock', type: 'boolean' },
             { key: 'isNew', label: 'New', type: 'boolean' },
             { key: 'isFeatured', label: 'Featured', type: 'boolean' },
@@ -184,6 +200,10 @@ export const companySchemas = {
                 { key: 'text', label: 'Name', type: 'text' },
                 { key: 'size', label: 'File Size', type: 'text' },
                 { key: 'link', label: 'Link URL', type: 'text' },
+            ]},
+            { key: 'customFields', label: 'Custom Info Fields', type: 'array-object', objectShape: [
+                { key: 'title', label: 'Title', type: 'text' },
+                { key: 'value', label: 'Value', type: 'text' },
             ]},
             { key: 'inStock', label: 'In Stock', type: 'boolean' },
             { key: 'isNew', label: 'New', type: 'boolean' },
@@ -221,6 +241,10 @@ export const companySchemas = {
             { key: 'brochure', label: 'Brochure URL', type: 'text' },
             { key: 'brochureFileName', label: 'Brochure File Name', type: 'text' },
             { key: 'brochureFileSize', label: 'Brochure File Size', type: 'text' },
+            { key: 'customFields', label: 'Custom Info Fields', type: 'array-object', objectShape: [
+                { key: 'title', label: 'Title', type: 'text' },
+                { key: 'value', label: 'Value', type: 'text' },
+            ]},
         ],
     },
 
@@ -248,6 +272,10 @@ export const companySchemas = {
             { key: 'brochureFileName', label: 'Brochure File Name', type: 'text' },
             { key: 'brochureFileSize', label: 'Brochure File Size', type: 'text' },
             { key: 'note', label: 'Note', type: 'textarea' },
+            { key: 'customFields', label: 'Custom Info Fields', type: 'array-object', objectShape: [
+                { key: 'title', label: 'Title', type: 'text' },
+                { key: 'value', label: 'Value', type: 'text' },
+            ]},
         ],
     },
 
@@ -295,12 +323,70 @@ export const companySchemas = {
                 { key: 'size', label: 'File Size', type: 'text' },
                 { key: 'link', label: 'Link URL', type: 'text' },
             ]},
+            { key: 'customFields', label: 'Custom Info Fields', type: 'array-object', objectShape: [
+                { key: 'title', label: 'Title', type: 'text' },
+                { key: 'value', label: 'Value', type: 'text' },
+            ]},
             { key: 'inStock', label: 'In Stock', type: 'boolean' },
             { key: 'isNew', label: 'New', type: 'boolean' },
             { key: 'isFeatured', label: 'Featured', type: 'boolean' },
         ],
     },
 };
+
+// ══════════════════════════════════════════════
+// GENERIC SCHEMA (for dynamically added companies)
+// ══════════════════════════════════════════════
+
+export const genericCompanySchema = {
+    companyKey: null,
+    label: null,
+    dataGetter: null,
+    fields: [
+        { key: 'id', label: 'ID', type: 'text', required: true, autoGenerate: true },
+        { key: 'name', label: 'Product Name', type: 'text', required: true },
+        { key: 'slug', label: 'URL Slug', type: 'slug', autoFrom: 'name' },
+        { key: 'category', label: 'Category', type: 'select', optionsFrom: 'categories' },
+        { key: 'image', label: 'Main Image URL', type: 'image-url' },
+        { key: 'cardDescription', label: 'Card Description', type: 'textarea', required: true },
+        { key: 'longDescription', label: 'Long Description', type: 'textarea' },
+        { key: 'sizes', label: 'Sizes / SKUs', type: 'array-string' },
+        { key: 'specifications', label: 'Specifications', type: 'array-string' },
+        { key: 'applications', label: 'Applications', type: 'array-string' },
+        { key: 'brochures', label: 'Brochures', type: 'array-object', objectShape: [
+            { key: 'text', label: 'Name', type: 'text' },
+            { key: 'size', label: 'File Size', type: 'text' },
+            { key: 'link', label: 'Link URL', type: 'text' },
+        ]},
+        { key: 'customFields', label: 'Custom Info Fields', type: 'array-object', objectShape: [
+            { key: 'title', label: 'Title', type: 'text' },
+            { key: 'value', label: 'Value', type: 'text' },
+        ]},
+        { key: 'inStock', label: 'In Stock', type: 'boolean' },
+        { key: 'isFeatured', label: 'Featured', type: 'boolean' },
+    ],
+};
+
+// Hardcoded company slugs (to prevent collisions with dynamic routes)
+export const HARDCODED_SLUGS = [
+    'birlanu', 'chemicals', 'ejot-screw', 'hindalco',
+    'kee-safety', 'saint-gobain', 'tata-bluescope', 'tegola-canadese',
+];
+
+// Convert slug to camelCase companyKey
+export function slugToCompanyKey(slug) {
+    return slug.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+}
+
+// Create a dynamic schema for a new company
+function createDynamicSchema(slug) {
+    const companyKey = slugToCompanyKey(slug);
+    return {
+        ...genericCompanySchema,
+        companyKey,
+        label: slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+    };
+}
 
 // Map URL slugs to schema keys
 export const slugToSchemaKey = {
@@ -316,5 +402,7 @@ export const slugToSchemaKey = {
 
 export function getSchemaBySlug(slug) {
     const key = slugToSchemaKey[slug];
-    return key ? companySchemas[key] : null;
+    if (key) return companySchemas[key];
+    // Fallback to generic schema for dynamically added companies
+    return createDynamicSchema(slug);
 }

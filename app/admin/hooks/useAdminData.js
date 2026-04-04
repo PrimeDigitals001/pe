@@ -34,7 +34,9 @@ export function useAdminData() {
             tegolaCanadese: () => dataService.getTegolaData().products,
         };
 
-        return getterMap[companyKey]?.() || [];
+        if (getterMap[companyKey]) return getterMap[companyKey]();
+        // Fallback for dynamically added companies
+        return dataService.getGenericCompanyData(companyKey)?.products || [];
     }
 
     // Get a single product by id
@@ -55,7 +57,9 @@ export function useAdminData() {
             tataBlueScope: dataService.getTataData,
             tegolaCanadese: dataService.getTegolaData,
         };
-        return getterMap[companyKey]?.() || {};
+        if (getterMap[companyKey]) return getterMap[companyKey]();
+        // Fallback for dynamically added companies
+        return dataService.getGenericCompanyData(companyKey) || {};
     }
 
     // Save a product (create or update)
@@ -203,6 +207,39 @@ export function useAdminData() {
         }
     }
 
+    // Check if there are unpublished changes
+    function hasUnpublishedChanges() {
+        const overrides = getOverrides();
+        return Object.keys(overrides).length > 0;
+    }
+
+    // Publish changes to GitHub (makes them live for all visitors)
+    async function publishToGitHub() {
+        const overrides = getOverrides();
+        if (Object.keys(overrides).length === 0) {
+            return { success: false, error: 'No changes to publish.' };
+        }
+
+        const response = await fetch('/api/publish', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                overrides,
+                adminPassword: 'patel2024',
+            }),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            // Clear localStorage since changes are now published
+            localStorage.removeItem('pe_admin_overrides');
+            refresh();
+        }
+
+        return result;
+    }
+
     return {
         getCompanyProducts,
         getProduct,
@@ -214,5 +251,7 @@ export function useAdminData() {
         resetAll,
         exportData,
         importData,
+        hasUnpublishedChanges,
+        publishToGitHub,
     };
 }

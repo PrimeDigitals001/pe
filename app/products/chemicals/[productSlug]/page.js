@@ -160,6 +160,17 @@ export default function ChemicalProductDetailPage() {
                             </div>
                         )}
 
+                        {/* Custom Info Fields */}
+                        {product.customFields && product.customFields.length > 0 && product.customFields.map((field, index) => (
+                            <React.Fragment key={index}>
+                                <div className={styles.dividerLine}></div>
+                                <div className={styles.infoSection}>
+                                    <h2 className={styles.sectionTitle}>{field.title}</h2>
+                                    <p className={styles.sectionContent}>{field.value}</p>
+                                </div>
+                            </React.Fragment>
+                        ))}
+
                         {/* Enquire Button */}
                         <div className={styles.dividerLine}></div>
                         <button

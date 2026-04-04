@@ -3,22 +3,31 @@
 import React from 'react';
 import Link from 'next/link';
 import { useAdminData } from '../hooks/useAdminData';
-import { slugToSchemaKey } from '../utils/schemaRegistry';
+import { slugToSchemaKey, slugToCompanyKey } from '../utils/schemaRegistry';
 import styles from '../styles.module.css';
 
-const companies = [
-    { slug: 'chemicals', label: 'Chemicals', logo: null },
-    { slug: 'birlanu', label: 'Birlanu', logo: '/images/products/logo_birlanu.png' },
-    { slug: 'ejot-screw', label: 'Ejot Screw', logo: '/images/products/logo_ejot.png' },
-    { slug: 'hindalco', label: 'Hindalco', logo: '/images/products/logo_hindalco.png' },
-    { slug: 'kee-safety', label: 'Kee Safety', logo: '/images/products/logo_kee-safety.png' },
-    { slug: 'saint-gobain', label: 'Saint-Gobain', logo: '/images/products/logo_saint-gobain.png' },
-    { slug: 'tata-bluescope', label: 'Tata Bluescope', logo: '/images/products/logo_tata-bluescope.png' },
-    { slug: 'tegola-canadese', label: 'Tegola Canadese', logo: '/images/products/logo_tegola-canadese.png' },
-];
-
 export default function CompaniesPage() {
-    const { getCompanyProducts } = useAdminData();
+    const { getCompanyProducts, getProductsRegistry } = useAdminData();
+
+    // Hardcoded baseline (includes chemicals which isn't in productsData registry)
+    const baselineCompanies = [
+        { slug: 'chemicals', label: 'Chemicals', logo: null },
+        { slug: 'birlanu', label: 'Birlanu', logo: '/images/products/logo_birlanu.png' },
+        { slug: 'ejot-screw', label: 'Ejot Screw', logo: '/images/products/logo_ejot.png' },
+        { slug: 'hindalco', label: 'Hindalco', logo: '/images/products/logo_hindalco.png' },
+        { slug: 'kee-safety', label: 'Kee Safety', logo: '/images/products/logo_kee-safety.png' },
+        { slug: 'saint-gobain', label: 'Saint-Gobain', logo: '/images/products/logo_saint-gobain.png' },
+        { slug: 'tata-bluescope', label: 'Tata Bluescope', logo: '/images/products/logo_tata-bluescope.png' },
+        { slug: 'tegola-canadese', label: 'Tegola Canadese', logo: '/images/products/logo_tegola-canadese.png' },
+    ];
+
+    // Merge with registry to include dynamically added companies
+    const registry = getProductsRegistry();
+    const dynamicCompanies = registry
+        .filter((c) => !baselineCompanies.find((b) => b.slug === c.slug))
+        .map((c) => ({ slug: c.slug, label: c.name, logo: c.logo || c.cardImage || null }));
+
+    const companies = [...baselineCompanies, ...dynamicCompanies];
 
     return (
         <>
@@ -35,7 +44,7 @@ export default function CompaniesPage() {
 
             <div className={styles.dashboardGrid}>
                 {companies.map((c) => {
-                    const schemaKey = slugToSchemaKey[c.slug];
+                    const schemaKey = slugToSchemaKey[c.slug] || slugToCompanyKey(c.slug);
                     const products = schemaKey ? getCompanyProducts(schemaKey) : [];
                     return (
                         <Link key={c.slug} href={`/admin/companies/${c.slug}`} className={styles.companyCard}>

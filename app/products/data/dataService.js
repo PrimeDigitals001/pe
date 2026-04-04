@@ -9,15 +9,15 @@ import { saintGobainData as staticSaintGobain } from './companyProducts/saintGob
 import { tataBluescopeData as staticTata } from './companyProducts/tataBlueScope';
 import { tegolaData as staticTegola } from './companyProducts/tegolaCanadese';
 import { productsData as staticProductsData } from './productsData';
+import publishedOverrides from './publishedOverrides.json';
 import { getOverrides, mergeProducts, mergeNested, mergeCompanyInfo, mergeProductsRegistry } from '../../admin/utils/mergeData';
 
-// ── Helper: get merged data for a company ──
+// ── Helper: apply a single layer of overrides to data ──
 
-function getMergedData(staticData, companyKey, nestedKey) {
-    const overrides = getOverrides();
-    const co = overrides[companyKey] || {};
-
-    const merged = { ...staticData };
+function applyOverrides(data, companyOverrides, nestedKey) {
+    if (!companyOverrides) return data;
+    const co = companyOverrides;
+    const merged = { ...data };
 
     if (merged.companyInfo && co.companyInfo) {
         merged.companyInfo = mergeCompanyInfo(merged.companyInfo, co.companyInfo);
@@ -36,13 +36,33 @@ function getMergedData(staticData, companyKey, nestedKey) {
     return merged;
 }
 
+// ── Helper: get merged data for a company (3-layer merge) ──
+// Layer 1: static JS data
+// Layer 2: published overrides (committed to GitHub, visible to all)
+// Layer 3: localStorage overrides (draft, admin-only)
+
+function getMergedData(staticData, companyKey, nestedKey) {
+    // Layer 2: apply published overrides
+    let merged = applyOverrides(staticData, publishedOverrides[companyKey], nestedKey);
+
+    // Layer 3: apply localStorage overrides (draft)
+    const localOverrides = getOverrides();
+    merged = applyOverrides(merged, localOverrides[companyKey], nestedKey);
+
+    return merged;
+}
+
 // ══════════════════════════════════════════════
 // PRODUCTS REGISTRY (main /products page)
 // ══════════════════════════════════════════════
 
 export function getProductsData() {
-    const overrides = getOverrides();
-    return mergeProductsRegistry(staticProductsData, overrides.productsData);
+    // Layer 2: published overrides
+    let merged = mergeProductsRegistry(staticProductsData, publishedOverrides.productsData);
+    // Layer 3: localStorage overrides (draft)
+    const localOverrides = getOverrides();
+    merged = mergeProductsRegistry(merged, localOverrides.productsData);
+    return merged;
 }
 
 export function getProductBySlug(slug) {
@@ -377,3 +397,27 @@ export function getTegolaRelatedProducts(productId) {
 export const tegolaData = new Proxy({}, {
     get(_, prop) { return getTegolaData()[prop]; }
 });
+
+// ══════════════════════════════════════════════
+// GENERIC COMPANY (for dynamically added companies)
+// ══════════════════════════════════════════════
+
+export function getGenericCompanyData(companyKey) {
+    const emptyStatic = {
+        companyInfo: { name: '', slug: '' },
+        products: [],
+        categories: ['All Products'],
+    };
+    return getMergedData(emptyStatic, companyKey);
+}
+
+export function getGenericCompanyProductBySlug(companyKey, productSlug) {
+    const data = getGenericCompanyData(companyKey);
+    return (data.products || []).find((p) => p.slug === productSlug);
+}
+
+export function getGenericCompanyProductsByCategory(companyKey, category) {
+    const data = getGenericCompanyData(companyKey);
+    if (category === 'All Products') return data.products || [];
+    return (data.products || []).filter((p) => p.category === category);
+}
