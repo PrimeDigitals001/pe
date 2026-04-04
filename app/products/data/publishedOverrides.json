@@ -1,1 +1,54 @@
-{}
+{
+  "chemicals": {
+    "products": [
+      {
+        "id": "chem-017",
+        "name": "Glycerine",
+        "slug": "glycerine",
+        "category": "Industrial Chemicals",
+        "formula": "C₃H₈O₃",
+        "grade": "CP Grade (Technical)",
+        "physicalForm": "Clear, colourless, viscous liquid with high purity and mild sweetness; hygroscopic",
+        "packing": [
+          "250 kg Drums",
+          "IBC Tanks",
+          "Bulk "
+        ],
+        "suppliers": [
+          "Adani Wilmar",
+          "Godrej Industries",
+          "IOI Oleochemical",
+          "KLK Oleo"
+        ],
+        "cardDescription": "A versatile industrial chemical used in soap and personal care manufacturing, pharmaceutical production, alkyd resins, and food processing as a humectant.",
+        "cardImage": "/images/products/chemicals/glycerine.png",
+        "detailImage": "/images/products/chemicals/glycerine.png",
+        "applications": [
+          {
+            "industry": "Soap & Personal Care",
+            "detail": "By-product of saponification; used as a moisturiser and emollient in soaps, creams, and cosmetics."
+          },
+          {
+            "industry": "Pharmaceuticals",
+            "detail": "Excipient and solvent in syrups, suppositories, and topical formulations."
+          },
+          {
+            "industry": "Food & Beverage",
+            "detail": "Humectant, sweetener, and thickening agent; approved food additive (E422)."
+          },
+          {
+            "industry": "Alkyd Resin & Paints",
+            "detail": "Key raw material in alkyd resin synthesis for paints and surface coatings."
+          },
+          {
+            "industry": "Textile Industry",
+            "detail": "Softening and conditioning agent for fibres and fabrics."
+          }
+        ],
+        "brochures": [],
+        "inStock": true,
+        "isFeatured": false
+      }
+    ]
+  }
+}
