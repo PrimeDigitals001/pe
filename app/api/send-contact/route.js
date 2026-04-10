@@ -155,7 +155,7 @@ export async function POST(request) {
       from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
       to: process.env.RECIPIENT_EMAIL,
       replyTo: email,
-      subject: `Contact: ${subject?.trim() || 'New Message'} — ${name}`,
+      subject: `🟢 Website Contact — ${name}${subject?.trim() ? ` (${subject.trim()})` : ''}`,
       html,
     });
 

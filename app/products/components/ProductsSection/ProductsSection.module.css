@@ -80,86 +80,11 @@
 }
 
 .productCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0px 8px clamp(16px, 1.25vw, 24px) rgba(0, 0, 0, 0.18);
-  /*
-   * Fallback dark bg — shows when cardImage hasn't been added yet.
-   * Once a real image loads it covers this completely.
-   */
-  background: #1c1c2e;
+  transform: translateY(-5px);
+  box-shadow: 0px 10px clamp(20px, 1.5vw, 30px) rgba(0, 0, 0, 0.15);
 }
 
-/* ── BACKGROUND IMAGE — hidden by default, fades in on hover ── */
-
-.cardImage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  opacity: 0;
-  transform: scale(1.06);
-  transition: opacity 0.45s ease, transform 0.55s ease;
-  z-index: 1;
-}
-
-.productCard:hover .cardImage {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* ── GRADIENT OVERLAY — slides in from bottom on hover ── */
-
-.cardOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.82) 0%,
-    rgba(0, 0, 0, 0.35) 45%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: clamp(12px, 1.25vw, 24px);
-  z-index: 2;
-  /* Hidden by default — ONLY appears on hover */
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.productCard:hover .cardOverlay {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.cardTagline {
-  color: rgba(255, 255, 255, 0.80);
-  font-family: var(--font-heading);
-  font-size: clamp(11px, 0.73vw, 14px);
-  font-weight: 600;
-  line-height: 1.4;
-  margin-bottom: clamp(4px, 0.3vw, 6px);
-  display: block;
-}
-
-.cardCta {
-  color: #ffffff;
-  font-family: var(--font-heading);
-  font-size: clamp(12px, 0.83vw, 16px);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  display: block;
-}
-
-/* ── LOGO — always visible, floats up slightly on hover ── */
+/* ── LOGO — always visible, centered ── */
 
 .logoWrapper {
   position: absolute;
@@ -172,11 +97,6 @@
   align-items: center;
   justify-content: center;
   padding: clamp(16px, 1.56vw, 30px);
-  transition: transform 0.35s ease;
-}
-
-.productCard:hover .logoWrapper {
-  transform: translateY(-10%);
 }
 
 .logo {
@@ -186,17 +106,11 @@
   display: block;
   width: auto;
   height: auto;
-  transition: filter 0.35s ease;
+  transition: transform 0.35s ease;
 }
 
-/* Logo emphasis — scale up + glow on hover */
 .productCard:hover .logo {
-  filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.7));
-  transform: scale(1.1);
-}
-
-.logo {
-  transition: filter 0.35s ease, transform 0.35s ease;
+  transform: scale(1.08);
 }
 
 /* ── FOCUS STATE ── */
@@ -243,33 +157,11 @@
     max-width: clamp(560px, 85vw, 800px);
   }
 
-  /* Show image by default so cards aren't blank white */
-  .cardImage {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  /* Subtle dark tint on card so logo reads well over image */
-  .productCard {
-    background: #1c1c2e;
-  }
-
-  /* Overlay always visible at bottom for context */
-  .cardOverlay {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* No hover lift on touch devices */
+  /* No hover zoom on touch — use active tap instead */
   .productCard:hover {
     transform: none;
     box-shadow: 0px 0px clamp(4px, 0.41vw, 8px) 0px rgba(0, 0, 0, 0.18);
   }
-
-  .productCard:hover .cardImage   { opacity: 1; transform: scale(1); }
-  .productCard:hover .cardOverlay { opacity: 1; transform: translateY(0); }
-  .productCard:hover .logoWrapper { transform: none; }
-  .productCard:hover .logo        { filter: drop-shadow(0 1px 8px rgba(255, 255, 255, 0.55)); transform: none; }
 
   .productCard:active {
     transform: scale(0.97);
@@ -294,70 +186,27 @@
     gap: clamp(10px, 2.5vw, 16px);
   }
 
-  /* White card with logo by default — same as desktop idle state */
-  .productCard {
-    background: #ffffff;
-  }
-
-  /* Image hidden by default */
-  .cardImage {
-    opacity: 0;
-    transform: scale(1.06);
-  }
-
-  /* Overlay hidden by default */
-  .cardOverlay {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-
-  /* Logo centered, no glow by default — bigger on mobile */
+  /* Logo bigger on mobile */
   .logoWrapper {
-    transform: none;
     padding: clamp(10px, 3vw, 20px);
   }
 
   .logo {
-    filter: none;
     max-width: 78%;
     max-height: 65%;
   }
 
-  /* On tap/touch — reveal image, overlay, and emphasise logo */
+  /* Tap feedback */
   .productCard:active {
-    background: #1c1c2e;
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
   }
 
-  .productCard:active .cardImage {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .productCard:active .cardOverlay {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .productCard:active .logoWrapper {
-    transform: translateY(-10%);
-  }
-
-  .productCard:active .logo {
-    filter: drop-shadow(0 2px 12px rgba(255, 255, 255, 0.7));
-    transform: scale(1.1);
-  }
-
-  /* Disable hover completely */
+  /* Disable hover on mobile */
   .productCard:hover {
     transform: none;
     box-shadow: 0px 0px clamp(4px, 0.41vw, 8px) 0px rgba(0, 0, 0, 0.18);
-    background: #ffffff;
   }
-
-  .productCard:hover .cardImage   { opacity: 0; transform: scale(1.06); }
-  .productCard:hover .cardOverlay { opacity: 0; transform: translateY(8px); }
-  .productCard:hover .logoWrapper { transform: none; }
-  .productCard:hover .logo        { filter: none; transform: none; }
 }
 
 /* ── ACCESSIBILITY — Reduced Motion ── */
@@ -369,15 +218,7 @@
     transform: none !important;
   }
 
-  .cardImage,
-  .cardOverlay,
-  .logoWrapper,
-  .logo,
   .productCard {
     transition: none !important;
   }
-
-  .productCard:hover .cardImage   { opacity: 1; transform: none; }
-  .productCard:hover .cardOverlay { opacity: 1; transform: none; }
-  .productCard:hover .logoWrapper { transform: none; }
 }

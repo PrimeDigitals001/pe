@@ -50,24 +50,7 @@ const ProductsSection = () => {
               className={`${styles.productCard} ${styles.animateUp}`}
               style={{ animationDelay: `${0.12 + index * 0.05}s` }}
             >
-              {/* Background product image — revealed on hover */}
-              {product.cardImage && (
-                <img
-                  src={product.cardImage}
-                  alt=""
-                  aria-hidden="true"
-                  className={styles.cardImage}
-                  loading="lazy"
-                />
-              )}
-
-              {/* Gradient overlay — slides in from bottom on hover */}
-              <div className={styles.cardOverlay}>
-                <span className={styles.cardTagline}>{product.tagline}</span>
-                <span className={styles.cardCta}>Explore →</span>
-              </div>
-
-              {/* Logo — always visible, floats up on hover */}
+              {/* Logo — always visible, subtle zoom on hover */}
               <div className={styles.logoWrapper}>
                 <img
                   src={product.logo}
