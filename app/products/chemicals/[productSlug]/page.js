@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import Logo from '@/components/Logo';
 import FloatingQuoteButton from '@/components/FloatingQuoteButton';
 import EnquireModal from '@/components/EnquireModal';
+import QuoteBuilderModal from '@/components/QuoteBuilderModal';
 import { getChemicalBySlug } from '../../data/dataService';
 import styles from './styles.module.css';
 
@@ -17,11 +18,13 @@ export default function ChemicalProductDetailPage() {
 
     const product = getChemicalBySlug(productSlug);
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [enquiryProduct, setEnquiryProduct] = useState(null);
+    const [isEnquireOpen, setIsEnquireOpen] = useState(false);
+    const [isQuoteOpen, setIsQuoteOpen] = useState(false);
 
-    const openEnquiryModal = (p) => { setEnquiryProduct(p); setIsModalOpen(true); };
-    const closeEnquiryModal = () => setIsModalOpen(false);
+    const openEnquire = () => setIsEnquireOpen(true);
+    const closeEnquire = () => setIsEnquireOpen(false);
+    const openQuote = () => setIsQuoteOpen(true);
+    const closeQuote = () => setIsQuoteOpen(false);
 
     if (!product) {
         return (
@@ -44,10 +47,16 @@ export default function ChemicalProductDetailPage() {
             <FloatingQuoteButton />
 
             <EnquireModal
-                isOpen={isModalOpen}
-                onClose={closeEnquiryModal}
-                product={enquiryProduct}
+                isOpen={isEnquireOpen}
+                onClose={closeEnquire}
+                product={product}
                 companyName="Patel Enterprise"
+            />
+
+            <QuoteBuilderModal
+                isOpen={isQuoteOpen}
+                onClose={closeQuote}
+                product={product}
             />
 
             <main className={styles.productPage}>
@@ -171,15 +180,24 @@ export default function ChemicalProductDetailPage() {
                             </React.Fragment>
                         ))}
 
-                        {/* Enquire Button */}
+                        {/* Action Buttons */}
                         <div className={styles.dividerLine}></div>
-                        <button
-                            className={styles.enquireButton}
-                            onClick={() => openEnquiryModal(product)}
-                            aria-label={`Enquire about ${product.name}`}
-                        >
-                            Enquire now
-                        </button>
+                        <div className={styles.actionButtons}>
+                            <button
+                                className={styles.enquireButton}
+                                onClick={openEnquire}
+                                aria-label={`Enquire about ${product.name}`}
+                            >
+                                Enquire now
+                            </button>
+                            <button
+                                className={styles.quoteButton}
+                                onClick={openQuote}
+                                aria-label={`Request quote for ${product.name}`}
+                            >
+                                Request Quote
+                            </button>
+                        </div>
 
                     </div>
                 </div>

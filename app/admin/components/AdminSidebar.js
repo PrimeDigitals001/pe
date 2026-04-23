@@ -36,6 +36,9 @@ export default function AdminSidebar({ onLogout }) {
                 <Link href="/admin/companies" className={`${styles.sidebarLink} ${isActive('/admin/companies')}`}>
                     All Companies
                 </Link>
+                <Link href="/admin/quotes" className={`${styles.sidebarLink} ${pathname.startsWith('/admin/quotes') ? styles.sidebarLinkActive : ''}`}>
+                    Quotes
+                </Link>
 
                 <div className={styles.sidebarSection}>Companies</div>
                 {companies.map((c) => (

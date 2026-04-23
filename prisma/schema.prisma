@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Quote {
+  id              String      @id
+  status          QuoteStatus @default(DRAFT)
+
+  revision        Int         @default(1)
+  parentId        String?
+  parent          Quote?      @relation("QuoteRevisions", fields: [parentId], references: [id], onDelete: SetNull)
+  revisions       Quote[]     @relation("QuoteRevisions")
+
+  customerName    String
+  customerCompany String
+  customerEmail   String
+  customerPhone   String
+  customerGstin   String?
+
+  deliveryCity    String
+  deliveryState   String
+  deliveryPincode String
+  requiredBy      DateTime?
+  notes           String?
+
+  subject         String?
+  supplierGstin   String?
+  validityDays    Int         @default(15)
+  validTill       DateTime?
+  paymentTerms    String      @default("50% advance, 50% before dispatch")
+  deliveryTerms   String      @default("Ex-works / FOB origin")
+  remarks         String?
+
+  preparedByName  String      @default("Puja Parmar")
+  preparedByRole  String      @default("Sales")
+  preparedByPhone String      @default("63581 85076")
+
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  sentAt          DateTime?
+
+  items           QuoteItem[]
+}
+
+model QuoteItem {
+  id          String   @id @default(cuid())
+  quoteId     String
+  quote       Quote    @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  productSlug String
+  productName String
+  description String?
+  itemCode    String?
+  hsnCode     String?
+  grade       String?
+  packaging   String?
+  quantity    Decimal  @db.Decimal(12, 3)
+  unit        String
+  unitPrice   Decimal? @db.Decimal(12, 2)
+  discountPct Decimal  @default(0) @db.Decimal(5, 2)
+  taxPct      Decimal  @default(18) @db.Decimal(5, 2)
+  position    Int
+
+  @@index([quoteId])
+}
+
+model QuoteCounter {
+  fiscalYear String @id
+  value      Int    @default(0)
+}
+
+enum QuoteStatus {
+  DRAFT
+  PRICED
+  SENT
+}

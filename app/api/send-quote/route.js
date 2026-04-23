@@ -1,4 +1,6 @@
 import nodemailer from 'nodemailer';
+import { getRecipientEmail } from '../../../lib/recipientEmail.js';
+import { getCcEmails } from '../../../lib/ccEmails.js';
 
 // ── Gmail SMTP transporter ──
 // Uses an App Password (NOT your real Gmail password)
@@ -172,7 +174,8 @@ export async function POST(request) {
     // ── Send email ──
     await transporter.sendMail({
       from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
-      to: process.env.RECIPIENT_EMAIL,
+      to: getRecipientEmail(),
+      cc: getCcEmails(),
       replyTo: email,   // so you can reply directly to the customer
       subject: `Quote Request — ${name} (${companyName})`,
       html,

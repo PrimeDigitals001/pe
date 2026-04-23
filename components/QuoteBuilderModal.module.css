@@ -1,0 +1,101 @@
+/* Quote Builder Modal — adds multi-item rows on top of EnquireModal.module.css */
+
+.wide {
+  max-width: clamp(560px, 62vw, 900px) !important;
+}
+
+.sectionLabel {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray, #666);
+  margin: 18px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.sectionLabel:first-of-type {
+  margin-top: 0;
+}
+
+.row3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 1vw, 16px);
+}
+
+@media (max-width: 600px) {
+  .row3 { grid-template-columns: 1fr; }
+}
+
+.itemCard {
+  padding: clamp(12px, 1.25vw, 18px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background: rgba(0, 0, 0, 0.015);
+}
+
+.itemCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.itemCardNum {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-dark, #1c1c2e);
+}
+
+.removeBtn {
+  background: none;
+  border: 1px solid rgba(220, 50, 50, 0.3);
+  color: #c0392b;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.removeBtn:hover {
+  background: rgba(220, 50, 50, 0.08);
+}
+
+.addItemBtn {
+  width: 100%;
+  padding: 10px 14px;
+  background: transparent;
+  border: 1.5px dashed rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark, #1c1c2e);
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.addItemBtn:hover {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.35);
+}
+
+.qtyRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px;
+}
+
+.unitSelect {
+  min-width: 78px;
+}

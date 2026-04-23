@@ -314,6 +314,51 @@
     transform: translateY(0);
 }
 
+/* ── ACTION BUTTONS ROW ── */
+
+.actionButtons {
+    display: flex;
+    gap: clamp(10px, 0.83vw, 16px);
+    flex-wrap: wrap;
+    margin-top: clamp(10px, 1.56vw, 30px);
+    align-self: flex-start;
+}
+
+.actionButtons .enquireButton {
+    margin-top: 0;
+}
+
+.quoteButton {
+    background: #1c1c2e;
+    border-radius: 64px;
+    border: none;
+    width: clamp(150px, 10vw, 190px);
+    height: clamp(42px, 2.81vw, 54px);
+    color: rgba(255, 255, 255, 0.95);
+    font-family: var(--font-heading);
+    font-size: clamp(13px, 0.83vw, 16px);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(28, 28, 46, 0.25);
+    white-space: nowrap;
+}
+
+.quoteButton:hover {
+    background: #2a2a46;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(28, 28, 46, 0.35);
+}
+
+.quoteButton:focus-visible {
+    outline: 3px solid #1c1c2e;
+    outline-offset: 3px;
+}
+
+.quoteButton:active {
+    transform: translateY(0);
+}
+
 /* ── ERROR PAGE ── */
 
 .errorPage {

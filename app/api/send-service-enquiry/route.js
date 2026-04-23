@@ -1,4 +1,6 @@
 import nodemailer from 'nodemailer';
+import { getRecipientEmail } from '../../../lib/recipientEmail.js';
+import { getCcEmails } from '../../../lib/ccEmails.js';
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -176,7 +178,8 @@ export async function POST(request) {
 
         await transporter.sendMail({
             from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
-            to: process.env.RECIPIENT_EMAIL,
+            to: getRecipientEmail(),
+            cc: getCcEmails(),
             replyTo: email,
             subject: `Service Enquiry — ${serviceName} | ${name}${companyName ? ` (${companyName})` : ''}`,
             html,

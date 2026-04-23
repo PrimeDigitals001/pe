@@ -1,4 +1,6 @@
 import nodemailer from 'nodemailer';
+import { getRecipientEmail } from '../../../lib/recipientEmail.js';
+import { getCcEmails } from '../../../lib/ccEmails.js';
 import dns from 'dns/promises';
 
 // ── Disposable / throwaway email domain blocklist ──
@@ -153,7 +155,8 @@ export async function POST(request) {
 
     await transporter.sendMail({
       from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
-      to: process.env.RECIPIENT_EMAIL,
+      to: getRecipientEmail(),
+      cc: getCcEmails(),
       replyTo: email,
       subject: `🟢 Website Contact — ${name}${subject?.trim() ? ` (${subject.trim()})` : ''}`,
       html,

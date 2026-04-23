@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-const ADMIN_PASSWORD = 'patel2024';
+const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'patel2024';
 const SESSION_KEY = 'pe_admin_session';
 const SESSION_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
@@ -37,5 +37,9 @@ export function useAuth() {
         setIsAuthenticated(false);
     }
 
-    return { isAuthenticated, isLoading, login, logout };
+    function getPassword() {
+        return ADMIN_PASSWORD;
+    }
+
+    return { isAuthenticated, isLoading, login, logout, getPassword };
 }
