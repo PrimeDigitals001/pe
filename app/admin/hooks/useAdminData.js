@@ -195,49 +195,10 @@ export function useAdminData() {
         URL.revokeObjectURL(url);
     }
 
-    // Import overrides from JSON
-    function importData(jsonString) {
-        try {
-            const data = JSON.parse(jsonString);
-            saveOverrides(data);
-            refresh();
-            return true;
-        } catch {
-            return false;
-        }
-    }
-
-    // Check if there are unpublished changes
-    function hasUnpublishedChanges() {
+    // Does the admin have local (unexported) changes in localStorage?
+    function hasLocalChanges() {
         const overrides = getOverrides();
         return Object.keys(overrides).length > 0;
-    }
-
-    // Publish changes to GitHub (makes them live for all visitors)
-    async function publishToGitHub() {
-        const overrides = getOverrides();
-        if (Object.keys(overrides).length === 0) {
-            return { success: false, error: 'No changes to publish.' };
-        }
-
-        const response = await fetch('/api/publish', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                overrides,
-                adminPassword: 'patel2024',
-            }),
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-            // Clear localStorage since changes are now published
-            localStorage.removeItem('pe_admin_overrides');
-            refresh();
-        }
-
-        return result;
     }
 
     return {
@@ -250,8 +211,6 @@ export function useAdminData() {
         saveCompanyToRegistry,
         resetAll,
         exportData,
-        importData,
-        hasUnpublishedChanges,
-        publishToGitHub,
+        hasLocalChanges,
     };
 }

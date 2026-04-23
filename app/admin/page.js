@@ -1,32 +1,18 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAdminData } from './hooks/useAdminData';
 import { slugToSchemaKey, HARDCODED_SLUGS, slugToCompanyKey } from './utils/schemaRegistry';
 import { slugify } from './utils/slugify';
 import { getOverrides, saveOverrides } from './utils/mergeData';
-import PublishButton from './components/PublishButton';
 import styles from './styles.module.css';
 
 export default function AdminDashboard() {
-    const { getCompanyProducts, getProductsRegistry, saveCompanyToRegistry, resetAll, exportData, importData, hasUnpublishedChanges, publishToGitHub } = useAdminData();
-    const fileInputRef = useRef(null);
+    const { getCompanyProducts, getProductsRegistry, saveCompanyToRegistry, resetAll, exportData } = useAdminData();
     const [showAddForm, setShowAddForm] = useState(false);
     const [newCompany, setNewCompany] = useState({ name: '', slug: '', logo: '', tagline: '', description: '' });
     const [addError, setAddError] = useState('');
-
-    const handleImport = (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-            const success = importData(ev.target.result);
-            alert(success ? 'Data imported successfully!' : 'Invalid JSON file.');
-        };
-        reader.readAsText(file);
-        e.target.value = '';
-    };
 
     // Hardcoded baseline (includes chemicals which isn't in productsData registry)
     const baselineCompanies = [
@@ -110,12 +96,9 @@ export default function AdminDashboard() {
             </div>
 
             <div className={styles.toolbarActions}>
-                <PublishButton onPublish={publishToGitHub} hasChanges={hasUnpublishedChanges()} />
-                <button className={styles.secondaryBtn} onClick={exportData}>Export Backup</button>
-                <button className={styles.secondaryBtn} onClick={() => fileInputRef.current?.click()}>
-                    Import Backup
+                <button className={styles.primaryBtn} onClick={exportData}>
+                    Download Changes (for Developer)
                 </button>
-                <input ref={fileInputRef} type="file" accept=".json" onChange={handleImport} style={{ display: 'none' }} />
                 <button className={styles.dangerBtn} onClick={() => {
                     if (confirm('Reset all changes to defaults? This cannot be undone.')) {
                         resetAll();
@@ -123,6 +106,9 @@ export default function AdminDashboard() {
                     }
                 }}>Reset All Changes</button>
             </div>
+            <p className={styles.exportHint}>
+                Your edits are saved in this browser only. Download the JSON file and share it with the developer to publish changes to the live website.
+            </p>
 
             <div className={styles.toolbarActions}>
                 <button className={styles.addButton} onClick={() => setShowAddForm(!showAddForm)}>

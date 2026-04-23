@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 
 export default function AdminLayout({ children }) {
     const { isAuthenticated, isLoading, login, logout } = useAuth();
-    const { hasUnpublishedChanges } = useAdminData();
+    const { hasLocalChanges } = useAdminData();
 
     if (isLoading) return null;
 
@@ -21,9 +21,10 @@ export default function AdminLayout({ children }) {
         <div className={styles.adminLayout}>
             <AdminSidebar onLogout={logout} />
             <main className={styles.mainContent}>
-                {hasUnpublishedChanges() && (
-                    <div className={styles.unpublishedBanner}>
-                        You have unpublished changes. Go to the Dashboard to publish them live.
+                {hasLocalChanges() && (
+                    <div className={styles.previewBanner}>
+                        Preview mode — product edits are saved locally in your browser and will not appear on the live website.
+                        Use <strong>Export Data</strong> on the Dashboard to download your changes and share them with the developer to publish.
                     </div>
                 )}
                 {children}
