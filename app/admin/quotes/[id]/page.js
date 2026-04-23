@@ -1,19 +1,13 @@
 'use client';
 
 import React, { useEffect, useMemo, useState } from 'react';
-import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import { useAuth } from '../../hooks/useAuth';
 import styles from '../../styles.module.css';
 import qStyles from '../quotes.module.css';
-import QuoteDocument from '@/lib/pdf/QuoteDocument.jsx';
+import QuoteHtmlPreview from './QuoteHtmlPreview.jsx';
 import { formatQuoteIdForDisplay } from '@/lib/formatQuoteId.js';
-
-const PDFViewer = dynamic(
-  () => import('@react-pdf/renderer').then((m) => m.PDFViewer),
-  { ssr: false, loading: () => <div className={qStyles.pdfPlaceholder}>Loading preview…</div> }
-);
 
 function rupees(n) {
   return `₹${Number(n || 0).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -436,7 +430,7 @@ export default function AdminQuoteEditorPage() {
           <div className={qStyles.actionBar}>
             <Link href="/admin/quotes" className={qStyles.btnSecondary}>← Back</Link>
             <button className={qStyles.btnSecondary} onClick={refreshPreview} disabled={saving || sending}>
-              {showPreview ? 'Refresh Preview' : 'Preview PDF'}
+              {showPreview ? 'Refresh Preview' : 'Preview Quote'}
             </button>
             <a
               className={qStyles.btnSecondary}
@@ -468,16 +462,16 @@ export default function AdminQuoteEditorPage() {
           </div>
         </div>
 
-        {/* Right: PDF preview (on demand) */}
+        {/* Right: HTML preview (on demand) */}
         <div className={qStyles.pdfPane}>
           {showPreview && previewQuote ? (
-            <PDFViewer showToolbar={false} style={{ width: '100%', height: 780, border: 0 }}>
-              <QuoteDocument quote={previewQuote} />
-            </PDFViewer>
+            <div className={qStyles.previewScroll}>
+              <QuoteHtmlPreview quote={previewQuote} />
+            </div>
           ) : (
             <div className={qStyles.pdfPlaceholder}>
               Fill in the prices and terms, then click<br />
-              <strong>&ldquo;Preview PDF&rdquo;</strong> to see how the quote will look.
+              <strong>&ldquo;Preview Quote&rdquo;</strong> to see how it will look.
             </div>
           )}
         </div>

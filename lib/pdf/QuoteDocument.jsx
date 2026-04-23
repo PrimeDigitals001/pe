@@ -200,7 +200,12 @@ const styles = StyleSheet.create({
     lineHeight: 1.35,
   },
 
-  /* Page 2 signatory */
+  /* Signatory block — kept together via wrap={false}, sits after terms on page 1 if it fits */
+  signatoryBlock: {
+    marginTop: 28,
+    paddingTop: 14,
+    borderTop: '1 solid #d1d5db',
+  },
   thanking: {
     fontFamily: 'Helvetica-Bold',
     fontSize: 10,
@@ -517,23 +522,15 @@ export default function QuoteDocument({ quote }) {
           </View>
         </View>
 
-        <Text style={styles.pageFooter} render={({ pageNumber, totalPages }) => `Page ${pageNumber} - ${totalPages}`} fixed />
-      </Page>
+        {/* Signatory — stays with terms on page 1 if space; else floats as one block to next page */}
+        <View style={styles.signatoryBlock} wrap={false}>
+          <Text style={styles.thanking}>Thanking You,</Text>
+          <Text style={styles.forCompany}>For, PATEL ENTERPRISE</Text>
 
-      {/* ============================ PAGE 2 — Signatory ============================ */}
-      <Page size="A4" style={styles.page}>
-        {logoSrc ? (
-          <View style={styles.logoWrap}>
-            <Image src={logoSrc} style={styles.logo} />
-          </View>
-        ) : null}
-
-        <Text style={styles.thanking}>Thanking You,</Text>
-        <Text style={styles.forCompany}>For, PATEL ENTERPRISE</Text>
-
-        <Text style={styles.sigName}>{quote.preparedByName || 'Puja Parmar'}</Text>
-        <Text style={styles.sigRole}>({quote.preparedByRole || 'Sales'})</Text>
-        <Text style={styles.sigPhone}>[ M.No. {quote.preparedByPhone || '63581 85076'} ]</Text>
+          <Text style={styles.sigName}>{quote.preparedByName || 'Puja Parmar'}</Text>
+          <Text style={styles.sigRole}>({quote.preparedByRole || 'Sales'})</Text>
+          <Text style={styles.sigPhone}>[ M.No. {quote.preparedByPhone || '63581 85076'} ]</Text>
+        </View>
 
         <Text style={styles.pageFooter} render={({ pageNumber, totalPages }) => `Page ${pageNumber} - ${totalPages}`} fixed />
       </Page>

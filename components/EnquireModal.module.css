@@ -27,7 +27,7 @@
 .modal {
   position: relative;
   width: 100%;
-  max-width: clamp(520px, 55vw, 780px);
+  max-width: min(780px, 94vw);
   max-height: 92vh;
   overflow-y: auto;
   background: var(--color-white);

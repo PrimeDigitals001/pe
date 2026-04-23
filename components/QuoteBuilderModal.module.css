@@ -1,7 +1,7 @@
 /* Quote Builder Modal — adds multi-item rows on top of EnquireModal.module.css */
 
 .wide {
-  max-width: clamp(560px, 62vw, 900px) !important;
+  max-width: min(900px, 94vw) !important;
 }
 
 .sectionLabel {
