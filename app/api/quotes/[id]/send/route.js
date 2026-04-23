@@ -8,6 +8,7 @@ import QuoteDocument from '../../../../../lib/pdf/QuoteDocument.jsx';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
+export const dynamic = 'force-dynamic';
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',

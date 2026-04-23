@@ -6,6 +6,7 @@ import QuoteDocument from '../../../../../lib/pdf/QuoteDocument.jsx';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
+export const dynamic = 'force-dynamic';
 
 export async function GET(request, { params }) {
   const auth = await requireAdmin(request);

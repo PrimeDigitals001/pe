@@ -4,6 +4,9 @@ import { generateQuoteId, formatQuoteIdForDisplay } from '../../../../lib/quoteI
 import { getRecipientEmail } from '../../../../lib/recipientEmail.js';
 import { getCcEmails } from '../../../../lib/ccEmails.js';
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {

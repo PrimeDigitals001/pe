@@ -2,6 +2,7 @@ import { prisma } from '../../../../../lib/prisma.js';
 import { requireAdmin } from '../../../../../lib/requireAdmin.js';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function POST(request, { params }) {
   const auth = await requireAdmin(request);

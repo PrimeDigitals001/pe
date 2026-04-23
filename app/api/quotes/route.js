@@ -1,6 +1,9 @@
 import { prisma } from '../../../lib/prisma.js';
 import { requireAdmin } from '../../../lib/requireAdmin.js';
 
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
+
 export async function GET(request) {
   const auth = await requireAdmin(request);
   if (!auth.ok) return Response.json({ success: false, error: auth.error }, { status: auth.status });
