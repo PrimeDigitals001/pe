@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f4f4f4',
     borderBottom: `1 solid ${BORDER}`,
     fontFamily: 'Helvetica-Bold',
-    fontSize: 9,
+    fontSize: 8,
   },
   itemBodyRow: {
     flexDirection: 'row',
@@ -97,14 +97,16 @@ const styles = StyleSheet.create({
   },
   cellBase: { paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
   cellLast: { paddingVertical: 5, paddingHorizontal: 6 },
-  colSr:   { width: '5%', textAlign: 'left' },
-  colDesc: { width: '30%', textAlign: 'left' },
-  colQty:  { width: '10%', textAlign: 'left' },
-  colRate: { width: '10%', textAlign: 'left' },
-  colAmt:  { width: '12%', textAlign: 'left' },
-  colTax:  { width: '12%', textAlign: 'left' },
-  colTaxAmt: { width: '10%', textAlign: 'left' },
-  colTotal: { width: '11%', textAlign: 'left' },
+  /* Fixed widths in pt — total = 531pt (A4 595 - 64pt horizontal padding).
+     Sized to fit large Indian-format numbers (e.g. 10,54,800.00) with padding. */
+  colSr:    { width: 24,  textAlign: 'left' },
+  colDesc:  { width: 118, textAlign: 'left' },
+  colQty:   { width: 40,  textAlign: 'left' },
+  colRate:  { width: 62,  textAlign: 'right' },
+  colAmt:   { width: 70,  textAlign: 'right' },
+  colTax:   { width: 60,  textAlign: 'center' },
+  colTaxAmt:{ width: 70,  textAlign: 'right' },
+  colTotal: { width: 87,  textAlign: 'right' },
 
   itemTitle: { fontFamily: 'Helvetica-Bold', fontSize: 9 },
   itemSub: { fontSize: 8, color: MUTED, marginTop: 1 },
@@ -119,19 +121,15 @@ const styles = StyleSheet.create({
     fontSize: 9,
     fontFamily: 'Helvetica-Bold',
   },
-  subtotalLabel: {
-    width: '45%',
-    paddingVertical: 5,
-    paddingHorizontal: 6,
-    borderRight: `1 solid ${BORDER}`,
-    textAlign: 'left',
-  },
-  subtotalQty: { width: '10%', paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
-  subtotalRate: { width: '10%', paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
-  subtotalAmt: { width: '12%', paddingVertical: 5, paddingHorizontal: 6, textAlign: 'left', borderRight: `1 solid ${BORDER}` },
-  subtotalTax: { width: '12%', paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
-  subtotalTaxAmt: { width: '10%', paddingVertical: 5, paddingHorizontal: 6, textAlign: 'left', borderRight: `1 solid ${BORDER}` },
-  subtotalTotal: { width: '11%', paddingVertical: 5, paddingHorizontal: 6, textAlign: 'left' },
+  /* Subtotal row — cells exactly match items-table columns.
+     Sum: 142 + 40 + 62 + 70 + 60 + 70 + 87 = 531pt. */
+  subtotalLabel:  { width: 142, paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}`, textAlign: 'left' },
+  subtotalQty:    { width: 40,  paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
+  subtotalRate:   { width: 62,  paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
+  subtotalAmt:    { width: 70,  paddingVertical: 5, paddingHorizontal: 6, textAlign: 'right', borderRight: `1 solid ${BORDER}` },
+  subtotalTax:    { width: 60,  paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
+  subtotalTaxAmt: { width: 70,  paddingVertical: 5, paddingHorizontal: 6, textAlign: 'right', borderRight: `1 solid ${BORDER}` },
+  subtotalTotal:  { width: 87,  paddingVertical: 5, paddingHorizontal: 6, textAlign: 'right' },
 
   totalsStack: {
     marginTop: 8,
@@ -380,7 +378,7 @@ export default function QuoteDocument({ quote }) {
                 </View>
                 <View style={styles.rightKvRow}>
                   <Text style={styles.rightKvLabel}>Prepared By</Text>
-                  <Text style={styles.rightKvValue}>: {quote.preparedByName || 'Puja Parmar'}</Text>
+                  <Text style={styles.rightKvValue}>: {quote.preparedByName || 'Smit Mistry'}</Text>
                 </View>
               </View>
             </View>
@@ -527,9 +525,9 @@ export default function QuoteDocument({ quote }) {
           <Text style={styles.thanking}>Thanking You,</Text>
           <Text style={styles.forCompany}>For, PATEL ENTERPRISE</Text>
 
-          <Text style={styles.sigName}>{quote.preparedByName || 'Puja Parmar'}</Text>
+          <Text style={styles.sigName}>{quote.preparedByName || 'Smit Mistry'}</Text>
           <Text style={styles.sigRole}>({quote.preparedByRole || 'Sales'})</Text>
-          <Text style={styles.sigPhone}>[ M.No. {quote.preparedByPhone || '63581 85076'} ]</Text>
+          <Text style={styles.sigPhone}>[ M.No. {quote.preparedByPhone || '6358185078'} ]</Text>
         </View>
 
         <Text style={styles.pageFooter} render={({ pageNumber, totalPages }) => `Page ${pageNumber} - ${totalPages}`} fixed />

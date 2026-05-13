@@ -135,7 +135,7 @@ export default function QuoteHtmlPreview({ quote }) {
           </div>
           <div className={styles.kvRow}>
             <span className={styles.kvLabel}>Prepared By</span>
-            <span className={styles.kvValue}>: {quote.preparedByName || 'Puja Parmar'}</span>
+            <span className={styles.kvValue}>: {quote.preparedByName || 'Smit Mistry'}</span>
           </div>
         </div>
       </div>
@@ -261,9 +261,9 @@ export default function QuoteHtmlPreview({ quote }) {
         <div className={styles.signLine}>Thanking You,</div>
         <div className={styles.signCompany}>For, PATEL ENTERPRISE</div>
         <div className={styles.signSpacer} />
-        <div className={styles.signName}>{quote.preparedByName || 'Puja Parmar'}</div>
+        <div className={styles.signName}>{quote.preparedByName || 'Smit Mistry'}</div>
         <div className={styles.signRole}>({quote.preparedByRole || 'Sales'})</div>
-        <div className={styles.signPhone}>[ M.No. {quote.preparedByPhone || '63581 85076'} ]</div>
+        <div className={styles.signPhone}>[ M.No. {quote.preparedByPhone || '6358185078'} ]</div>
       </div>
 
       <div className={styles.footer}>

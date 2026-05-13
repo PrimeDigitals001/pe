@@ -35,9 +35,9 @@ model Quote {
   deliveryTerms   String      @default("Ex-works / FOB origin")
   remarks         String?
 
-  preparedByName  String      @default("Puja Parmar")
+  preparedByName  String      @default("Smit Mistry")
   preparedByRole  String      @default("Sales")
-  preparedByPhone String      @default("63581 85076")
+  preparedByPhone String      @default("6358185078")
 
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
