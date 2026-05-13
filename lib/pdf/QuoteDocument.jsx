@@ -98,15 +98,16 @@ const styles = StyleSheet.create({
   cellBase: { paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
   cellLast: { paddingVertical: 5, paddingHorizontal: 6 },
   /* Fixed widths in pt — total = 531pt (A4 595 - 64pt horizontal padding).
-     Sized to fit large Indian-format numbers (e.g. 10,54,800.00) with padding. */
-  colSr:    { width: 24,  textAlign: 'left' },
-  colDesc:  { width: 118, textAlign: 'left' },
-  colQty:   { width: 40,  textAlign: 'left' },
-  colRate:  { width: 62,  textAlign: 'right' },
-  colAmt:   { width: 70,  textAlign: 'right' },
+     Numeric columns sized just enough for large Indian-format numbers;
+     description gets the rest. */
+  colSr:    { width: 22,  textAlign: 'left' },
+  colDesc:  { width: 108, textAlign: 'left' },
+  colQty:   { width: 38,  textAlign: 'left' },
+  colRate:  { width: 70,  textAlign: 'right' },
+  colAmt:   { width: 75,  textAlign: 'right' },
   colTax:   { width: 60,  textAlign: 'center' },
-  colTaxAmt:{ width: 70,  textAlign: 'right' },
-  colTotal: { width: 87,  textAlign: 'right' },
+  colTaxAmt:{ width: 72,  textAlign: 'right' },
+  colTotal: { width: 86,  textAlign: 'right' },
 
   itemTitle: { fontFamily: 'Helvetica-Bold', fontSize: 9 },
   itemSub: { fontSize: 8, color: MUTED, marginTop: 1 },
@@ -122,14 +123,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica-Bold',
   },
   /* Subtotal row — cells exactly match items-table columns.
-     Sum: 142 + 40 + 62 + 70 + 60 + 70 + 87 = 531pt. */
-  subtotalLabel:  { width: 142, paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}`, textAlign: 'left' },
-  subtotalQty:    { width: 40,  paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
-  subtotalRate:   { width: 62,  paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
-  subtotalAmt:    { width: 70,  paddingVertical: 5, paddingHorizontal: 6, textAlign: 'right', borderRight: `1 solid ${BORDER}` },
+     Sum: 140 + 38 + 70 + 75 + 50 + 72 + 86 = 531pt. */
+  subtotalLabel:  { width: 130, paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}`, textAlign: 'left' },
+  subtotalQty:    { width: 38,  paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
+  subtotalRate:   { width: 70,  paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
+  subtotalAmt:    { width: 75,  paddingVertical: 5, paddingHorizontal: 6, textAlign: 'right', borderRight: `1 solid ${BORDER}` },
   subtotalTax:    { width: 60,  paddingVertical: 5, paddingHorizontal: 6, borderRight: `1 solid ${BORDER}` },
-  subtotalTaxAmt: { width: 70,  paddingVertical: 5, paddingHorizontal: 6, textAlign: 'right', borderRight: `1 solid ${BORDER}` },
-  subtotalTotal:  { width: 87,  paddingVertical: 5, paddingHorizontal: 6, textAlign: 'right' },
+  subtotalTaxAmt: { width: 72,  paddingVertical: 5, paddingHorizontal: 6, textAlign: 'right', borderRight: `1 solid ${BORDER}` },
+  subtotalTotal:  { width: 86,  paddingVertical: 5, paddingHorizontal: 6, textAlign: 'right' },
 
   totalsStack: {
     marginTop: 8,
