@@ -132,14 +132,29 @@ export async function POST(request) {
         </div>
       </body></html>`;
 
-    await transporter.sendMail({
-      from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
-      to: getRecipientEmail(),
-      cc: getCcEmails(),
-      replyTo: quote.customerEmail,
-      subject: `🟢 New Quote Request — ${displayId} — ${quote.customerCompany}`,
-      html,
-    });
+    try {
+      await transporter.sendMail({
+        from: `"Patel Enterprise Website" <${process.env.GMAIL_USER}>`,
+        to: getRecipientEmail(),
+        cc: getCcEmails(),
+        replyTo: quote.customerEmail,
+        subject: `🟢 New Quote Request — ${displayId} — ${quote.customerCompany}`,
+        html,
+      });
+    } catch (mailErr) {
+      console.error('[quotes/create] mail failed, rolling back', quoteId, mailErr);
+      // Rollback: delete the freshly-created quote so it doesn't appear as a phantom row in admin.
+      // Counter increment stays (sequence skips one) — acceptable trade-off.
+      try {
+        await prisma.quote.delete({ where: { id: quoteId } });
+      } catch (delErr) {
+        console.error('[quotes/create] rollback delete failed', quoteId, delErr);
+      }
+      return Response.json(
+        { success: false, error: 'Could not send notification email. Please try again or contact us directly.' },
+        { status: 500 }
+      );
+    }
 
     return Response.json({ success: true, quoteId, displayId });
   } catch (err) {
